@@ -155,7 +155,7 @@
 									"font": "Arial;13;1",
 									"left": 496,
 									"top": 181,
-									"width": 97.876953125,
+									"width": 99.03515625,
 									"height": 13,
 									"text": "INVENTARIOS"
 								},
@@ -171,14 +171,14 @@
 									"font": "Arial;13;0",
 									"left": 496,
 									"top": 199,
-									"width": 97.876953125,
+									"width": 99.03515625,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 496,
 							"top": 176,
-							"width": 97.876953125,
+							"width": 99.03515625,
 							"height": 33,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQq+mriSlM+A="
@@ -206,7 +206,7 @@
 									"font": "Arial;13;1",
 									"left": 584,
 									"top": 685,
-									"width": 78.6181640625,
+									"width": 131.1181640625,
 									"height": 13,
 									"text": "USUARIOS"
 								},
@@ -219,18 +219,35 @@
 									"model": {
 										"$ref": "AAAAAAFuQq/3eySxzGE="
 									},
+									"subViews": [
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuQwXPLgWrCBY=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuQwXO6QWop/Y="
+											},
+											"font": "Arial;13;0",
+											"left": 589,
+											"top": 708,
+											"width": 121.1181640625,
+											"height": 13
+										}
+									],
 									"font": "Arial;13;0",
 									"left": 584,
 									"top": 703,
-									"width": 78.6181640625,
-									"height": 10
+									"width": 131.1181640625,
+									"height": 23
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 584,
 							"top": 680,
-							"width": 78.6181640625,
-							"height": 33,
+							"width": 131.1181640625,
+							"height": 46,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQq/3fCS0X98="
 							},
@@ -481,7 +498,7 @@
 									"font": "Arial;13;1",
 									"left": 744,
 									"top": 453,
-									"width": 119.30029296875,
+									"width": 123.0703125,
 									"height": 13,
 									"text": "DETALLE_VENTA"
 								},
@@ -497,14 +514,14 @@
 									"font": "Arial;13;0",
 									"left": 744,
 									"top": 471,
-									"width": 119.30029296875,
+									"width": 123.0703125,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 744,
 							"top": 448,
-							"width": 119.30029296875,
+							"width": 123.0703125,
 							"height": 33,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQrBndCTeAsk="
@@ -530,8 +547,8 @@
 										"$ref": "AAAAAAFuQrB/XCTqLak="
 									},
 									"font": "Arial;13;1",
-									"left": 424,
-									"top": 581,
+									"left": 688,
+									"top": 213,
 									"width": 92.341796875,
 									"height": 13,
 									"text": "EMPLEADOS"
@@ -546,15 +563,15 @@
 										"$ref": "AAAAAAFuQrB/XCTo1VE="
 									},
 									"font": "Arial;13;0",
-									"left": 424,
-									"top": 599,
+									"left": 688,
+									"top": 231,
 									"width": 92.341796875,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 424,
-							"top": 576,
+							"left": 688,
+							"top": 208,
 							"width": 92.341796875,
 							"height": 33,
 							"nameLabel": {
@@ -1082,7 +1099,7 @@
 									"font": "Arial;13;1",
 									"left": 864,
 									"top": 365,
-									"width": 74.28271484375,
+									"width": 76,
 									"height": 13,
 									"text": "CLIENTES"
 								},
@@ -1098,14 +1115,14 @@
 									"font": "Arial;13;0",
 									"left": 864,
 									"top": 383,
-									"width": 74.28271484375,
+									"width": 76,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 864,
 							"top": 360,
-							"width": 74.28271484375,
+							"width": 76,
 							"height": 33,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQrgigyWEe4w="
@@ -1281,7 +1298,19 @@
 					"_parent": {
 						"$ref": "AAAAAAFuQq9sUiSQu8g="
 					},
-					"name": "USUARIOS"
+					"name": "USUARIOS",
+					"columns": [
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuQwXO6QWop/Y=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "ID_USUARIO",
+							"type": "INT",
+							"length": 0
+						}
+					]
 				},
 				{
 					"_type": "ERDEntity",
