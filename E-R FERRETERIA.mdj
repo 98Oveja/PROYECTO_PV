@@ -204,9 +204,9 @@
 										"$ref": "AAAAAAFuQq/3fCSzk3A="
 									},
 									"font": "Arial;13;1",
-									"left": 584,
-									"top": 685,
-									"width": 131.1181640625,
+									"left": 456,
+									"top": 693,
+									"width": 226.93603515625,
 									"height": 13,
 									"text": "USUARIOS"
 								},
@@ -230,24 +230,99 @@
 												"$ref": "AAAAAAFuQwXO6QWop/Y="
 											},
 											"font": "Arial;13;0",
-											"left": 589,
-											"top": 708,
-											"width": 121.1181640625,
+											"left": 461,
+											"top": 716,
+											"width": 216.93603515625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRooVyzMBe7U=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRooVhzL+Thg="
+											},
+											"font": "Arial;13;0",
+											"left": 461,
+											"top": 731,
+											"width": 216.93603515625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRoqP4jMJ8+Q=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRoqPqTMGtz4="
+											},
+											"font": "Arial;13;0",
+											"left": 461,
+											"top": 746,
+											"width": 216.93603515625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRorwOjMQzd0=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRorwGTMNr9w="
+											},
+											"font": "Arial;13;0",
+											"left": 461,
+											"top": 761,
+											"width": 216.93603515625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRotSKDMXGgM=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRotSADMUH8A="
+											},
+											"font": "Arial;13;0",
+											"left": 461,
+											"top": 776,
+											"width": 216.93603515625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRouWoTMevBM=",
+											"_parent": {
+												"$ref": "AAAAAAFuQq/3fCS1Xto="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRouWfjMbWPk="
+											},
+											"font": "Arial;13;0",
+											"left": 461,
+											"top": 791,
+											"width": 216.93603515625,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 584,
-									"top": 703,
-									"width": 131.1181640625,
-									"height": 23
+									"left": 456,
+									"top": 711,
+									"width": 226.93603515625,
+									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 584,
-							"top": 680,
-							"width": 131.1181640625,
-							"height": 46,
+							"left": 456,
+							"top": 688,
+							"width": 226.93603515625,
+							"height": 136,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQq/3fCS0X98="
 							},
@@ -1308,7 +1383,58 @@
 							},
 							"name": "ID_USUARIO",
 							"type": "INT",
+							"length": 0,
+							"primaryKey": true
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRooVhzL+Thg=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "NOMBRE",
+							"type": "VARCHAR",
+							"length": "30"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRoqPqTMGtz4=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "APELLIDOS",
+							"type": "VARCHAR",
+							"length": "30"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRorwGTMNr9w=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "CONTRASENA",
+							"type": "VARCHAR",
+							"length": "15"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRotSADMUH8A=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "ESTADO",
+							"type": "BOOLEAN",
 							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRouWfjMbWPk=",
+							"_parent": {
+								"$ref": "AAAAAAFuQq/3eySxzGE="
+							},
+							"name": "CARGO",
+							"type": "VARCHAR",
+							"length": "20"
 						}
 					]
 				},
