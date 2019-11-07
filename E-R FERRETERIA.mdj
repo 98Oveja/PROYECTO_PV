@@ -1172,9 +1172,9 @@
 										"$ref": "AAAAAAFuQrgigyWDn88="
 									},
 									"font": "Arial;13;1",
-									"left": 864,
-									"top": 365,
-									"width": 76,
+									"left": 1024,
+									"top": 333,
+									"width": 211.05419921875,
 									"height": 13,
 									"text": "CLIENTES"
 								},
@@ -1187,18 +1187,95 @@
 									"model": {
 										"$ref": "AAAAAAFuQrgigyWBTbQ="
 									},
+									"subViews": [
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRphNW7HuzuM=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrgigyWF/EQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRphM+rHrs5A="
+											},
+											"font": "Arial;13;0",
+											"left": 1029,
+											"top": 356,
+											"width": 201.05419921875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRpiHdbH1DrA=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrgigyWF/EQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRpiHLLHyAJQ="
+											},
+											"font": "Arial;13;0",
+											"left": 1029,
+											"top": 371,
+											"width": 201.05419921875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRpi64bH8HO0=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrgigyWF/EQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRpi6ubH5lac="
+											},
+											"font": "Arial;13;0",
+											"left": 1029,
+											"top": 386,
+											"width": 201.05419921875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRpkWMLIDwno=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrgigyWF/EQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRpkV8rIAmnY="
+											},
+											"font": "Arial;13;0",
+											"left": 1029,
+											"top": 401,
+											"width": 201.05419921875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFuRpolTrIRPUc=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrgigyWF/EQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFuRpolKLIO65g="
+											},
+											"font": "Arial;13;0",
+											"left": 1029,
+											"top": 416,
+											"width": 201.05419921875,
+											"height": 13
+										}
+									],
 									"font": "Arial;13;0",
-									"left": 864,
-									"top": 383,
-									"width": 76,
-									"height": 10
+									"left": 1024,
+									"top": 351,
+									"width": 211.05419921875,
+									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 864,
-							"top": 360,
-							"width": 76,
-							"height": 33,
+							"left": 1024,
+							"top": 328,
+							"width": 211.05419921875,
+							"height": 121,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQrgigyWEe4w="
 							},
@@ -1771,7 +1848,60 @@
 					"_parent": {
 						"$ref": "AAAAAAFuQq9sUiSQu8g="
 					},
-					"name": "CLIENTES"
+					"name": "CLIENTES",
+					"columns": [
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRphM+rHrs5A=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrgigyWBTbQ="
+							},
+							"name": "ID_CLIENTE",
+							"type": "INT",
+							"length": 0,
+							"primaryKey": true
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRpiHLLHyAJQ=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrgigyWBTbQ="
+							},
+							"name": "NOMBRE",
+							"type": "VARCHAR",
+							"length": "20"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRpi6ubH5lac=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrgigyWBTbQ="
+							},
+							"name": "APELLIDO",
+							"type": "VARCHAR",
+							"length": "20"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRpkV8rIAmnY=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrgigyWBTbQ="
+							},
+							"name": "NIT",
+							"type": "VARCHAR",
+							"length": "15"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFuRpolKLIO65g=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrgigyWBTbQ="
+							},
+							"name": "DIRECCION",
+							"type": "VARCHAR",
+							"length": "30"
+						}
+					]
 				}
 			]
 		}
