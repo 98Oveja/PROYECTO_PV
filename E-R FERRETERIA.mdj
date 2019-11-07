@@ -1231,7 +1231,7 @@
 									"font": "Arial;13;1",
 									"left": 184,
 									"top": 69,
-									"width": 247.876953125,
+									"width": 265.93603515625,
 									"height": 13,
 									"text": "ADMINISTRADORES"
 								},
@@ -1257,7 +1257,7 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 92,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										},
 										{
@@ -1272,7 +1272,7 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 107,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										},
 										{
@@ -1287,7 +1287,7 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 122,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										},
 										{
@@ -1302,7 +1302,7 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 137,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										},
 										{
@@ -1317,7 +1317,7 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 152,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										},
 										{
@@ -1332,21 +1332,21 @@
 											"font": "Arial;13;0",
 											"left": 189,
 											"top": 167,
-											"width": 237.876953125,
+											"width": 255.93603515625,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 184,
 									"top": 87,
-									"width": 247.876953125,
+									"width": 265.93603515625,
 									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 184,
 							"top": 64,
-							"width": 247.876953125,
+							"width": 265.93603515625,
 							"height": 136,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQrDOFyUFq0M="
@@ -3186,7 +3186,8 @@
 							},
 							"name": "ID_ADMINISTRADOR",
 							"type": "INT",
-							"length": 0
+							"length": 0,
+							"primaryKey": true
 						},
 						{
 							"_type": "ERDColumn",
