@@ -1073,36 +1073,6 @@
 										},
 										{
 											"_type": "ERDColumnView",
-											"_id": "AAAAAAFuQuBuQCZQmy4=",
-											"_parent": {
-												"$ref": "AAAAAAFuQrHN4yUT380="
-											},
-											"model": {
-												"$ref": "AAAAAAFuQuBuFCZNJJY="
-											},
-											"font": "Arial;13;0",
-											"left": 5,
-											"top": 427,
-											"width": 198.41357421875,
-											"height": 13
-										},
-										{
-											"_type": "ERDColumnView",
-											"_id": "AAAAAAFuQuSx8SZZh/I=",
-											"_parent": {
-												"$ref": "AAAAAAFuQrHN4yUT380="
-											},
-											"model": {
-												"$ref": "AAAAAAFuQuSxwyZWdqg="
-											},
-											"font": "Arial;13;0",
-											"left": 5,
-											"top": 442,
-											"width": 198.41357421875,
-											"height": 13
-										},
-										{
-											"_type": "ERDColumnView",
 											"_id": "AAAAAAFuQuU4xyZldVI=",
 											"_parent": {
 												"$ref": "AAAAAAFuQrHN4yUT380="
@@ -1112,7 +1082,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 5,
-											"top": 457,
+											"top": 427,
 											"width": 198.41357421875,
 											"height": 13
 										},
@@ -1127,7 +1097,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 5,
-											"top": 472,
+											"top": 442,
 											"width": 198.41357421875,
 											"height": 13
 										}
@@ -1135,7 +1105,7 @@
 									"font": "Arial;13;0",
 									"top": 407,
 									"width": 208.41357421875,
-									"height": 83
+									"height": 53
 								}
 							],
 							"font": "Arial;13;0",
@@ -2638,28 +2608,6 @@
 							"type": "INT",
 							"length": 0,
 							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQuBuFCZNJJY=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrHN3SUPcEg="
-							},
-							"name": "ID_PRODUCTO",
-							"type": "INT",
-							"length": 0,
-							"foreignKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQuSxwyZWdqg=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrHN3SUPcEg="
-							},
-							"name": "ID_PROVEEDOR",
-							"type": "INT",
-							"length": 0,
-							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
