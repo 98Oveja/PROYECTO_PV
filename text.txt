@@ -1,7 +1,287 @@
-Hola
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost
+-- Tiempo de generación: 11-11-2019 a las 23:18:33
+-- Versión del servidor: 10.3.17-MariaDB-log
+-- Versión de PHP: 7.2.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-:v
+--
+-- Base de datos: `49951`
+--
+CREATE DATABASE IF NOT EXISTS `49951` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `49951`;
 
-esto es una prueba, solo para saber si funciona  
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ADMINISTRADORES`
+--
+
+CREATE TABLE `ADMINISTRADORES` (
+  `ID_ADMINISTRADOR` int(11) NOT NULL,
+  `NOMBRE` varchar(30) NOT NULL,
+  `APELLIDO` varchar(30) NOT NULL,
+  `TELEFONO` int(8) NOT NULL,
+  `DIRECCION` varchar(40) NOT NULL,
+  `ESTADO` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `CATEGORIAS`
+--
+
+CREATE TABLE `CATEGORIAS` (
+  `ID_CATEGORIA` int(11) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `DESCRIPCION` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `CLIENTES`
+--
+
+CREATE TABLE `CLIENTES` (
+  `ID_CLIENTE` int(11) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `APELLIDO` varchar(20) NOT NULL,
+  `NIT` varchar(15) NOT NULL,
+  `DIRECCION` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `COMPRAS`
+--
+
+CREATE TABLE `COMPRAS` (
+  `ID_COMPRA` int(11) NOT NULL,
+  `FECHA` date NOT NULL,
+  `CANTIDAD` decimal(10,0) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `DETALLE_VENTA`
+--
+
+CREATE TABLE `DETALLE_VENTA` (
+  `ID_DETALLE` int(11) NOT NULL,
+  `ID_VENTA` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) NOT NULL,
+  `DESCRIPCION` varchar(20) NOT NULL,
+  `SUBTOTAL` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `EMPLEADOS`
+--
+
+CREATE TABLE `EMPLEADOS` (
+  `ID_USUARIO` int(11) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `APELLIDO` varchar(20) NOT NULL,
+  `DIRECCION` varchar(25) NOT NULL,
+  `TELEFONO` varchar(10) NOT NULL,
+  `ESTADO` tinyint(1) NOT NULL,
+  `CARGO` varchar(20) NOT NULL,
+  `FECHA_CONTRATACION` date NOT NULL,
+  `FECHA_RETIRO` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `INVENTARIOS`
+--
+
+CREATE TABLE `INVENTARIOS` (
+  `ID_INVENTARIO` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) NOT NULL,
+  `ID_EMPLEADO` varchar(30) NOT NULL,
+  `FECHA_INICIO` date NOT NULL,
+  `FECHA_FIN` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `PERSONAS`
+--
+
+CREATE TABLE `PERSONAS` (
+  `ID_PERSONA` int(11) NOT NULL,
+  `PRIMER_NOMBRE` varchar(12) NOT NULL,
+  `SEGUNDO_NOMBRE` varchar(12) NOT NULL,
+  `PRIMER_APELLIDO` varchar(12) NOT NULL,
+  `SEGUNDO_APELLIDO` varchar(12) NOT NULL,
+  `DIRECCION` varchar(40) NOT NULL,
+  `TELEFONO` varchar(10) NOT NULL,
+  `CORREO` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `PRODUCTOS`
+--
+
+CREATE TABLE `PRODUCTOS` (
+  `ID_PRODUCTO` int(11) NOT NULL,
+  `ID_CATEGORIAS` int(11) NOT NULL,
+  `ID_PROVEEDORES` int(11) NOT NULL,
+  `ID_COMPRA` int(11) NOT NULL,
+  `MARCA` varchar(20) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `CANTIDAD` decimal(10,0) NOT NULL,
+  `PRECIO_COMPRA` double NOT NULL,
+  `PRECIO_VENTA` double NOT NULL,
+  `IMG` varchar(10) NOT NULL,
+  `ESTADO` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `PROVEEDORES`
+--
+
+CREATE TABLE `PROVEEDORES` (
+  `ID_PROVEEDOR` int(11) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `APELLIDO` varchar(20) NOT NULL,
+  `ORG` varchar(50) NOT NULL,
+  `TELEFONO` varchar(11) NOT NULL,
+  `CORREO` varchar(30) NOT NULL,
+  `NO_CUENTA` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `USUARIOS`
+--
+
+CREATE TABLE `USUARIOS` (
+  `ID_USUARIO` int(11) NOT NULL,
+  `NOMBRE` varchar(30) NOT NULL,
+  `APELLIDOS` varchar(30) NOT NULL,
+  `CONTRASENA` varchar(15) NOT NULL,
+  `ESTADO` tinyint(1) NOT NULL,
+  `CARGO` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `VENTAS`
+--
+
+CREATE TABLE `VENTAS` (
+  `ID_VENTA` int(11) NOT NULL,
+  `ID_CLIENTE` int(11) NOT NULL,
+  `ID_EMPLEADO` int(11) NOT NULL,
+  `TOTAL` double NOT NULL,
+  `FECHA` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `ADMINISTRADORES`
+--
+ALTER TABLE `ADMINISTRADORES`
+  ADD PRIMARY KEY (`ID_ADMINISTRADOR`);
+
+--
+-- Indices de la tabla `CATEGORIAS`
+--
+ALTER TABLE `CATEGORIAS`
+  ADD PRIMARY KEY (`ID_CATEGORIA`);
+
+--
+-- Indices de la tabla `CLIENTES`
+--
+ALTER TABLE `CLIENTES`
+  ADD PRIMARY KEY (`ID_CLIENTE`);
+
+--
+-- Indices de la tabla `COMPRAS`
+--
+ALTER TABLE `COMPRAS`
+  ADD PRIMARY KEY (`ID_COMPRA`);
+
+--
+-- Indices de la tabla `DETALLE_VENTA`
+--
+ALTER TABLE `DETALLE_VENTA`
+  ADD PRIMARY KEY (`ID_DETALLE`);
+
+--
+-- Indices de la tabla `EMPLEADOS`
+--
+ALTER TABLE `EMPLEADOS`
+  ADD PRIMARY KEY (`ID_USUARIO`);
+
+--
+-- Indices de la tabla `INVENTARIOS`
+--
+ALTER TABLE `INVENTARIOS`
+  ADD PRIMARY KEY (`ID_INVENTARIO`);
+
+--
+-- Indices de la tabla `PERSONAS`
+--
+ALTER TABLE `PERSONAS`
+  ADD PRIMARY KEY (`ID_PERSONA`);
+
+--
+-- Indices de la tabla `PRODUCTOS`
+--
+ALTER TABLE `PRODUCTOS`
+  ADD PRIMARY KEY (`ID_PRODUCTO`);
+
+--
+-- Indices de la tabla `PROVEEDORES`
+--
+ALTER TABLE `PROVEEDORES`
+  ADD PRIMARY KEY (`ID_PROVEEDOR`);
+
+--
+-- Indices de la tabla `USUARIOS`
+--
+ALTER TABLE `USUARIOS`
+  ADD PRIMARY KEY (`ID_USUARIO`);
+
+--
+-- Indices de la tabla `VENTAS`
+--
+ALTER TABLE `VENTAS`
+  ADD PRIMARY KEY (`ID_VENTA`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
