@@ -4,25 +4,6 @@
 	"name": "Untitled",
 	"ownedElements": [
 		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true
-				}
-			]
-		},
-		{
 			"_type": "ERDDataModel",
 			"_id": "AAAAAAFuQq9sUiSQu8g=",
 			"_parent": {
@@ -426,7 +407,7 @@
 									"font": "Arial;13;1",
 									"left": 1248,
 									"top": 501,
-									"width": 196.84814453125,
+									"width": 199,
 									"height": 13,
 									"text": "VENTAS"
 								},
@@ -452,7 +433,7 @@
 											"font": "Arial;13;0",
 											"left": 1253,
 											"top": 524,
-											"width": 186.84814453125,
+											"width": 189,
 											"height": 13
 										},
 										{
@@ -467,7 +448,7 @@
 											"font": "Arial;13;0",
 											"left": 1253,
 											"top": 539,
-											"width": 186.84814453125,
+											"width": 189,
 											"height": 13
 										},
 										{
@@ -482,7 +463,7 @@
 											"font": "Arial;13;0",
 											"left": 1253,
 											"top": 554,
-											"width": 186.84814453125,
+											"width": 189,
 											"height": 13
 										},
 										{
@@ -497,7 +478,7 @@
 											"font": "Arial;13;0",
 											"left": 1253,
 											"top": 569,
-											"width": 186.84814453125,
+											"width": 189,
 											"height": 13
 										},
 										{
@@ -512,21 +493,21 @@
 											"font": "Arial;13;0",
 											"left": 1253,
 											"top": 584,
-											"width": 186.84814453125,
+											"width": 189,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1248,
 									"top": 519,
-									"width": 196.84814453125,
+									"width": 199,
 									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 1248,
 							"top": 496,
-							"width": 196.84814453125,
+							"width": 199,
 							"height": 106,
 							"nameLabel": {
 								"$ref": "AAAAAAFuQrASgyTB99I="
@@ -2491,33 +2472,6 @@
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR6sEXwCjZwc=",
-							"_parent": {
-								"$ref": "AAAAAAFuQq/3eySxzGE="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR6sEXwCkpwc=",
-								"_parent": {
-									"$ref": "AAAAAAFuR6sEXwCjZwc="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQq/3eySxzGE="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR6sEXwClw2A=",
-								"_parent": {
-									"$ref": "AAAAAAFuR6sEXwCjZwc="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrB/XCTo1VE="
-								}
-							}
-						},
-						{
-							"_type": "ERDRelationship",
 							"_id": "AAAAAAFuR6uqOgDTpvY=",
 							"_parent": {
 								"$ref": "AAAAAAFuQq/3eySxzGE="
@@ -2636,10 +2590,7 @@
 							"name": "ID_CLIENTE",
 							"type": "INT",
 							"length": 0,
-							"foreignKey": true,
-							"referenceTo": {
-								"$ref": "AAAAAAFuRphM+rHrs5A="
-							}
+							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -2685,34 +2636,6 @@
 					},
 					"name": "PRODUCTOS",
 					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuQrO/YiVoSn4=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrAh5STL3eE="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuQrO/YyVpVMA=",
-								"_parent": {
-									"$ref": "AAAAAAFuQrO/YiVoSn4="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrAh5STL3eE="
-								},
-								"cardinality": "1..*"
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuQrO/YyVq+/8=",
-								"_parent": {
-									"$ref": "AAAAAAFuQrO/YiVoSn4="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrCNCyT1xqM="
-								}
-							}
-						},
 						{
 							"_type": "ERDRelationship",
 							"_id": "AAAAAAFuQr1awyWOMTU=",
@@ -2860,10 +2783,7 @@
 							"name": "ID_PROVEEDORES",
 							"type": "INT",
 							"length": 0,
-							"foreignKey": true,
-							"referenceTo": {
-								"$ref": "AAAAAAFuQtrqJCYQy1I="
-							}
+							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -3052,343 +2972,6 @@
 				},
 				{
 					"_type": "ERDEntity",
-					"_id": "AAAAAAFuQrB/XCTo1VE=",
-					"_parent": {
-						"$ref": "AAAAAAFuQq9sUiSQu8g="
-					},
-					"name": "EMPLEADOS",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR6sTFQC3sfw=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR6sTFgC4xII=",
-								"_parent": {
-									"$ref": "AAAAAAFuR6sTFQC3sfw="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrB/XCTo1VE="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR6sTFgC5zgY=",
-								"_parent": {
-									"$ref": "AAAAAAFuR6sTFQC3sfw="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQq+mriSiutE="
-								}
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR67wWQFdimM=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR67wWQFemnc=",
-								"_parent": {
-									"$ref": "AAAAAAFuR67wWQFdimM="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrB/XCTo1VE="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR67wWQFfI5I=",
-								"_parent": {
-									"$ref": "AAAAAAFuR67wWQFdimM="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQq+mriSiutE="
-								},
-								"cardinality": "1..*"
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR8E+NgJQuX8=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR8E+NgJRo7o=",
-								"_parent": {
-									"$ref": "AAAAAAFuR8E+NgJQuX8="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrB/XCTo1VE="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR8E+NgJStKI=",
-								"_parent": {
-									"$ref": "AAAAAAFuR8E+NgJQuX8="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrASgyS+lsY="
-								}
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR628rgFMUwM=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "ID_USUARIO",
-							"type": "INT",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR63tNQFTxns=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "NOMBRE",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7H4AAF7EIc=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "APELLIDO",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7JcFwGC0Qs=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "DIRECCION",
-							"type": "VARCHAR",
-							"length": "25"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7L2xgGJa2k=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "TELEFONO",
-							"type": "VARCHAR",
-							"length": "10"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7M1rwGQRvw=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "ESTADO",
-							"type": "BOLLEAN",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7OpuAGXl9s=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "CARGO",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7PcDAGdC98=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "FECHA_CONTRATACION",
-							"type": "DATE",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuR7SlEwGlcZs=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrB/XCTo1VE="
-							},
-							"name": "FECHA_RETIRO",
-							"type": "DATE",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFuQrCNCyT1xqM=",
-					"_parent": {
-						"$ref": "AAAAAAFuQq9sUiSQu8g="
-					},
-					"name": "PROVEEDORES",
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtrqJCYQy1I=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "ID_PROVEEDOR",
-							"type": "INT",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtsr9yYYQFE=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "NOMBRE",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtu1MCYhrHs=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "APELLIDO",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtv+YSYoX88=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "ORG",
-							"type": "VARCHAR",
-							"length": "50"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtxMJCYvmvQ=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "TELEFONO",
-							"type": "VARCHAR",
-							"length": "11"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQtzhySY2I5M=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "CORREO",
-							"type": "VARCHAR",
-							"length": "30"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuQt4h0SY/fBw=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrCNCyT1xqM="
-							},
-							"name": "NO_CUENTA",
-							"type": "VARCHAR",
-							"length": "30"
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFuQrDOFyUC+Aw=",
-					"_parent": {
-						"$ref": "AAAAAAFuQq9sUiSQu8g="
-					},
-					"name": "ADMINISTRADORES",
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRqUWGr7vbZI=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "ID_ADMINISTRADOR",
-							"type": "INT",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRqWqQr742Ls=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "NOMBRE",
-							"type": "VARCHAR",
-							"length": "30"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRqY/Fb7/oYk=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "APELLIDO",
-							"type": "VARCHAR",
-							"length": "30"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRqZDob8FUSs=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "TELEFONO",
-							"type": "INT",
-							"length": "8"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRqZEab8LoQ0=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "DIRECCION",
-							"type": "VARCHAR",
-							"length": "40"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRrbbMr8WiWQ=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrDOFyUC+Aw="
-							},
-							"name": "ESTADO",
-							"type": "BOOLEAN",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
 					"_id": "AAAAAAFuQrHN3SUPcEg=",
 					"_parent": {
 						"$ref": "AAAAAAFuQq9sUiSQu8g="
@@ -3425,125 +3008,6 @@
 							"name": "CANTIDAD",
 							"type": "NUMBER",
 							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFuQrgigyWBTbQ=",
-					"_parent": {
-						"$ref": "AAAAAAFuQq9sUiSQu8g="
-					},
-					"name": "CLIENTES",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR7ciDwHhwvg=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR7ciDwHiJCw=",
-								"_parent": {
-									"$ref": "AAAAAAFuR7ciDwHhwvg="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrgigyWBTbQ="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR7ciDwHjYqs=",
-								"_parent": {
-									"$ref": "AAAAAAFuR7ciDwHhwvg="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrBndCTbPWE="
-								},
-								"cardinality": "1..*"
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFuR8K/vgJ9crQ=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR8K/vwJ+Jew=",
-								"_parent": {
-									"$ref": "AAAAAAFuR8K/vgJ9crQ="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrgigyWBTbQ="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFuR8K/vwJ/twE=",
-								"_parent": {
-									"$ref": "AAAAAAFuR8K/vgJ9crQ="
-								},
-								"reference": {
-									"$ref": "AAAAAAFuQrASgyS+lsY="
-								},
-								"cardinality": "1..*"
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRphM+rHrs5A=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"name": "ID_CLIENTE",
-							"type": "INT",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRpiHLLHyAJQ=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"name": "NOMBRE",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRpi6ubH5lac=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"name": "APELLIDO",
-							"type": "VARCHAR",
-							"length": "20"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRpkV8rIAmnY=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"name": "NIT",
-							"type": "VARCHAR",
-							"length": "15"
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFuRpolKLIO65g=",
-							"_parent": {
-								"$ref": "AAAAAAFuQrgigyWBTbQ="
-							},
-							"name": "DIRECCION",
-							"type": "VARCHAR",
-							"length": "30"
 						}
 					]
 				},
