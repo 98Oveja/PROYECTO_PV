@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import utils.ConnectionUtil;
+import utils.ParseEmail;
 
 public class LoginController implements Initializable {
 
@@ -103,15 +104,16 @@ public class LoginController implements Initializable {
         String status = "Success";
         String email = txtUsername.getText();
         String password = txtPassword.getText();
-        if(email.isEmpty() && !password.isEmpty()){
-            setLblError(Color.TOMATO, "No se ha llenado el campo Usuario");
-            status = "Error";
+        ParseEmail validate = new ParseEmail();
+        if(!validate.isValid(email)){
+            setLblError(Color.TOMATO, "Usuario no valido");
+            return status = "Error";
         }
         if( password.isEmpty() && !email.isEmpty() ){
             setLblError(Color.TOMATO, "Ingrese una contraseña valida");
             status = "Error";
         }
-        if(email.isEmpty() && password.isEmpty()){
+        if(email.isEmpty() && password.isEmpty() ){
             setLblError(Color.GREEN, "Campos vacios");
             status = "Error";
         }if(!email.isEmpty() && !password.isEmpty()) {
