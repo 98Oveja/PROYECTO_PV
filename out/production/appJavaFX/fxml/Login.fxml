@@ -3,37 +3,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="960.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="960.0" prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController" onKeyPressed="#handleButtonActionKey">
     <children>
         <AnchorPane prefHeight="960.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-              <ImageView fitHeight="960.0" fitWidth="886.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="@../images/fondo.png" />
-                  </image>
-              </ImageView>
-         </children></AnchorPane>
-
-        <Pane layoutX="800.0" prefHeight="960.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <PasswordField fx:id="txtPassword" layoutX="263.0" layoutY="539.0" prefHeight="34.0" prefWidth="275.0" promptText="password" stylesheets="@../css/main.css" />
-                <Button fx:id="btnSignin" layoutX="332.0" layoutY="684.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="137.0" stylesheets="@../css/main.css" text="Sign in" />
-                <Label fx:id="btnForgot" alignment="CENTER" layoutX="354.0" layoutY="623.0" prefHeight="23.0" prefWidth="93.0" text="Forgot Password" textFill="#5383ff">
-                    <font>
-                        <Font name="Segoe UI" size="12.0" />
-                    </font>
-                </Label>
-                <Separator layoutX="8.0" layoutY="190.0" prefHeight="7.0" prefWidth="275.0" />
-                <Separator layoutX="263.0" layoutY="573.0" prefHeight="7.0" prefWidth="275.0" />
-                <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="95.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
-                    <font>
-                        <Font name="Segoe UI" size="10.0" />
-                    </font>
-                </Label>
+                <ImageView fitHeight="1600.0" fitWidth="800.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <image>
+                        <Image url="@../images/fondo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Pane layoutX="1000.0" layoutY="372.0" prefHeight="114.0" prefWidth="400.0">
+            <children>
+                <TextField fx:id="txtUsername" layoutY="-3.0" prefHeight="34.0" prefWidth="400.0" promptText="Nombre de usuario" styleClass="text-field" stylesheets="@../css/main.css" />
+                <PasswordField fx:id="txtPassword" layoutY="57.0" prefHeight="34.0" prefWidth="400.0" promptText="Contraseña" styleClass="password-field" stylesheets="@../css/main.css" />
             </children>
         </Pane>
-          <TextField fx:id="txtUsername" layoutX="471.0" layoutY="65.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
+          <Button fx:id="btnSignin" layoutX="1108.0" layoutY="600.0" mnemonicParsing="false"  onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="185.0" stylesheets="@../css/main.css" text="Iniciar" />
+          <Label fx:id="btnForgot" alignment="CENTER" layoutX="1236.0" layoutY="507.0" prefHeight="23.0" prefWidth="164.0" styleClass="labelForgot" stylesheets="@../css/main.css" text="Olvide mi contraseña" textFill="#42415c">
+          </Label>
+        <Label alignment="CENTER" layoutX="1127.0" layoutY="294.0" prefHeight="23.0" prefWidth="147.0" styleClass="labelWelcome" stylesheets="@../css/main.css" text="Bienvenido" textFill="#43425d">
+        </Label>
+      <Label layoutX="1108.0" layoutY="233.0" styleClass="labelTitle" stylesheets="@../css/main.css" text="Ferreteria" textAlignment="CENTER" />
+      <Label fx:id="lblErrors" layoutX="1000.0" layoutY="540.0" prefHeight="34.0" prefWidth="400.0" styleClass="labelWelcome" stylesheets="@../css/main.css" />
+    
     </children>
 </AnchorPane>

@@ -15,9 +15,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import utils.ConnectionUtil;
 
 public class LoginController implements Initializable {
@@ -38,14 +41,17 @@ public class LoginController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
+
+    public LoginController() {
+        con = ConnectionUtil.conDB();
+    }
     @FXML
     public void handleButtonAction(MouseEvent event) {
 
         if (event.getSource() == btnSignin) {
-            //login here
+
             if (logIn().equals("Success")) {
                 try {
-
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
@@ -60,31 +66,55 @@ public class LoginController implements Initializable {
             }
         }
     }
+    public void handleButtonActionKey(KeyEvent keyEvent) {
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        if (con == null) {
-            lblErrors.setTextFill(Color.TOMATO);
-            lblErrors.setText("Server Error : Check");
-        } else {
-            lblErrors.setTextFill(Color.GREEN);
-            lblErrors.setText("Server is up : Good to go");
+        String type = keyEvent.getEventType().getName();
+        KeyCode keyCode = keyEvent.getCode();
+        if(keyEvent.getCode().equals(KeyCode.ENTER)){
+            if(logIn().equals("Success")) {
+                try {
+                    Node node = (Node) keyEvent.getSource();
+                    Stage stage = (Stage) node.getScene().getWindow();
+                    stage.close();
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/OnBoard.fxml")));
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                }
+
+            }
         }
     }
 
-    public LoginController() {
-        con = ConnectionUtil.conDB();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        if (con == null) {
+           lblErrors.setTextFill(Color.TOMATO);
+           lblErrors.setText("Server Error : Check.");
+        }
     }
+
 
     private String logIn() {
         String status = "Success";
         String email = txtUsername.getText();
         String password = txtPassword.getText();
-        if(email.isEmpty() || password.isEmpty()) {
-            setLblError(Color.TOMATO, "Empty credentials");
+        if(email.isEmpty() && !password.isEmpty()){
+            setLblError(Color.TOMATO, "No se ha llenado el campo Usuario");
             status = "Error";
-        } else {
+        }
+        if( password.isEmpty() && !email.isEmpty() ){
+            setLblError(Color.TOMATO, "Ingrese una contraseña valida");
+            status = "Error";
+        }
+        if(email.isEmpty() && password.isEmpty()){
+            setLblError(Color.GREEN, "Campos vacios");
+            status = "Error";
+        }if(!email.isEmpty() && !password.isEmpty()) {
             String sql = "SELECT * FROM USUARIOS Where EMAIL = ? and CONTRASENA = ?";
             try {
                 preparedStatement = con.prepareStatement(sql);
@@ -92,10 +122,11 @@ public class LoginController implements Initializable {
                 preparedStatement.setString(2, password);
                 resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) {
-                    setLblError(Color.TOMATO, "Enter Correct Email/Password");
                     status = "Error";
+                    setLblError(Color.TOMATO,"Usuario invalido");
+                    txtPassword.setText(null);
                 } else {
-                    setLblError(Color.GREEN, "Login Successful..Redirecting..");
+                    setLblError(Color.GREEN, "Login Successful...");
                 }
             } catch (SQLException ex) {
                 System.err.println(ex.getMessage());
@@ -111,4 +142,5 @@ public class LoginController implements Initializable {
         lblErrors.setText(text);
         System.out.println(text);
     }
+
 }
