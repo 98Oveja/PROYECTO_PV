@@ -46,6 +46,7 @@ public class LoginController implements Initializable {
     public LoginController() {
         con = ConnectionUtil.conDB();
     }
+
     @FXML
     public void handleButtonAction(MouseEvent event) {
 
@@ -56,7 +57,7 @@ public class LoginController implements Initializable {
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/OnBoard.fxml")));
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
                     stage.setScene(scene);
                     stage.show();
 
@@ -77,7 +78,7 @@ public class LoginController implements Initializable {
                     Node node = (Node) keyEvent.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/OnBoard.fxml")));
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
                     stage.setScene(scene);
                     stage.show();
 
@@ -128,6 +129,7 @@ public class LoginController implements Initializable {
                     setLblError(Color.TOMATO,"Usuario invalido");
                     txtPassword.setText(null);
                 } else {
+
                     setLblError(Color.GREEN, "Login Successful...");
                 }
             } catch (SQLException ex) {

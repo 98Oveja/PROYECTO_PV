@@ -13,14 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -35,14 +29,11 @@ public class HomeController implements Initializable {
     @FXML
     private TextField txtEmail;
     @FXML
-    private DatePicker txtDOB;
+    private PasswordField txtPasswordField;
     @FXML
     private Button btnSave;
     @FXML
-    private ComboBox<String> txtGender;
-    @FXML
-    Label lblStatus;
-
+    private Label lblStatus;
     @FXML
     TableView tblData;
 
@@ -56,9 +47,6 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        txtGender.getItems().addAll("Male", "Female", "Other");
-        txtGender.getSelectionModel().select("Male");
         fetColumnList();
         fetRowList();
 
@@ -66,8 +54,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void HandleEvents(MouseEvent event) {
-
-        if (txtEmail.getText().isEmpty() || txtFirstname.getText().isEmpty() || txtLastname.getText().isEmpty() || txtDOB.getValue().equals(null)) {
+        if (txtEmail.getText().isEmpty() || txtFirstname.getText().isEmpty() || txtLastname.getText().isEmpty() || txtPasswordField.getText().isEmpty()) {
             lblStatus.setTextFill(Color.TOMATO);
             lblStatus.setText("Enter all details");
         } else {
@@ -80,25 +67,25 @@ public class HomeController implements Initializable {
         txtFirstname.clear();
         txtLastname.clear();
         txtEmail.clear();
+        txtPasswordField.clear();
     }
 
     private String saveData() {
-
         try {
-            String st = "INSERT INTO wip_users ( firstname, lastname, email, gender, dob) VALUES (?,?,?,?,?)";
-            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
-            preparedStatement.setString(1, txtFirstname.getText());
-            preparedStatement.setString(2, txtLastname.getText());
-            preparedStatement.setString(3, txtEmail.getText());
-            preparedStatement.setString(4, txtGender.getValue().toString());
-            preparedStatement.setString(5, txtDOB.getValue().toString());
 
+            String st = "INSERT INTO USUARIOS VALUES((select max(ID_USUARIO) from USUARIOS as date) +1,'"+
+                    txtFirstname.getText()+"','"+
+                    txtLastname.getText()+"','"+
+                    txtEmail.getText()+"','"+
+                    txtPasswordField.getText()
+                    +"',true,'admin');";
+            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
+            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
             preparedStatement.executeUpdate();
             lblStatus.setTextFill(Color.GREEN);
-            lblStatus.setText("Added Successfully");
+            lblStatus.setText("Agregado correctamente");
 
             fetRowList();
-            //clear fields
             clearFields();
             return "Success";
 
@@ -111,17 +98,12 @@ public class HomeController implements Initializable {
     }
 
     private ObservableList<ObservableList> data;
-    String SQL = "SELECT * from USUARIOS";
-
-    //only fetch columns
+    String SQL = "SELECT NOMBRE,APELLIDOS,EMAIL,ESTADO,CARGO from USUARIOS";
     private void fetColumnList() {
-
         try {
             ResultSet rs = connection.createStatement().executeQuery(SQL);
 
-            //SQL FOR SELECTING ALL OF CUSTOMER
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                //We are using non property style for making dynamic table
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1).toUpperCase());
                 col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
@@ -133,7 +115,7 @@ public class HomeController implements Initializable {
                 tblData.getColumns().removeAll(col);
                 tblData.getColumns().addAll(col);
 
-                System.out.println("Column [" + i + "] ");
+                //System.out.println("Column [" + i + "] ");
 
             }
 
@@ -143,7 +125,6 @@ public class HomeController implements Initializable {
         }
     }
 
-    //fetches rows and data from the list
     private void fetRowList() {
         data = FXCollections.observableArrayList();
         ResultSet rs;
