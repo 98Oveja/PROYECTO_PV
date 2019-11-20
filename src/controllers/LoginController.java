@@ -8,10 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,10 +18,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+
 
 import utils.ConnectionUtil;
 import utils.ParseEmail;
+import utils.ViewUtil;
 
 public class LoginController implements Initializable {
 
@@ -41,7 +41,9 @@ public class LoginController implements Initializable {
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
+    String url = null;
 
+    private ViewUtil view = new ViewUtil();
 
     public LoginController() {
         con = ConnectionUtil.conDB();
@@ -51,45 +53,22 @@ public class LoginController implements Initializable {
     public void handleButtonAction(MouseEvent event) {
 
         if (event.getSource() == btnSignin) {
-
+            url = "/fxml/Home.fxml";
             if (logIn().equals("Success")) {
-                try {
-                    Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
-
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                }
-
+                view.setViewMouseClick(url,event);
             }
         }
     }
+
     public void handleButtonActionKey(KeyEvent keyEvent) {
 
-        String type = keyEvent.getEventType().getName();
-        KeyCode keyCode = keyEvent.getCode();
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
+            url = "/fxml/Home.fxml";
             if(logIn().equals("Success")) {
-                try {
-                    Node node = (Node) keyEvent.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Home.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
-
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                }
-
+                view.setViewKey(url,keyEvent);
             }
         }
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,13 +79,12 @@ public class LoginController implements Initializable {
         }
     }
 
-
     private String logIn() {
         String status = "Success";
         String email = txtUsername.getText();
         String password = txtPassword.getText();
         ParseEmail validate = new ParseEmail();
-        if(!validate.isValid(email)){
+        if(!validate.isValid(email)&&!password.isEmpty()){
             setLblError(Color.TOMATO, "Usuario no valido");
             return status = "Error";
         }
@@ -133,7 +111,6 @@ public class LoginController implements Initializable {
                     setLblError(Color.GREEN, "Login Successful...");
                 }
             } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
                 status = "Exception";
             }
         }
@@ -147,4 +124,8 @@ public class LoginController implements Initializable {
         System.out.println(text);
     }
 
+    public void eventForgotPass(MouseEvent mouseEvent) {
+        url = "/fxml/ForgotPass.fxml";
+        view.setViewMouseClick(url,mouseEvent);
+    }
 }

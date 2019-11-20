@@ -22,9 +22,9 @@
             </children>
         </Pane>
           <Button fx:id="btnSignin" layoutX="1108.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="185.0" stylesheets="@../css/main.css" text="Iniciar" />
-          <Label fx:id="btnForgot" alignment="CENTER" layoutX="1236.0" layoutY="507.0" prefHeight="23.0" prefWidth="164.0" styleClass="labelForgot" stylesheets="@../css/main.css" text="Olvide mi contraseña" textFill="#42415c">
+          <Label fx:id="btnForgot" alignment="CENTER" layoutX="1236.0" layoutY="507.0" onMouseClicked="#eventForgotPass" prefHeight="23.0" prefWidth="164.0" styleClass="labelForgot" stylesheets="@../css/main.css" text="Olvide mi contraseña" textFill="#42415c">
           </Label>
-        <Label alignment="CENTER" layoutX="1127.0" layoutY="294.0" prefHeight="23.0" prefWidth="147.0" styleClass="labelWelcome" stylesheets="@../css/main.css" text="Bienvenido" textFill="#43425d">
+        <Label alignment="CENTER" layoutX="1135.0" layoutY="292.0" prefHeight="23.0" prefWidth="147.0" styleClass="labelWelcome" stylesheets="@../css/main.css" text="Bienvenido" textFill="#43425d">
         </Label>
       <Label layoutX="1108.0" layoutY="233.0" styleClass="labelTitle" stylesheets="@../css/main.css" text="Ferreteria" textAlignment="CENTER" />
       <Label fx:id="lblErrors" layoutX="1000.0" layoutY="540.0" prefHeight="34.0" prefWidth="400.0" styleClass="labelWelcome" stylesheets="@../css/main.css" />

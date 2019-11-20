@@ -7,6 +7,7 @@
     -fx-text-align: right;
     -fx-color: #43425d;
 }
+
 .labelForgot:pressed{
     -fx-text-fill: #4D4F5C ;
 }
@@ -30,7 +31,6 @@
 }
 
 .text-field {
-
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
@@ -53,8 +53,6 @@
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
 
-
-
 .button {
     -fx-font-family: "Source Sans Pro";
     -fx-font-size: 18px;
@@ -63,8 +61,20 @@
     -fx-text-fill:  #FFF;
 }
 
-.button:pressed
-{
+.button:pressed {
 -fx-background-color : #4D4F5C ;
 -fx-text-fill: #FFF;
+}
+
+.buttonBack{
+    -fx-width: 35px;
+    -fx-height: 35px;
+    -fx-border-radius: 4px;
+    -fx-background: #fff;
+    -fx-border: 1px solid #a3a0fb;
+}
+
+.buttonBack:pressed {
+    -fx-background-color : #4D4F5C ;
+    -fx-text-fill: #FFF;
 }
