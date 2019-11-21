@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -20,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 
+import navigator.ViewNavigator;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 import utils.ViewUtil;
@@ -127,5 +130,10 @@ public class LoginController implements Initializable {
     public void eventForgotPass(MouseEvent mouseEvent) {
         url = "/fxml/ForgotPass.fxml";
         view.setViewMouseClick(url,mouseEvent);
+    }
+
+    @FXML
+    void nextPane(ActionEvent event) {
+        ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
     }
 }

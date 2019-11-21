@@ -65,16 +65,11 @@
 -fx-background-color : #4D4F5C ;
 -fx-text-fill: #FFF;
 }
-
-.buttonBack{
-    -fx-width: 35px;
-    -fx-height: 35px;
-    -fx-border-radius: 4px;
-    -fx-background: #fff;
-    -fx-border: 1px solid #a3a0fb;
+.toggle-button {
+    -fx-graphic: url('/images/button_previous.png');
 }
 
-.buttonBack:pressed {
-    -fx-background-color : #4D4F5C ;
-    -fx-text-fill: #FFF;
+.toggle-button:selected {
+    -fx-graphic: url('/images/button_previous.png');
 }
+

@@ -65,3 +65,11 @@
 -fx-background-color : #4D4F5C ;
 -fx-text-fill: #FFF;
 }
+.toggle-button {
+    -fx-graphic: url('/images/button_previous.png');
+}
+
+.toggle-button:selected {
+    -fx-graphic: url('/images/button_previous.png');
+}
+
