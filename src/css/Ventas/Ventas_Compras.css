@@ -2,14 +2,16 @@
 
 /*Contenedor*/
 .panelPrincipal{
-    -fx-background-color: #F0F0F7;
-    -fx-pref-width: 1339px;
-    -fx-pref-height: 890px;
+    -fx-background-color: #7a65f7;
+    -fx-pref-width: 1600px;
+    -fx-pref-height: 900px;
 }
 
 /*contenedor de la tabla*/
 .PanelContenedorTabla{
-
+    -fx-background-color: #fff;
+    -fx-pref-width: 770px;
+    -fx-pref-height: 479px;
 }
 /*Header panel Para titulo  "Venta"*/
 .panelTituloTabla{
