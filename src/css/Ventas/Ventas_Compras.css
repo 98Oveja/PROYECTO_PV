@@ -1,0 +1,39 @@
+/*CONTENEDORES*/
+
+/*Contenedor*/
+.panelPrincipal{
+    -fx-background-color: #F0F0F7;
+    -fx-pref-width: 1339px;
+    -fx-pref-height: 890px;
+}
+
+/*contenedor de la tabla*/
+.PanelContenedorTabla{
+
+}
+/*Header panel Para titulo  "Venta"*/
+.panelTituloTabla{
+
+}
+/*Tabla*/
+.Tabla{
+
+}
+/*Contenedor*/
+.PanelLateralOpciones{
+
+}
+/*Header*/
+.headerPanelLateral{}
+/*Body*/
+.BodyPanelLateral{}
+
+
+
+/*TEXTOS*/
+.TituloDeTabla{
+
+}
+.TituloPanelLateral{
+
+}
