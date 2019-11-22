@@ -18,6 +18,7 @@
              <Pane layoutX="1000.0" layoutY="372.0" prefHeight="114.0" prefWidth="400.0">
                  <children>
                      <TextField fx:id="txtUsername" layoutY="-3.0" prefHeight="34.0" prefWidth="400.0" promptText="Correo" styleClass="text-field" stylesheets="@../css/main.css" />
+                   <Label fx:id="lblErrors" layoutX="1.0" layoutY="68.0" prefHeight="34.0" prefWidth="400.0" styleClass="labelWelcome" stylesheets="@../css/main.css" />
                  </children>
              </Pane>
              <Button fx:id="btnForgot" layoutX="1108.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/main.css" text="Enviar a mi correo" />
@@ -28,7 +29,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ToggleButton>
-
 
          </children>
       </Pane>

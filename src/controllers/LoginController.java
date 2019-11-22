@@ -1,6 +1,6 @@
 package controllers;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,10 +56,12 @@ public class LoginController implements Initializable {
     public void handleButtonAction(MouseEvent event) {
 
         if (event.getSource() == btnSignin) {
-            url = "/fxml/Home.fxml";
+            /*url = "/fxml/Home.fxml";
             if (logIn().equals("Success")) {
                 view.setViewMouseClick(url,event);
             }
+
+             */
         }
     }
 
@@ -127,10 +129,6 @@ public class LoginController implements Initializable {
         System.out.println(text);
     }
 
-    public void eventForgotPass(MouseEvent mouseEvent) {
-        url = "/fxml/ForgotPass.fxml";
-        view.setViewMouseClick(url,mouseEvent);
-    }
 
     @FXML
     void nextPane(ActionEvent event) {
