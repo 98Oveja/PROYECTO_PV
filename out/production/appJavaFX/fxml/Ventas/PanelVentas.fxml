@@ -9,25 +9,34 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="890.0" prefWidth="890.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
+<StackPane prefHeight="1339.0" prefWidth="890.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
+
+
    <children>
-      <Pane layoutX="800.0" styleClass="panelPrincipal">
+      <Pane layoutX="800.0" prefHeight="890.0" prefWidth="1339.0" style="-fx-background-color: 000;">
          <children>
-            <VBox styleClass="PanelContenedorTabla">
+            <Pane layoutX="251.0" layoutY="5.0" prefHeight="479.0" prefWidth="770.0" styleClass="PanelContenedorTabla">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                  <HBox prefHeight="64.0" prefWidth="770.0" styleClass="TituloPanelLateral">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="38.0" text="Ventas" />
+                     </children>
+                  </HBox>
+                  <VBox prefWidth="770.0">
+                     <children>
+                        <TableView>
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="64.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Ventas" />
-               </children>
-            </HBox>
+            </Pane>
          </children>
          <StackPane.margin>
             <Insets top="100.0" />
