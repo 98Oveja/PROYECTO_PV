@@ -1,0 +1,41 @@
+/*CONTENEDORES*/
+
+/*Contenedor*/
+.panelPrincipal{
+    -fx-background-color: #7a65f7;
+    -fx-pref-width: 1600px;
+    -fx-pref-height: 900px;
+}
+
+/*contenedor de la tabla*/
+.PanelContenedorTabla{
+    -fx-background-color: #fff;
+    -fx-pref-width: 770px;
+    -fx-pref-height: 479px;
+}
+/*Header panel Para titulo  "Venta"*/
+.panelTituloTabla{
+
+}
+/*Tabla*/
+.Tabla{
+
+}
+/*Contenedor*/
+.PanelLateralOpciones{
+
+}
+/*Header*/
+.headerPanelLateral{}
+/*Body*/
+.BodyPanelLateral{}
+
+
+
+/*TEXTOS*/
+.TituloDeTabla{
+
+}
+.TituloPanelLateral{
+
+}
