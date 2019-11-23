@@ -2,7 +2,7 @@
 
 /*Contenedor*/
 .panelPrincipal{
-    -fx-background-color: #7a65f7;
+    -fx-background-color: #F0F0F7;
     -fx-pref-width: 1339px;
     -fx-pref-height: 890px;
 }
@@ -17,10 +17,11 @@
 .panelTituloTabla{
     -fx-pref-width: 770px;
     -fx-pref-height: 64px;
-
 }
 /*Tabla*/
 .Tabla{
+    -fx-pref-width: 730px;
+    -fx-pref-height: 370px;
 
 }
 /*Contenedor*/
@@ -36,7 +37,13 @@
 
 /*TEXTOS*/
 .TituloDeTabla{
-
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+    -fx-padding: 20px;
 }
 .TituloPanelLateral{
 

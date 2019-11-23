@@ -2,7 +2,7 @@
 
 /*Contenedor*/
 .panelPrincipal{
-    -fx-background-color: #7a65f7;
+    -fx-background-color: #F0F0F7;
     -fx-pref-width: 1339px;
     -fx-pref-height: 890px;
 }
@@ -17,18 +17,24 @@
 .panelTituloTabla{
     -fx-pref-width: 770px;
     -fx-pref-height: 64px;
-
 }
 /*Tabla*/
 .Tabla{
+    -fx-pref-width: 730px;
+    -fx-pref-height: 370px;
 
 }
 /*Contenedor*/
 .PanelLateralOpciones{
-
+    -fx-pref-width: 370px;
+    -fx-pref-height: 479px;
+    -fx-background-color: #fff;
 }
 /*Header*/
-.headerPanelLateral{}
+.headerPanelLateral{
+    -fx-pref-width: 770px;
+    -fx-pref-height: 64px;
+}
 /*Body*/
 .BodyPanelLateral{}
 
@@ -36,8 +42,57 @@
 
 /*TEXTOS*/
 .TituloDeTabla{
-
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+    -fx-padding: 20px;
 }
+/*Efectos para los Titulos*/
+.TituloDeTabla:hover{
+    -fx-font-size: 22px;
+    -fx-line-height: 16px;
+}
+
+
+
 .TituloPanelLateral{
-
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+    -fx-padding: 20px;
 }
+
+.TituloPanelLateral:hover{
+    -fx-font-size: 28px;
+    -fx-line-height: 16px;
+}
+
+
+
+/*BOTONES DEL PANEL LATERAL*/
+.btns_Panel_Lateral{
+    -fx-background-color: Transparent;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+    -fx-line-height: 20px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+}
+.btns_Panel_Lateral:hover{
+    -fx-background-color: #EDF0F5;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 20px;
+    -fx-line-height: 22px;
+    /*-fx-border-color: #000;*/
+}
+
+
+
