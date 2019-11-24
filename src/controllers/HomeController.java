@@ -26,6 +26,7 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import navigator.ViewNavigator;
 import utils.ConnectionUtil;
@@ -166,6 +167,7 @@ public class HomeController implements Initializable {
             VentasController controller = loader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+//            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);
             stage.show();
         }catch (IOException e) {

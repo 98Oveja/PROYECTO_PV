@@ -24,12 +24,12 @@
                <children>
                   <HBox prefHeight="64.0" prefWidth="770.0" styleClass="panelTituloTabla">
                      <children>
-                        <Label prefHeight="67.0" prefWidth="116.0" styleClass="TituloDeTabla" text="Ventas" />
+                        <Label prefHeight="67.0" prefWidth="299.0" styleClass="Titulos" text="Ventas" />
                      </children>
                   </HBox>
-                  <VBox prefWidth="770.0">
+                  <VBox layoutY="65.0" prefWidth="770.0">
                      <children>
-                        <TableView>
+                        <TableView styleClass="Tabla">
                           <columns>
                             <TableColumn prefWidth="62.0" resizable="false" text="No. Venta" />
                             <TableColumn prefWidth="234.0" resizable="false" text="Cliente" />
@@ -39,9 +39,10 @@
                               <TableColumn minWidth="0.0" prefWidth="63.66668701171875" resizable="false" text="Total" />
                           </columns>
                            <VBox.margin>
-                              <Insets left="20.0" right="20.0" top="64.0" />
+                              <Insets left="20.0" right="20.0" />
                            </VBox.margin>
                         </TableView>
+                        <Label styleClass="Label_VerMas" text="Ver más" translateX="373.0" />
                      </children>
                   </VBox>
                </children>
@@ -54,17 +55,17 @@
                <children>
                   <HBox prefHeight="65.0" prefWidth="370.0">
                      <children>
-                        <Label styleClass="TituloPanelLateral" text="Opciones" />
+                        <Label prefHeight="67.0" prefWidth="228.0" styleClass="Titulos" text="Opciones" />
                      </children>
                   </HBox>
                   <VBox layoutY="65.0" prefHeight="419.0" prefWidth="370.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="329.0" styleClass="btns_Panel_Lateral" text="Nueva Venta">
+                        <Button mnemonicParsing="false" onAction="#OpenModal_InsertSale" prefHeight="40.0" prefWidth="329.0" styleClass="btns_Panel_Lateral" text="Nueva Venta">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="20.0" />
                            </VBox.margin>
                            <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="openModalInsert" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>

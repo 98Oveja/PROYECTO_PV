@@ -22,21 +22,32 @@
 .Tabla{
     -fx-pref-width: 730px;
     -fx-pref-height: 370px;
-
+    -fx-border-color:Transparent;
+    -fx-background-color: #fefffe;
+    -fx-border-color: Transparent;
+}
+.Tabla:hover{
+    -fx-background-color: #F5F6FA;
+    -fx-border-color: Transparent;
 }
 /*Contenedor*/
 .PanelLateralOpciones{
-
+    -fx-pref-width: 370px;
+    -fx-pref-height: 479px;
+    -fx-background-color: #fff;
 }
 /*Header*/
-.headerPanelLateral{}
+.headerPanelLateral{
+    -fx-pref-width: 770px;
+    -fx-pref-height: 64px;
+}
 /*Body*/
 .BodyPanelLateral{}
 
 
 
 /*TEXTOS*/
-.TituloDeTabla{
+.Titulos{
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
@@ -45,6 +56,58 @@
     -fx-text-fill: #4d4f5c;
     -fx-padding: 20px;
 }
-.TituloPanelLateral{
-
+/*Efectos para los Titulos*/
+.Titulos:hover{
+    -fx-text-fill: #3B86FF;
 }
+/*Texto bajo la tabla "Ver mas"*/
+.Label_VerMas{
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #3b86ff;
+    -fx-translate-x: 363;
+}
+
+.Label_VerMas:hover{
+    -fx-font-size: 18px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #3b86ff;
+    -fx-underline: true;
+}
+.Label_VerMas:pressed{
+    -fx-font-size: 20px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #FF0000;
+    -fx-underline: false;
+}
+/*BOTONES DEL PANEL LATERAL*/
+.btns_Panel_Lateral{
+    -fx-background-color: Transparent;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+    -fx-line-height: 20px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+    -fx-cursor: hand;
+}
+.btns_Panel_Lateral:hover{
+    -fx-background-color: #EDF0F5;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 16px;
+}
+.btns_Panel_Lateral:pressed{
+    -fx-background-color: #E9E9F0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #fff;
+}
+
+

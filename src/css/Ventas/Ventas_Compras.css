@@ -22,7 +22,12 @@
 .Tabla{
     -fx-pref-width: 730px;
     -fx-pref-height: 370px;
-
+    -fx-border-color:Transparent;
+    -fx-background-color: #fefffe;
+}
+.Tabla:hover{
+    -fx-background-color: #F5F6FA;
+    -fx-border-color: Transparent;
 }
 /*Contenedor*/
 .PanelLateralOpciones{
@@ -41,7 +46,7 @@
 
 
 /*TEXTOS*/
-.TituloDeTabla{
+.Titulos{
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
@@ -51,30 +56,34 @@
     -fx-padding: 20px;
 }
 /*Efectos para los Titulos*/
-.TituloDeTabla:hover{
-    -fx-font-size: 22px;
-    -fx-line-height: 16px;
+.Titulos:hover{
+    -fx-text-fill: #3B86FF;
 }
-
-
-
-.TituloPanelLateral{
+/*Texto bajo la tabla "Ver mas"*/
+.Label_VerMas{
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
+    -fx-font-size: 13px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #3b86ff;
+    -fx-translate-x: 363;
+}
+
+.Label_VerMas:hover{
     -fx-font-size: 18px;
-    -fx-line-height: 13px;
-    -fx-text-align: left;
-    -fx-text-fill: #4d4f5c;
-    -fx-padding: 20px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #3b86ff;
+    -fx-underline: true;
 }
-
-.TituloPanelLateral:hover{
-    -fx-font-size: 28px;
-    -fx-line-height: 16px;
+.Label_VerMas:pressed{
+    -fx-font-size: 20px;
+    -fx-line-height: 20px;
+    -fx-text-align: right;
+    -fx-text-fill: #FF0000;
+    -fx-underline: false;
 }
-
-
-
 /*BOTONES DEL PANEL LATERAL*/
 .btns_Panel_Lateral{
     -fx-background-color: Transparent;
@@ -84,15 +93,148 @@
     -fx-line-height: 20px;
     -fx-text-align: left;
     -fx-text-fill: #4d4f5c;
+    -fx-cursor: hand;
 }
 .btns_Panel_Lateral:hover{
     -fx-background-color: #EDF0F5;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
+    -fx-font-size: 16px;
+}
+.btns_Panel_Lateral:pressed{
+    -fx-background-color: #E9E9F0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
     -fx-font-size: 20px;
-    -fx-line-height: 22px;
-    /*-fx-border-color: #000;*/
+    -fx-text-fill: #fff;
 }
 
 
+
+/*ESTILOS PARA LOS MODALES */
+/*MODAL INSERTAR UNA NUEVA VENTA*/
+.ModalInsertarVenta{
+    -fx-pref-width: 1195px;
+    -fx-pref-height: 849px;
+    -fx-background-color:#43425D;
+}
+.PanelHeaderModal_insert{
+    -fx-pref-width: 1195px;
+    -fx-pref-height: 100px;
+    -fx-background-color: #3c3b54;
+}
+.PanelCotainerBodyModal_insert{
+    -fx-pref-width: 1195px;
+    -fx-pref-height: 749px;
+}
+/*PANEL PARA LA ENTRADA DE LOS DATOS DE LA VETA */
+.VBoxLables_In{
+    -fx-pref-width: 1195px;
+    -fx-pref-height: 192px;
+    /*-fx-background-color: ;*/
+}
+
+
+
+/*TEXTOS PARA EL MODAL DE INSERT*/
+.TituloModalInser{
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 33px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #f5f6fa;
+    -fx-translate-x: 528px;
+    -fx-translate-y: 25px;
+}
+.TituloTablaDetalle{
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #4d4f5c;
+    -fx-padding: 20;
+}
+.Labels_SaveVentas{
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 22px;
+    -fx-line-height: 13px;
+    -fx-text-align: left;
+    -fx-text-fill: #e9e9f0;
+}
+/*ENTRADE DE TEXTOS*/
+.TodolosInputs{
+    -fx-background-color: transparent;
+}
+.InputCleinte{
+    -fx-pref-width: 408px;
+    -fx-pref-height: 29.81px;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-text-align: left;
+    -fx-text-fill: #FFF;
+    -fx-border-insets: ;
+}
+
+
+
+
+/*BOTONES PARA EL MODAL DE INSERT*/
+.btn_CloseModal{
+    -fx-pref-width:16px;
+    -fx-pref-height: 16px;
+    -fx-background-color: Transparent;
+    -fx-translate-x:1115px ;
+    -fx-translate-y: 24px;
+    -fx-cursor: hand;
+}
+.btn_CloseModal:hover{
+    -fx-background-color: #43425d;
+}
+
+/*Tabla detalle de Venta*/
+.PanelTablaDetalleVenta{
+    -fx-pref-width: 1089px;
+    -fx-pref-height: 469.16px;
+    -fx-translate-y: 115;
+    -fx-background-color: #E8E9EC;
+}
+.HeaderTablaDetalleVenta{
+    -fx-pref-width: 1089px;
+    -fx-pref-height: 64px;
+    /*-fx-background-color: #ec7963;*/
+}
+
+
+.TablaDetalleVenta{
+    -fx-pref-width: 1048px;
+    -fx-pref-height: 386px;
+    -fx-background-color: #fff;
+    -fx-border-color: Transparent;
+    -fx-translate-x: 20;
+    -fx-translate-y: 64;
+}
+
+/*Boton de Modal Insertar Venta*/
+.Btn_Modal_Vender{
+    -fx-pref-width: 185px;
+    -fx-pref-height: 35px;
+    -fx-background-color:#1062E5;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-text-align: center;
+    -fx-text-fill: #fff;
+    -fx-translate-x: 505;
+    -fx-translate-y: 702;
+}
+.Btn_ShopingAdd{
+    -fx-pref-width: 36px;
+    -fx-pref-height: 36px;
+    -fx-background-color:Transparent;
+    -fx-translate-x: 422;
+}
 

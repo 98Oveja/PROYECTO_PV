@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<StackPane prefHeight="1339.0" prefWidth="890.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
+<StackPane id="ContenedorPrincipal" prefHeight="1339.0" prefWidth="890.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
 
 
    <children>
-      <Pane prefHeight="1339.0" prefWidth="890">
+      <Pane id="panelPrincipal" prefHeight="1339.0" prefWidth="890" styleClass="panelPrincipal">
          <children>
             <Pane id="panelTablaContendor" layoutX="59.0" layoutY="64.0" prefHeight="479.0" prefWidth="770.0" styleClass="PanelContenedorTabla">
                <children>
-                  <HBox prefHeight="64.0" prefWidth="770.0" styleClass="TituloPanelLateral">
+                  <HBox prefHeight="64.0" prefWidth="770.0" styleClass="panelTituloTabla">
                      <children>
-                        <Label prefHeight="67.0" prefWidth="127.0" styleClass="TituloDeTabla" text="Ventas" />
+                        <Label prefHeight="67.0" prefWidth="299.0" styleClass="Titulos" text="Ventas" />
                      </children>
                   </HBox>
-                  <VBox prefWidth="770.0">
+                  <VBox layoutY="65.0" prefWidth="770.0">
                      <children>
-                        <TableView>
+                        <TableView styleClass="Tabla">
                           <columns>
                             <TableColumn prefWidth="62.0" resizable="false" text="No. Venta" />
                             <TableColumn prefWidth="234.0" resizable="false" text="Cliente" />
@@ -34,15 +39,45 @@
                               <TableColumn minWidth="0.0" prefWidth="63.66668701171875" resizable="false" text="Total" />
                           </columns>
                            <VBox.margin>
-                              <Insets left="20.0" right="20.0" top="64.0" />
+                              <Insets left="20.0" right="20.0" />
                            </VBox.margin>
                         </TableView>
+                        <Label styleClass="Label_VerMas" text="Ver más" translateX="373.0" />
                      </children>
                   </VBox>
                </children>
                <padding>
                   <Insets left="59.0" top="100.0" />
                </padding>
+            </Pane>
+
+            <Pane id="PanelLateralContenedor" layoutX="932.0" layoutY="64.0" prefHeight="0.0" prefWidth="0.0" styleClass="PanelLateralOpciones">
+               <children>
+                  <HBox prefHeight="65.0" prefWidth="370.0">
+                     <children>
+                        <Label prefHeight="67.0" prefWidth="228.0" styleClass="Titulos" text="Opciones" />
+                     </children>
+                  </HBox>
+                  <VBox layoutY="65.0" prefHeight="419.0" prefWidth="370.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="329.0" styleClass="btns_Panel_Lateral" text="Nueva Venta">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../../images/Add_32.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children></VBox>
+                  <Line endX="350.0" layoutY="65.0" opacity="0.2" startX="20.0" />
+               </children>
             </Pane>
          </children>
          <StackPane.margin>
