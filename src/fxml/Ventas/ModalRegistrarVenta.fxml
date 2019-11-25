@@ -40,50 +40,105 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="Labels_SaveVentas" text="Cliente">
+                        <Label styleClass="Labels_SaveVentas" text="Cliente" translateY="3.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField promptText="Selecciona o ingresa el nombre del Cliente">
+                        <TextField promptText="Selecciona o ingresa el nombre">
+                           <styleClass>
+                              <String fx:value="InputCleinte" />
+                              <String fx:value="TodolosInputs" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <ComboBox prefWidth="150.0">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
-                              <String fx:value="InputCleinte" />
+                              <String fx:value="ComboBox_Cleintes" />
                            </styleClass>
-                        </TextField>
-                        <ComboBox prefWidth="150.0" />
-                        <Label styleClass="Labels_SaveVentas" text="Fecha de Venta" />
-                        <DatePicker />
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin></ComboBox>
+                        <Label styleClass="Labels_SaveVentas" text="Fecha de Venta" translateY="3.0">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin></Label>
+                        <DatePicker editable="false" nodeOrientation="LEFT_TO_RIGHT" promptText="Fecha" style="-fx-background-color: #4d4f5c;">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputFecha" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin></DatePicker>
                      </children>
                      <padding>
                         <Insets top="5.0" />
                      </padding></HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="Labels_SaveVentas" text="Producto" />
-                        <TextField />
-                        <ComboBox prefWidth="150.0" />
-                        <Label styleClass="Labels_SaveVentas" text="Cantidad" />
-                        <TextField />
-                        <Label styleClass="Labels_SaveVentas" text="Descripción" />
-                        <TextField />
+                        <Label prefHeight="32.0" prefWidth="99.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
+                        <TextField prefHeight="39.0" prefWidth="234.0" promptText="Ingresa o Selecciona">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputProductos" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin></TextField>
+                        <ComboBox prefWidth="150.0">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="ComboBox_Productos" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="4.0" />
+                           </HBox.margin></ComboBox>
+                        <Label prefHeight="32.0" prefWidth="95.0" styleClass="Labels_SaveVentas" text="Cantidad" translateY="3.0">
+                           <HBox.margin>
+                              <Insets left="3.0" />
+                           </HBox.margin></Label>
+                        <TextField prefHeight="41.0" prefWidth="119.0" promptText="#">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputCantidad" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></TextField>
+                        <Label prefHeight="32.0" prefWidth="122.0" styleClass="Labels_SaveVentas" text="Descripción" translateY="3.0">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin></Label>
+                        <TextField prefHeight="41.0" prefWidth="216.0" promptText="Descripción de la venta">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputDescripcion" />
+                           </styleClass></TextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="Labels_SaveVentas" text="Descuento %">
+                        <Label styleClass="Labels_SaveVentas" text="Descuento %" translateY="3.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField promptText="Descuento por Producto">
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="2.0" />
                            </HBox.margin>
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputDescuento" />
+                           </styleClass>
                         </TextField>
                         <Button mnemonicParsing="false" styleClass="Btn_ShopingAdd">
                            <graphic>
-                              <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateY="3.0">
                                  <image>
                                     <Image url="@../../images/shopping_cart_32.png" />
                                  </image>
@@ -97,7 +152,7 @@
                   <Insets left="52.0" right="52.0" />
                </padding>
             </VBox>
-            <Pane layoutX="52.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" styleClass="PanelTablaDetalleVenta">
+            <Pane layoutX="52.0" layoutY="77.0" prefHeight="486.0" prefWidth="200.0" styleClass="PanelTablaDetalleVenta">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HeaderTablaDetalleVenta">
                      <children>
@@ -115,9 +170,11 @@
                         <TableColumn prefWidth="113.0" text="Sub Total." />
                     </columns>
                   </TableView>
+                  <Label layoutX="952.0" layoutY="459.0" styleClass="labelTotal_EndTable" text="Total Q." />
+                  <TextField editable="false" layoutX="1014.0" layoutY="455.0" prefHeight="25.0" prefWidth="54.0" promptText="000.00" styleClass="campoDeTextoTotal" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" styleClass="Btn_Modal_Vender" text="Vender" />
+            <Button layoutY="-5.0" mnemonicParsing="false" styleClass="Btn_Modal_Vender" text="Vender" />
          </children>
       </Pane>
    </children>

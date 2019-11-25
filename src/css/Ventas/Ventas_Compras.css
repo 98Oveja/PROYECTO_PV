@@ -167,26 +167,99 @@
 /*ENTRADE DE TEXTOS*/
 .TodolosInputs{
     -fx-background-color: transparent;
-}
-.InputCleinte{
-    -fx-pref-width: 408px;
-    -fx-pref-height: 29.81px;
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
     -fx-text-align: left;
     -fx-text-fill: #FFF;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 8px;
+}
+/*Efectos para los inputs*/
+.TodolosInputs:hover{
+    -fx-border-color: #77b2ff;
+    -fx-border-width: 3px;
+}
+.TodolosInputs:focused{
+    -fx-border-color: rgba(255, 15, 0, 0.50);
+    -fx-border-width: 2px;
+}
 
+
+.InputCleinte{
+    -fx-pref-width: 408px;
+    -fx-pref-height: 29.81px;
+}
+.InputFecha{
+    -fx-pref-width: 250px;
+    -fx-pref-height: 29.81px;
+}
+.InputProductos{
+    -fx-pre-width: 220px;
+    -fx-pre-height: 29.81px;
+}
+.InputCantidad{
+    -fx-pre-width: 10px;
+    -fx-pre-height: 29.81px;
+}
+.InputDescripcion{
+    -fx-pre-width: 280px;
+    -fx-pre-height: 29.81px;
+}
+.InputDescuento{
+    -fx-pre-width: 250px;
+    -fx-pre-height: 29.81px;
+}
+/*LABEL Y EDIT TEXT PARA CALCULAR EL TOTAL EN LA TABLA*/
+.labelTotal_EndTable{
+    -fx-font-size: 18px;
+    -fx-text-align: left;
+    -fx-text-fill: #3C3B54;
+}
+.campoDeTextoTotal{
+    -fx-background-color: transparent;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 14px;
+    -fx-text-align: left;
+    -fx-text-fill: #3C3B54;
+    -fx-border-color: rgba(35, 93, 155, 0.66);
+    -fx-border-radius: 8px;
+}
+.campoDeTextoTotal:hover{
+    -fx-border-color: #1062E5;
+    -fx-border-radius: 12px;
+    -fx-text-fill: #000;
 }
 
 
 
+.ComboBox_Cleintes, .ComboBox_Productos{
+    -fx-width: 170px;
+    -fx-height: 29.81px;
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 18px;
+    -fx-text-align: left;
+    -fx-text-fill: #FFF;
+}
+
+
+/*Efectos para cada input y los Combo box*/
+.ComboBox_Cleintes:hover, .ComboBox_Productos:hover {
+    -fx-border-color: #77b2ff;
+}
+.ComboBox_Cleintes:focused, .ComboBox_Productos:focused{
+    -fx-border-color: rgba(255, 15, 0, 0.80);
+}
+
 
 /*BOTONES PARA EL MODAL DE INSERT*/
 .btn_CloseModal{
-    -fx-pref-width:16px;
-    -fx-pref-height: 16px;
     -fx-background-color: Transparent;
+    -fx-background-radius: 30px;
     -fx-translate-x:1115px ;
     -fx-translate-y: 24px;
     -fx-cursor: hand;
@@ -198,7 +271,8 @@
 /*Tabla detalle de Venta*/
 .PanelTablaDetalleVenta{
     -fx-pref-width: 1089px;
-    -fx-pref-height: 469.16px;
+    -fx-pref-height: 490px;
+    /*469.16*/
     -fx-translate-y: 115;
     -fx-background-color: #E8E9EC;
 }
@@ -207,8 +281,6 @@
     -fx-pref-height: 64px;
     /*-fx-background-color: #ec7963;*/
 }
-
-
 .TablaDetalleVenta{
     -fx-pref-width: 1048px;
     -fx-pref-height: 386px;
@@ -230,11 +302,29 @@
     -fx-text-fill: #fff;
     -fx-translate-x: 505;
     -fx-translate-y: 702;
+    -fx-cursor: hand;
+    -fx-background-radius: 10px;
 }
+.Btn_Modal_Vender:hover{
+    -fx-background-color: rgba(16, 98, 229, 0.80);
+    -fx-font-size: 20px;
+}
+.Btn_Modal_Vender:pressed{
+    -fx-background-color: rgba(255, 15, 0, 0.75);
+}
+
+
 .Btn_ShopingAdd{
     -fx-pref-width: 36px;
     -fx-pref-height: 36px;
     -fx-background-color:Transparent;
-    -fx-translate-x: 422;
+    -fx-translate-x: 19;
+    -fx-cursor: hand;
 }
-
+.Btn_ShopingAdd:hover{
+    -fx-background-color:#3c3b54;
+    -fx-background-radius: 20px;
+}
+.Btn_ShopingAdd:pressed{
+    -fx-background-color: rgba(163, 160, 251, 0.10);
+}
