@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -46,35 +46,23 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField promptText="Selecciona o ingresa el nombre">
+                        <JFXTextField>
                            <styleClass>
+                              <String fx:value="TodolosInputs" />
                               <String fx:value="InputCleinte" />
-                              <String fx:value="TodolosInputs" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <ComboBox prefWidth="150.0">
-                           <styleClass>
-                              <String fx:value="TodolosInputs" />
-                              <String fx:value="ComboBox_Cleintes" />
-                           </styleClass>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin></ComboBox>
+                        </JFXTextField>
+                        <JFXComboBox styleClass="ComboBox_Cleintes" />
                         <Label styleClass="Labels_SaveVentas" text="Fecha de Venta" translateY="3.0">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin></Label>
-                        <DatePicker editable="false" nodeOrientation="LEFT_TO_RIGHT" promptText="Fecha" style="-fx-background-color: #4d4f5c;">
+                        <JFXDatePicker>
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputFecha" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin></DatePicker>
+                        </JFXDatePicker>
                      </children>
                      <padding>
                         <Insets top="5.0" />
@@ -82,43 +70,33 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="32.0" prefWidth="99.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
-                        <TextField prefHeight="39.0" prefWidth="234.0" promptText="Ingresa o Selecciona">
+                        <JFXTextField>
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputProductos" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin></TextField>
-                        <ComboBox prefWidth="150.0">
-                           <styleClass>
-                              <String fx:value="TodolosInputs" />
-                              <String fx:value="ComboBox_Productos" />
-                           </styleClass>
-                           <HBox.margin>
-                              <Insets left="4.0" />
-                           </HBox.margin></ComboBox>
+                        </JFXTextField>
+                        <JFXComboBox styleClass="ComboBox_Productos" />
                         <Label prefHeight="32.0" prefWidth="95.0" styleClass="Labels_SaveVentas" text="Cantidad" translateY="3.0">
                            <HBox.margin>
                               <Insets left="3.0" />
                            </HBox.margin></Label>
-                        <TextField prefHeight="41.0" prefWidth="119.0" promptText="#">
+                        <JFXTextField>
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputCantidad" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></TextField>
+                        </JFXTextField>
                         <Label prefHeight="32.0" prefWidth="122.0" styleClass="Labels_SaveVentas" text="Descripción" translateY="3.0">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Label>
-                        <TextField prefHeight="41.0" prefWidth="216.0" promptText="Descripción de la venta">
+                        <JFXTextField>
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescripcion" />
-                           </styleClass></TextField>
+                           </styleClass>
+                        </JFXTextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -128,15 +106,12 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField promptText="Descuento por Producto">
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin>
+                        <JFXTextField prefHeight="43.0" prefWidth="224.0" promptText="Descuento por Producto">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescuento" />
                            </styleClass>
-                        </TextField>
+                        </JFXTextField>
                         <Button mnemonicParsing="false" styleClass="Btn_ShopingAdd">
                            <graphic>
                               <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateY="3.0">
@@ -146,12 +121,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <JFXTextField prefHeight="43.0" prefWidth="135.0" promptText="Descuento por Producto" translateX="200.0">
-                           <styleClass>
-                              <String fx:value="TodolosInputs" />
-                              <String fx:value="InputDescuento" />
-                           </styleClass>
-                        </JFXTextField>
                      </children>
                   </HBox>
                </children>
