@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import controllers.Ventas.ModalVentaController;
 import controllers.Ventas.VentasController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
