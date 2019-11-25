@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -12,6 +13,7 @@
                 <TextField fx:id="txtLastname" layoutX="75.0" layoutY="217.0" prefHeight="32.0" prefWidth="278.0" promptText="Apellido" styleClass="text-field" stylesheets="@../css/main.css" />
                 <TextField fx:id="txtEmail" layoutX="75.0" layoutY="276.0" prefHeight="32.0" prefWidth="278.0" promptText="Email" styleClass="text-field" stylesheets="@../css/main.css" />
                 <Button fx:id="btnSave" layoutX="76.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../css/main.css" text="guardar" />
+            <JFXButton layoutX="146.0" layoutY="76.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="117.0" text="Button" />
             </children>
         </Pane>
         <TableView fx:id="tblData" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">

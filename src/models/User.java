@@ -1,36 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package models;
 
-/**
- *
- * @author oXCToo
- */
+
 public class User {
 
-    private String id;
+    private String pass;
 
     private String email;
-
-    private String dob;
-
-    private String gender;
 
     private String lastname;
 
     private String firstname;
-
-    public String getId ()
-    {
-        return id;
+    public User(String pass,String email,String lastname,String firstname){
+        this.pass = pass;
+        this.email = email;
+        this.lastname = lastname;
+        this.firstname = firstname;
     }
 
-    public void setId (String id)
+    public String getPass ()
     {
-        this.id = id;
+        return pass;
+    }
+
+    public void setPass (String pass)
+    {
+        this.pass = pass;
     }
 
     public String getEmail ()
@@ -41,26 +36,6 @@ public class User {
     public void setEmail (String email)
     {
         this.email = email;
-    }
-
-    public String getDob ()
-    {
-        return dob;
-    }
-
-    public void setDob (String dob)
-    {
-        this.dob = dob;
-    }
-
-    public String getGender ()
-    {
-        return gender;
-    }
-
-    public void setGender (String gender)
-    {
-        this.gender = gender;
     }
 
     public String getLastname ()
@@ -86,6 +61,6 @@ public class User {
     @Override
     public String toString()
     {
-        return "ClassPojo [id = "+id+", email = "+email+", dob = "+dob+", gender = "+gender+", lastname = "+lastname+", firstname = "+firstname+"]";
+        return "Class [pass = "+pass+", email = "+email+", lastname = "+lastname+", firstname = "+firstname+"]";
     }
 }

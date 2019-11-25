@@ -56,21 +56,17 @@ public class LoginController implements Initializable {
     public void handleButtonAction(MouseEvent event) {
 
         if (event.getSource() == btnSignin) {
-            /*url = "/fxml/Home.fxml";
-            if (logIn().equals("Success")) {
-                view.setViewMouseClick(url,event);
+            if(logIn().equals("Success")) {
+                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
             }
-
-             */
         }
     }
 
     public void handleButtonActionKey(KeyEvent keyEvent) {
 
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            url = "/fxml/Home.fxml";
             if(logIn().equals("Success")) {
-                view.setViewKey(url,keyEvent);
+                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
             }
         }
     }

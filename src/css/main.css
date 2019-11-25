@@ -73,3 +73,16 @@
     -fx-graphic: url('/images/button_previous.png');
 }
 
+.input{
+    -jfx-focus-Color: #2eff27;
+
+}
+
+.input:hover{
+/*-
+-fx-border-width: 3px;
+-fx-border-color: red;
+
+ */
+}
+

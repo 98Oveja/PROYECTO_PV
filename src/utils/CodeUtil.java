@@ -3,10 +3,9 @@ package utils;
 import java.util.Random;
 
 public class CodeUtil {
+    String code;
     public static String generateCode(){
-        String numeros =  "123456789";
-        String letras = "abcdefghijklmnopqrstuvwxyz";
-        String caracteres = "#$%&/=¡?¿";
+
         char [] chars = "0123456789abcdefghijklmnopqrstuvwxyz#$%&/=¡?¿ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
         int charsLength = chars.length;
@@ -16,6 +15,9 @@ public class CodeUtil {
         for (int i=0;i<10;i++){
             buffer.append(chars[random.nextInt(charsLength)]);
         }
-        return( buffer.toString());
+        return  buffer.toString();
+    }
+    public  String getCode() {
+        return code;
     }
 }
