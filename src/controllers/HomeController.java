@@ -3,21 +3,33 @@ package controllers;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import controllers.Ventas.ModalVentaController;
+import controllers.Ventas.VentasController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import navigator.ViewNavigator;
 import utils.ConnectionUtil;
 
 public class HomeController implements Initializable {
@@ -149,4 +161,23 @@ public class HomeController implements Initializable {
         }
     }
 
-}
+    public void AbrirPanelesVentas(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/PanelVentas.fxml"));
+            Parent root = loader.load();
+            VentasController controller = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+//            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    }
+
+
