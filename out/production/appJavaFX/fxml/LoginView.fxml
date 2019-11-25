@@ -15,10 +15,10 @@
                   <Image url="@../images/fondo.png" />
                </image>
             </ImageView>
-            <Pane layoutX="1000.0" layoutY="372.0" prefHeight="114.0" prefWidth="400.0">
+            <Pane layoutX="1005.0" layoutY="366.0" prefHeight="114.0" prefWidth="400.0">
                <children>
-                  <TextField fx:id="txtUsername" layoutY="-3.0" prefHeight="34.0" prefWidth="400.0" promptText="Nombre de usuario" styleClass="text-field" stylesheets="@../css/main.css" />
                   <PasswordField fx:id="txtPassword" layoutY="57.0" prefHeight="34.0" prefWidth="400.0" promptText="Contraseña" styleClass="password-field" stylesheets="@../css/main.css" />
+                  <JFXTextField layoutY="7.0" prefHeight="34.0" prefWidth="400.0" promptText="Nombre de usuario" styleClass="input" stylesheets="@../css/main.css" unFocusColor="#231bb2" />
                </children>
             </Pane>
             <Button fx:id="btnForgot" alignment="CENTER" layoutX="1231.0" layoutY="504.0" onAction="#nextPane" prefHeight="16.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #43425d; -fx-font-size: 15px;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Olvide mi contraseña" textFill="#42415c">
@@ -30,7 +30,6 @@
             <Label layoutX="1108.0" layoutY="233.0" styleClass="labelTitle" stylesheets="@../css/main.css" text="Ferreteria" textAlignment="CENTER" />
             <Label fx:id="lblErrors" layoutX="1005.0" layoutY="540.0" prefHeight="34.0" prefWidth="400.0" styleClass="labelWelcome" stylesheets="@../css/main.css" />
             <JFXButton layoutX="1125.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="185.0" text="Iniciar" />
-            <JFXTextField  layoutX="1029.0" layoutY="541.0" prefHeight="33.0" prefWidth="356.0" styleClass="input" stylesheets="@../css/main.css" unFocusColor="#231bb2" />
 
          </children>
       </Pane>
