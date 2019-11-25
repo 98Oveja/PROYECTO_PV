@@ -117,6 +117,7 @@
     -fx-pref-width: 1195px;
     -fx-pref-height: 849px;
     -fx-background-color:#43425D;
+/*    */
 }
 .PanelHeaderModal_insert{
     -fx-pref-width: 1195px;
@@ -166,16 +167,40 @@
 }
 /*ENTRADE DE TEXTOS*/
 .TodolosInputs{
-    /*-fx-background-color: transparent;*/
+    -fx-background-color: transparent;
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
     -fx-text-align: left;
     -fx-text-fill: #FFF;
+    -fx-highlight-fill: derive(-fx-control-inner-background,100%);
+    /*-fx-highlight-text-fill: -fx-text-inner-color;*/
+    -fx-prompt-text-fill: rgba(231, 238, 255, 0.31);
+    /*-fx-text-fill: -fx-text-inner-color;*/
+    /*derive(-fx-control-inner-background,-30%);*/
+    /*-fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),*/
+    /*linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);*/
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3, 2;
     -jfx-focus-color: #ffffff;
     -jfx-Unfocus-color: rgba(255, 255, 255, 0.32);
-
 }
+
+/*
+-fx-text-fill: -fx-text-inner-color;
+-fx-highlight-fill: derive(-fx-control-inner-background,-20%);
+-fx-highlight-text-fill: -fx-text-inner-color;
+-fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+-fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
+linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+-fx-background-insets: 0, 1;
+-fx-background-radius: 3, 2;
+-fx-cursor: text;
+-fx-padding: 0.333333em 0.583em 0.333333em 0.583em;
+*/
+
+
+
 /*Efectos para los inputs*/
 .TodolosInputs:hover{
     -jfx-focus-color: rgba(16, 98, 229, 0.58);
@@ -188,7 +213,8 @@
 .InputFecha{
     -fx-pref-width: 300px;
     -fx-pref-height: 29.81px;
-    -jfx-text-fill:#fff;
+    -jfx-prompt-text-fill: rgba(231, 238, 255, 0.31);
+/*    fx-prompt-text-fill*/
 }
 .InputProductos{
     -fx-pre-width: 220px;
@@ -205,9 +231,6 @@
 .InputDescuento{
     -fx-pre-width: 250px;
     -fx-pre-height: 29.81px;
-
-    -fx-border-color: red;
-    /*-fx-region-border:2px;*/
 }
 /*LABEL Y EDIT TEXT PARA CALCULAR EL TOTAL EN LA TABLA*/
 .labelTotal_EndTable{
@@ -244,6 +267,7 @@
     -fx-text-fill: #FFF;
     -jfx-focus-color: #ffffff;
     -jfx-Unfocus-color: rgba(255, 255, 255, 0.32);
+    -fx-prompt-text-fill: rgba(231, 238, 255, 0.31);
 }
 
 

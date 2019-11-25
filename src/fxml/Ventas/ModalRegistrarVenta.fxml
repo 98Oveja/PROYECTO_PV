@@ -46,7 +46,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField prefHeight="39.0" prefWidth="385.0">
+                        <JFXTextField prefHeight="39.0" prefWidth="385.0" promptText="Selecciona o ingresa el nombre">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputCleinte" />
@@ -63,7 +63,7 @@
                            <HBox.margin>
                               <Insets left="12.0" />
                            </HBox.margin></Label>
-                        <JFXDatePicker defaultColor="#72b4f2" editable="false" prefHeight="39.0" prefWidth="284.0" promptText="Fecha">
+                        <JFXDatePicker fx:id="calendarioIn" defaultColor="#72b4f2" editable="false" onMouseEntered="#FechaCompleta" onMouseExited="#FechaOriginal" prefHeight="39.0" prefWidth="284.0" promptText="Fecha">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputFecha" />
@@ -82,7 +82,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="32.0" prefWidth="99.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
-                        <JFXTextField prefHeight="39.0" prefWidth="216.0">
+                        <JFXTextField prefHeight="39.0" prefWidth="216.0" promptText="Ingresa o selecciona">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputProductos" />
@@ -96,7 +96,7 @@
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin></Label>
-                        <JFXTextField prefHeight="39.0" prefWidth="99.0">
+                        <JFXTextField prefHeight="39.0" prefWidth="99.0" promptText="#">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputCantidad" />
@@ -106,7 +106,7 @@
                            <HBox.margin>
                               <Insets left="6.0" />
                            </HBox.margin></Label>
-                        <JFXTextField prefHeight="39.0" prefWidth="229.0">
+                        <JFXTextField prefHeight="39.0" prefWidth="229.0" promptText="Descripción de Venta">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescripcion" />
@@ -130,7 +130,7 @@
                               <Insets left="8.0" />
                            </HBox.margin>
                         </JFXTextField>
-                        <Button mnemonicParsing="false" styleClass="Btn_ShopingAdd">
+                        <Button mnemonicParsing="false" onAction="#calendaerioUpdate" styleClass="Btn_ShopingAdd">
                            <graphic>
                               <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateY="3.0">
                                  <image>
