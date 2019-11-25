@@ -54,21 +54,21 @@ public class LoginController implements Initializable {
 
     @FXML
     public void handleButtonAction(MouseEvent event) {
-
-        if (event.getSource() == btnSignin) {
-            if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
-            }
-        }
+        ViewNavigator.loadVista(ViewNavigator.PANEL_VENTAS);
+//        if (event.getSource() == btnSignin) {
+//            if(logIn().equals("Success")) {
+//                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+//            }
+//        }
     }
 
     public void handleButtonActionKey(KeyEvent keyEvent) {
-
-        if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
-            }
-        }
+        ViewNavigator.loadVista(ViewNavigator.PANEL_VENTAS);
+//        if(keyEvent.getCode().equals(KeyCode.ENTER)){
+//            if(logIn().equals("Success")) {
+//                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+//            }
+//        }
     }
 
     @Override
@@ -128,6 +128,6 @@ public class LoginController implements Initializable {
 
     @FXML
     void nextPane(ActionEvent event) {
-        ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+        ViewNavigator.loadVista(ViewNavigator.PANEL_VENTAS);
     }
 }
