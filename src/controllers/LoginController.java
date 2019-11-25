@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -15,7 +17,6 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -29,14 +30,15 @@ import utils.ViewUtil;
 
 public class LoginController implements Initializable {
 
+
     @FXML
     private Label lblErrors;
 
     @FXML
-    private TextField txtUsername;
+    private JFXTextField txtUsername;
 
     @FXML
-    private TextField txtPassword;
+    public JFXPasswordField txtPassword;
 
     @FXML
     private Button btnSignin;
@@ -44,9 +46,6 @@ public class LoginController implements Initializable {
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    String url = null;
-
-    private ViewUtil view = new ViewUtil();
 
     public LoginController() {
         con = ConnectionUtil.conDB();
@@ -57,7 +56,7 @@ public class LoginController implements Initializable {
 
         if (event.getSource() == btnSignin) {
             if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+                ViewNavigator.loadVista(ViewNavigator.MODALVENTAS);
             }
         }
     }
@@ -66,7 +65,7 @@ public class LoginController implements Initializable {
 
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
             if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+                ViewNavigator.loadVista(ViewNavigator.MODALVENTAS);
             }
         }
     }
@@ -85,6 +84,7 @@ public class LoginController implements Initializable {
         String email = txtUsername.getText();
         String password = txtPassword.getText();
         ParseEmail validate = new ParseEmail();
+
         if(!validate.isValid(email)&&!password.isEmpty()){
             setLblError(Color.TOMATO, "Usuario no valido");
             return status = "Error";

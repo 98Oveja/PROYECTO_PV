@@ -1,5 +1,6 @@
 package controllers;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public class ForgotPassEmailController implements Initializable {
     public ImageView closeButton;
 
     @FXML
-    public Button btnForgot;
+    public JFXButton btnForgot;
 
     @FXML
     public TextField txtCode;

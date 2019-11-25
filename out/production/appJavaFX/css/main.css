@@ -74,7 +74,8 @@
 }
 
 .input{
-    -jfx-focus-Color: #2eff27;
+    -jfx-focus-color: #4d4f5c;
+    -jfx-unfocus-color: #4d4f5c;
 
 }
 

@@ -2,9 +2,10 @@
 
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.*?>
 
 <StackPane fx:id="vista1" prefHeight="960.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
@@ -17,8 +18,8 @@
             </ImageView>
             <Pane layoutX="1005.0" layoutY="366.0" prefHeight="114.0" prefWidth="400.0">
                <children>
-                  <PasswordField fx:id="txtPassword" layoutY="57.0" prefHeight="34.0" prefWidth="400.0" promptText="Contraseña" styleClass="password-field" stylesheets="@../css/main.css" />
-                  <JFXTextField layoutY="7.0" prefHeight="34.0" prefWidth="400.0" promptText="Nombre de usuario" styleClass="input" stylesheets="@../css/main.css" unFocusColor="#231bb2" />
+                  <JFXTextField fx:id="txtUsername" layoutY="7.0" prefHeight="34.0" prefWidth="400.0" promptText="Nombre de usuario" stylesheets="@../css/main.css" />
+                  <JFXPasswordField fx:id="txtPassword" layoutY="67.0" prefHeight="34.0" prefWidth="400.0" promptText="Contraseña" stylesheets="@../css/main.css" />
                </children>
             </Pane>
             <Button fx:id="btnForgot" alignment="CENTER" layoutX="1231.0" layoutY="504.0" onAction="#nextPane" prefHeight="16.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #43425d; -fx-font-size: 15px;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Olvide mi contraseña" textFill="#42415c">
@@ -29,7 +30,7 @@
             </Label>
             <Label layoutX="1108.0" layoutY="233.0" styleClass="labelTitle" stylesheets="@../css/main.css" text="Ferreteria" textAlignment="CENTER" />
             <Label fx:id="lblErrors" layoutX="1005.0" layoutY="540.0" prefHeight="34.0" prefWidth="400.0" styleClass="labelWelcome" stylesheets="@../css/main.css" />
-            <JFXButton layoutX="1125.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="185.0" text="Iniciar" />
+            <JFXButton fx:id="btnSignin" layoutX="1125.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="185.0" text="Iniciar" />
 
          </children>
       </Pane>
