@@ -1,11 +1,11 @@
 package controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -30,7 +30,7 @@ import java.sql.ResultSet;
 public class ForgotPassController {
 
     static String code, Destino;
-    public Button btnForgot;
+
     Connection con = null;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
@@ -39,11 +39,11 @@ public class ForgotPassController {
     String Remitente,Password, Asunto, Mensaje;
 
     ParseEmail email = new ParseEmail();
-    @FXML
-    public Label lblErrors;
-    @FXML
-    public TextField txtUsername;
 
+    @FXML
+    public JFXTextField txtUsername;
+    public JFXButton btnForgot;
+    public Label lblErrors;
     public ForgotPassController(){
         con = ConnectionUtil.conDB();
     }
@@ -69,7 +69,7 @@ public class ForgotPassController {
 
 
                 Remitente = "carls10vasquez@gmail.com";
-                Password = "car1051Z";
+                Password = "qnujurorzribvqln";
                 Destino = txtUsername.getText();
 
                 Asunto = "RECUPERCION DE CONTRASEÑA.";
@@ -78,7 +78,7 @@ public class ForgotPassController {
 
                 Mensaje = " Codigo de recuperacion:" + code;
 
-                //if(SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje)) {
+                if(SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje)) {
                 lblErrors.setText("Codigo enviado");
                 lblErrors.setTextFill(Color.GREEN);
 
@@ -95,7 +95,7 @@ public class ForgotPassController {
                 dialog.show();
 
                 txtUsername.clear();
-                //}
+                }
             } else {
                 txtUsername.clear();
                 lblErrors.setText("No existe el correo ingresado");
