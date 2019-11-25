@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -145,6 +146,12 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <JFXTextField prefHeight="43.0" prefWidth="135.0" promptText="Descuento por Producto" translateX="200.0">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputDescuento" />
+                           </styleClass>
+                        </JFXTextField>
                      </children>
                   </HBox>
                </children>

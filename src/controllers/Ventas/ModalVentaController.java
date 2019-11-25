@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class ModalVentaController {
     @FXML
     AnchorPane panelContenedor;
+    @FXML
     Button btnCerrarModal;
 
     public void CloseModal(ActionEvent actionEvent) {
