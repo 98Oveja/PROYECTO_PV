@@ -213,8 +213,22 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
 .InputFecha{
     -fx-pref-width: 300px;
     -fx-pref-height: 29.81px;
-    -jfx-prompt-text-fill: rgba(231, 238, 255, 0.31);
-/*    fx-prompt-text-fill*/
+    /*-jfx-text-fill: -fx-accent;*/
+    /*-jfx-prompt-text-fill: rgba(231, 238, 255, 0.80);*/
+
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+    /*-fx-background-color:-fx-focus-color,*/
+    /*                     -fx-control-inner-background,*/
+    /*                     -fx-faint-focus-color,*/
+    /*                      linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);*/
+    -fx-background-insets: -0.2, 1, -1.4, 3;
+    -fx-background-radius: 3, 2, 4, 0;
+    /*-fx-prompt-text-fill: #fff;*/
+    -fx-background-color: rgba(255, 255, 255, 0.49);
+}
+.InputFecha:hover{
+    -fx-background-color: rgba(255, 255, 255, 0.89);
 }
 .InputProductos{
     -fx-pre-width: 220px;
@@ -334,7 +348,7 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
     -fx-font-size: 20px;
 }
 .Btn_Modal_Vender:pressed{
-    -fx-background-color: rgba(255, 15, 0, 0.75);
+    -fx-background-color: rgba(48, 80, 255, 0.52);
 }
 
 
@@ -347,7 +361,7 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
 }
 .Btn_ShopingAdd:hover{
     -fx-background-color:#3c3b54;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 5px;
 }
 .Btn_ShopingAdd:pressed{
     -fx-background-color: rgba(163, 160, 251, 0.10);

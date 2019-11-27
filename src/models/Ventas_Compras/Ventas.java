@@ -1,5 +1,8 @@
 package models.Ventas_Compras;
+import utils.ConnectionUtil;
+
 import java.security.PrivateKey;
+import java.sql.Connection;
 import java.util.Date;
 
 public class Ventas {
@@ -25,10 +28,22 @@ Método: Puede ser un procedimiento o una función, la diferencia es que le pert
  */
 
 
-//  METODO PARA BUSCAR A AUN EMPLEADO POR NOMRE
-    public int getNombreEmpleadoById(String NombreEmpleado_In){
 
-        return  id_Empleado;
+//        return con!=null?true:false;
+
+//    Constructor
+    public Ventas(){
+        //  CONEXION A LA BASE DE DATOS
+        Connection con = ConnectionUtil.conDB();
+    }
+
+
+//  METODO PARA BUSCAR A AUN EMPLEADO POR NOMRE
+    public void getNombreEmpleadoById(String NombreEmpleado_In){
+        String esteEmpleado = NombreEmpleado_In.length()!=0?NombreEmpleado_In:"";
+        System.out.println("El empleado "+esteEmpleado);
+
+//        return  id_Empleado = 3;
     }
 //  MEDODO PARA BUSCAR EL CLIENTE POR NOMBRE
     public int getNombreClienteById(String NombreCliente_In){

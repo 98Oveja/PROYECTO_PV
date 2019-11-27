@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-    Connection conn = null;
+//    Connection conn = null;
     public static Connection conDB()
     {
         try {

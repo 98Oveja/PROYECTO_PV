@@ -1,5 +1,8 @@
 package controllers.Ventas;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,19 +19,58 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.converter.LocalDateStringConverter;
+import models.Ventas_Compras.Ventas;
 
 import java.awt.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.FormatStyle;
 
+import static java.awt.Color.*;
+
 public class ModalVentaController {
+//    Model para las ventas
+    Ventas ventas = new Ventas();
     @FXML
     AnchorPane panelContenedor;
     @FXML
     DatePicker calendarioIn;
     @FXML
     Button btnCerrarModal;
+    @FXML
+    private JFXTextField cliente_text;
+    @FXML
+    private JFXComboBox<?> listadoClietes;
+    @FXML
+    private JFXTextField producto_text;
+    @FXML
+    private JFXComboBox<?> listadoProductos;
+    @FXML
+    private JFXTextField cantidad_text;
+    @FXML
+    private JFXTextField descripcion_text;
+    @FXML
+    private JFXTextField descuento_text;
+    @FXML
+    private Button btnVenderTodo;
+
+
+//    JSONObject jsonObject;
+// = new JSONObject();
+//    String codificado = jsonObject.toString();
+//System.out.println("Codificado: " + codificado);
+
+
+
+//    constructor
+    public ModalVentaController(){
+        System.out.println("Hola soy el constructor perro");
+    }
+
+
+
+
+
 
     public void CloseModal(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -45,7 +87,19 @@ public class ModalVentaController {
 
 
     public void calendaerioUpdate(ActionEvent actionEvent) {
-        System.out.println("ModalVentaController.calendaerioUpdate");
+        String cliente = cliente_text.getText();
+        String fecha = calendarioIn.getValue().toString();
+        String producto = producto_text.getText();
+        int cantidad = Integer.parseInt(cantidad_text.getText());
+        String descripcion = descripcion_text.getText();
+        float descuento = Float.parseFloat(descuento_text.getText());
+
+
+
+
+
+//        ventas.getNombreEmpleadoById(cliente);
+
 
 
 //        DayOfWeek dayweek = item.getDayOfWeek();
@@ -63,12 +117,25 @@ public class ModalVentaController {
         calendarioIn.setConverter(new LocalDateStringConverter(FormatStyle.MEDIUM));
     }
 
+
+
+    //metodos para cambiar fecha
     public void FechaCompleta(MouseEvent event) {
         CambiarFormatoFecha_Completa();
-    }
 
+    }
     public void FechaOriginal(MouseEvent event) {
         CambiarFormatoFecha_Medio();
+    }
+
+    public void GuardarVentaEnDB(ActionEvent actionEvent) {
+//        validando los campos
+
+
+
+
+
+
     }
 
 //        //    Actualizar el calendario
