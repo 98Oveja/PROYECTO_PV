@@ -1,183 +1,156 @@
-
 package controllers;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-import controllers.Ventas.ModalVentaController;
-import controllers.Ventas.VentasController;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Callback;
-import navigator.ViewNavigator;
-import utils.ConnectionUtil;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 
-public class HomeController implements Initializable {
-
-    @FXML
-    private TextField txtFirstname;
-    @FXML
-    private TextField txtLastname;
-    @FXML
-    private TextField txtEmail;
-    @FXML
-    private PasswordField txtPasswordField;
-    @FXML
-    private Button btnSave;
-    @FXML
-    private Label lblStatus;
-    @FXML
-    TableView tblData;
+import java.util.ArrayList;
 
 
-    PreparedStatement preparedStatement;
-    Connection connection;
 
-    public HomeController() {
-        connection = (Connection) ConnectionUtil.conDB();
-    }
+public class HomeController{
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        fetColumnList();
-        fetRowList();
+    public Label line1;
+    public Label line2;
+    public Label line3;
+    public Label line4;
+    public Label line5;
+    public Label line6;
+    public Label line7;
+    public Label line8;
+    public Label line9;
+    public Label line10;
+    public ToggleButton btninicio;
+    public ToggleButton btnestadistica;
+    public ToggleButton btnempleados;
+    public ToggleButton btnreportes;
+    public ToggleButton btnproductos;
+    public ToggleButton btnclientes;
+    public ToggleButton btncompras;
+    public ToggleButton btncalendario;
+    public ToggleButton btnventas;
+    public ToggleButton btnproveedores;
 
-    }
-
-    @FXML
-    private void HandleEvents(MouseEvent event) {
-        if (txtEmail.getText().isEmpty() || txtFirstname.getText().isEmpty() || txtLastname.getText().isEmpty() || txtPasswordField.getText().isEmpty()) {
-            lblStatus.setTextFill(Color.TOMATO);
-            lblStatus.setText("Enter all details");
-        } else {
-            saveData();
-        }
-
-    }
-
-    private void clearFields() {
-        txtFirstname.clear();
-        txtLastname.clear();
-        txtEmail.clear();
-        txtPasswordField.clear();
-    }
-
-    private String saveData() {
-        try {
-
-            String st = "INSERT INTO USUARIOS VALUES((select max(ID_USUARIO) from USUARIOS as date) +1,'"+
-                    txtFirstname.getText()+"','"+
-                    txtLastname.getText()+"','"+
-                    txtEmail.getText()+"','"+
-                    txtPasswordField.getText()
-                    +"',true,'admin');";
-            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
-            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
-            preparedStatement.executeUpdate();
-            lblStatus.setTextFill(Color.GREEN);
-            lblStatus.setText("Agregado correctamente");
-
-            fetRowList();
-            clearFields();
-            return "Success";
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            lblStatus.setTextFill(Color.TOMATO);
-            lblStatus.setText(ex.getMessage());
-            return "Exception";
+    ArrayList<Label> list = new ArrayList<>();
+    ArrayList<ToggleButton> listB = new ArrayList<>();
+    void addButtons(){
+        listB.add(btninicio);
+        listB.add(btnestadistica);
+        listB.add(btnempleados);
+        listB.add(btnproductos);
+        listB.add(btnproveedores);
+        listB.add(btnclientes);
+        listB.add(btncompras);
+        listB.add(btncalendario);
+        listB.add(btnventas);
+        listB.add(btnreportes);
+        for (ToggleButton b : listB) {
+            b.setSelected(false);
         }
     }
-
-    private ObservableList<ObservableList> data;
-    String SQL = "SELECT NOMBRE,APELLIDOS,EMAIL,ESTADO,CARGO from USUARIOS";
-    private void fetColumnList() {
-        try {
-            ResultSet rs = connection.createStatement().executeQuery(SQL);
-
-            for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1).toUpperCase());
-                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-
-                tblData.getColumns().removeAll(col);
-                tblData.getColumns().addAll(col);
-
-                //System.out.println("Column [" + i + "] ");
-
+    void addlist(){
+        list.add(line1);
+        list.add(line2);
+        list.add(line3);
+        list.add(line4);
+        list.add(line5);
+        list.add(line6);
+        list.add(line7);
+        list.add(line8);
+        list.add(line9);
+        list.add(line10);
+        for (Label a : list) {
+            a.setVisible(false);
+        }
+    }
+    public  void avalibleButton(int date){
+        addButtons();
+        for (ToggleButton b: listB) {
+            if(b.equals(listB.get(date))){
+                //System.out.println("son iguales ");
+                b.setSelected(true);
             }
-
-        } catch (Exception e) {
-            System.out.println("Error " + e.getMessage());
-
         }
     }
 
-    private void fetRowList() {
-        data = FXCollections.observableArrayList();
-        ResultSet rs;
-        try {
-            rs = connection.createStatement().executeQuery(SQL);
-
-            while (rs.next()) {
-                //Iterate Row
-                ObservableList row = FXCollections.observableArrayList();
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    //Iterate Column
-                    row.add(rs.getString(i));
-                }
-                System.out.println("Row [1] added " + row);
-                data.add(row);
-
+    public  void avalibleLabel(int date){
+        addlist();
+        for (Label a: list) {
+            if(a.equals(list.get(date))){
+                //System.out.println("son iguales ");
+                a.setVisible(true);
             }
-
-            tblData.setItems(data);
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
         }
     }
 
-    public void AbrirPanelesVentas(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/PanelVentas.fxml"));
-            Parent root = loader.load();
-            VentasController controller = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-//            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-            stage.show();
-        }catch (IOException e) {
-            e.printStackTrace();
+    public void handleHome(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btninicio){
+            avalibleLabel(0);
+            avalibleButton(0);
         }
     }
 
-
-
+    public void handleEst(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnestadistica){
+            avalibleLabel(1);
+            avalibleButton(1);
+        }
     }
 
+    public void handleEmpl(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnempleados){
+            avalibleLabel(2);
+            avalibleButton(2);
+        }
+    }
+
+    public void handleProd(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnproductos){
+            avalibleLabel(3);
+            avalibleButton(3);
+        }
+    }
+
+    public void handleProve(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnproveedores){
+            avalibleLabel(4);
+            avalibleButton(4);
+        }
+    }
+
+    public void handleCli(ActionEvent mouseEvent) {
+        if (mouseEvent.getSource() == btnclientes) {
+            avalibleLabel(5);
+            avalibleButton(5);
+        }
+    }
+
+    public void handleComp(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btncompras){
+            avalibleLabel(6);
+            avalibleButton(6);
+        }
+    }
+
+    public void handleCal(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btncalendario){
+            avalibleLabel(7);
+            avalibleButton(7);
+        }
+    }
+
+    public void handleVen(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnventas){
+            avalibleLabel(8);
+            avalibleButton(8);
+        }
+    }
+
+    public void handleRep(ActionEvent mouseEvent) {
+        if(mouseEvent.getSource() == btnreportes){
+            avalibleLabel(9);
+            avalibleButton(9);
+        }
+    }
+}
 

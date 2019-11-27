@@ -55,9 +55,9 @@ public class LoginController implements Initializable {
     public void handleButtonAction(MouseEvent event) {
 
         if (event.getSource() == btnSignin) {
-            if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.MODALVENTAS);
-            }
+            //if(logIn().equals("Success")) {
+                ViewNavigator.loadVista(ViewNavigator.HOME);
+            //}
         }
     }
 
@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
 
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
             if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.MODALVENTAS);
+                ViewNavigator.loadVista(ViewNavigator.HOME);
             }
         }
     }

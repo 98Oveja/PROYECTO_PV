@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10312746</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="pvProject@localhost" uuid="640d027f-6a5d-41e5-ac4b-6022eddd503d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/punto_de_venta</jdbc-url>
+    </data-source>
   </component>
 </project>
