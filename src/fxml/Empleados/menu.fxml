@@ -12,7 +12,7 @@
    <children>
       <Pane prefHeight="644.0" prefWidth="918.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
-            <Pane layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
+            <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -32,7 +32,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane layoutX="206.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane fx:id="CardStadistic" layoutX="206.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -54,7 +54,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="526.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane fx:id="CardSales" layoutX="526.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -76,7 +76,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="845.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane fx:id="CardReports" layoutX="845.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -98,23 +98,26 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;">
+            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;">
                <children>
-                  <ImageView fitHeight="273.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="NewImagen" fitHeight="273.0" fitWidth="281.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="125.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/producto_nuevo.png" />
                      </image></ImageView>
-                  <RadioButton layoutX="91.0" layoutY="227.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/main.css" />
-                  <RadioButton layoutX="115.0" layoutY="226.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" />
-                  <RadioButton layoutX="168.0" layoutY="226.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" />
-                  <RadioButton layoutX="142.0" layoutY="227.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="5.0" styleClass="radiobuttonNewProd" />
+                  <RadioButton fx:id="Radiouno" layoutX="95.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grupo" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="Radiodos" layoutX="117.0" layoutY="233.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
+                  <RadioButton fx:id="Radiocuatro" layoutX="162.0" layoutY="233.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
+                  <RadioButton fx:id="radiotres" layoutX="139.0" layoutY="233.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="5.0" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
                   <Pane layoutX="171.0" layoutY="-57.0" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: black;" />
                </children>
             </Pane>
-            <Pane layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
+            <Pane fx:id="CardDescripNew" layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
                <children>
-                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -130,9 +133,9 @@
                   <Label layoutX="32.0" layoutY="91.0" prefHeight="36.0" prefWidth="215.0" style="-fx-text-fill: #4D4F5C;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Martillo para uso general, albanieria, carpinteria" wrapText="true" />
                </children>
             </Pane>
-            <Pane layoutX="990.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" StackPane.alignment="CENTER">
+            <Pane fx:id="CardCustomers" layoutX="990.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" StackPane.alignment="CENTER">
                <children>
-                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
