@@ -116,12 +116,12 @@ public class HomeController implements Initializable {
             setVista("/fxml/Empleados/menu.fxml");
             avalibleLabel(0);
             avalibleButton(0);
-
         }
     }
 
-    public void handleEst(ActionEvent mouseEvent) {
+    public void handleEst(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnestadistica){
+
             avalibleLabel(1);
             avalibleButton(1);
         }

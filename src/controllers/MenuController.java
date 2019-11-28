@@ -8,28 +8,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 public class MenuController {
-    @FXML private Pane CardPaneNewPro;
-    @FXML private ImageView NewImagen;
-    @FXML private RadioButton Radiouno;
-    @FXML private RadioButton Radiodos;
-    @FXML private RadioButton Radiotres;
-    @FXML private RadioButton Radiocuatro;
-    @FXML private ToggleGroup grupo;
-
     @FXML
-    private void dispalyImage(ActionEvent event){
-        CardPaneNewPro.getChildren().clear();
-        String name="";
-        if(Radiouno.isSelected()){name="a";}
-        if(Radiodos.isSelected()){name="a2";}
-        if(Radiotres.isSelected()){name="d";}
-        if(Radiocuatro.isSelected()){name="g4";}
+    private Pane CardPaneNewPro;
+    @FXML ToggleGroup grupop;
 
-            Image imagen= new Image("file///C:/Users/julio/Pictures/photomedia/photomedia/img/elements/"+name+".jpg");
-            javafx.scene.image.ImageView imageview=new javafx.scene.image.ImageView(imagen);
-            imageview.setFitHeight(281.0);
-            imageview.setFitWidth(273.0);
-            CardPaneNewPro.getChildren().add(imageview);
+    private void displayImage(ActionEvent event) {
+
+      System.out.println("uno");
     }
 }

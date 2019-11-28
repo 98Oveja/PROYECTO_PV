@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="648.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane id="ContenedorMenu" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
-      <Pane prefHeight="644.0" prefWidth="918.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
             <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
@@ -98,23 +98,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;">
-               <children>
-                  <ImageView fx:id="NewImagen" fitHeight="273.0" fitWidth="281.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="125.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/producto_nuevo.png" />
-                     </image></ImageView>
-                  <RadioButton fx:id="Radiouno" layoutX="95.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="grupo" />
-                     </toggleGroup></RadioButton>
-                  <RadioButton fx:id="Radiodos" layoutX="117.0" layoutY="233.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
-                  <RadioButton fx:id="Radiocuatro" layoutX="162.0" layoutY="233.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
-                  <RadioButton fx:id="radiotres" layoutX="139.0" layoutY="233.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="5.0" styleClass="radiobuttonNewProd" stylesheets="@../../css/menuinicio.css" toggleGroup="$grupo" />
-                  <Pane layoutX="171.0" layoutY="-57.0" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: black;" />
-               </children>
-            </Pane>
+            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" onMouseClicked="#displayImage" onMousePressed="#displayImage" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;" />
             <Pane fx:id="CardDescripNew" layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
@@ -155,6 +139,19 @@
                   </Label>
                </children>
             </Pane>
+            <ImageView fitHeight="121.0" fitWidth="137.0" layoutX="385.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/producto_nuevo.png" />
+               </image>
+            </ImageView>
+            <RadioButton layoutX="478.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;">
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupop" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="554.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" toggleGroup="$grupop" />
+            <RadioButton layoutX="503.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" toggleGroup="$grupop" />
+            <RadioButton layoutX="527.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" toggleGroup="$grupop" />
          </children></Pane>
    </children>
 </StackPane>
