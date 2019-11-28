@@ -1,13 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="648.0" styleClass="empPanel" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="364.0" prefWidth="566.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/main.css">
          <children>
-            <Pane layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" />
-            <Pane layoutY="113.0" prefHeight="113.0" prefWidth="65.0" style="-fx-background-color: black;" />
+            <Pane layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect></JFXButton>
+                  <Label layoutX="72.0" layoutY="53.0" styleClass="tipografia" text="Proveedores" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="98.0" prefHeight="54.0" prefWidth="170.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Echa unvistazo a tus proveedores" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane layoutX="206.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </JFXButton>
+                  <Label layoutX="78.0" layoutY="53.0" styleClass="tipografia" text="Estadisticas" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="72.0" layoutY="108.0" prefHeight="24.0" prefWidth="137.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Mira las Graficas" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="526.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </JFXButton>
+                  <Label layoutX="102.0" layoutY="53.0" styleClass="tipografia" text="Ventas" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="106.0" prefHeight="54.0" prefWidth="170.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Genera alguna ventas" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="845.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </JFXButton>
+                  <Label layoutX="89.0" layoutY="46.0" styleClass="tipografia" text="Reportes" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="78.0" layoutY="104.0" prefHeight="36.0" prefWidth="125.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="273.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="125.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/producto_nuevo.png" />
+                     </image></ImageView>
+                  <RadioButton layoutX="91.0" layoutY="227.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="radiobuttonNewProd" stylesheets="@../../css/main.css" />
+                  <RadioButton layoutX="115.0" layoutY="226.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" />
+                  <RadioButton layoutX="168.0" layoutY="226.0" mnemonicParsing="false" styleClass="radiobuttonNewProd" />
+                  <RadioButton layoutX="142.0" layoutY="227.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="5.0" styleClass="radiobuttonNewProd" />
+                  <Pane layoutX="171.0" layoutY="-57.0" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: black;" />
+               </children>
+            </Pane>
+            <Pane layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </JFXButton>
+                  <Label layoutX="31.0" layoutY="38.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Martillo">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label layoutX="30.0" layoutY="64.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Truper" />
+                  <Label layoutX="32.0" layoutY="91.0" prefHeight="36.0" prefWidth="215.0" style="-fx-text-fill: #4D4F5C;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Martillo para uso general, albanieria, carpinteria" wrapText="true" />
+               </children>
+            </Pane>
+            <Pane layoutX="990.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" StackPane.alignment="CENTER">
+               <children>
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/main.css" text="Ver ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow />
+                     </effect>
+                  </JFXButton>
+                  <Label layoutX="93.0" layoutY="41.0" prefHeight="41.0" prefWidth="87.0" styleClass="tipografia" text="Clientes" textFill="WHITE" StackPane.alignment="CENTER">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="82.0" prefHeight="61.0" prefWidth="152.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Echa un vistazo a tus clientes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children></Pane>
    </children>
 </StackPane>
