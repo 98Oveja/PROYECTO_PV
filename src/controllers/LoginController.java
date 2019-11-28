@@ -31,6 +31,7 @@ import utils.ViewUtil;
 public class LoginController implements Initializable {
 
 
+    public static int code;
     @FXML
     private Label lblErrors;
 
@@ -57,6 +58,7 @@ public class LoginController implements Initializable {
         if (event.getSource() == btnSignin) {
             //if(logIn().equals("Success")) {
                 ViewNavigator.loadVista(ViewNavigator.HOME);
+                code = 1;
             //}
         }
     }
@@ -66,6 +68,7 @@ public class LoginController implements Initializable {
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
             if(logIn().equals("Success")) {
                 ViewNavigator.loadVista(ViewNavigator.HOME);
+                code = 1;
             }
         }
     }
