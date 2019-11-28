@@ -51,3 +51,18 @@
 .radiobuttonNewProd:pressed{
     -fx-background-color: #3C3B54;
 }
+
+/*aca estara todo los estilos para los empledos*/
+
+.empleadoscard{
+    -fx-pref-whidth: 570px;
+    -fx-pref-height: 160.35px;
+    -fx-background-color: white;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 9, 0.5, 0.0, 0.0 );
+    -fx-border-radius: 6px;
+}
+
+.empleadoscard:hover{
+    -fx-background-color: rgb(244, 243, 240);
+    -fx-font-family: "Source Sans Pro";
+}
