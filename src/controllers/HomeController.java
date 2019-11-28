@@ -1,14 +1,20 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
-
-public class HomeController{
+public class HomeController implements Initializable {
 
     public Label line1;
     public Label line2;
@@ -31,8 +37,28 @@ public class HomeController{
     public ToggleButton btnventas;
     public ToggleButton btnproveedores;
 
+    public StackPane pane;
+
     ArrayList<Label> list = new ArrayList<>();
     ArrayList<ToggleButton> listB = new ArrayList<>();
+
+
+    public static int getCode() {
+        return LoginController.code;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        avalibleLabel(getCode());
+        avalibleButton(getCode());
+    }
+
+    public void setVista(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root = loader.load();
+        pane.getChildren().setAll(root.getChildrenUnmodifiable());
+    }
+
     void addButtons(){
         listB.add(btninicio);
         listB.add(btnestadistica);
@@ -48,6 +74,7 @@ public class HomeController{
             b.setSelected(false);
         }
     }
+
     void addlist(){
         list.add(line1);
         list.add(line2);
@@ -84,9 +111,12 @@ public class HomeController{
     }
 
     public void handleHome(ActionEvent mouseEvent) {
+
         if(mouseEvent.getSource() == btninicio){
+
             avalibleLabel(0);
             avalibleButton(0);
+
         }
     }
 
@@ -139,8 +169,9 @@ public class HomeController{
         }
     }
 
-    public void handleVen(ActionEvent mouseEvent) {
+    public void handleVen(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnventas){
+            setVista("/fxml/Ventas/PanelVentas.fxml");
             avalibleLabel(8);
             avalibleButton(8);
         }

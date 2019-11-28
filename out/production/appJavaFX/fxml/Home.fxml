@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -22,7 +23,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </ImageView>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1266.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1266.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/male_user_.png" />
                             </image>
@@ -42,12 +43,20 @@
                         </ImageView>
                   <TextField layoutX="38.0" layoutY="21.0" prefHeight="33.0" prefWidth="580.0" promptText="Busca algo aquí..." styleClass="text-fieldX" stylesheets="@../css/main.css" />
                   <Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
+<<<<<<< HEAD
                   <Label layoutX="1180.0" layoutY="30.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c" />
                   <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1228.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/arrows.png" />
                      </image>
                   </ImageView>
+=======
+                  <Label layoutX="1180.0" layoutY="28.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </Label>
+>>>>>>> db7c32f99528c030434cbc3c478f288e7399486d
                     </children></Pane>
                 <Pane fx:id="components" prefHeight="960.0" prefWidth="1600.0" styleClass="menulateral">
                     <children>
@@ -156,5 +165,9 @@
             <StackPane layoutX="260.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" />
             </children>
         </Pane>
+<<<<<<< HEAD
+=======
+      <StackPane  fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
+>>>>>>> db7c32f99528c030434cbc3c478f288e7399486d
     </children>
 </StackPane>

@@ -172,7 +172,7 @@
     -fx-min-height: 53px;
     -fx-min-width: 260;
     -fx-padding: 0px 0px 0px 52px;
-    -fx-background-color: opacity;
+    -fx-background-color: transparent;
     -fx-translate-x: 0px;
     -fx-alignment: "baseline_left";
     -fx-cursor: "HAND";
