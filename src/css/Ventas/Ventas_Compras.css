@@ -165,6 +165,10 @@
     -fx-text-align: left;
     -fx-text-fill: #e9e9f0;
 }
+.LabelFechaShow{
+
+}
+
 /*ENTRADE DE TEXTOS*/
 .TodolosInputs{
     -fx-background-color: transparent;

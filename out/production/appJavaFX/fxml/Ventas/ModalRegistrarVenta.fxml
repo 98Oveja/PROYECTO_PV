@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -63,18 +62,7 @@
                            <HBox.margin>
                               <Insets left="12.0" />
                            </HBox.margin></Label>
-                        <JFXDatePicker fx:id="calendarioIn" defaultColor="#72b4f2" editable="false" onMouseEntered="#FechaCompleta" onMouseExited="#FechaOriginal" prefHeight="39.0" prefWidth="265.0" promptText="Fecha">
-                           <padding>
-                              <Insets left="6.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                           <styleClass>
-                              <String fx:value="InputFecha" />
-                              <String fx:value="TodolosInputs" />
-                           </styleClass>
-                        </JFXDatePicker>
+                        <JFXTextField fx:id="txt_fechaVenta" editable="false" prefHeight="39.0" prefWidth="247.0" promptText="Fecha de compra" styleClass="TodolosInputs" translateX="16.0" translateY="2.0" />
                      </children>
                      <padding>
                         <Insets top="5.0" />

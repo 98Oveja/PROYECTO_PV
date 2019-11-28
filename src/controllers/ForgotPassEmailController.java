@@ -46,7 +46,9 @@ public class ForgotPassEmailController implements Initializable {
                 if(txtPassVerified.getText().equals(txtPass.getText())){
                     //Accion del boton
                     try{
-                        Connection con = ConnectionUtil.conDB();
+//                        Connection con = ConnectionUtil.conDB();
+                        ConnectionUtil con5 = new ConnectionUtil();
+                        Connection con = con5.getConnection();
                         String sql= "UPDATE USUARIOS SET CONTRASENA=? WHERE EMAIL=?;";
                         email = getEmail();
                         PreparedStatement preparedStatement = con.prepareStatement(sql);

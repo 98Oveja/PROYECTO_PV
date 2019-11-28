@@ -49,7 +49,8 @@ public class LoginController implements Initializable {
     private ViewUtil view = new ViewUtil();
 
     public LoginController() {
-        con = ConnectionUtil.conDB();
+//        con = ConnectionUtil.conDB();
+        ConnectionUtil con = new ConnectionUtil();
     }
 
     @FXML

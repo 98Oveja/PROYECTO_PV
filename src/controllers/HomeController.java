@@ -54,7 +54,8 @@ public class HomeController implements Initializable {
     Connection connection;
 
     public HomeController() {
-        connection = (Connection) ConnectionUtil.conDB();
+//        connection = (Connection) ConnectionUtil.conDB();
+        ConnectionUtil con2 =new ConnectionUtil();
     }
 
     @Override
