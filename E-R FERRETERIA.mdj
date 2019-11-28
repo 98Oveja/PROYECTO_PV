@@ -844,6 +844,21 @@
 										},
 										{
 											"_type": "ERDColumnView",
+											"_id": "AAAAAAFurxxJQAmCZ+M=",
+											"_parent": {
+												"$ref": "AAAAAAFuQrBndCTfPyE="
+											},
+											"model": {
+												"$ref": "AAAAAAFurxxI3Al/WDw="
+											},
+											"font": "Arial;13;0",
+											"left": 1229,
+											"top": 792,
+											"width": 245.58935546875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
 											"_id": "AAAAAAFuR70/iwI1ZYk=",
 											"_parent": {
 												"$ref": "AAAAAAFuQrBndCTfPyE="
@@ -853,7 +868,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1229,
-											"top": 792,
+											"top": 807,
 											"width": 245.58935546875,
 											"height": 13
 										}
@@ -862,7 +877,7 @@
 									"left": 1224,
 									"top": 727,
 									"width": 255.58935546875,
-									"height": 83
+									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
@@ -2997,6 +3012,16 @@
 							"name": "DESCRIPCION",
 							"type": "VARCHAR",
 							"length": "20"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFurxxI3Al/WDw=",
+							"_parent": {
+								"$ref": "AAAAAAFuQrBndCTbPWE="
+							},
+							"name": "CANTIDAD",
+							"type": "INT",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
