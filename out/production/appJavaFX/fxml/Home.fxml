@@ -2,6 +2,7 @@
 
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -9,7 +10,7 @@
 
 <StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
-        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal">
+        <Pane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1600.0">
             <children>
                 <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
@@ -42,6 +43,11 @@
                   <TextField layoutX="38.0" layoutY="21.0" prefHeight="33.0" prefWidth="580.0" promptText="Busca algo aquí..." styleClass="text-fieldX" stylesheets="@../css/main.css" />
                   <Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
                   <Label layoutX="1180.0" layoutY="30.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c" />
+                  <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1228.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/arrows.png" />
+                     </image>
+                  </ImageView>
                     </children></Pane>
                 <Pane fx:id="components" prefHeight="960.0" prefWidth="1600.0" styleClass="menulateral">
                     <children>
@@ -72,7 +78,10 @@
                                 <Font name="Arial Bold" size="10.0" />
                             </font>
                         </Label>
-                  <ToggleButton fx:id="btninicio" layoutY="73.0" mnemonicParsing="false" onAction="#handleHome" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Inicio" />
+                  <ToggleButton fx:id="btninicio" layoutY="73.0" mnemonicParsing="false" onAction="#handleHome" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Inicio">
+                     <effect>
+                        <Blend />
+                     </effect></ToggleButton>
                   <ToggleButton fx:id="btnestadistica" layoutY="129.0" mnemonicParsing="false" onAction="#handleEst" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Estadisticas" />
                   <ToggleButton fx:id="btnempleados" layoutY="185.0" mnemonicParsing="false" onAction="#handleEmpl" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Empleados" />
                   <ToggleButton fx:id="btnproductos" layoutY="241.0" mnemonicParsing="false" onAction="#handleProd" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Productos" />
@@ -144,8 +153,8 @@
                   <Label fx:id="line1" layoutY="73.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
                     </children>
                 </Pane>
+            <StackPane layoutX="260.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" />
             </children>
         </Pane>
-      <StackPane layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
     </children>
 </StackPane>
