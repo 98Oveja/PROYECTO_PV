@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS `CATEGORIAS`;
 DROP TABLE IF EXISTS `INVENTARIOS`;
 DROP TABLE IF EXISTS `USUARIOS`;
@@ -45,7 +44,7 @@ CREATE TABLE `VENTAS` (
 	`ID_EMPLEADO` INT NOT NULL,
 	`TOTAL` DOUBLE NOT NULL,
 	`FECHA` DATE NOT NULL,
-	`ESTADO_VENTA` CHAR NOT NULL DEFAULT 'VENDIDO',
+	`ESTADO_VENTA` VARCHAR(10) DEFAULT 'VENDIDO',
 	PRIMARY KEY (`ID_VENTA`)
 );
 
@@ -61,6 +60,7 @@ CREATE TABLE `PRODUCTOS` (
 	`PRECIO_VENTA` DOUBLE NOT NULL,
 	`IMG` VARCHAR(50) NOT NULL,
 	`ESTADO` BOOLEAN NOT NULL,
+	`DESCRIPCION` VARCHAR(70) NOT NULL,
 	PRIMARY KEY (`ID_PRODUCTO`)
 );
 
@@ -68,7 +68,7 @@ CREATE TABLE `DETALLE_VENTA` (
 	`ID_DETALLE` INT NOT NULL,
 	`ID_VENTA` INT NOT NULL,
 	`ID_PRODUCTO` INT NOT NULL,
-	`DESCRIPCION` VARCHAR(20) NOT NULL,
+	`DESCRIPCION` VARCHAR(70) NOT NULL,
 	`CANTIDAD` INT NOT NULL,
 	`SUBTOTAL` DOUBLE NOT NULL,
 	PRIMARY KEY (`ID_DETALLE`)
@@ -128,7 +128,7 @@ ALTER TABLE `CLIENTES` ADD FOREIGN KEY (`ID_PERSONA`) REFERENCES `PERSONAS`(`ID_
 ALTER TABLE `EMPLEADOS` ADD FOREIGN KEY (`ID_PERSONA`) REFERENCES `PERSONAS`(`ID_PERSONA`);
 
 -- GuadalupeCaballero Green FranciscoLoranca MarcelaAguilar Pérez Fredy FranciscoAlarcón Licona SalomónAlarcón
--- López Gerardo GenaroAlatriste Pérez HipólitoAlcántar Camacho José IsraelAlcoverde Martínez Roberto AntonioAlderete Porras Jacinta GuillerminaAldrete Vargas AdolfoAlejo Guerrero Víctor HugoAlemán Mundo Ma. del RosarioAlemán Mundo MarcialAlmogabar Santos RocíoAlonso Ibarra Pascual Gerardo Alonso Navarro Jadilson Altamirano García De León Sánchez RodolfoDe Lira Ávalos AdánDel Razo Ruiz ArmandoDel Toro Arreola DavidDelgado Bugarín NormaDelgado Guajardo Héctor FedericoDelgado Salgado ClementeDíaz Cruz CarlosDíaz Morfín Julio César Díaz Núñez Juan ManuelDíaz Sánchez Julio EduardoDíaz Vivaldo José VicenteDomínguez Barrios GabrielDomínguez Romo GerardoDomínguez Velasco Miguel ÁngelDuarte Briz Jesús AlfredoDurán de Jesús Julián
+-- López Gerardo GenaroAlatriste Pérez HipólitoAlcántar Camacho José IsraelAlcoverde Martínez Roberto AntonioAlderete Porras Jacinta GuillerminaAldrete Vargas AdolfoAlejo Guerrero Víctor HugoAlemán Mundo Ma. del RosarioAlemán Mundo MarcialAlmogabar Santos RocíoAlonso Ibarra Pascual Gerardo Alonso Navarro Jadilson Altamirano García De León Sánchez RodolfoDe Lira Ávalos AdánDel Razo Ruiz ArmandoDel Toro Arreola DavidDelgado Bugarín NormaDelgado Guajardo Héctor FedericoDelgado Salgado ClementeDíaz Cruz CarlosDíaz Morfín Julio César Díaz Núñez Juan ManuelDíaz Sánchez Julio EduardoDíaz Vivaldo José VicenteDomínguez Barrios GabrielDomínguez Romo GerardoDomínguez Velasco Miguel ÁngelDuarte Briz Jesús AlfredoDurán de Jesús Julián
 
 INSERT INTO PERSONAS VALUES
 (1,'Alfredo', 'Manuel','Bautista','Encina','Guatemala', '87238723','algred@gmail.com'),
@@ -176,5 +176,3 @@ INSERT INTO CLIENTES VALUES
 SELECT PERSONAS.PRIMER_NOMBRE, PERSONAS.PRIMER_APELLIDO, EMPLEADOS.CARGO, EMPLEADOS.FECHA_CONTRATACION 
 FROM (PERSONAS INNER JOIN EMPLEADOS) 
 WHERE PERSONAS.ID_PERSONA = EMPLEADOS.ID_PERSONA
-
-
