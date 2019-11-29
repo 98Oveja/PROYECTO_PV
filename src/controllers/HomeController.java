@@ -49,6 +49,11 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            setVista("/fxml/Empleados/menu.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         avalibleLabel(getCode());
         avalibleButton(getCode());
     }
