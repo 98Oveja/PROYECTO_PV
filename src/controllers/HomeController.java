@@ -90,6 +90,7 @@ public class HomeController implements Initializable {
             a.setVisible(false);
         }
     }
+
     public  void avalibleButton(int date){
         addButtons();
         for (ToggleButton b: listB) {
@@ -115,12 +116,13 @@ public class HomeController implements Initializable {
             setVista("/fxml/Empleados/menu.fxml");
             avalibleLabel(0);
             avalibleButton(0);
+
         }
     }
 
     public void handleEst(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnestadistica){
-
+            setVista("/fxml/Stadistic.fxml");
             avalibleLabel(1);
             avalibleButton(1);
         }
@@ -128,7 +130,7 @@ public class HomeController implements Initializable {
 
     public void handleEmpl(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnempleados){
-            setVista("/fxml/Employees.fxml");
+           setVista("fxml/Employees.fxml");
             avalibleLabel(2);
             avalibleButton(2);
         }
