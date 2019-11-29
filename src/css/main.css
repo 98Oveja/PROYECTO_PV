@@ -177,12 +177,7 @@
     -fx-alignment: "baseline_left";
     -fx-cursor: "HAND";
     -fx-focus-traversable: False;
-
 }
-.toggle-buttonB:focused{
-
-}
-
 
 .toggle-buttonB:selected {
     -fx-background-color: #3C3B54;
@@ -234,7 +229,11 @@
     -jfx-pref-width: 5px;
     -jfx-pref-height: 53px;
     -fx-background-color: #A3A0FB;
-    -fx--jfx-translate-x: 0px;
+    -fx-translate-x: 0px;
+}
+
+.toggle-buttonB:pressed {
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
 }
 
 .chart {
