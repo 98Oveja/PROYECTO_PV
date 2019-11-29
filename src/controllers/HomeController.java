@@ -120,8 +120,9 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void handleEst(ActionEvent mouseEvent) {
+    public void handleEst(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnestadistica){
+            setVista("/fxml/Stadistic.fxml");
             avalibleLabel(1);
             avalibleButton(1);
         }
