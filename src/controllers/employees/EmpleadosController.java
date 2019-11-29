@@ -1,4 +1,4 @@
-package controllers;
+package controllers.employees;
 
 public class EmpleadosController {
 }
