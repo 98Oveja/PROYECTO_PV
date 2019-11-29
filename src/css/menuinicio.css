@@ -66,3 +66,10 @@
     -fx-background-color: rgb(244, 243, 240);
     -fx-font-family: "Source Sans Pro";
 }
+
+/*Aca estaran los estilos de los modales para agregar a un empleado.*/
+.paneAddEmploy{
+    -fx-pref-width: 570px;
+    -fx-pref-height: 880px;
+    -fx-background-color: #43425D;
+}
