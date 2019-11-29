@@ -1,603 +1,596 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<StackPane fx:controller="controllers.EmployeesController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../css/menuinicio.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empPanel" stylesheets="@../css/menuinicio.css">
-         <children>
-            <Label layoutX="76.0" layoutY="42.0" prefHeight="40.0" prefWidth="150.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Empleados">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Pane layoutX="680.0" layoutY="40.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/search.png" />
-                     </image>
-                  </ImageView>
-                  <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
-               </children>
-            </Pane>
-            <Pane layoutX="76.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_1.png" />
-                           </image>
+<StackPane prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeesController">
+    <children>
+        <Pane  prefHeight="160.35" prefWidth="570.0" styleClass="empPanel" stylesheets="@../css/menuinicio.css">
+            <children>
+                <Label layoutX="76.0" layoutY="42.0" prefHeight="40.0" prefWidth="157.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Empleados">
+                    <font>
+                        <Font size="28.0" />
+                    </font>
+                </Label>
+                <Pane layoutX="680.0" layoutY="40.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+                    <children>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/search.png" />
+                            </image>
                         </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="279.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="David James">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="269.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="280.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
+                        <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                    </children>
+                </Pane>
+                <Pane layoutX="76.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_1.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="279.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="David James">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="269.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="280.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="680.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_2.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="281.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Gleb Kuznetsov">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="278.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="277.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="76.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_3.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="259.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Andrey Prokopenko">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="268.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="270.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="680.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_1.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="282.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Nick Herasimenka">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="274.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="275.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="76.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_2.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="274.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Bessie Berry">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="273.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="281.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="680.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_3.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="273.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Tony Stark">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="271.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="274.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="76.0" layoutY="629.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/male_user_.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="272.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Valentin Salmon">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="270.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="13.0" prefWidth="280.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <Pane layoutX="680.0" layoutY="629.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
+                    <children>
+                        <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
+                            <children>
+                                <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="22.0" right="22.0" top="24.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/comment_2.png" />
+                                    </image>
+                                </ImageView>
+                                <VBox prefHeight="160.0" prefWidth="272.0">
+                                    <children>
+                                        <Label prefHeight="27.0" prefWidth="280.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Miro Kirov">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="24.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="21.0" prefWidth="300.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="17.0" prefWidth="273.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_create_50px_1.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_delete_50px_2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="12.0" top="22.0" />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
+                    </children>
+                </Pane>
+                <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icons8_add_50px.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <JFXButton layoutX="965.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" scaleZ="2.0" style="-fx-background-color: #3B86FF;" text="1">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="1009.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" scaleZ="2.0" style="-fx-background-color: #FFF;" text="2">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="1053.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="3">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="1095.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="4">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="1139.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="5">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="918.0" layoutY="811.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_chevron_left_50px.png" />
+                            </image>
                         </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
+                    </graphic>
+                </JFXButton>
+                <JFXButton layoutX="1180.0" layoutY="811.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" rotate="180.0" style="-fx-background-color: #FFF;" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_chevron_left_50px.png" />
+                            </image>
                         </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="680.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_2.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="281.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Gleb Kuznetsov">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="278.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="277.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="76.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_3.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="259.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Andrey Prokopenko">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="268.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="270.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="680.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_1.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="282.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Nick Herasimenka">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="274.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="275.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="76.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_2.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="274.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Bessie Berry">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="273.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="281.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="680.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_3.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="273.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Tony Stark">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="271.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="274.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="76.0" layoutY="629.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/male_user_.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="272.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Valentin Salmon">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="270.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="13.0" prefWidth="280.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="680.0" layoutY="629.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../css/menuinicio.css">
-               <children>
-                  <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
-                     <children>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="22.0" right="22.0" top="24.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@../images/comment_2.png" />
-                           </image>
-                        </ImageView>
-                        <VBox prefHeight="160.0" prefWidth="272.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="280.0" styleClass="tipografia" stylesheets="@../css/menuinicio.css" text="Miro Kirov">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="24.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="300.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="273.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_create_50px_1.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="100.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_delete_50px_2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="12.0" top="22.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
-               </children>
-            </Pane>
-            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8_add_50px.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <JFXButton layoutX="965.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" scaleZ="2.0" style="-fx-background-color: #3B86FF;" text="1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="1009.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" scaleZ="2.0" style="-fx-background-color: #FFF;" text="2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="1053.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="3">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="1095.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="4">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="1139.0" layoutY="811.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text="5">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="918.0" layoutY="811.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFF;" text=" ">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_chevron_left_50px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="1180.0" layoutY="811.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" rotate="180.0" style="-fx-background-color: #FFF;" text=" ">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_chevron_left_50px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-      </Pane>
-   </children>
+                    </graphic>
+                </JFXButton>
+            </children>
+        </Pane>
+    </children>
 </StackPane>
