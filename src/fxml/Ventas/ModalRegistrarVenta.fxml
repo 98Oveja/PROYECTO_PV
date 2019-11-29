@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -40,103 +40,96 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="Labels_SaveVentas" text="Cliente" translateY="3.0">
+                        <Label prefHeight="32.0" prefWidth="68.0" styleClass="Labels_SaveVentas" text="Cliente" translateY="10.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField promptText="Selecciona o ingresa el nombre">
+                        <JFXTextField fx:id="cliente_text" alignment="CENTER" prefHeight="39.0" prefWidth="333.0" promptText="Selecciona o ingresa el nombre">
                            <styleClass>
+                              <String fx:value="TodolosInputs" />
                               <String fx:value="InputCleinte" />
-                              <String fx:value="TodolosInputs" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets left="2.0" />
+                              <Insets left="3.0" />
                            </HBox.margin>
-                        </TextField>
-                        <ComboBox prefWidth="150.0">
+                        </JFXTextField>
+                        <JFXComboBox fx:id="listadoClietes" prefHeight="39.0" prefWidth="243.0" promptText="Clientes" styleClass="ComboBox_Cleintes">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></JFXComboBox>
+                        <Label styleClass="Labels_SaveVentas" text="Nit" translateY="10.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="nit_txt" alignment="CENTER" promptText="898989-9">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
-                              <String fx:value="ComboBox_Cleintes" />
+                              <String fx:value="InputNit" />
                            </styleClass>
+                        </JFXTextField>
+                        <Label styleClass="Labels_SaveVentas" text="Teléfono" translateY="10.0">
                            <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin></ComboBox>
-                        <Label styleClass="Labels_SaveVentas" text="Fecha de Venta" translateY="3.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin></Label>
-                        <DatePicker editable="false" nodeOrientation="LEFT_TO_RIGHT" promptText="Fecha" style="-fx-background-color: #4d4f5c;">
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="telefono_txt" alignment="TOP_CENTER" prefHeight="39.0" prefWidth="230.0" promptText="89723478">
                            <styleClass>
+                              <String fx:value="InputTelefono" />
                               <String fx:value="TodolosInputs" />
-                              <String fx:value="InputFecha" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin></DatePicker>
+                        </JFXTextField>
                      </children>
                      <padding>
                         <Insets top="5.0" />
                      </padding></HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="99.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
-                        <TextField prefHeight="39.0" prefWidth="234.0" promptText="Ingresa o Selecciona">
+                        <Label prefHeight="32.0" prefWidth="98.0" styleClass="Labels_SaveVentas" text="Dirección" />
+                        <JFXTextField fx:id="direccion_txt" alignment="CENTER" prefHeight="39.0" prefWidth="221.0" promptText="Ciudad" styleClass="TodolosInputs" />
+                        <Label prefHeight="32.0" prefWidth="92.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
+                        <JFXTextField fx:id="producto_text" alignment="CENTER" prefHeight="39.0" prefWidth="269.0" promptText="Ingresa o selecciona">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputProductos" />
                            </styleClass>
+                        </JFXTextField>
+                        <JFXComboBox fx:id="listadoProductos" prefHeight="39.0" prefWidth="235.0" promptText="Productos" styleClass="ComboBox_Productos">
                            <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin></TextField>
-                        <ComboBox prefWidth="150.0">
-                           <styleClass>
-                              <String fx:value="TodolosInputs" />
-                              <String fx:value="ComboBox_Productos" />
-                           </styleClass>
-                           <HBox.margin>
-                              <Insets left="4.0" />
-                           </HBox.margin></ComboBox>
+                              <Insets left="3.0" />
+                           </HBox.margin></JFXComboBox>
                         <Label prefHeight="32.0" prefWidth="95.0" styleClass="Labels_SaveVentas" text="Cantidad" translateY="3.0">
                            <HBox.margin>
                               <Insets left="3.0" />
                            </HBox.margin></Label>
-                        <TextField prefHeight="41.0" prefWidth="119.0" promptText="#">
+                        <JFXTextField fx:id="cantidad_text" alignment="CENTER" prefHeight="39.0" prefWidth="73.0" promptText="#">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputCantidad" />
                            </styleClass>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></TextField>
-                        <Label prefHeight="32.0" prefWidth="122.0" styleClass="Labels_SaveVentas" text="Descripción" translateY="3.0">
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin></Label>
-                        <TextField prefHeight="41.0" prefWidth="216.0" promptText="Descripción de la venta">
-                           <styleClass>
-                              <String fx:value="TodolosInputs" />
-                              <String fx:value="InputDescripcion" />
-                           </styleClass></TextField>
+                        </JFXTextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="Labels_SaveVentas" text="Descuento %" translateY="3.0">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <TextField promptText="Descuento por Producto">
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin>
+                        <Label prefHeight="32.0" prefWidth="134.0" styleClass="Labels_SaveVentas" text="Descuento %" />
+                        <JFXTextField fx:id="descuento_text" alignment="CENTER" prefHeight="43.0" prefWidth="118.0" promptText="Por producto">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescuento" />
                            </styleClass>
-                        </TextField>
-                        <Button mnemonicParsing="false" styleClass="Btn_ShopingAdd">
+                        </JFXTextField>
+                        <Label prefHeight="32.0" prefWidth="119.0" styleClass="Labels_SaveVentas" text="Descripción" />
+                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
+                           <styleClass>
+                              <String fx:value="TodolosInputs" />
+                              <String fx:value="InputDescripcion" />
+                           </styleClass>
+                        </JFXTextField>
+                        <Label prefHeight="32.0" prefWidth="155.0" styleClass="Labels_SaveVentas" text="Fecha de Venta" />
+                        <JFXTextField fx:id="txt_fechaVenta" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="210.0" promptText="Fecha de compra" styleClass="TodolosInputs" />
+                        <Button mnemonicParsing="false" onAction="#btn_ShopingCar" styleClass="Btn_ShopingAdd">
                            <graphic>
                               <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateY="3.0">
                                  <image>
@@ -174,7 +167,7 @@
                   <TextField editable="false" layoutX="1014.0" layoutY="455.0" prefHeight="25.0" prefWidth="54.0" promptText="000.00" styleClass="campoDeTextoTotal" />
                </children>
             </Pane>
-            <Button layoutY="-5.0" mnemonicParsing="false" styleClass="Btn_Modal_Vender" text="Vender" />
+            <Button fx:id="btnVenderTodo" layoutY="-5.0" mnemonicParsing="false" onAction="#GuardarVentaEnDB" styleClass="Btn_Modal_Vender" text="Vender" />
          </children>
       </Pane>
    </children>

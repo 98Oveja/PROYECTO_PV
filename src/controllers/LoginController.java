@@ -47,9 +47,10 @@ public class LoginController implements Initializable {
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-
+    ConnectionUtil connectionUtil = new ConnectionUtil();
     public LoginController() {
-        con = ConnectionUtil.conDB();
+       // con.conDB();
+       con = connectionUtil.getConnection();
     }
 
     @FXML

@@ -45,7 +45,8 @@ public class ForgotPassController {
     public JFXButton btnForgot;
     public Label lblErrors;
     public ForgotPassController(){
-        con = ConnectionUtil.conDB();
+//        con = ConnectionUtil.conDB();
+        ConnectionUtil con4 = new ConnectionUtil();
     }
 
     public void handleButtonActionKey(KeyEvent event) throws IOException {

@@ -32,14 +32,6 @@
                                 <Image url="@../images/search.png" />
                             </image>
                         </ImageView>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1105.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/messaging.png" />
-                            </image>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                        </ImageView>
                   <TextField layoutX="38.0" layoutY="21.0" prefHeight="33.0" prefWidth="580.0" promptText="Busca algo aquí..." styleClass="text-fieldX" stylesheets="@../css/main.css" />
                   <Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
                   <Label layoutX="1180.0" layoutY="28.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c">
@@ -151,6 +143,6 @@
                 </Pane>
             </children>
         </Pane>
-      <StackPane  fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
+      <StackPane fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
     </children>
 </StackPane>
