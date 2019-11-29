@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.employees.EmpleadosController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="paneDeleteEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.EmpleadosController">
+   <children>
+      <JFXButton fx:id="OkModalDel" layoutY="161.0" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #43425D;" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Confirmar" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="CancelDeleteModal" layoutX="131.0" layoutY="161.0" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #3B86FF;" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="99.0" layoutY="13.0" prefHeight="30.0" prefWidth="66.0" text="Alerta" textFill="#4d4f5c">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="56.0" prefHeight="66.0" prefWidth="218.0" text="Estas seguro que deseas eliminar el Empleado de tú sistema?" textFill="#43425cc0" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="27.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px_1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="CloseDeleteModal" fitHeight="150.0" fitWidth="16.0" layoutX="222.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/icon_close.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
 </AnchorPane>
