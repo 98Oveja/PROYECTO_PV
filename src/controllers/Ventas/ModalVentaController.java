@@ -164,8 +164,8 @@ public class ModalVentaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mostrarFecha();
-        //cargarClientes();
-        //cargarProductos();
+        cargarClientes();
+        cargarProductos();
     }
 
     public void btn_ShopingCar(ActionEvent actionEvent) {

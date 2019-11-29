@@ -8,9 +8,9 @@ import java.sql.SQLException;
 public class ConnectionUtil {
     public static String driver = "com.mysql.jdbc.Driver";
     public static String dataBase = "PuntoDeVenta";
-    public static String host = "127.0.0.1:3307";
-    public static String user = "Ronaldo";
-    public static String password = "Datos18";
+    public static String host = "localhost";
+    public static String user = "admin_x";
+    public static String password = "123a";
     public static String url = "jdbc:mysql://"+host+"/"+dataBase;
     private static Connection conn;
     //Constructor

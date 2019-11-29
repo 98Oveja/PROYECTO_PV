@@ -89,7 +89,7 @@ Método: Puede ser un procedimiento o una función, la diferencia es que le pert
         ArrayList<String> list = new ArrayList<String>();
         try {
             conn = con3.getConnection();
-            String query = "SELECT PERSONAS.PRIMER_NOMBRE, PERSONAS.PRIMER_APELLIDO, CLIENTES.NIT from (personas inner join clientes on personas.ID_PERSONA = clientes.ID_PERSONA);";
+            String query = "SELECT PERSONAS.PRIMER_NOMBRE, PERSONAS.PRIMER_APELLIDO, CLIENTES.NIT from (PERSONAS inner join CLIENTES on PERSONAS.ID_PERSONA = CLIENTES.ID_PERSONA);";
             Statement sql = conn.createStatement();
             ResultSet resultSet = sql.executeQuery(query);
             if (resultSet !=null){
@@ -112,12 +112,12 @@ Método: Puede ser un procedimiento o una función, la diferencia es que le pert
         ArrayList<String> listaProd = new ArrayList<String>();
         try {
             conn = con3.getConnection();
-            String query = "SELECT productos.NOMBRE, productos.PRECIO_VENTA, productos.CANTIDAD from  productos;";
+            String query = "SELECT PRODUCTOS.NOMBRE, PRODUCTOS.PRECIO_VENTA, PRODUCTOS.CANTIDAD from  PRODUCTOS;";
             Statement sql = conn.createStatement();
             ResultSet resultSet = sql.executeQuery(query);
             if (resultSet !=null){
                 while (resultSet.next()){
-                    String nombre_prod = resultSet.getString("productos.NOMBRE");
+                    String nombre_prod = resultSet.getString("PRODUCTOS.NOMBRE");
                     Double precio_prod = Double.parseDouble(resultSet.getString("PRECIO_VENTA"));
                     int cantidad_prod = Integer.parseInt(resultSet.getString("CANTIDAD"));
                     listaProd.add(nombre_prod);
