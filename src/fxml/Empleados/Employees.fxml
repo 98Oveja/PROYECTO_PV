@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<StackPane fx:controller="controllers.employees.EmployeesController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.EmployeesController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
@@ -71,7 +64,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="20.0" onMouseClicked="#pressedAddModal" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/icons8_create_50px_1.png" />
                            </image>
@@ -82,7 +75,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="20.0" onMouseClicked="#DeleteEmploy" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/icons8_delete_50px_2.png" />
                            </image>
@@ -546,7 +539,7 @@
                   <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
                </children>
             </Pane>
-            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="44.0" onMouseClicked="#pressedAddModal" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/icons8_add_50px.png" />
                </image>

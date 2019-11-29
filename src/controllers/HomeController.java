@@ -111,11 +111,11 @@ public class HomeController implements Initializable {
     }
 
     public void handleHome(ActionEvent mouseEvent) throws IOException {
-        if(mouseEvent.getSource() == btninicio){
+        //if(mouseEvent.getSource() == btninicio){
             setVista("/fxml/Empleados/menu.fxml");
             avalibleLabel(0);
             avalibleButton(0);
-        }
+       // }
     }
 
     public void handleEst(ActionEvent mouseEvent) throws IOException {
