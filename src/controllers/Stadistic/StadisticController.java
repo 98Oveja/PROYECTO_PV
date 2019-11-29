@@ -5,9 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
+import javax.swing.text.html.StyleSheet;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +31,7 @@ public class StadisticController implements Initializable {
     public LineChart mainChart;
     public Label lblPane;
     public JFXComboBox cbxTime;
+    public ImageView imgStatusMont;
     XYChart.Series series1 = new XYChart.Series();
     XYChart.Series series2 = new XYChart.Series();
     XYChart.Series series3 = new XYChart.Series();
@@ -63,10 +67,8 @@ public class StadisticController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setdata();
-        chartDay.getData().setAll(series1);
-        chartWek.getData().setAll(series2);
-        chartMont.getData().setAll(series3);
+        setstatusPaneDay();
+
     }
 
 
@@ -122,5 +124,53 @@ public class StadisticController implements Initializable {
         chartDay.getData().setAll(series2);
         chartWek.getData().setAll(series2);
         chartMont.getData().setAll(series3);
+    }
+    private Image image = null;
+    private double setArrow( boolean status){
+        if(!status){
+            image = new Image("/images/arrowred.png");
+            return 180;
+        }else {
+            image = new Image("/images/arrowgreen.png");
+            return 0;
+        }
+    }
+    private void setStatusLabel(String data, String steam, boolean color, Label labelData, Label labelSteam, ImageView imgView){
+        if(!color){
+            labelData.setText(data);
+
+            imgView.setRotate(setArrow(color));
+            imgView.setImage(image);
+
+            labelSteam.setText(steam);
+            labelSteam.setTextFill(Color.valueOf("#ff4141"));
+        }else {
+            labelData.setText(data);
+
+            imgView.setRotate(setArrow(color));
+            imgView.setImage(image);
+
+            labelSteam.setText(steam);
+            labelSteam.setTextFill(Color.valueOf("#3cc480"));
+        }
+    }
+    private void setstatusPaneDay(){
+
+        boolean ganancias =  false;
+        if(!ganancias) {
+            setStatusLabel("456K","%12.9",true,lblStatusDay,lblDStatus,imgStatusDay);
+        }else{
+
+        }
+    }
+    private void setstatusPaneWeek(XYChart.Series series){
+        //this.imgStatusWek;
+        //this.lblWStatus;
+        //this.lblStatusWek;
+    }
+    private void setstatusPaneMont(XYChart.Series series){
+        //this.imgStatusMont;
+        //this.lblMStatus;
+        //this.lblStatusMont
     }
 }
