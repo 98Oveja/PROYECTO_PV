@@ -98,7 +98,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" onMousePressed="#displayImage" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;" />
+            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;" />
             <Pane fx:id="CardDescripNew" layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
@@ -144,10 +144,10 @@
                   <Image url="@../../images/producto_nuevo.png" />
                </image>
             </ImageView>
-            <RadioButton layoutX="478.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" />
-            <RadioButton layoutX="554.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" />
-            <RadioButton layoutX="503.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" />
-            <RadioButton layoutX="527.0" layoutY="349.0" mnemonicParsing="false" onAction="#displayImage" style="-fx-background-color: white;" />
+            <RadioButton layoutX="478.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="554.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="503.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="527.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
          </children></Pane>
    </children>
 </StackPane>
