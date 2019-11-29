@@ -9,33 +9,31 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
-import utils.ConnectionUtil;
-
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-
 public class ModalVentaController implements Initializable {
     //    Model para las ventas
-
     Ventas ventas = new Ventas();
     @FXML
     AnchorPane panelContenedor;
-    @FXML
-    DatePicker calendarioIn;
     @FXML
     Button btnCerrarModal;
     @FXML
     private JFXTextField cliente_text;
     @FXML
     private JFXComboBox<String> listadoClietes;
+    @FXML
+    private JFXTextField nit_txt;
+    @FXML
+    private JFXTextField telefono_txt;
+    @FXML
+    private JFXTextField direccion_txt;
     @FXML
     private JFXTextField producto_text;
     @FXML
@@ -65,31 +63,7 @@ public class ModalVentaController implements Initializable {
 
     }
 
-
-    public void calendaerioUpdate(ActionEvent actionEvent) {
-        String cliente = cliente_text.getText();
-        String fecha = calendarioIn.getValue().toString();
-        String producto = producto_text.getText();
-        int cantidad = Integer.parseInt(cantidad_text.getText());
-        String descripcion = descripcion_text.getText();
-        float descuento = Float.parseFloat(descuento_text.getText());
-
-    }
-
-
-
-
-
-
-
-
-
     public void GuardarVentaEnDB(ActionEvent actionEvent) {
-//        validando los campos
-        //mostrarFecha();
-        String cliente = cliente_text.getText();
-        vent.getNombreEmpleadoById(cliente);
-
     }
 
 
@@ -121,7 +95,68 @@ public class ModalVentaController implements Initializable {
         itemsProd.addAll(arrayProductos);
         listadoProductos.setItems(itemsProd);
     }
+    public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
 
+
+
+    public void verificarTodoLosInputs(){
+        String Cliente = cliente_text.getText();
+        String nit = nit_txt.getText();
+        String telefono = telefono_txt.getText();
+        String direccion = direccion_txt.getText();
+        String productos = producto_text.getText();
+        String cantidad_str = cantidad_text.getText();
+        String descripcion = descripcion_text.getText();
+        String descuento = descuento_text.getText();
+        if (validarCampos(Cliente)==false){
+            cliente_text.setText("INGRESA O SELECCIONA UN NOMBRE");
+            cliente_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(nit)==false){
+            nit_txt.setText("C/F");
+            nit_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(telefono)==false){
+            telefono_txt.setText("No Phone");
+            telefono_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(direccion)==false){
+            direccion_txt.setText("Ciudad");
+            direccion_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(productos)==false){
+            producto_text.setText("SELECCIONA UN PRODUCTO");
+            producto_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(cantidad_str)==false){
+            cantidad_text.setText("??");
+            cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }else {
+            Double cantidad_dbl = Double.parseDouble(cantidad_str);
+            if (cantidad_dbl<=0){
+                cantidad_text.setText("No. <= 0");
+                cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            }
+        }
+        if (validarCampos(descripcion)==false){
+            descripcion_text.setText("Decripcion del Producto");
+            descripcion_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }
+        if (validarCampos(descuento)==false){
+            descuento_text.setText("00");
+            descuento_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+        }else{
+            Double descuento_dbl = Double.parseDouble(descuento);
+            double multi = descuento_dbl* 3;
+            System.out.println(multi);
+        }
+
+
+
+
+
+
+    }
 
 
 
@@ -130,5 +165,9 @@ public class ModalVentaController implements Initializable {
         mostrarFecha();
         cargarClientes();
         cargarProductos();
+    }
+
+    public void btn_ShopingCar(ActionEvent actionEvent) {
+        verificarTodoLosInputs();
     }
 }
