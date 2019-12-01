@@ -132,11 +132,13 @@ public class ModalVentaController implements Initializable {
             cantidad_text.setText("??");
             cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
         }else {
-            Double cantidad_dbl = Double.parseDouble(cantidad_str);
-            if (cantidad_dbl<=0){
-                cantidad_text.setText("No. <= 0");
-                cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
-            }
+
+//            Double cantidad_dbl = Double.parseDouble(cantidad_str);
+
+//            if (cantidad_dbl<=0){
+//                cantidad_text.setText("No. <= 0");
+//                cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+//            }
         }
         if (validarCampos(descripcion)==false){
             descripcion_text.setText("Decripcion del Producto");
@@ -165,6 +167,7 @@ public class ModalVentaController implements Initializable {
         mostrarFecha();
         cargarClientes();
         cargarProductos();
+        vent.validarSoloLetras(descripcion_text);
     }
 
     public void btn_ShopingCar(ActionEvent actionEvent) {
