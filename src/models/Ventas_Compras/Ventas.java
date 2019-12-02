@@ -1,11 +1,8 @@
 package models.Ventas_Compras;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.ProgressBar;
 import utils.ConnectionUtil;
-
-import java.awt.event.KeyAdapter;
+import javafx.scene.control.TextField;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -138,12 +135,24 @@ public class Ventas {
 
     //METODOS PARA VALIDAR SOLO LETRAS
     public void validarSoloLetras(JFXTextField campoDeTexto) {
-        campoDeTexto.setOnKeyPressed(event -> {
+        campoDeTexto.setOnKeyTyped(event -> {
             char c = event.getCharacter().charAt(0);
-            if (!Character.isDigit(c) || !Character.isSpaceChar(c)){
+            if (!Character.isDigit(c)){
                 event.consume();
-                System.out.println("Caracter: "+c);
+//                campoDeTexto.clear();
+                System.out.println("Solo letras y espacios ="+c);
+
             }
         });
+    }
+
+    public void validarSoloNumeros(TextField campo){
+        campo.setOnKeyTyped(event -> {
+            char c = event.getCharacter().charAt(0);
+            if (!Character.isLetter(c)){
+                event.consume();
+            }
+        });
+
     }
 }

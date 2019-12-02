@@ -121,7 +121,7 @@
                            </styleClass>
                         </JFXTextField>
                         <Label prefHeight="32.0" prefWidth="119.0" styleClass="Labels_SaveVentas" text="Descripción" />
-                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
+                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" onKeyTyped="#validarCampos" prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescripcion" />
@@ -164,7 +164,7 @@
                     </columns>
                   </TableView>
                   <Label layoutX="952.0" layoutY="459.0" styleClass="labelTotal_EndTable" text="Total Q." />
-                  <TextField editable="false" layoutX="1014.0" layoutY="455.0" prefHeight="25.0" prefWidth="54.0" promptText="000.00" styleClass="campoDeTextoTotal" />
+                  <TextField fx:id="total_txt" layoutX="1014.0" layoutY="455.0" prefHeight="25.0" prefWidth="54.0" promptText="000.00" styleClass="campoDeTextoTotal" />
                </children>
             </Pane>
             <Button fx:id="btnVenderTodo" layoutY="-5.0" mnemonicParsing="false" onAction="#GuardarVentaEnDB" styleClass="Btn_Modal_Vender" text="Vender" />

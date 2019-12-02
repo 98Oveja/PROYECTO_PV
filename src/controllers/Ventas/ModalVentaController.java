@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
@@ -48,6 +50,9 @@ public class ModalVentaController implements Initializable {
     private Button btnVenderTodo;
     @FXML
     public JFXTextField txt_fechaVenta;
+    @FXML
+    private TextField total_txt;
+
 
     Ventas vent = new Ventas();
     public void CloseModal(ActionEvent actionEvent) {
@@ -67,9 +72,8 @@ public class ModalVentaController implements Initializable {
     }
 
 
-
-//    mostrar la fecha y la hora en un label
-    public void mostrarFecha(){
+/*    mostrar la fecha y la hora en un label*/
+public void mostrarFecha(){
         Date date = new Date();
         long miliSec = date.getTime();
 //        java.sql.Date diaSql = new java.sql.Date(miliSec);
@@ -96,9 +100,6 @@ public class ModalVentaController implements Initializable {
         listadoProductos.setItems(itemsProd);
     }
     public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
-
-
-
     public void verificarTodoLosInputs(){
         String Cliente = cliente_text.getText();
         String nit = nit_txt.getText();
@@ -159,18 +160,34 @@ public class ModalVentaController implements Initializable {
 
 
     }
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mostrarFecha();
         cargarClientes();
         cargarProductos();
-        vent.validarSoloLetras(descripcion_text);
+        vent.validarSoloLetras(cliente_text);
+        vent.validarSoloNumeros(total_txt);
+
     }
+
+
+
+
+
 
     public void btn_ShopingCar(ActionEvent actionEvent) {
         verificarTodoLosInputs();
+    }
+
+    public void validarCampos(KeyEvent event) {
+        try {
+            char c = event.getCharacter().charAt(0);
+            if (Character.isDigit(c)){
+                event.consume();
+                System.out.println("Es digito : "+c);
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
