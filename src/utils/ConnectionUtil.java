@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-    public static String driver = "com.mysql.jdbc.Driver";
+    public static String driver = "com.mysql.cj.jdbc.Driver";
     public static String dataBase = "punto_de_venta";
     public static String host = "db4free.net";
     public static String user = "admin_e";
@@ -23,6 +23,7 @@ public class ConnectionUtil {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Internal Error: "+e.getMessage());
         }
+        //jdbc:mysql://db4free.net:3306/punto_de_venta
     }
 
 

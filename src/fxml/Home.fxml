@@ -27,13 +27,16 @@
                                 <Image url="@../images/male_user_.png" />
                             </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="18.0" layoutX="20.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/search.png" />
-                            </image>
-                        </ImageView>
-                  <TextField layoutX="38.0" layoutY="21.0" prefHeight="33.0" prefWidth="580.0" promptText="Busca algo aquí..." styleClass="text-fieldX" stylesheets="@../css/main.css" />
-                  <Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
+                        <Pane layoutX="7.0" layoutY="11.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/search.png" />
+                                    </image>
+                                </ImageView>
+                                <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                            </children>
+                        </Pane><Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
                   <Label layoutX="1180.0" layoutY="28.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c">
                      <rotationAxis>
                         <Point3D />
