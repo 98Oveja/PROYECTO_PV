@@ -117,6 +117,7 @@
     -fx-pref-width: 1195px;
     -fx-pref-height: 849px;
     -fx-background-color:#43425D;
+/*    */
 }
 .PanelHeaderModal_insert{
     -fx-pref-width: 1195px;
@@ -164,6 +165,19 @@
     -fx-text-align: left;
     -fx-text-fill: #e9e9f0;
 }
+/*.Label_Nit{*/
+/*    -fx-font-size: 22px;*/
+/*    -fx-line-height: 13px;*/
+/*    -fx-text-align: left;*/
+/*    -fx-text-fill: #e9e9f0;*/
+/*}*/
+/*.Label_telefono{*/
+/*    -fx-font-size: 22px;*/
+/*    -fx-line-height: 13px;*/
+/*    -fx-text-align: left;*/
+/*    -fx-text-fill: #e9e9f0;*/
+/*}*/
+
 /*ENTRADE DE TEXTOS*/
 .TodolosInputs{
     -fx-background-color: transparent;
@@ -172,30 +186,65 @@
     -fx-font-size: 18px;
     -fx-text-align: left;
     -fx-text-fill: #FFF;
-    -fx-border-color: rgba(255, 255, 255, 0.1);
-    -fx-border-radius: 8px;
+    -fx-highlight-fill: derive(-fx-control-inner-background,100%);
+    /*-fx-highlight-text-fill: -fx-text-inner-color;*/
+    -fx-prompt-text-fill: rgba(231, 238, 255, 0.31);
+    /*-fx-text-fill: -fx-text-inner-color;*/
+    /*derive(-fx-control-inner-background,-30%);*/
+    /*-fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),*/
+    /*linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);*/
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3, 2;
+    -jfx-focus-color: #ffffff;
+    -jfx-Unfocus-color: rgba(255, 255, 255, 0.32);
 }
+
+/*
+-fx-text-fill: -fx-text-inner-color;
+-fx-highlight-fill: derive(-fx-control-inner-background,-20%);
+-fx-highlight-text-fill: -fx-text-inner-color;
+-fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+-fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
+linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+-fx-background-insets: 0, 1;
+-fx-background-radius: 3, 2;
+-fx-cursor: text;
+-fx-padding: 0.333333em 0.583em 0.333333em 0.583em;
+*/
+
+
+
 /*Efectos para los inputs*/
 .TodolosInputs:hover{
-    -fx-border-color: #77b2ff;
-    -fx-border-width: 3px;
+    -jfx-focus-color: rgba(16, 98, 229, 0.58);
 }
-.TodolosInputs:focused{
-    -fx-border-color: rgba(255, 15, 0, 0.50);
-    -fx-border-width: 2px;
-}
-
 
 .InputCleinte{
-    -fx-pref-width: 408px;
+    -fx-pref-width: 373px;
     -fx-pref-height: 29.81px;
 }
-.InputFecha{
-    -fx-pref-width: 250px;
-    -fx-pref-height: 29.81px;
-}
+/*.InputFecha{*/
+/*    -fx-pref-width: 300px;*/
+/*    -fx-pref-height: 29.81px;*/
+/*    !*-jfx-text-fill: -fx-accent;*!*/
+/*    !*-jfx-prompt-text-fill: rgba(231, 238, 255, 0.80);*!*/
+
+/*    -fx-highlight-fill: red;*/
+/*    -fx-highlight-text-fill: white;*/
+/*    !*-fx-background-color:-fx-focus-color,*!*/
+/*    !*                     -fx-control-inner-background,*!*/
+/*    !*                     -fx-faint-focus-color,*!*/
+/*    !*                      linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);*!*/
+/*    -fx-background-insets: -0.2, 1, -1.4, 3;*/
+/*    -fx-background-radius: 3, 2, 4, 0;*/
+/*    !*-fx-prompt-text-fill: #fff;*!*/
+/*    -fx-background-color: rgba(255, 255, 255, 0.49);*/
+/*}*/
+/*.InputFecha:hover{*/
+/*    -fx-background-color: rgba(255, 255, 255, 0.89);*/
+/*}*/
 .InputProductos{
-    -fx-pre-width: 220px;
+    -fx-pre-width: 274px;
     -fx-pre-height: 29.81px;
 }
 .InputCantidad{
@@ -203,12 +252,24 @@
     -fx-pre-height: 29.81px;
 }
 .InputDescripcion{
-    -fx-pre-width: 280px;
+    -fx-pre-width: 337px;
     -fx-pre-height: 29.81px;
 }
 .InputDescuento{
-    -fx-pre-width: 250px;
+    -fx-pre-width: 10px;
     -fx-pre-height: 29.81px;
+}
+.InputNit{
+    -fx-pref-width: 130px;
+    -fx-pref-height: 29.81px;
+}
+.InputTelefono{
+    -fx-pref-width: 141px;
+    -fx-pref-height: 29.81px;
+}
+.InputDireccion{
+    -fx-pref-width: 185px;
+    -fx-pref-height: 29.81px;
 }
 /*LABEL Y EDIT TEXT PARA CALCULAR EL TOTAL EN LA TABLA*/
 .labelTotal_EndTable{
@@ -235,25 +296,28 @@
 
 
 .ComboBox_Cleintes, .ComboBox_Productos{
-    -fx-width: 170px;
+    -fx-width: 235px;
     -fx-height: 29.81px;
-    -fx-background-color: transparent;
-    -fx-border-color: #fff;
+    -fx-background-color: #fff;
     -fx-font-family: "Source Sans Pro";
     -fx-font-weight: normal;
     -fx-font-size: 18px;
+    -fx-border-radius: 40px;
     -fx-text-align: left;
-    -fx-text-fill: #FFF;
+    -fx-text-fill: black;
+    -jfx-focus-color: #34e1ff;
+    -jfx-Unfocus-color: rgba(255, 255, 255, 0.32);
+    -fx-prompt-text-fill: rgb(0, 0, 0);
 }
 
 
 /*Efectos para cada input y los Combo box*/
 .ComboBox_Cleintes:hover, .ComboBox_Productos:hover {
-    -fx-border-color: #77b2ff;
+    -jfx-focus-color: rgba(16, 98, 229, 0.58);
 }
-.ComboBox_Cleintes:focused, .ComboBox_Productos:focused{
-    -fx-border-color: rgba(255, 15, 0, 0.80);
-}
+/*.ComboBox_Cleintes:focused, .ComboBox_Productos:focused{*/
+/*    -fx-border-color: rgba(255, 15, 0, 0.80);*/
+/*}*/
 
 
 /*BOTONES PARA EL MODAL DE INSERT*/
@@ -310,7 +374,7 @@
     -fx-font-size: 20px;
 }
 .Btn_Modal_Vender:pressed{
-    -fx-background-color: rgba(255, 15, 0, 0.75);
+    -fx-background-color: rgba(48, 80, 255, 0.52);
 }
 
 
@@ -323,7 +387,7 @@
 }
 .Btn_ShopingAdd:hover{
     -fx-background-color:#3c3b54;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 5px;
 }
 .Btn_ShopingAdd:pressed{
     -fx-background-color: rgba(163, 160, 251, 0.10);
