@@ -1,18 +1,8 @@
--- ------------------------------------
--- user: Ronaldo
--- port: 3306 
--- Host: 127.0.0.1
---
---
--- ------------------------------------
--- select version();
--- create database PuntoDeVenta;
--- use PuntoDeVenta;
 CREATE TABLE CATEGORIAS (
-  `ID_CATEGORIA` int(11) NOT NULL auto_increment,
-  `NOMBRE` varchar(20) NOT NULL,
-  `DESCRIPCION` varchar(50) NOT NULL,
-  constraint PK_Categoria primary key (ID_CATEGORIA)
+                            `ID_CATEGORIA` int(11) NOT NULL auto_increment,
+                            `NOMBRE` varchar(20) NOT NULL,
+                            `DESCRIPCION` varchar(50) NOT NULL,
+                            constraint PK_Categoria primary key (ID_CATEGORIA)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 -- drop table Categorias; -- select * from Categorias;
 -- Volcado de datos para la tabla `CATEGORIAS`
@@ -28,15 +18,15 @@ INSERT INTO CATEGORIAS(`NOMBRE`, `DESCRIPCION`) VALUES
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `PERSONAS`
 CREATE TABLE `PERSONAS` (
-  `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT,
-  `PRIMER_NOMBRE` varchar(12) NOT NULL,
-  `SEGUNDO_NOMBRE` varchar(12) NOT NULL,
-  `PRIMER_APELLIDO` varchar(12) NOT NULL,
-  `SEGUNDO_APELLIDO` varchar(12) NOT NULL,
-  `DIRECCION` varchar(40) DEFAULT "CIUDAD",
-  `TELEFONO` varchar(10) DEFAULT "NO PHONE",
-  `CORREO` varchar(20) DEFAULT "NO EMAIL",
-  CONSTRAINT PK_PERSONAS PRIMARY KEY (ID_PERSONA)
+                            `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT,
+                            `PRIMER_NOMBRE` varchar(12) NOT NULL,
+                            `SEGUNDO_NOMBRE` varchar(12) NOT NULL,
+                            `PRIMER_APELLIDO` varchar(12) NOT NULL,
+                            `SEGUNDO_APELLIDO` varchar(12) NOT NULL,
+                            `DIRECCION` varchar(40) DEFAULT "CIUDAD",
+                            `TELEFONO` varchar(10) DEFAULT "NO PHONE",
+                            `CORREO` varchar(20) DEFAULT "NO EMAIL",
+                            CONSTRAINT PK_PERSONAS PRIMARY KEY (ID_PERSONA)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 -- Volcado de datos para la tabla `PERSONAS`
 INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`) VALUES
@@ -62,7 +52,7 @@ INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `S
 ('Ana', 'Sofia', 'Porras', 'Vásquez', 'Totonicapan', '53232309', 'ana@gmail.com'),
 ('Elizabeth', 'Sofia', 'Garcia', 'Loarca', 'Quetzaltenango', '87324534', 'elizabeth@gmail.com');
 SELECT * FROM PERSONAS;
-insert INTO PERSONAS(`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`) 
+insert INTO PERSONAS(`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`)
 VALUES
 ('Luis', 'Fernando', 'Palomo', 'Kempez');
 delete from Personas where id_persona = 23;
@@ -72,11 +62,11 @@ delete from Personas where id_persona = 23;
 --
 
 CREATE TABLE CLIENTES (
-  `ID_CLIENTE` int(11) NOT NULL auto_increment,
-  `ID_PERSONA` int(11) NOT NULL,
-  `NIT` varchar(12) DEFAULT "C/F",
-  CONSTRAINT PK_CLIENTES primary key (ID_CLIENTE),
-  CONSTRAINT FK_CLIENTE_y_PERSONA FOREIGN KEY (ID_PERSONA) REFERENCES PERSONAS(ID_PERSONA)
+                          `ID_CLIENTE` int(11) NOT NULL auto_increment,
+                          `ID_PERSONA` int(11) NOT NULL,
+                          `NIT` varchar(12) DEFAULT "C/F",
+                          CONSTRAINT PK_CLIENTES primary key (ID_CLIENTE),
+                          CONSTRAINT FK_CLIENTE_y_PERSONA FOREIGN KEY (ID_PERSONA) REFERENCES PERSONAS(ID_PERSONA)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `CLIENTES`
@@ -102,15 +92,15 @@ select * from Clientes;
 --
 
 CREATE TABLE `EMPLEADOS` (
-  `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_PERSONA` int(11) NOT NULL,
-  `ESTADO` tinyint(1) DEFAULT 1,
-  `FECHA_CONTRATACION` datetime DEFAULT current_timestamp,
-  `FECHA_RETIRO` datetime DEFAULT NULL,
-  `CARGO` varchar(20) NOT NULL,
-  CONSTRAINT PK_EMPLEADO primary key (ID_EMPLEADO),
-  CONSTRAINT FK_EMPLEADO_Y_PERSONA FOREIGN KEY (ID_PERSONA) 
-  REFERENCES PERSONAS (ID_PERSONA)
+                             `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT,
+                             `ID_PERSONA` int(11) NOT NULL,
+                             `ESTADO` tinyint(1) DEFAULT 1,
+                             `FECHA_CONTRATACION` datetime DEFAULT current_timestamp,
+                             `FECHA_RETIRO` datetime DEFAULT NULL,
+                             `CARGO` varchar(20) NOT NULL,
+                             CONSTRAINT PK_EMPLEADO primary key (ID_EMPLEADO),
+                             CONSTRAINT FK_EMPLEADO_Y_PERSONA FOREIGN KEY (ID_PERSONA)
+                                 REFERENCES PERSONAS (ID_PERSONA)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -130,13 +120,13 @@ SELECT * FROM EMPLEADOS;
 --
 
 CREATE TABLE `PROVEEDORES` (
-  `ID_PROVEEDOR` int(11) NOT NULL auto_increment,
-  `ID_PERSONA` int(11) NOT NULL,
-  `ORG` varchar(50) default "Independiente",
-  `NO_CUENTA` varchar(30) default "No hay Datos",
-  CONSTRAINT PK_proveedores primary key (ID_PROVEEDOR),
-  CONSTRAINT FK_PROVEEDOR_Y_PERSONA FOREIGN KEY (ID_PERSONA) 
-  REFERENCES PERSONAS (ID_PERSONA)
+                               `ID_PROVEEDOR` int(11) NOT NULL auto_increment,
+                               `ID_PERSONA` int(11) NOT NULL,
+                               `ORG` varchar(50) default "Independiente",
+                               `NO_CUENTA` varchar(30) default "No hay Datos",
+                               CONSTRAINT PK_proveedores primary key (ID_PROVEEDOR),
+                               CONSTRAINT FK_PROVEEDOR_Y_PERSONA FOREIGN KEY (ID_PERSONA)
+                                   REFERENCES PERSONAS (ID_PERSONA)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -158,10 +148,10 @@ SELECT * FROM PROVEEDORES;
 --
 
 CREATE TABLE `COMPRAS` (
-  `ID_COMPRA` int(11) NOT NULL auto_increment,
-  `FECHA` datetime default current_timestamp,
-  `CANTIDAD` decimal(10,0) NOT NULL,
-  constraint PK_Compras primary key (id_compra)
+                           `ID_COMPRA` int(11) NOT NULL auto_increment,
+                           `FECHA` datetime default current_timestamp,
+                           `CANTIDAD` decimal(10,0) NOT NULL,
+                           constraint PK_Compras primary key (id_compra)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -174,7 +164,7 @@ INSERT INTO `COMPRAS` (`FECHA`, `CANTIDAD`) VALUES
 ('2019-11-17 12:30:55', '14'),
 ('2019-11-20 09:30:55', '10'),
 ('2019-11-22 17:30:55', '11');
-
+select * from COMPRAS;
 INSERT INTO `COMPRAS` (`CANTIDAD`) VALUES('10');
 select * from compras;
 -- --------------------------------------------------------
@@ -183,49 +173,49 @@ select * from compras;
 --
 
 CREATE TABLE `PRODUCTOS` (
-  `ID_PRODUCTO` int(11) NOT NULL auto_increment,
-  `ID_CATEGORIA` int(11) NOT NULL,
-  `ID_PROVEEDORES` int(11) NOT NULL,
-  `ID_COMPRA` int(11) NOT NULL,
-  `MARCA` varchar(20) default "Sin Marca",
-  `NOMBRE` varchar(20) NOT NULL,
-  `CANTIDAD` decimal(10,0) NOT NULL,
-  `PRECIO_COMPRA` double NOT NULL,
-  `PRECIO_VENTA` double NOT NULL,
-  `IMG` varchar(50) default "URL no Found",
-  `ESTADO` tinyint(1) default 1,
-  CONSTRAINT PK_Producto primary key (id_producto),
-  CONSTRAINT FK_Producto_Categoria FOREIGN KEY (id_categoria) 
-  REFERENCES categorias (id_categoria),
-  CONSTRAINT FK_Producto_Compra FOREIGN KEY (id_compra) 
-  REFERENCES compras (id_compras)
+                             `ID_PRODUCTO` int(11) NOT NULL auto_increment,
+                             `ID_CATEGORIA` int(11) NOT NULL,
+                             `ID_PROVEEDORES` int(11) NOT NULL,
+                             `ID_COMPRA` int(11) NOT NULL,
+                             `MARCA` varchar(40) default "Sin Marca",
+                             `NOMBRE` varchar(40) NOT NULL,
+                             `CANTIDAD` decimal(10,00) NOT NULL,
+                             `PRECIO_COMPRA` double NOT NULL,
+                             `PRECIO_VENTA` double NOT NULL,
+                             `IMG` varchar(150) default "URL no Found",
+                             `ESTADO` tinyint(1) default 1,
+                             CONSTRAINT PK_Producto primary key (id_producto),
+                             CONSTRAINT FK_Producto_Categoria FOREIGN KEY (id_categoria)
+                                 REFERENCES categorias (id_categoria),
+                             CONSTRAINT FK_Producto_Compra FOREIGN KEY (id_compra)
+                                 REFERENCES compras (id_compras)
 --   constraint FK_Producto_Proveedor foreign key (id_proveedores)
 -- references Proveedor (id_proveedor)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-alter table productos add constraint FK_Producto_Proveedor foreign key (id_proveedores)
-references Proveedor (id_proveedor);
-desc Productos;
+alter table PRODUCTOS add constraint FK_Producto_Proveedor foreign key (ID_PROVEEDORES)
+    references PROVEEDORES (ID_PROVEEDOR);
+desc PRODUCTOS;
 --
 -- Volcado de datos para la tabla `PRODUCTOS`
 --
 
 INSERT INTO `PRODUCTOS` (`ID_CATEGORIA`, `ID_PROVEEDORES`, `ID_COMPRA`, `MARCA`, `NOMBRE`, `CANTIDAD`, `PRECIO_COMPRA`, `PRECIO_VENTA`, `IMG`, `ESTADO`) VALUES
-(1, 3, 1, 'Marca x', 'martillo', '123', 11.24, 15.5, 'img/martillo.jpg', 1),
+(1, 3, 4, 'Marca x', 'martillo', '123', 11.24, 15.5, 'img/martillo.jpg', 1),
 (1, 1, 5, 'Marca x', 'martillo', '123', 11.24, 15.5, 'img/martillo.jpg', 1);
-select * from productos;
+select * from PRODUCTOS;
 -- Estructura de tabla para la tabla `DETALLE_VENTA`
 --
 
 CREATE TABLE `DETALLE_VENTA` (
-  `ID_DETALLE` int(11) NOT NULL auto_increment,
-  `ID_VENTA` int(11) NOT NULL,
-  `ID_PRODUCTO` int(11) NOT NULL,
-  `DESCRIPCION` varchar(20) NOT NULL,
-  `CANTIDAD` int NOT NULL,
-  `SUBTOTAL` double NOT NULL,
-  CONSTRAINT PK_DETALLEVENTA PRIMARY KEY (ID_DETALLE),
-  CONSTRAINT FK_Detalle_venta foreign key (id_venta) references Ventas(id_venta),
-  CONSTRAINT FK_Detalle_producto foreign key (id_producto) references productos(id_producto)
+                                 `ID_DETALLE` int(11) NOT NULL auto_increment,
+                                 `ID_VENTA` int(11) NOT NULL,
+                                 `ID_PRODUCTO` int(11) NOT NULL,
+                                 `DESCRIPCION` varchar(20) NOT NULL,
+                                 `CANTIDAD` int NOT NULL,
+                                 `SUBTOTAL` double NOT NULL,
+                                 CONSTRAINT PK_DETALLEVENTA PRIMARY KEY (ID_DETALLE),
+                                 CONSTRAINT FK_Detalle_venta foreign key (id_venta) references Ventas(id_venta),
+                                 CONSTRAINT FK_Detalle_producto foreign key (id_producto) references productos(id_producto)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 select * from Detalle_Venta;
 
@@ -254,17 +244,18 @@ select * from Detalle_Venta;
 --
 -- Estructura de tabla para la tabla `USUARIOS`
 --
-
+drop table USUARIOS;
 CREATE TABLE `USUARIOS` (
-  `ID_USUARIO` int(11) NOT NULL auto_increment,
-  `NOMBRE` varchar(30) NOT NULL,
-  `APELLIDOS` varchar(30) NOT NULL,
-  `CONTRASENA` varchar(15) NOT NULL,
-  `ESTADO` tinyint(1) default 1,
-  `CARGO` varchar(20) NOT NULL,
-  constraint PK_usuraio primary key (id_usuario)
+                            `ID_USUARIO` int(11) NOT NULL auto_increment,
+                            `EMAIL` varchar(30) NOT NULL,
+                            `NOMBRE` varchar(30) NOT NULL,
+                            `APELLIDOS` varchar(30) NOT NULL,
+                            `CONTRASENA` varchar(15) NOT NULL,
+                            `ESTADO` tinyint(1) default 1,
+                            `CARGO` varchar(20) NOT NULL,
+                            constraint PK_usuraio primary key (id_usuario)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-select * from Usuarios;
+select * from USUARIOS;
 -- --------------------------------------------------------
 
 --
@@ -272,12 +263,12 @@ select * from Usuarios;
 --
 
 CREATE TABLE `VENTAS` (
-  `ID_VENTA` int(11) NOT NULL auto_increment,
-  `ID_CLIENTE` int(11) NOT NULL,
-  `ID_EMPLEADO` int(11) NOT NULL,
-  `TOTAL` double NOT NULL,
-  `FECHA` datetime NOT NULL default current_timestamp,
-  constraint PK_ventas primary key (id_venta)
+                          `ID_VENTA` int(11) NOT NULL auto_increment,
+                          `ID_CLIENTE` int(11) NOT NULL,
+                          `ID_EMPLEADO` int(11) NOT NULL,
+                          `TOTAL` double NOT NULL,
+                          `FECHA` datetime NOT NULL default current_timestamp,
+                          constraint PK_ventas primary key (id_venta)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 select * from ventas;
 desc ventas;
@@ -367,3 +358,10 @@ SELECT Host, User FROM mysql.user;
 -- /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 -- /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 -- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+insert into USUARIOS value (1,'carls10vasquez@gmail.com','carlos','vasquez','123a',true,'admin');
+insert into USUARIOS value (2,'wilian122397@gmail.com','wilian','soch','12345',true,'admin');
+insert into USUARIOS value (3,'ronysic13@gmail.com','ronald','sic','12345',true,'admin');
+select * from USUARIOS;
+
+SELECT * FROM USUARIOS Where EMAIL = 'carls10vasquez@gmail.com' and CONTRASENA = '123a';

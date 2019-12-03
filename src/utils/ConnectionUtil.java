@@ -7,10 +7,10 @@ import java.sql.SQLException;
 
 public class ConnectionUtil {
     public static String driver = "com.mysql.jdbc.Driver";
-    public static String dataBase = "PuntoDeVenta";
-    public static String host = "localhost";
-    public static String user = "admin_x";
-    public static String password = "123a";
+    public static String dataBase = "punto_de_venta";
+    public static String host = "db4free.net";
+    public static String user = "admin_e";
+    public static String password = "12345678lol";
     public static String url = "jdbc:mysql://"+host+"/"+dataBase;
     private static Connection conn;
     //Constructor

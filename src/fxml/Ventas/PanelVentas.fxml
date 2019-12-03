@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.validation.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -69,6 +70,7 @@
                                 </Button>
                             </children></VBox>
                         <Line endX="350.0" layoutY="65.0" opacity="0.2" startX="20.0" />
+                  <IntegerValidator />
                     </children>
                 </Pane>
             </children>
