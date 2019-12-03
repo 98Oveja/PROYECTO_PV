@@ -114,9 +114,9 @@ public class newproducto implements Initializable {
             if (cantidad.equals(0)){
                 estado=0;
             }
-            query= "INSERT INTO PRODUCTOS (ID_PRODUCTO,ID_CATEGORIAS,ID_PROVEEDORES,ID_COMPRA,MARCA,NOMBRE," +
+            query= "INSERT INTO PRODUCTOS (ID_CATEGORIAS,ID_PROVEEDORES,ID_COMPRA,MARCA,NOMBRE," +
                     "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO, CODIGO)" +
-                    "VALUES (14," + idCateg +"," + idProv +"," + 0 +"," +  "\'" + marca + "\'" + "," + "\'" + name + "\'" + "," + cantidad +","
+                    "VALUES (" + idCateg +"," + idProv +"," + 0 +"," +  "\'" + marca + "\'" + "," + "\'" + name + "\'" + "," + cantidad +","
                     + compra +"," + venta +"," + "\'" + direccion + "\'" +"," + estado +"," + codigo + ");";
             System.out.println(query);
             conexion = conn.getConnection();
@@ -144,7 +144,7 @@ public class newproducto implements Initializable {
     {
         ArrayList<String> list = new ArrayList<String>();
         try {
-            String Query = "SELECT (ID_CATEGORIA),(NOMBRE) FROM CATEGORIAS";
+            String Query = "SELECT (NOMBRE) FROM CATEGORIAS";
             conexion = conn.getConnection();
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -166,7 +166,7 @@ public class newproducto implements Initializable {
     {
         ArrayList<String> list = new ArrayList<String>();
         try {
-            String Query = "SELECT (ID_PROVEEDOR),(ORG) FROM PROVEEDORES";
+            String Query = "SELECT (ORG) FROM PROVEEDORES";
             conexion = conn.getConnection();
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);

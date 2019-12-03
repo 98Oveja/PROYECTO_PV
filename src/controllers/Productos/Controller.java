@@ -28,7 +28,7 @@ public class Controller {
         primaryStage.setScene(new Scene(root, 1340, 890));
         primaryStage.show();
     }*/
-
+/*
     public void OpenModal_InsertSale(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/../src/fxml/Productos/nuevoproducto.fxml"));
@@ -44,24 +44,23 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+*/
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
-        final Stage primaryStage = new Stage();
-        final Stage dialog = new Stage();
-
-
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initStyle(StageStyle.UNDECORATED);
-        dialog.initOwner(primaryStage);
-        dialog.setX(300);
-        dialog.setY(100);
-
-        Scene dialogScene = null;
-        dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/sample/nuevoproducto.fxml")));
-
-        dialog.setScene(dialogScene);
-        dialog.show();
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Productos/nuevoproducto.fxml"));
+        Parent root = loader.load();
+//      ModalVentaController controller = loader.getController();
+        newproducto controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
 /*    public void click(ActionEvent actionEvent)

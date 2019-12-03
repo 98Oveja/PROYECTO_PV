@@ -71,14 +71,16 @@
             <Font name="SansSerif Regular" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="116.0" layoutY="471.0" mnemonicParsing="false" onAction="#Search" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3B86FF; -fx-border-radius: 15px;" text="Agregar Imagen" textFill="WHITE" />
+      <Button layoutX="116.0" layoutY="471.0" mnemonicParsing="false" onAction="#Search" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3B86FF; -fx-border-radius: 15px;" styleClass="boton" text="Agregar Imagen" textFill="WHITE" />
       <Button layoutX="351.0" layoutY="593.0" mnemonicParsing="false" onAction="#agregarProducto" prefHeight="50.0" prefWidth="185.0" style="-fx-background-color: #1062E5;" text="Guardar Producto" textFill="WHITE" />
       <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="292.0" layoutX="305.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
-         </ImageView>
+         <image>
+            <Image url="file:/C:/Users/Wilian/Documents/Icons/Search%20Icon.png" />
+         </image></ImageView>
       <Button fx:id="close" layoutX="786.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: transparent;" />
       <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="790.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="" />
+            <Image url="@../../../../../Icons/icon_circle-remove.png" />
          </image>
       </ImageView>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
