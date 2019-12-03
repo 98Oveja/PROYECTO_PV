@@ -1,23 +1,18 @@
 package controllers.employees;
 
 import com.mysql.jdbc.Connection;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
-import java.security.Principal;
 import java.sql.DriverManager;
 
 public class EmployeesController {
-public Connection connection;
+
     @FXML
     private void DeleteEmploy() throws IOException {
 
@@ -54,18 +49,4 @@ public Connection connection;
         }catch (Exception ex){ ex.printStackTrace();}
     }
 
-    @FXML
-    public Connection conecctiondb() {
-
-        String nameDB="Ferreteria";
-        String nameUser="root";
-        String pass="";
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/"+nameDB + nameUser + pass);
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return connection;
-    }
-}
+  }
