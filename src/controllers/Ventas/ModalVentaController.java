@@ -166,7 +166,13 @@ public void mostrarFecha(){
         cargarClientes();
         cargarProductos();
         vent.validarSoloLetras(cliente_text);
-        vent.validarSoloNumeros(total_txt);
+        vent.validarSoloLetras(direccion_txt);
+        vent.validarSoloLetras(producto_text);
+        vent.validarSoloNumeros(nit_txt);
+        vent.validarSoloNumeros(telefono_txt);
+        vent.validarSoloNumeros(descuento_text);
+        vent.validarSoloNumeros(cantidad_text);
+
 
     }
 
@@ -179,15 +185,4 @@ public void mostrarFecha(){
         verificarTodoLosInputs();
     }
 
-    public void validarCampos(KeyEvent event) {
-        try {
-            char c = event.getCharacter().charAt(0);
-            if (Character.isDigit(c)){
-                event.consume();
-                System.out.println("Es digito : "+c);
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
 }

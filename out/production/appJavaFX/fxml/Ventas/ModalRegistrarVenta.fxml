@@ -121,7 +121,7 @@
                            </styleClass>
                         </JFXTextField>
                         <Label prefHeight="32.0" prefWidth="119.0" styleClass="Labels_SaveVentas" text="Descripción" />
-                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" onKeyTyped="#validarCampos" prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
+                        <JFXTextField fx:id="descripcion_text" alignment="CENTER"  prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescripcion" />

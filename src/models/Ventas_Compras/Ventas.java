@@ -1,14 +1,14 @@
 package models.Ventas_Compras;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.input.KeyEvent;
 import utils.ConnectionUtil;
 import javafx.scene.control.TextField;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import javax.swing.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 public class Ventas {
     //  VARIABLES PARA LA TUPLA DE VENTAS
@@ -135,24 +135,28 @@ public class Ventas {
 
     //METODOS PARA VALIDAR SOLO LETRAS
     public void validarSoloLetras(JFXTextField campoDeTexto) {
-        campoDeTexto.setOnKeyTyped(event -> {
+        campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
             char c = event.getCharacter().charAt(0);
-            if (!Character.isDigit(c)){
+            if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
                 event.consume();
-//                campoDeTexto.clear();
-                System.out.println("Solo letras y espacios ="+c);
-
+                //System.out.println("Dato no Valido: "+c);
             }
         });
     }
 
-    public void validarSoloNumeros(TextField campo){
-        campo.setOnKeyTyped(event -> {
-            char c = event.getCharacter().charAt(0);
-            if (!Character.isLetter(c)){
-                event.consume();
-            }
-        });
+    public void validarSoloNumeros(JFXTextField campo){
+       campo.addEventFilter(KeyEvent.ANY, event ->{
+           char c = event.getCharacter().charAt(0);
+           System.out.println(c);
+               if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+                    event.consume();
+//                   System.out.println("Dato no valido: "+event.getCode());
+               }
+                if (c == '.' && campo.getText().contains(".")){
+                //    System.out.println("No se puede almacenar ms de 2 puntos");
+                    event.consume();
+                }
+       });
 
     }
 }
