@@ -18,7 +18,7 @@ public class ConnectionUtil {
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println(conn != null? "Data base is connected": "Data base is not connected");
+          //  System.out.println(conn != null? "Data base is connected": "Data base is not connected");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Internal Error: "+e.getMessage());
         }

@@ -1,74 +1,85 @@
 package controllers.Productos;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import utils.ConnectionUtil;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable
+{
 
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.removeMouseListener;
-
-public class Controller {
-
+    @FXML
+    private ImageView img;
     @FXML
     private Button agregarV;
 
-
-/*
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Productos.fxml"));
-        primaryStage.setTitle("Productos");
-        primaryStage.setScene(new Scene(root, 1340, 890));
-        primaryStage.show();
-    }*/
-/*
-    public void OpenModal_InsertSale(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/../src/fxml/Productos/nuevoproducto.fxml"));
-            Parent root = loader.load();
-            //ModalVentaController controller = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
+    Connection conexion = null;
+    ConnectionUtil conn = new ConnectionUtil();
+    String url;
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Productos/nuevoproducto.fxml"));
-        Parent root = loader.load();
-//      ModalVentaController controller = loader.getController();
-        newproducto controller = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-    }catch (IOException e) {
-        e.printStackTrace();
-    }
+        final Stage primaryStage = new Stage();
+        final Stage dialog = new Stage();
+
+
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.initOwner(primaryStage);
+        dialog.setX(300);
+        dialog.setY(100);
+
+        Scene dialogScene = null;
+        dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos/nuevoproducto.fxml")));
+
+        dialog.setScene(dialogScene);
+        dialog.show();
     }
 
-/*    public void click(ActionEvent actionEvent)
-    {
-        agregarV.getStylesheets().add(this.getClass().getResource(
-                "style.css"
-        ).toExternalForm());
+    public  String consulta(){
+        String sql = null;
+        sql = "SELECT IMG FROM PRODUCTOS";
+        try {
+            conexion= conn.getConnection();
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                System.out.println("NO FUNCIONA");
+            } else {
+                    url = resultSet.getString("IMG");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return url;
     }
-*/
 
+    public void Buscar(){
+        url="C:UsersWilianDownloads19710.jpg";
+        Image image;
+        image = new Image("file:/"+url);
+        img.setImage(image);
     }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Buscar();
+    }
+}
