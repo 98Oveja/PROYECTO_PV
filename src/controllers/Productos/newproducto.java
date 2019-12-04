@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 
 
 public class newproducto implements Initializable {
+    public Pane PanelContenedor;
     @FXML private TextField Nombre;
 
     @FXML private TextField Marca;
@@ -204,8 +205,9 @@ public class newproducto implements Initializable {
         Proveedores.setItems(provee);
     }
 
-    public void Cerrar(javafx.scene.input.MouseEvent mouseEvent) {
-        Stage stage = (Stage) close.getScene().getWindow();
+
+    public void Cerrar(ActionEvent actionEvent) {
+        Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
         stage.close();
     }
 }
