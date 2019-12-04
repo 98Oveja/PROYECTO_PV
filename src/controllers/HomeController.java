@@ -167,8 +167,9 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void handleProd(ActionEvent mouseEvent) {
+    public void handleProd(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnproductos){
+            setVista("/fxml/Productos/Productos.fxml");
             avalibleLabel(3);
             avalibleButton(3);
         }
