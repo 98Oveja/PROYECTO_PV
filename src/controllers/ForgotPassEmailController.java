@@ -40,6 +40,7 @@ public class ForgotPassEmailController implements Initializable {
 
     public ForgotPassEmailController(){
     }
+
     public void handleButtonAction(MouseEvent event) {
         if (event.getSource() == btnForgot) {
             update();

@@ -707,6 +707,44 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
     -fx-background-color:#3c3b54;
     -fx-background-radius: 5px;
 }
-.Btn_ShopingAdd:pressed{
+.Btn_ShopingAdd:pressed {
     -fx-background-color: rgba(163, 160, 251, 0.10);
+
 }
+.menu-button .arrow{
+    -fx-background-color: transparent;
+}
+.menu-button{
+    -fx-background-color: transparent;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+}
+
+.menu-item .label {
+    -fx-text-fill: #bdb7ca;
+}
+
+.menu-item:focused {
+    -fx-background-color: #f0eef7;
+
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: #bdb7ca;
+
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1
+        -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+*/
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+
+
+
+
