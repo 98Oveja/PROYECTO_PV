@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.Controller">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: f0f0f7;">
          <children>
@@ -188,6 +188,36 @@
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
                   </Pane>
+                  <Button fx:id="mini1" ellipsisString="&lt;" layoutX="429.0" layoutY="640.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&lt;">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mini2" ellipsisString="1" layoutX="480.0" layoutY="640.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="1">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mini3" ellipsisString="&lt;" layoutX="530.0" layoutY="641.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="2">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mini4" ellipsisString="&lt;" layoutX="579.0" layoutY="642.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="3">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mini5" ellipsisString="&lt;" layoutX="632.0" layoutY="641.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="4">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mini6" ellipsisString="&gt;" layoutX="682.0" layoutY="642.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&gt;">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Pane id="PanelLateralContenedor" layoutX="884.0" layoutY="120.0" prefHeight="346.0" prefWidth="412.0" style="-fx-background-color: #fff;" styleClass="PanelLateralOpciones">
@@ -203,7 +233,7 @@
                            </font></Label>
                      </children>
                   </HBox>
-                  <VBox layoutY="65.0" prefHeight="419.0" prefWidth="370.0">
+                  <VBox layoutX="13.0" layoutY="62.0" prefHeight="271.0" prefWidth="370.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#Abrir" prefHeight="40.0" prefWidth="329.0" styleClass="btns_Panel_Lateral" text="Agregar Producto">
                            <VBox.margin>
@@ -222,7 +252,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <Line endX="350.0" layoutY="65.0" opacity="0.2" startX="20.0" />
+                  <Line endX="350.0" layoutX="16.0" layoutY="65.0" opacity="0.2" startX="20.0" />
                   <IntegerValidator />
                </children>
             </Pane>
