@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.validation.IntegerValidator?>
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.validation.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.Controller">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: f0f0f7;">
          <children>
-            <Label layoutX="76.0" layoutY="73.0" prefHeight="39.0" prefWidth="127.0" styleClass="text" text="Productos">
-               <font>
-                  <Font name="Source Sans Pro" size="27.0" />
-               </font>
-            </Label>
-            <Pane layoutX="83.0" layoutY="120.0" prefHeight="693.0" prefWidth="770.0" style="-fx-background-color: #ffffff;">
+            <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Productos" textFill="#43425d" />
+            <Pane layoutX="77.0" layoutY="96.0" prefHeight="693.0" prefWidth="770.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label layoutX="24.0" layoutY="8.0" prefHeight="35.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" text="LISTA DE PRODUCTOS">
                      <font>
@@ -32,15 +22,13 @@
                   </Label>
                   <Pane layoutX="-10.0" layoutY="93.0" prefHeight="419.0" prefWidth="742.0" />
                   <Button layoutX="354.0" layoutY="527.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="63.0" style="-fx-background-color: #fff;" />
-                  <Label layoutX="6.0" layoutY="55.0" prefHeight="45.0" prefWidth="742.0" style="-fx-background-color: #f5f6fa; -fx-text-fill: #aaadba;" text="       Productos                                                                                                   Opciones                    Disponibilidad                   Precio" />
+                  <Label layoutX="6.0" layoutY="55.0" prefHeight="45.0" prefWidth="754.0" style="-fx-background-color: #f5f6fa; -fx-text-fill: #aaadba;" text="       Productos                        Opciones                                                                  Disponibilidad          Precio" />
                   <Pane layoutX="13.0" layoutY="100.0" prefHeight="100.0" prefWidth="730.0" style="-fx-background-color: #fff; -fx-border-color: #fff;">
                      <children>
                         <ImageView fx:id="imageview1" fitHeight="79.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../Downloads/mart.jpg" />
-                           </image>
+
                         </ImageView>
-                        <Label fx:id="Nombre1" layoutX="111.0" layoutY="36.0" prefHeight="25.0" prefWidth="228.0" text="Destornilladores de estrella" />
+                        <Label fx:id="Nombre1" layoutX="124.0" layoutY="36.0" prefHeight="25.0" prefWidth="228.0" text="Destornilladores de estrella" />
                         <Button layoutX="398.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #fff;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -59,7 +47,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp1" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="disp1" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio1" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
@@ -90,7 +78,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp2" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="disp2" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio2" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
@@ -121,7 +109,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp3" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="disp3" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio3" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
@@ -152,7 +140,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp4" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="disp4" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio4" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
@@ -183,16 +171,16 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp41" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="disp41" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio41" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
                   </Pane>
                </children>
             </Pane>
-            <Pane id="PanelLateralContenedor" layoutX="884.0" layoutY="120.0" prefHeight="346.0" prefWidth="412.0" style="-fx-background-color: #fff;" styleClass="PanelLateralOpciones">
+            <Pane id="PanelLateralContenedor" layoutX="885.0" layoutY="96.0" prefHeight="346.0" prefWidth="412.0" style="-fx-background-color: #fff;" styleClass="PanelLateralOpciones">
                <children>
-                  <HBox layoutX="13.0" prefHeight="65.0" prefWidth="370.0">
+                  <HBox layoutX="20.0" prefHeight="65.0" prefWidth="370.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="61.0" prefWidth="158.0" styleClass="Titulos" text="Opciones">
                            <HBox.margin>
@@ -203,7 +191,7 @@
                            </font></Label>
                      </children>
                   </HBox>
-                  <VBox layoutY="65.0" prefHeight="419.0" prefWidth="370.0">
+                  <VBox layoutX="20.0" layoutY="65.0" prefHeight="419.0" prefWidth="370.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#Abrir" prefHeight="40.0" prefWidth="329.0" styleClass="btns_Panel_Lateral" text="Agregar Producto">
                            <VBox.margin>
@@ -222,7 +210,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <Line endX="350.0" layoutY="65.0" opacity="0.2" startX="20.0" />
+                  <Line endX="350.0" layoutX="19.0" layoutY="65.0" opacity="0.2" startX="20.0" />
                   <IntegerValidator />
                </children>
             </Pane>

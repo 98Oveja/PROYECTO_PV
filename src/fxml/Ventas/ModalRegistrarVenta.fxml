@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <!--fx:controller="fxml.Ventas.ModalRegistrarVenta"-->
 
-<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
+<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
    <children>
       <Pane id="HeaderModal" prefHeight="200.0" prefWidth="200.0" styleClass="PanelHeaderModal_insert">
          <children>
             <Label styleClass="TituloModalInser" text="Ferreteria" />
-            <Button id="Btn_CloseModal" fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#CloseModal" styleClass="btn_CloseModal">
+            <Button id="Btn_CloseModal" fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="-14.0" mnemonicParsing="false" onAction="#CloseModal" styleClass="btn_CloseModal">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/cancel_32.png" />
                      </image>
@@ -40,7 +31,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="68.0" styleClass="Labels_SaveVentas" text="Cliente" translateY="10.0">
+                        <Label prefHeight="32.0" prefWidth="84.0" styleClass="Labels_SaveVentas" text="Cliente" translateY="10.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -58,7 +49,7 @@
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin></JFXComboBox>
-                        <Label styleClass="Labels_SaveVentas" text="Nit" translateY="10.0">
+                        <Label prefHeight="26.0" prefWidth="41.0" styleClass="Labels_SaveVentas" text="Nit" translateY="10.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -69,7 +60,7 @@
                               <String fx:value="InputNit" />
                            </styleClass>
                         </JFXTextField>
-                        <Label styleClass="Labels_SaveVentas" text="Teléfono" translateY="10.0">
+                        <Label prefHeight="26.0" prefWidth="104.0" styleClass="Labels_SaveVentas" text="Teléfono" translateY="10.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -86,9 +77,9 @@
                      </padding></HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="98.0" styleClass="Labels_SaveVentas" text="Dirección" />
-                        <JFXTextField fx:id="direccion_txt" alignment="CENTER" prefHeight="39.0" prefWidth="221.0" promptText="Ciudad" styleClass="TodolosInputs" />
-                        <Label prefHeight="32.0" prefWidth="92.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
+                        <Label prefHeight="32.0" prefWidth="107.0" styleClass="Labels_SaveVentas" text="Dirección" />
+                        <JFXTextField fx:id="direccion_txt" alignment="CENTER" prefHeight="39.0" prefWidth="205.0" promptText="Ciudad" styleClass="TodolosInputs" />
+                        <Label prefHeight="32.0" prefWidth="102.0" styleClass="Labels_SaveVentas" text="Producto" translateY="3.0" />
                         <JFXTextField fx:id="producto_text" alignment="CENTER" prefHeight="39.0" prefWidth="269.0" promptText="Ingresa o selecciona">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
@@ -99,7 +90,7 @@
                            <HBox.margin>
                               <Insets left="3.0" />
                            </HBox.margin></JFXComboBox>
-                        <Label prefHeight="32.0" prefWidth="95.0" styleClass="Labels_SaveVentas" text="Cantidad" translateY="3.0">
+                        <Label prefHeight="32.0" prefWidth="105.0" styleClass="Labels_SaveVentas" text="Cantidad" translateY="3.0">
                            <HBox.margin>
                               <Insets left="3.0" />
                            </HBox.margin></Label>
@@ -113,21 +104,21 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="134.0" styleClass="Labels_SaveVentas" text="Descuento %" />
-                        <JFXTextField fx:id="descuento_text" alignment="CENTER" prefHeight="43.0" prefWidth="118.0" promptText="Por producto">
+                        <Label prefHeight="32.0" prefWidth="150.0" styleClass="Labels_SaveVentas" text="Descuento %" />
+                        <JFXTextField fx:id="descuento_text" alignment="CENTER" prefHeight="43.0" prefWidth="132.0" promptText="Por producto">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescuento" />
                            </styleClass>
                         </JFXTextField>
-                        <Label prefHeight="32.0" prefWidth="119.0" styleClass="Labels_SaveVentas" text="Descripción" />
-                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" prefHeight="39.0" prefWidth="287.0" promptText="Descripción de Venta">
+                        <Label prefHeight="32.0" prefWidth="137.0" styleClass="Labels_SaveVentas" text="Descripción" />
+                        <JFXTextField fx:id="descripcion_text" alignment="CENTER" prefHeight="39.0" prefWidth="245.0" promptText="Descripción de Venta">
                            <styleClass>
                               <String fx:value="TodolosInputs" />
                               <String fx:value="InputDescripcion" />
                            </styleClass>
                         </JFXTextField>
-                        <Label prefHeight="32.0" prefWidth="155.0" styleClass="Labels_SaveVentas" text="Fecha de Venta" />
+                        <Label prefHeight="32.0" prefWidth="180.0" styleClass="Labels_SaveVentas" text="Fecha de Venta" />
                         <JFXTextField fx:id="txt_fechaVenta" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="210.0" promptText="Fecha de compra" styleClass="TodolosInputs" />
                         <Button mnemonicParsing="false" onAction="#btn_ShopingCar" styleClass="Btn_ShopingAdd">
                            <graphic>

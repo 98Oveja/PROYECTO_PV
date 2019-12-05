@@ -72,6 +72,9 @@
                             <image>
                                 <Image url="@../images/whatsapp.png" />
                             </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </ImageView>
                         <Label layoutX="135.0" layoutY="831.0" text="Contactanos." textFill="#a3a0fb">
                             <font>

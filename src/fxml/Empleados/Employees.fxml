@@ -8,16 +8,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:controller="controllers.employees.EmployeesController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.EmployeesController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
-            <Label layoutX="76.0" layoutY="42.0" prefHeight="40.0" prefWidth="150.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Empleados">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Pane layoutX="680.0" layoutY="40.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+             <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" />
+
+            <Pane layoutX="680.0" layoutY="30.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,7 +24,7 @@
                   <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
                </children>
             </Pane>
-            <Pane layoutX="76.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css">
+            <Pane layoutX="77.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css">
                <children>
                   <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="570.0">
                      <children>
@@ -91,7 +88,7 @@
                   <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
                </children>
             </Pane>
-            <Pane layoutX="680.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css">
+            <Pane layoutX="680.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css">
                <children>
                   <HBox layoutX="-2.0" layoutY="1.0" prefHeight="125.0" prefWidth="570.0">
                      <children>
@@ -539,7 +536,7 @@
                   <Separator layoutX="1.0" layoutY="114.0" prefHeight="28.0" prefWidth="566.0" />
                </children>
             </Pane>
-            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1202.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/icons8_add_50px.png" />
                </image>

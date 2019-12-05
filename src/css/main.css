@@ -206,7 +206,7 @@
 
 .combouser{
     -fx-text-fill: black;
-    -fx-pref-height: 75px;
+
     -fx-pref-height: 28px;
     -fx-border-color: none;
     -fx-background-color: opacity;
@@ -239,7 +239,7 @@
 .chart {
     -fx-padding: 15px;
     -fx-background-color: transparent;
-    -fx-bar-gap: 3;
+    -fx-bar-gap: 3px;
     -fx-category-gap: 0;
 }
 .chart-content {
@@ -300,7 +300,7 @@
 .chartM {
     -fx-padding: 15px;
     -fx-background-color: transparent;
-    -fx-bar-gap: 3;
+    -fx-bar-gap: 3px;
     -fx-category-gap: 0;
 }
 .chartM-content {
@@ -720,7 +720,9 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
     -fx-font-weight: normal;
     -fx-font-size: 13px;
 }
+.menu-button:hover{
 
+}
 .menu-item .label {
     -fx-text-fill: #bdb7ca;
 }
@@ -743,6 +745,16 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
         -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
 */
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+.panelEst{
+    -fx-background-color: white;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 9, 0.5, 0.0, 0.0 );
+    -fx-border-radius: 6px;
+}
+
+.panelEst:hover{
+    -fx-background-color: rgb(244, 243, 240);
+    -fx-font-family: "Source Sans Pro";
 }
 
 
