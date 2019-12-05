@@ -128,6 +128,21 @@
     -fx-translate-y: 0px;
 }
 
+.miniboton{
+    -fx-background-color: #BCBCCB;
+    -fx-text-fill: #fff;
+}
+
+.miniboton:pressed{
+    -fx-background-color: #3B86FF;
+    -fx-text-fill: #fff;
+}
+
+.miniboton:hover{
+    -fx-background-color: #3B86FF;
+    -fx-text-fill: #fff;
+}
+
 .botones{
     -fx-text-fill: white;
     -jfx-pref-width: 260px;
@@ -144,12 +159,14 @@
     /* -fx-focus-traversable: False;*/
 
 }
+
 .botones:selected{
     -fx-background-color: #3C3B54;
 }
 .botones:hover{
     -fx-background-color: #3C3B54;
 }
+
 .botones:pressed{
     -fx-background-color: #3C3B54;
 }
