@@ -192,7 +192,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="20.0" onMouseClicked="#verPro" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/icons8_create_50px_1.png" />
                            </image>

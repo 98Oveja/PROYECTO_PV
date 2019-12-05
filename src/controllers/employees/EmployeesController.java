@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.DriverManager;
+import java.time.LocalDate;
 
 public class EmployeesController {
 
@@ -49,4 +51,13 @@ public class EmployeesController {
         }catch (Exception ex){ ex.printStackTrace();}
     }
 
+    @FXML
+    public void verPro() {
+        final DatePicker datePicker = new DatePicker(LocalDate.now());
+        datePicker.setOnAction(event -> {
+            LocalDate date = datePicker.getValue();
+            System.out.println("Selected date: " + date);
+        });
+
+    }
   }
