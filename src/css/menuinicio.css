@@ -81,7 +81,12 @@
     -fx-text-fill:white;
     -fx-font-size: 13px;
 }
-
+.boxOfText:hover{
+    -fx-border-color: #295eb2;
+}
+.boxOfText:focused{
+    -fx-border-color: #295eb2;
+}
 .paneDeleteEmploy{
     -fx-pref-width: 262px;
     -fx-pref-height: 200px;

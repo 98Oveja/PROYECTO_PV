@@ -13,5 +13,12 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/punto_de_venta</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="MySQL - punto_de_venta@db4free.net" uuid="34cebb1f-a880-481e-ac7a-7aa8b837a993">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Punto De Venta Ferreteria</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db4free.net:3306/punto_de_venta</jdbc-url>
+    </data-source>
   </component>
 </project>
