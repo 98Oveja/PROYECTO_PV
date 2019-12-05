@@ -72,11 +72,11 @@ public class Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        direccion="C:*Users*Wilian*Downloads*mart.jpg";
-        String nueva = direccion.replace("*","\\");
-        System.out.println(nueva);
-        Image image;
-        image = new Image("file:/"+nueva);
-        imageview.setImage(image);
+//        direccion="C:*Users*Wilian*Downloads*mart.jpg";
+//        String nueva = direccion.replace("*","\\");
+//        System.out.println(nueva);
+//        Image image;
+//        image = new Image("file:/"+nueva);
+//        imageview.setImage(image);
     }
 }
