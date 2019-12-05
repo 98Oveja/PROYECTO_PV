@@ -1,10 +1,12 @@
 package controllers.Productos;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -46,6 +48,7 @@ public class newproducto implements Initializable {
 
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
+    eventos event = new eventos();
 
     public int consultasID(String name, String tabla) {
         int id = 1;
@@ -104,6 +107,8 @@ public class newproducto implements Initializable {
         String categoria = Categoria.getValue();
         String proveedores = Proveedores.getValue();
         System.out.println(categoria + proveedores);
+        direccion=direccion.replace("\\","*");
+        System.out.println(direccion);
         if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codigo.isEmpty()) {
             idCateg =  consultasID(categoria, "CATEGORIAS");
             idProv = consultasID(proveedores, "PROVEEDORES");
@@ -182,7 +187,7 @@ public class newproducto implements Initializable {
         if (selectedFile != null)
         {
             direccion= selectedFile.getPath();
-          //  System.out.println(direccion);
+            System.out.println(direccion);
           // System.out.println(direccion.substring(2,direccion.length()));
             Image image;
             image = new Image("file:/"+direccion);
@@ -203,7 +208,12 @@ public class newproducto implements Initializable {
         ObservableList<String> provee = FXCollections.observableArrayList();
         provee.addAll(lista1);
         Proveedores.setItems(provee);
+        event.validarSoloLetras(Nombre);
+        event.validarSoloNumeros(Cantidad);
+        event.validarSoloNumeros(PVenta);
+        event.validarSoloNumeros(Pcompra);
     }
+
 
 
     public void Cerrar(ActionEvent actionEvent) {

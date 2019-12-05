@@ -34,11 +34,7 @@
                   </Label>
                   <ScrollPane layoutX="21.0" layoutY="98.0" prefHeight="368.0" prefWidth="728.0">
                      <content>
-                        <Pane prefHeight="100.0" prefWidth="729.0">
-                           <children>
-                              <ImageView fx:id="img" fitHeight="91.0" fitWidth="103.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
+                        <Pane prefHeight="100.0" prefWidth="729.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -73,6 +69,7 @@
                   <IntegerValidator />
                </children>
             </Pane>
+            <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="300.0" layoutX="779.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

@@ -7,13 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -25,14 +22,15 @@ public class Controller implements Initializable
 {
 
 
+
     @FXML
-    private ImageView img;
+    private ImageView imageview;
     @FXML
     private Button agregarV;
 
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
-    String url;
+    String direccion;
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
@@ -62,24 +60,23 @@ public class Controller implements Initializable
             if (!resultSet.next()) {
                 System.out.println("NO FUNCIONA");
             } else {
-                    url = resultSet.getString("IMG");
+                    direccion = resultSet.getString("IMG");
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return url;
+        return direccion;
     }
 
-    public void Buscar(){
-        url="C:UsersWilianDownloads19710.jpg";
-        Image image;
-        image = new Image("file:/"+url);
-        img.setImage(image);
-    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Buscar();
+        direccion="C:*Users*Wilian*Downloads*mart.jpg";
+        String nueva = direccion.replace("*","\\");
+        System.out.println(nueva);
+        Image image;
+        image = new Image("file:/"+nueva);
+        imageview.setImage(image);
     }
 }
