@@ -10,11 +10,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
+import utils.ConnectionUtil;
+import utils.ScriptsDataBase;
 import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -53,6 +58,8 @@ public class ModalVentaController implements Initializable {
     @FXML
     private TextField total_txt;
 
+    ScriptsDataBase scriptsDataBase = new ScriptsDataBase();
+
 
     Ventas vent = new Ventas();
     public void CloseModal(ActionEvent actionEvent) {
@@ -87,17 +94,19 @@ public void mostrarFecha(){
     }
 
     public void cargarClientes(){
-        ArrayList<String> arrayList = vent.NomrbesPersonas();
+        ArrayList<String> arrayList = scriptsDataBase.listadoClientes();
         ObservableList<String> items = FXCollections.observableArrayList();
         items.addAll(arrayList);
         listadoClietes.setItems(items);
+        listadoClietes.setVisibleRowCount(3);
     }
 
     public void cargarProductos(){
-        ArrayList<String> arrayProductos = vent.allProducts();
+        ArrayList<String> arrayProductos = scriptsDataBase.listaProductos();
         ObservableList<String> itemsProd = FXCollections.observableArrayList();
         itemsProd.addAll(arrayProductos);
         listadoProductos.setItems(itemsProd);
+        listadoProductos.setVisibleRowCount(3);
     }
     public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
     public void verificarTodoLosInputs(){
@@ -172,14 +181,15 @@ public void mostrarFecha(){
         vent.validarSoloNumeros(telefono_txt);
         vent.validarSoloNumeros(descuento_text);
         vent.validarSoloNumeros(cantidad_text);
+//      Seleccion de los datos para el Cliente
+        listadoClietes.setOnAction(actionEvent -> { cliente_text.setText(listadoClietes.getValue());});
+//      Seleccion de los datos para el producto
+        listadoProductos.setOnAction(actionEvent -> {producto_text.setText(listadoProductos.getValue());});
 
+        System.out.println("Desde el modal "+scriptsDataBase.getIdCostumerInDB("Celia","Torres"));
+        scriptsDataBase.listadoClientes();
 
     }
-
-
-
-
-
 
     public void btn_ShopingCar(ActionEvent actionEvent) {
         verificarTodoLosInputs();

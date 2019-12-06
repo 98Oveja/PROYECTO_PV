@@ -86,53 +86,6 @@ public class Ventas {
 //  METODO PARA VER EL DATALLE DE VENTA
 //  METODO PARA INSERTAR EL DETALLE DE VENTA
 //  METODO PARA BUSCAR UNA VENTA
-
-
-    public ArrayList NomrbesPersonas() {
-        ArrayList<String> list = new ArrayList<String>();
-        try {
-            conn = con3.getConnection();
-            String query = "SELECT PERSONAS.PRIMER_NOMBRE, PERSONAS.PRIMER_APELLIDO, CLIENTES.NIT from (personas inner join clientes on personas.ID_PERSONA = clientes.ID_PERSONA);";
-            Statement sql = conn.createStatement();
-            ResultSet resultSet = sql.executeQuery(query);
-            if (resultSet != null) {
-                while (resultSet.next()) {
-                    String nombre_cliente = resultSet.getString("PERSONAS.PRIMER_NOMBRE");
-                    String apellido_cliente = resultSet.getString("PERSONAS.PRIMER_APELLIDO");
-                    String nit_cliente = resultSet.getString("CLIENTES.NIT");
-                    list.add(nombre_cliente + " " + apellido_cliente + " " + nit_cliente);
-                }
-            }
-//            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return list;
-    }
-
-    //METODO PARA RETORNAR LOS PRODUCTOS EN EL COMBOBOX
-    public ArrayList allProducts() {
-        ArrayList<String> listaProd = new ArrayList<String>();
-        try {
-            conn = con3.getConnection();
-            String query = "SELECT productos.NOMBRE, productos.PRECIO_VENTA, productos.CANTIDAD from  productos;";
-            Statement sql = conn.createStatement();
-            ResultSet resultSet = sql.executeQuery(query);
-            if (resultSet != null) {
-                while (resultSet.next()) {
-                    String nombre_prod = resultSet.getString("productos.NOMBRE");
-                    Double precio_prod = Double.parseDouble(resultSet.getString("PRECIO_VENTA"));
-                    int cantidad_prod = Integer.parseInt(resultSet.getString("CANTIDAD"));
-                    listaProd.add(nombre_prod);
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return listaProd;
-    }
-
-
     //METODOS PARA VALIDAR SOLO LETRAS
     public void validarSoloLetras(JFXTextField campoDeTexto) {
         campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
@@ -159,4 +112,11 @@ public class Ventas {
        });
 
     }
+
+
+
+
+
+
+
 }
