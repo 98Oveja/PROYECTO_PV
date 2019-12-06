@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
@@ -130,11 +131,11 @@ private int idpersona;
      }
 
      public void validatorString(){
-
      }
 
      //URL de la imagen
-    public String searchEmploy(ActionEvent actionEvent) throws IOException {
+    @FXML
+    public String searchEmploy(MouseEvent event) throws IOException {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 

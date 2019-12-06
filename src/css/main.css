@@ -776,7 +776,7 @@ linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9
 
 .buttonAddPhoto{
     -fx-background-color: #295eb2;
-    -fx-border-radius: 100px;
+    -fx-background-radius: 100px;
 }
 
 .buttonAddPhoto:hover{

@@ -124,7 +124,7 @@
          </font>
       </Label>
       <BorderPane fx:id="imgUser" layoutX="252.0" layoutY="536.0" prefHeight="86.0" prefWidth="86.0" />
-      <Button fx:id="btnAddEmploy" layoutX="317.0" layoutY="594.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchEmploy" prefHeight="28.0" prefWidth="28.0" styleClass="buttonAddPhoto" stylesheets="@../../css/main.css">
+      <Button fx:id="btnAddEmploy" layoutX="310.0" layoutY="591.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchEmploy" prefHeight="30.0" prefWidth="32.0" styleClass="buttonAddPhoto" stylesheets="@../../css/main.css">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -132,6 +132,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>
