@@ -12,8 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.ConnectionUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +29,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class AddEmployController implements Initializable {
+    public BorderPane imgUser;
     Date date =new Date();//varaiables para obtener la fecha actual del system
     long milsec = date.getTime();
     java.sql.Date dia = new java.sql.Date(milsec);
@@ -90,27 +96,28 @@ private int idpersona;
             System.out.println(Nueva);
 
 
-        ConnectionClass connectionClass= new ConnectionClass();
-        Connection connection= connectionClass.conecctiondb();  /*coneccion establecida*/
-        String sqlinsert= "INSERT INTO `personas` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `URL_PHOTO`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
+
+        ConnectionUtil connectionClass= new ConnectionUtil();
+        Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+        String sqlinsert= "INSERT INTO `PERSONAS` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlinsert); //aca insertamos los dato
 
         //aca buscaremos el id de la persona ingresada--
-        String searchId = "SELECT `ID_PERSONA` FROM `personas` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"'";
+        String searchId = "SELECT `ID_PERSONA` FROM `PERSONAS` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"'";
         ResultSet result = statement.executeQuery(searchId);
         if (result.first()){
             idpersona = result.getInt("ID_PERSONA");
         }
 
         //esteremos realizando el segundo insert para la tabla empleados
-        String sql2= "INSERT INTO `empleados` (`ID_EMPLEADO`, `ID_PERSONA`, `ESTADO`, `FECHA_CONTRATACION`, `FECHA_RETIRO`, `CARGO`) VALUES (NULL,'"+idpersona+"', '1', '"+dia.toString()+"', NULL, '"+place+"')";
+        String sql2= "INSERT INTO `EMPLEADOS` (`ID_EMPLEADO`, `ID_PERSONA`, `ESTADO`, `FECHA_CONTRATACION`, `FECHA_RETIRO`, `CARGO`) VALUES (NULL,'"+idpersona+"', '1', '"+dia.toString()+"', NULL, '"+place+"')";
         statement.executeUpdate(sql2);
     }
 
     //metodo para limpiar las variales
      public void ClearTextField(){
-         Image ima = new Image("@../../images/male_user_.png");
+         Image ima = new Image("/images/male_user_.png");
          EmployNameOne.setText("");
          EmployNameTwo.setText("");
          EmployLasteNameOne.setText("");
@@ -132,19 +139,23 @@ private int idpersona;
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
-        if (selectedFile != null)
-        {
+        if (selectedFile != null) {
             directionImage= selectedFile.getPath();
             System.out.println(directionImage);
-            Image image;
-            image = new Image("file:/"+directionImage);
-            photoEmploy.setImage(image);
+            return setImgUser("/images/empleados.png");
+            //image = new Image("file:/"+directionImage);/root/IdeaProjects/appJavaFX/src/images/empleados.png
 
-            return directionImage;
         } else{
             System.out.println("file is not valid");
             return "NULL";
         }
+    }
+    private String setImgUser(String url) {
+        Circle circle = new Circle(86,86,43);
+        Image image = new Image(url,false);
+        circle.setFill(new ImagePattern(image));
+        imgUser.setCenter(circle);
+        return url;
     }
 
     @FXML
@@ -154,6 +165,7 @@ private int idpersona;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setImgUser("/images/male_user_.png");
         EmployDate.setText(dia.toString());
         placeList.setItems(list);
         EmployPlace.setEditable(false);

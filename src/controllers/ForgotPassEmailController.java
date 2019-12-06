@@ -40,6 +40,7 @@ public class ForgotPassEmailController implements Initializable {
 
     public ForgotPassEmailController(){
     }
+
     public void handleButtonAction(MouseEvent event) {
         if (event.getSource() == btnForgot) {
             update();
@@ -65,7 +66,9 @@ public class ForgotPassEmailController implements Initializable {
                 if (txtPassVerified.getText().equals(txtPass.getText())) {
                     //Accion del boton
                     try {
-                        Connection con = ConnectionUtil.conDB();
+                        Connection con = null;
+                        ConnectionUtil connectionUtil = new ConnectionUtil();
+                        con = connectionUtil.getConnection();
                         String sql = "UPDATE USUARIOS SET CONTRASENA=? WHERE EMAIL=?;";
                         email = getEmail();
                         PreparedStatement preparedStatement = con.prepareStatement(sql);

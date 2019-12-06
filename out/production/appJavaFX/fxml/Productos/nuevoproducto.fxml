@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="PanelContenedor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="831.0" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.newproducto">
+   <children>
+      <Label layoutX="39.0" layoutY="17.0" text="Registro de Productos" textFill="WHITE">
+         <font>
+            <Font name="Cambria" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="116.0" text="Nombre" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="213.0" text="Marca" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="541.0" layoutY="116.0" prefHeight="17.0" prefWidth="76.0" text="Categoria" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="539.0" layoutY="214.0" prefHeight="17.0" prefWidth="92.0" text="Proveedores" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Nombre" layoutX="131.0" layoutY="104.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <TextField fx:id="Marca" layoutX="131.0" layoutY="200.0" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <ComboBox fx:id="Categoria" accessibleRole="IMAGE_VIEW" layoutX="642.0" layoutY="112.0" prefHeight="36.0" prefWidth="146.0" promptText="Ninguno" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-radius: 5px;" />
+      <ComboBox fx:id="Proveedores" layoutX="642.0" layoutY="205.0" prefHeight="36.0" prefWidth="146.0" promptText="Ninguno" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-radius: 5px;" />
+      <Label layoutX="153.0" layoutY="290.0" text="Cantidad" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="292.0" text="P/Venta" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="416.0" layoutY="292.0" text="P/Compra" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="531.0" layoutY="292.0" text="Codigo del producto" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Cantidad" layoutX="130.0" layoutY="319.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <TextField fx:id="PVenta" layoutX="262.0" layoutY="319.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <TextField fx:id="Pcompra" layoutX="400.0" layoutY="319.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <TextField fx:id="CodigoP" layoutX="529.0" layoutY="319.0" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #43425D; -fx-border-width: 1px; -fx-border-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #fff;" />
+      <Label fx:id="imagelabe" layoutX="300.0" layoutY="416.0" prefHeight="160.0" prefWidth="300.0" style="-fx-border-color: #FF6565; -fx-border-radius: 5px;" />
+      <Label layoutX="418.0" layoutY="389.0" text="Imagen" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="116.0" layoutY="471.0" mnemonicParsing="false" onAction="#Search" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3B86FF; -fx-border-radius: 15px;" styleClass="boton" text="Agregar Imagen" textFill="WHITE" />
+      <Button layoutX="351.0" layoutY="593.0" mnemonicParsing="false" onAction="#agregarProducto" prefHeight="50.0" prefWidth="185.0" style="-fx-background-color: #1062E5;" text="Guardar Producto" textFill="WHITE" />
+      
+      <Button id="Btn_CloseModal" fx:id="close" alignment="CENTER" contentDisplay="CENTER" layoutX="-341.0" layoutY="-13.0" mnemonicParsing="false" onAction="#Cerrar" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal" stylesheets="@../../css/main.css">
+      <graphic>
+         <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/cancel_32.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+      <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="300.0" layoutX="300.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>

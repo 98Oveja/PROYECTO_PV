@@ -4,14 +4,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class HomeController implements Initializable {
@@ -38,10 +50,13 @@ public class HomeController implements Initializable {
     public ToggleButton btnproveedores;
 
     public StackPane pane;
-
+    public BorderPane imgUser;
+    public MenuItem itemClose;
+    public MenuItem itemConfig;
+    public MenuItem itemHelp;
+    int status = 0;
     ArrayList<Label> list = new ArrayList<>();
     ArrayList<ToggleButton> listB = new ArrayList<>();
-
 
     public static int getCode() {
         return LoginController.code;
@@ -49,8 +64,21 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            setVista("/fxml/Empleados/menu.fxml");
+            setImgUser("/images/index.jpeg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         avalibleLabel(getCode());
         avalibleButton(getCode());
+    }
+
+    private void setImgUser(String url) {
+        Circle circle = new Circle(32,32,16);
+        Image image = new Image(url,false);
+        circle.setFill(new ImagePattern(image));
+        imgUser.setCenter(circle);
     }
 
     public void setVista(String fxml) throws IOException {
@@ -60,6 +88,7 @@ public class HomeController implements Initializable {
     }
 
     void addButtons(){
+
         listB.add(btninicio);
         listB.add(btnestadistica);
         listB.add(btnempleados);
@@ -90,6 +119,7 @@ public class HomeController implements Initializable {
             a.setVisible(false);
         }
     }
+
     public  void avalibleButton(int date){
         addButtons();
         for (ToggleButton b: listB) {
@@ -111,16 +141,17 @@ public class HomeController implements Initializable {
     }
 
     public void handleHome(ActionEvent mouseEvent) throws IOException {
-        //if(mouseEvent.getSource() == btninicio){
+        if(mouseEvent.getSource() == btninicio){
             setVista("/fxml/Empleados/menu.fxml");
             avalibleLabel(0);
             avalibleButton(0);
-       // }
+
+        }
     }
 
     public void handleEst(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnestadistica){
-
+            setVista("/fxml/Stadistic.fxml");
             avalibleLabel(1);
             avalibleButton(1);
         }
@@ -134,8 +165,9 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void handleProd(ActionEvent mouseEvent) {
+    public void handleProd(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnproductos){
+            setVista("/fxml/Productos/Productos.fxml");
             avalibleLabel(3);
             avalibleButton(3);
         }
@@ -181,6 +213,55 @@ public class HomeController implements Initializable {
         if(mouseEvent.getSource() == btnreportes){
             avalibleLabel(9);
             avalibleButton(9);
+        }
+    }
+
+    public void handleActionHelp(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == itemHelp){
+            if(status == 0) {
+                goToURL("https://www.facebook.com/mmm.n.plo");
+                status = 1;
+            }
+        }
+    }
+
+    public void handleActionConf(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == itemConfig){
+            final Stage primaryStage = new Stage();
+            final Stage dialog = new Stage();
+
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.initOwner(primaryStage);
+            dialog.setX(600);
+            dialog.setY(300);
+            Scene dialogScene = null;
+            dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
+
+            dialog.setScene(dialogScene);
+            dialog.show();
+        }
+    }
+
+    public void handleActionClose(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == itemClose) {
+            Stage stage = (Stage) this.pane.getScene().getWindow();
+            stage.close();
+        }
+    }
+
+    public void goToURL(String URL){
+        if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                try {
+                    java.net.URI uri = new java.net.URI(URL);
+                    desktop.browse(uri);
+                } catch (URISyntaxException | IOException ex) {
+                    Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 }

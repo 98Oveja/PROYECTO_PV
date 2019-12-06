@@ -45,7 +45,8 @@ public class ForgotPassController {
     public JFXButton btnForgot;
     public Label lblErrors;
     public ForgotPassController(){
-        con = ConnectionUtil.conDB();
+//        con = ConnectionUtil.conDB();
+        ConnectionUtil con4 = new ConnectionUtil();
     }
 
     public void handleButtonActionKey(KeyEvent event) throws IOException {
@@ -77,24 +78,23 @@ public class ForgotPassController {
                 code = CodeUtil.generateCode();
 
                 Mensaje = " Codigo de recuperacion:" + code;
-
                 if(SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje)) {
-                lblErrors.setText("Codigo enviado");
-                lblErrors.setTextFill(Color.GREEN);
+                    lblErrors.setText("Codigo enviado");
+                    lblErrors.setTextFill(Color.GREEN);
 
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initStyle(StageStyle.UNDECORATED);
-                dialog.initOwner(primaryStage);
-                dialog.setX(1000);
-                dialog.setY(330);
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initStyle(StageStyle.UNDECORATED);
+                    dialog.initOwner(primaryStage);
+                    dialog.setX(1000);
+                    dialog.setY(330);
 
-                Scene dialogScene = null;
-                dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ForgotPassEmail.fxml")));
+                    Scene dialogScene = null;
+                    dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ForgotPassEmail.fxml")));
 
-                dialog.setScene(dialogScene);
-                dialog.show();
+                    dialog.setScene(dialogScene);
+                    dialog.show();
 
-                txtUsername.clear();
+                    txtUsername.clear();
                 }
             } else {
                 txtUsername.clear();

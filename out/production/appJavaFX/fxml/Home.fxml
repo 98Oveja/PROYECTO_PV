@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -10,11 +9,12 @@
 
 <StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
-        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal">
+        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1600.0" styleClass="panelPrincipal">
             <children>
                 <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1144.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
+                        <ImageView fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/notifications.png" />
                             </image>
@@ -22,33 +22,34 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </ImageView>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1266.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/male_user_.png" />
-                            </image>
+                        <Pane layoutX="7.0" layoutY="11.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/search.png" />
+                                    </image>
+                                </ImageView>
+                                <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                            </children>
+                        </Pane><Line endX="100.0" fill="#ebebf2" layoutX="1063.0" layoutY="17.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
+                  <Pane layoutX="1175.0" layoutY="23.0" prefHeight="25.0" prefWidth="83.0">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="62.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrows.png" />
+                           </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="18.0" layoutX="20.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/search.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1105.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/messaging.png" />
-                            </image>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                        </ImageView>
-                  <TextField layoutX="38.0" layoutY="21.0" prefHeight="33.0" prefWidth="580.0" promptText="Busca algo aquí..." styleClass="text-fieldX" stylesheets="@../css/main.css" />
-                  <Line endX="100.0" fill="#ebebf2" layoutX="1069.0" layoutY="18.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
-                  <Label layoutX="1180.0" layoutY="28.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#4d4f5c">
-                     <rotationAxis>
-                        <Point3D />
-                     </rotationAxis>
-                  </Label>
+                        <MenuButton mnemonicParsing="false" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#bdb7ca">
+                          <items>
+                            <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
+                            <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
+                              <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </Pane>
                     </children></Pane>
-                <Pane fx:id="components" prefHeight="960.0" prefWidth="1600.0" styleClass="menulateral">
+                <Pane fx:id="components" prefHeight="861.0" prefWidth="1600.0" styleClass="menulateral">
                     <children>
                         <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="121.0" styleClass="ferreteria" stylesheets="@../css/main.css" text="Ferreteria" />
                         <ImageView fitHeight="150.0" fitWidth="18.0" layoutX="126.0" layoutY="802.0" pickOnBounds="true" preserveRatio="true">
@@ -71,6 +72,9 @@
                             <image>
                                 <Image url="@../images/whatsapp.png" />
                             </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </ImageView>
                         <Label layoutX="135.0" layoutY="831.0" text="Contactanos." textFill="#a3a0fb">
                             <font>
@@ -151,6 +155,6 @@
                 </Pane>
             </children>
         </Pane>
-      <StackPane  fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
+      <StackPane fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
     </children>
 </StackPane>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -9,13 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane id="ContenedorMenu" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<?import java.lang.String?>
+<StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
-            <Pane layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
+            <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
-                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver">
+                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -63,7 +63,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="526.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane fx:id="CardSales" layoutX="526.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -89,7 +89,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="845.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane fx:id="CardReports" layoutX="845.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -106,7 +106,7 @@
                         <String fx:value="tipografia" />
                      </styleClass>
                   </Label>
-                  <Label layoutX="78.0" layoutY="104.0" prefHeight="36.0" prefWidth="125.0" stylesheets="@../../css/menuinicio.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                  <Label layoutX="78.0" layoutY="104.0" prefHeight="36.0" prefWidth="142.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -132,12 +132,12 @@
                         <Shadow />
                      </effect>
                   </JFXButton>
-                  <Label fx:id="titleProduct" layoutX="31.0" layoutY="27.0" prefHeight="41.0" prefWidth="226.0" stylesheets="@../../css/menuinicio.css" text="Martillo">
+                  <Label fx:id="titleProduct" layoutX="31.0" layoutY="27.0" prefHeight="41.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Titulo">
                      <styleClass>
                         <String fx:value="titleCard" />
                         <String fx:value="tipografia" />
                      </styleClass></Label>
-                  <Label fx:id="brandProduct" layoutX="30.0" layoutY="77.0" prefHeight="27.0" prefWidth="75.0" stylesheets="@../../css/menuinicio.css" text="Truper">
+                  <Label fx:id="brandProduct" layoutX="30.0" layoutY="77.0" prefHeight="36.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Subtitulo">
                      <styleClass>
                         <String fx:value="subTitleCard" />
                         <String fx:value="textColorBlack" />
@@ -151,7 +151,7 @@
                      </styleClass></Label>
                </children>
             </Pane>
-            <Pane layoutX="990.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" StackPane.alignment="CENTER">
+            <Pane fx:id="CardCustomers" layoutX="990.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta" StackPane.alignment="CENTER">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -182,6 +182,10 @@
                   <Image url="@../../images/producto_nuevo.png" />
                </image>
             </ImageView>
+            <RadioButton layoutX="478.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="554.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="503.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
+            <RadioButton layoutX="527.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
          </children></Pane>
    </children>
 </StackPane>
