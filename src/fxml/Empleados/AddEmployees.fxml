@@ -77,7 +77,7 @@
          </font>
       </Label>
       <TextField fx:id="EmployDate" disable="true" editable="false" layoutX="210.0" layoutY="365.0" prefHeight="35.0" prefWidth="289.0" promptText="Se agregara la fecha de hoy." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="266.0" promptText="Elige el puesto del empleado" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
+      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
          <cursor>
             <Cursor fx:constant="DISAPPEAR" />
          </cursor></TextField>
@@ -111,23 +111,27 @@
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="436.0" layoutY="436.0" onAction="#selectItem" prefHeight="25.0" prefWidth="50.0" unFocusColor="#43425d">
+      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="431.0" layoutY="436.0" onAction="#selectItem" prefHeight="25.0" prefWidth="50.0" unFocusColor="#43425d">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXComboBox>
       <TextField fx:id="EmployNameTwo" layoutX="317.0" layoutY="102.0" prefHeight="35.0" prefWidth="180.0" promptText="Escribe el segundo nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <TextField fx:id="EmployLasteNameTwo" layoutX="317.0" layoutY="166.0" prefHeight="35.0" prefWidth="180.0" promptText="Escriea el segundo apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <Label layoutX="221.0" layoutY="616.0" text="Foto de perfil" textFill="WHITE">
+      <Label layoutX="256.0" layoutY="623.0" text="Foto de perfil" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXButton layoutX="326.0" layoutY="609.0" onAction="#searchEmploy" prefHeight="23.0" prefWidth="56.0" style="-fx-background-color: #1062E5;" text="Elegir" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
-      <BorderPane fx:id="imgUser" layoutX="228.0" layoutY="529.0" prefHeight="86.0" prefWidth="86.0" />
+      <BorderPane fx:id="imgUser" layoutX="252.0" layoutY="536.0" prefHeight="86.0" prefWidth="86.0" />
+      <Button fx:id="btnAddEmploy" layoutX="317.0" layoutY="594.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchEmploy" prefHeight="28.0" prefWidth="28.0" styleClass="buttonAddPhoto" stylesheets="@../../css/main.css">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/icons8_camera_50px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

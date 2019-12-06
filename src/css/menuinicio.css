@@ -75,7 +75,7 @@
 }
 
 .titleCard{
-      -fx-font-size: 25px;
+    -fx-font-size: 25px;
     -fx-font-weight: bold;
 }
 
@@ -88,7 +88,6 @@
 
 .textColorWhite{
     -fx-fill: #4D4F5C;;
-
 }
 
 .subTitleCard{
