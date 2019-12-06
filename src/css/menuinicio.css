@@ -19,13 +19,13 @@
     -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
 }
 
-.emptarjeta:hover{
-    -fx-background-color: #274e9c;
-}
+/*.emptarjeta:hover{*/
+/*    -fx-background-color: #274e9c;*/
+/*}*/
 
-.emptarjeta:pressed{
-    -fx-background-color: #3C3B54;
-}
+/*.emptarjeta:pressed{*/
+/*    -fx-background-color: #274e9c;*/
+/*}*/
 
 
 .empbotonver{
@@ -34,6 +34,14 @@
     -fx-pref-height: 50px;
     -fx-text-fill: white;
     -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Source Sans Pro";
+}
+
+.empbotonver:hover{
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-font-size: 16px;
 }
 
 .radiobuttonNewProd{
@@ -64,7 +72,31 @@
 
 .empleadoscard:hover{
     -fx-background-color: rgb(244, 243, 240);
-    -fx-font-family: "Source Sans Pro";
+}
+
+.titleCard{
+      -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.textColorBlack{
+    -fx-text-fill: black;
+}
+.textColorWhite{
+    -fx-text-fill: white;
+}
+
+.textColorWhite{
+    -fx-fill: #4D4F5C;;
+
+}
+
+.subTitleCard{
+    -fx-font-size: 18px;
+}
+
+.desCard{
+    -fx-font-size: 16px ;
 }
 
 /*Aca estaran los estilos de los modales para agregar a un empleado.*/
@@ -79,13 +111,15 @@
     -fx-background-color: #43425D;
     -fx-border-radius: 4px;
     -fx-text-fill:white;
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
 }
 .boxOfText:hover{
     -fx-border-color: #295eb2;
 }
+
 .boxOfText:focused{
-    -fx-border-color: #295eb2;
+    -fx-border-color: #5178af;
 }
 .paneDeleteEmploy{
     -fx-pref-width: 262px;
