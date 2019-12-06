@@ -123,8 +123,11 @@ private int idpersona;
          directionImage="NULL";
      }
 
+     public void validatorString(){
 
+     }
 
+     //URL de la imagen
     public String searchEmploy(ActionEvent actionEvent) throws IOException {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
