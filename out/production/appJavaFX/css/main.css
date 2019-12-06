@@ -123,7 +123,7 @@
 .menulateral {
     -fx-background-color: #43425D;
     -fx-pref-width: 260px;
-    -fx-pref-height: 960px;
+    -fx-pref-height: 860px;
     -fx-translate-x:0px;
     -fx-translate-y: 0px;
 }
@@ -231,7 +231,7 @@
 
 /*CONTENEDOR DE LOS PANELES VENTAS, COMPRAS, REPORTES.....*/
 .contenedor{
-    -fx-pref-height: 890px;
+    -fx-pref-height: 790px;
     -fx-pref-width: 1340px;
     -fx-background-color: #fff6;
 }
@@ -339,7 +339,7 @@
 .panelPrincipal{
     -fx-background-color: #F0F0F7;
     -fx-pref-width: 1339px;
-    -fx-pref-height: 890px;
+    -fx-pref-height: 790px;
 }
 
 /*contenedor de la tabla*/

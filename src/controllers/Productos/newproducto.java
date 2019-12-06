@@ -42,8 +42,6 @@ public class newproducto implements Initializable {
 
     @FXML private TextField CodigoP;
 
-    @FXML private Button close;
-
     @FXML private ImageView imageview;
 
     Connection conexion = null;

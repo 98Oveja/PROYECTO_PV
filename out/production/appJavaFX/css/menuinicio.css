@@ -8,7 +8,7 @@
 
 .empPanel{
     -fx-pref-width: 1340px;
-    -fx-pref-height: 890px;
+    -fx-pref-height: 790px;
     -fx-background-color: #f0eef7;
 }
 
@@ -70,6 +70,26 @@
 /*Aca estaran los estilos de los modales para agregar a un empleado.*/
 .paneAddEmploy{
     -fx-pref-width: 570px;
-    -fx-pref-height: 880px;
+    -fx-pref-height: 750px;
     -fx-background-color: #43425D;
+}
+
+.boxOfText{
+    -fx-border-color: #808495;
+    -fx-background-color: #43425D;
+    -fx-border-radius: 4px;
+    -fx-text-fill:white;
+    -fx-font-size: 13px;
+}
+.boxOfText:hover{
+    -fx-border-color: #295eb2;
+}
+.boxOfText:focused{
+    -fx-border-color: #295eb2;
+}
+.paneDeleteEmploy{
+    -fx-pref-width: 262px;
+    -fx-pref-height: 200px;
+    -fx-background-color: white;
+    -fx-border-radius: 8px;
 }

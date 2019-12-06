@@ -9,7 +9,7 @@
 
 <StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
-        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal">
+        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1600.0" styleClass="panelPrincipal">
             <children>
                 <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
@@ -49,7 +49,7 @@
                      </children>
                   </Pane>
                     </children></Pane>
-                <Pane fx:id="components" prefHeight="960.0" prefWidth="1600.0" styleClass="menulateral">
+                <Pane fx:id="components" prefHeight="861.0" prefWidth="1600.0" styleClass="menulateral">
                     <children>
                         <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="121.0" styleClass="ferreteria" stylesheets="@../css/main.css" text="Ferreteria" />
                         <ImageView fitHeight="150.0" fitWidth="18.0" layoutX="126.0" layoutY="802.0" pickOnBounds="true" preserveRatio="true">
@@ -155,6 +155,6 @@
                 </Pane>
             </children>
         </Pane>
-      <StackPane fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
+      <StackPane fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
     </children>
 </StackPane>

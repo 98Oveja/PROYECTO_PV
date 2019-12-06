@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane id="ContenedorMenu" prefHeight="890.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
@@ -21,7 +21,7 @@
                      <effect>
                         <Shadow />
                      </effect></JFXButton>
-                  <Label layoutX="72.0" layoutY="53.0" styleClass="tipografia" text="Proveedores" textFill="WHITE">
+                  <Label layoutX="62.0" layoutY="53.0" styleClass="tipografia" text="Proveedores" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -32,7 +32,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane fx:id="CardStadistic" layoutX="206.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
+            <Pane layoutX="206.0" layoutY="429.0" prefHeight="200.0" prefWidth="200.0" styleClass="emptarjeta">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -47,7 +47,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="72.0" layoutY="108.0" prefHeight="24.0" prefWidth="156.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Mira las Graficas" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                  <Label contentDisplay="CENTER" layoutX="72.0" layoutY="108.0" prefHeight="24.0" prefWidth="152.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Mira las Graficas" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -91,15 +91,15 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="104.0" prefHeight="36.0" prefWidth="137.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                  <Label layoutX="78.0" layoutY="104.0" prefHeight="36.0" prefWidth="142.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="CardPaneNewPro" layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;" />
-            <Pane fx:id="CardDescripNew" layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
+            <Pane layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: white;" />
+            <Pane layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
                      <cursor>
@@ -127,12 +127,12 @@
                         <Shadow />
                      </effect>
                   </JFXButton>
-                  <Label layoutX="93.0" layoutY="41.0" prefHeight="41.0" prefWidth="117.0" styleClass="tipografia" text="Clientes" textFill="WHITE" StackPane.alignment="CENTER">
+                  <Label layoutX="93.0" layoutY="41.0" prefHeight="41.0" prefWidth="112.0" styleClass="tipografia" text="Clientes" textFill="WHITE" StackPane.alignment="CENTER">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="82.0" prefHeight="61.0" prefWidth="152.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Echa un vistazo a tus clientes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="82.0" prefHeight="61.0" prefWidth="152.0" styleClass="tipografia" stylesheets="@../../css/main.css" text="Echa un vistazo a tus clientes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>

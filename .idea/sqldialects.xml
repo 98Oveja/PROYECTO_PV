@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/PuntoDeVenta.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/ddl_bd_pv.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/controllers/employees/AddEmployController.java" dialect="GenericSQL" />
   </component>
 </project>
