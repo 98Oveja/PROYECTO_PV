@@ -128,6 +128,16 @@
     -fx-translate-y: 0px;
 }
 
+.cambio{
+    -fx-background-color: #BCBCCB;
+    -fx-text-fill: #fff;
+}
+
+.cambio:hover{
+    -fx-background-color: #3B86FF;
+    -fx-text-fill: #fff;
+}
+
 .miniboton{
     -fx-background-color: #BCBCCB;
     -fx-text-fill: #fff;

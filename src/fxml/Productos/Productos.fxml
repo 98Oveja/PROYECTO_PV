@@ -159,12 +159,12 @@
                   </Pane>
                   <Pane layoutX="16.0" layoutY="518.0" prefHeight="100.0" prefWidth="730.0" style="-fx-background-color: #fff; -fx-border-color: #fff;">
                      <children>
-                        <ImageView fx:id="imageview41" fitHeight="79.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageview5" fitHeight="79.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../../Downloads/mart.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="Nombre41" layoutX="124.0" layoutY="38.0" prefHeight="25.0" prefWidth="228.0" text="Destornilladores de estrella" />
+                        <Label fx:id="Nombre5" layoutX="124.0" layoutY="38.0" prefHeight="25.0" prefWidth="228.0" text="Destornilladores de estrella" />
                         <Button layoutX="398.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #fff;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -183,8 +183,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="disp41" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
-                        <Label fx:id="precio41" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
+                        <Label fx:id="disp5" layoutX="518.0" layoutY="39.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
+                        <Label fx:id="precio5" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
                      </children>
                   </Pane>

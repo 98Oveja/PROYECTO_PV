@@ -154,7 +154,6 @@ public class newproducto implements Initializable {
             System.out.println(e.getErrorCode());;
         }
         return list;
-
     }
 
 
@@ -196,9 +195,7 @@ public class newproducto implements Initializable {
             System.out.println("file is not valid");
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    void imit(){
         ArrayList<String> lista = Categorias();
         ObservableList<String> categ = FXCollections.observableArrayList();
         categ.addAll(lista);
@@ -214,7 +211,12 @@ public class newproducto implements Initializable {
         event.validarSoloNumeros(Pcompra);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    imit();
+    }
 
+Controller controller = new Controller();
 
     public void Cerrar(ActionEvent actionEvent) {
         Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
