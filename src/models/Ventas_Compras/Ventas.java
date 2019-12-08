@@ -2,15 +2,18 @@ package models.Ventas_Compras;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.input.KeyEvent;
 import utils.ConnectionUtil;
-import javafx.scene.control.TextField;
-
-import javax.swing.*;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Date;
-
-
+import java.util.ArrayList;
 public class Ventas {
+    ConnectionUtil cone = new ConnectionUtil();
+    Connection connection = cone.getConnection();
+    CallableStatement callableStatement = null;
+    ResultSet resultSet = null;
+    Statement statement = null;
+    ArrayList<String> dataContainer = new ArrayList<>();
+    String resultQuery = "";
+
     //  VARIABLES PARA LA TUPLA DE VENTAS
     private int id_Cliente, id_Empleado;
     private double total;
@@ -25,93 +28,120 @@ public class Ventas {
     private String nombre_Cliente;
     private double calculoTotal;
     private float descuento;
-    //    ConnectionUtil con = new ConnectionUtil();
-    ConnectionUtil con3 = null;
-    Connection conn = null;
 
-    /*
-    Procedimiento: Es un conjunto de instrucciones que cumplen una tarea
-    Función: Como un procedimiento pero retorna un valor
-    Clase: Concepto de programación orientada a objetos, es una forma de encapsular funcionalidad, contiene campos y métodos.
-    Método: Puede ser un procedimiento o una función, la diferencia es que le pertenece a una clase.
-     */
-//        return con!=null?true:false;
-//    Constructor
     public Ventas() {
-        //  CONEXION A LA BASE DE DATOS
-//        Connection con = ConnectionUtil.conDB();
-        con3 = new ConnectionUtil();
-        System.out.println(con3.toString());
     }
-
-    //  METODO PARA BUSCAR A AUN EMPLEADO POR NOMRE
-    public void getNombreEmpleadoById(String NombreEmpleado_In) {
-        String esteEmpleado = NombreEmpleado_In.length() != 0 ? NombreEmpleado_In : "";
-        System.out.println("El empleado " + esteEmpleado);
-        try {
-            conn = con3.getConnection();
-            String query = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO from personas where  id_persona = 10";
-            Statement sql = conn.createStatement();
-            ResultSet resultSet = sql.executeQuery(query);
-            if (resultSet != null) {
-                if (resultSet.next() == true) {
-                    System.out.println(resultSet.getString("PRIMER_NOMBRE"));
-                    System.out.println(resultSet.getString("PRIMER_APELLIDO"));
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
-//        return  id_Empleado = 3;
-    }
-
-    //  MEDODO PARA BUSCAR EL CLIENTE POR NOMBRE
-    public int getNombreClienteById(String NombreCliente_In) {
-
-        return id_Cliente;
-    }
-
-    //  METODO PARA MOSTRAR LAS VENTAS
-    public void listaDeVentas() {
-
-    }
-
-    //  METODO PARA INSERTAR UNA VENTA
-    public void registrarVenta() {
-
-    }
-//  METODO PARA CANCELAR UNA VENTA
-//  METODO PARA VER EL DATALLE DE VENTA
-//  METODO PARA INSERTAR EL DETALLE DE VENTA
-//  METODO PARA BUSCAR UNA VENTA
     //METODOS PARA VALIDAR SOLO LETRAS
-    public void validarSoloLetras(JFXTextField campoDeTexto) {
-        campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
-            char c = event.getCharacter().charAt(0);
-            if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
-                event.consume();
-                //System.out.println("Dato no Valido: "+c);
+public void validarSoloLetras(JFXTextField campoDeTexto) {
+   campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
+     char c = event.getCharacter().charAt(0);
+      if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
+          event.consume();
+      }
+   });
+}
+public void validarSoloNumeros(JFXTextField campo){
+   campo.addEventFilter(KeyEvent.ANY, event ->{
+     char c = event.getCharacter().charAt(0);
+      if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+          event.consume();
+      }
+      if (c == '.' && campo.getText().contains(".")){
+          event.consume();
+      }
+   });
+}
+//  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
+public String getIdCostumerInDB(String Nombre, String Apellido) {
+    try {
+        resultQuery = "";
+        String sql = "{?= call getIdCostumerbyName(?,?)}";
+        callableStatement = connection.prepareCall(sql);
+        callableStatement.registerOutParameter(1, Types.INTEGER);
+        callableStatement.setString(2, Nombre);
+        callableStatement.setString(3, Apellido);
+        callableStatement.execute();
+        resultQuery = callableStatement.getString(1);
+    } catch (SQLException e) {
+        System.out.println("I can't get the customer's ID: " + e.getMessage());
+    }
+    return resultQuery;
+}
+
+public ArrayList listadoClientes() {
+        try {
+            dataContainer.clear();
+            resultQuery = "";
+            String sql = "{call selectAllCostumers()}";
+             statement = connection.createStatement();
+             resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                resultQuery = resultSet.getString("PRIMER_NOMBRE") + " " + resultSet.getString("PRIMER_APELLIDO");
+                dataContainer.add(resultQuery);
             }
-        });
-    }
+        } catch (SQLException e) {
+            System.out.println("Error loading all Customers: " + e.getMessage());
+        }
+    return dataContainer;
+}
 
-    public void validarSoloNumeros(JFXTextField campo){
-       campo.addEventFilter(KeyEvent.ANY, event ->{
-           char c = event.getCharacter().charAt(0);
-           System.out.println(c);
-               if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
-                    event.consume();
-//                   System.out.println("Dato no valido: "+event.getCode());
-               }
-                if (c == '.' && campo.getText().contains(".")){
-                //    System.out.println("No se puede almacenar ms de 2 puntos");
-                    event.consume();
-                }
-       });
+public ArrayList listaProductos() {
+   try {
+       dataContainer.clear();
+       resultQuery = "";
+       String sql = "{call selectAllProducts()}";
+       statement = connection.createStatement();
+       resultSet = statement.executeQuery(sql);
+       while (resultSet.next()) {
+           resultQuery = resultSet.getString("NOMBRE");
+           dataContainer.add(resultQuery);
+       }
+   } catch (SQLException e) {
+       System.out.println("Error loading all Products: " + e.getMessage());
+   }
+   return dataContainer;
+}
 
+public ArrayList getCustomerDatabyId(String idCliente) {
+   try{
+       dataContainer.clear();
+       resultQuery = "";
+       callableStatement = connection.prepareCall("{call consutaNitDirTelCliente (?)}");
+       callableStatement.setInt(1, Integer.parseInt(idCliente));
+       resultSet = callableStatement.executeQuery();
+       while (resultSet.next()) {
+           dataContainer.add(resultSet.getString("TELEFONO")+"#"+
+                             resultSet.getString("DIRECCION")+"#"+
+                             resultSet.getString("NIT"));
+       }
+   } catch (SQLException e) {
+       System.out.println("I can't get the Customer's Data : "+e.getMessage());
+   }
+   return dataContainer;
+}
+
+public ArrayList getProductByName(String thisProduct){
+    try{
+        dataContainer.clear();
+        resultQuery = "";
+        callableStatement = connection.prepareCall("{call getDataProductsByNameProd(?)}");
+        callableStatement.setString(1, thisProduct);
+        resultSet = callableStatement.executeQuery();
+        while (resultSet.next()) {
+            dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
+                    resultSet.getString("PRECIO_VENTA")+"#"+
+                    resultSet.getString("CODIGO"));
+        }
+    } catch (SQLException e) {
+        System.out.println("I can't get the Product's Data : "+e.getMessage());
     }
+    return dataContainer;
+}
+
+
+
+
+
 
 
 
