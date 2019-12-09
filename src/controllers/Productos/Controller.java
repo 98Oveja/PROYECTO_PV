@@ -173,7 +173,7 @@ public class Controller implements Initializable {
             System.out.println("ERROR "+e.getErrorCode());;
         }
         a=URL; b=NAME; c=DISPONIBILIDAD; d=PRECIO;
-        mostrar();
+        //mostrar();
     }
 
     @Override

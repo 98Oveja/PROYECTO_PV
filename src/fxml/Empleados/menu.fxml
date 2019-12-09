@@ -12,6 +12,7 @@
 <StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
+         <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Inicio" textFill="#43425d" />
          <children>
             <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
@@ -182,10 +183,6 @@
                   <Image url="@../../images/producto_nuevo.png" />
                </image>
             </ImageView>
-            <RadioButton layoutX="478.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
-            <RadioButton layoutX="554.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
-            <RadioButton layoutX="503.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
-            <RadioButton layoutX="527.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: white;" />
-         </children></Pane>
+            </children></Pane>
    </children>
 </StackPane>
