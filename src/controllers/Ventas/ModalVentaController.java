@@ -1,6 +1,7 @@
 package controllers.Ventas;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.jdi.Value;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -16,6 +18,7 @@ import models.Ventas_Compras.Ventas;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ModalVentaController implements Initializable {
@@ -50,25 +53,28 @@ public class ModalVentaController implements Initializable {
     @FXML
     private TextField total_txt;
     Ventas ventas = new Ventas();
+    double subtotalCalculado = 0;
+
+
+
     public void CloseModal(ActionEvent actionEvent) {
+        //MANERA EN CERRA EL MODAL
+        Stage stage = (Stage) panelContenedor.getScene().getWindow();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
-        alert.setTitle("Close");
+        alert.setTitle("Cerra la pantall de Venta");
         alert.setContentText("Seguro que quieres Cerrar?");
-        alert.showAndWait();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){stage.close();
+        }else{alert.close();}
 
-        //MANERA EN CERRA EL MODAL
-          Stage stage = (Stage) panelContenedor.getScene().getWindow();
-          stage.close();
 
     }
 
     public void GuardarVentaEnDB(ActionEvent actionEvent) {
     }
-
-
 /*    mostrar la fecha y la hora en un label*/
-public void mostrarFecha(){
+    public void mostrarFecha(){
         Date date = new Date();
         long miliSec = date.getTime();
         java.sql.Date diaSql = new java.sql.Date(miliSec);
@@ -176,7 +182,6 @@ public void mostrarFecha(){
             String nombreCliente = SeparadaCadena[0];
             String apelliCliente = SeparadaCadena[1];
             String search_id = ventas.getIdCostumerInDB(nombreCliente,apelliCliente);
-
             ArrayList queryResultCustomer = ventas.getCustomerDatabyId(search_id);
             String datosClientes= queryResultCustomer.get(0).toString();
             String [] containerDataCustomer = datosClientes.split("#");
@@ -190,14 +195,20 @@ public void mostrarFecha(){
             ArrayList queryResultProducts = ventas.getProductByName(producto_text.getText());
             String consultaCompleta = queryResultProducts.get(0).toString();
             String [] contenedorConsultaProducto =consultaCompleta.split("#");
-            System.out.println(contenedorConsultaProducto[0]);
-            System.out.println(contenedorConsultaProducto[1]);
-            System.out.println(contenedorConsultaProducto[2]);
+//            for(int i=0;i<contenedorConsultaProducto.length;i++){
+//                System.out.println(contenedorConsultaProducto[i]);
+//            }
+            if (cantidad_text.getLength() != 0){
+                subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
+                        Double.parseDouble(cantidad_text.getText()),
+                        Double.parseDouble(contenedorConsultaProducto[1]),
+                        Double.parseDouble(contenedorConsultaProducto[0])
+                );
+                System.out.println("EL subtotal es = "+subtotalCalculado);
+                total_txt.setText(String.valueOf(subtotalCalculado));
+            }
 
         });
-
-
-
     }
 
     public void btn_ShopingCar(ActionEvent actionEvent) {

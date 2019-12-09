@@ -137,8 +137,14 @@ public ArrayList getProductByName(String thisProduct){
     }
     return dataContainer;
 }
-
-
+//  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
+//  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
+public double calcularSubtotal_andUpdateCantidad(double cantidadProduct, double precioProducto, double stock){
+    if (stock <= cantidadProduct){
+        return total = 0;
+    }
+        return this.total = cantidadProduct * precioProducto;
+}
 
 
 
