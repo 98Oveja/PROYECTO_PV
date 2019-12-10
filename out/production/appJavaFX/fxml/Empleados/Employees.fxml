@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -14,7 +13,7 @@
          <children>
              <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" />
 
-            <Pane layoutX="790.0" layoutY="30.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+            <Pane layoutX="731.0" layoutY="30.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>

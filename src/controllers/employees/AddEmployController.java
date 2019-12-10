@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
 
 public class AddEmployController implements Initializable {
     public BorderPane imgUser;
+    public Button btnCerrarModal;
     Date date =new Date();//varaiables para obtener la fecha actual del system
     long milsec = date.getTime();
     java.sql.Date dia = new java.sql.Date(milsec);

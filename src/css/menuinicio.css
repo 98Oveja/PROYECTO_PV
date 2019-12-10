@@ -126,3 +126,5 @@
     -fx-background-color: white;
     -fx-border-radius: 8px;
 }
+.btn_CloseModal{-fx-background-color:Transparent;-fx-background-radius:30px;-fx-translate-x:1115px;-fx-translate-y:24px;-fx-cursor:hand}
+.btn_CloseModal:hover{-fx-background-color:#43425d}

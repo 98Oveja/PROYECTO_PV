@@ -6,7 +6,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3C3B54;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SetingsUserController">
         <children>
-            <Button id="Btn_CloseModal" fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="-560.0" layoutY="-20.0" mnemonicParsing="false" onAction="#CloseModal" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal">
+            <Button  fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="-560.0" layoutY="-20.0" mnemonicParsing="false" onAction="#CloseModal" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                         <image>

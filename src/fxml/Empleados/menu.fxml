@@ -16,7 +16,7 @@
          <children>
             <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
-                  <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
+                  <JFXButton fx:id="btnViewProd" contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver " >
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -55,7 +55,7 @@
                         <String fx:value="textColorWhite" />
                      </styleClass>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="74.0" layoutY="110.0" prefHeight="24.0" prefWidth="137.0" stylesheets="@../../css/menuinicio.css" text="Mira las Graficas" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                  <Label contentDisplay="CENTER" layoutX="74.0" layoutY="115.0" prefHeight="24.0" prefWidth="149.0" stylesheets="@../../css/menuinicio.css" text="Mira las Graficas" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                      <styleClass>
                         <String fx:value="subTitleCard" />
                         <String fx:value="tipografia" />
