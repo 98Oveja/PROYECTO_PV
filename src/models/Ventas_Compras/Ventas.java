@@ -130,7 +130,9 @@ public ArrayList getProductByName(String thisProduct){
         while (resultSet.next()) {
             dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
                     resultSet.getString("PRECIO_VENTA")+"#"+
-                    resultSet.getString("CODIGO"));
+                    resultSet.getString("CODIGO")+"#"+
+                    resultSet.getString("DESCRIPCION"));
+
         }
     } catch (SQLException e) {
         System.out.println("I can't get the Product's Data : "+e.getMessage());

@@ -7,14 +7,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
 
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.text.*;
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +30,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ModalVentaController implements Initializable {
+    public HBox HBoxPanel;
     @FXML
     AnchorPane panelContenedor;
     @FXML
@@ -104,6 +113,11 @@ public class ModalVentaController implements Initializable {
     }
     public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
     public void verificarTodoLosInputs(){
+        Label label = new Label("Mensaje de error");
+        HBoxPanel.getChildren().add(panelContenedor);
+
+
+
         String Cliente = cliente_text.getText();
         String nit = nit_txt.getText();
         String telefono = telefono_txt.getText();
@@ -113,44 +127,40 @@ public class ModalVentaController implements Initializable {
         String descripcion = descripcion_text.getText();
         String descuento = descuento_text.getText();
         if (validarCampos(Cliente)==false){
-            cliente_text.setText("INGRESA O SELECCIONA UN NOMBRE");
-            cliente_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            cliente_text.promptTextProperty().setValue("INGRESA O SELECCIONA UN NOMBRE");
+            cliente_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(nit)==false){
-            nit_txt.setText("C/F");
-            nit_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            nit_txt.promptTextProperty().setValue("C/F");
+            nit_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(telefono)==false){
-            telefono_txt.setText("No Phone");
-            telefono_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            telefono_txt.promptTextProperty().setValue("No Phone");
+            telefono_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(direccion)==false){
-            direccion_txt.setText("Ciudad");
-            direccion_txt.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            direccion_txt.promptTextProperty().setValue("Ciudad");
+            direccion_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(productos)==false){
-            producto_text.setText("SELECCIONA UN PRODUCTO");
-            producto_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            producto_text.promptTextProperty().setValue("SELECCIONA UN PRODUCTO");
+            producto_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(cantidad_str)==false){
-            cantidad_text.setText("??");
-            cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
-        }else {
+            cantidad_text.promptTextProperty().setValue("1");
+            cantidad_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
+        }
+        else {
+            Double cantidad_dbl = Double.parseDouble(cantidad_str);
 
-//            Double cantidad_dbl = Double.parseDouble(cantidad_str);
-
-//            if (cantidad_dbl<=0){
-//                cantidad_text.setText("No. <= 0");
-//                cantidad_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
-//            }
         }
         if (validarCampos(descripcion)==false){
-            descripcion_text.setText("Decripcion del Producto");
-            descripcion_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            descripcion_text.promptTextProperty().setValue("Descripcion del Producto");
+            descripcion_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }
         if (validarCampos(descuento)==false){
-            descuento_text.setText("00");
-            descuento_text.setStyle("-fx-text-fill: rgba(0,229,226,0.65);");
+            descuento_text.promptTextProperty().setValue("00");
+            descuento_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
         }else{
             Double descuento_dbl = Double.parseDouble(descuento);
             double multi = descuento_dbl* 3;
@@ -195,9 +205,7 @@ public class ModalVentaController implements Initializable {
             ArrayList queryResultProducts = ventas.getProductByName(producto_text.getText());
             String consultaCompleta = queryResultProducts.get(0).toString();
             String [] contenedorConsultaProducto =consultaCompleta.split("#");
-//            for(int i=0;i<contenedorConsultaProducto.length;i++){
-//                System.out.println(contenedorConsultaProducto[i]);
-//            }
+            descripcion_text.setText(contenedorConsultaProducto[3]);
             if (cantidad_text.getLength() != 0){
                 subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
                         Double.parseDouble(cantidad_text.getText()),
