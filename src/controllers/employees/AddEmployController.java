@@ -1,17 +1,23 @@
 package controllers.employees;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -42,7 +48,8 @@ public class AddEmployController implements Initializable {
 @FXML
     private TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
 @FXML
-    private Button btnAddEmploy;
+    private ImageView warningOne, warningTwo, warningThree, warningFour, warningFive, warningSix;
+
 @FXML
     private JFXComboBox<String> placeList;
 
@@ -56,9 +63,37 @@ private int idpersona;
      stage.close();
  }
 
-
+    //METODOS PARA VALIDAR SOLO LETRAS
+    public void validateLetter(TextField campoDeTexto) {
+        campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
+            char c = event.getCharacter().charAt(0);
+            if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
+                event.consume();
+            }
+        });
+    }
+    public void validateNumber(TextField campo){
+        campo.addEventFilter(KeyEvent.ANY, event ->{
+            char c = event.getCharacter().charAt(0);
+            System.out.println(c);
+            if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+                event.consume();
+//                            }
+            if (c == '.' && campo.getText().contains(".")){
+                event.consume();
+            }
+        }
+        }
+        );
+    }
  @FXML
     public void AddEmploy(ActionEvent event) throws SQLException {
+     validateLetter(EmployNameOne);
+     validateLetter(EmployNameTwo);
+     validateLetter(EmployLasteNameOne);
+     validateLetter(EmployLasteNameTwo);
+     validateNumber(EmployPhone);
+
      String firstName= EmployNameOne.getText();
      String secondName= EmployNameTwo.getText();
      String firstLastName= EmployLasteNameOne.getText();
@@ -68,12 +103,45 @@ private int idpersona;
      EmployPlace.setText(placeList.getValue());
      String email= EmployEmail.getText();
 
+     if (EmployNameOne.getLength() < 3){
+         EmployNameOne.setPromptText("Ingresa un nombre valido");
+         EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
+         warningOne.setVisible(true);
+     }
+     if (EmployLasteNameOne.getLength() < 3){
+         EmployLasteNameOne.setPromptText("Ingresa un apellido valida");
+         EmployLasteNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
+         warningTwo.setVisible(true);
+     }
+     if (EmployDir.getLength() <= 4){
+         EmployDir.setPromptText("Ingresa una direccion valida");
+         EmployDir.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
+         warningThree.setVisible(true);
+     }
+     if (EmployPhone.getLength() < 8){
+         EmployPhone.setPromptText("Ingresa un numero valido");
+         EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+         warningFour.setVisible(true);
+     }
+
+     if (EmployEmail.getLength() <= 8){
+         EmployEmail.setPromptText("Ingresa un correo valida");
+         EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+         warningSix.setVisible(true);
+     }
+
+     if (placeList.getValue()==null){
+         EmployPlace.setPromptText("Elige un puesto");
+         EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+         warningFive.setVisible(true);
+     }
+
      Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
      alert.setTitle("Confirmar Informacion...");
      alert.setContentText("Verifica los datos: Nombres: "+firstName +" "+ secondName +" "+firstLastName+" "+secondLastName+ "\nDireccion: "+direction+" Telefono: "+numberPhone+" Puesto: "+placeList.getValue());
      //agregamos los botones al dialogo
-     ButtonType yes= new ButtonType("Si...");
-     ButtonType no= new ButtonType("No...");
+     ButtonType yes= new ButtonType("Si!");
+     ButtonType no= new ButtonType("No!");
      alert.getButtonTypes().setAll(yes,no);
      Optional<ButtonType> optional= alert.showAndWait();
 
@@ -130,9 +198,6 @@ private int idpersona;
          directionImage="NULL";
      }
 
-     public void validatorString(){
-     }
-
      //URL de la imagen
     @FXML
     public String searchEmploy(MouseEvent event) throws IOException {
@@ -143,7 +208,6 @@ private int idpersona;
             directionImage= selectedFile.getPath();
             System.out.println(directionImage);
             return setImgUser("file:/"+directionImage);
-            //image = new Image("file:/"+directionImage);/root/IdeaProjects/appJavaFX/src/images/empleados.png
 
         } else{
             System.out.println("file is not valid");
@@ -157,7 +221,14 @@ private int idpersona;
         imgUser.setCenter(circle);
         return url;
     }
+    @FXML
+    private void handler(KeyEvent e){
+        if(e.getCode()== KeyCode.ENTER){
+            EmployNameOne.setFocusTraversable(false);
+            EmployLasteNameOne.setFocusTraversable(true);
+        }
 
+    }
     @FXML
     private void selectItem(ActionEvent event){
         EmployPlace.setText(placeList.getValue());
