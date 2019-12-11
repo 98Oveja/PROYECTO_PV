@@ -55,6 +55,7 @@ public class Controller implements Initializable {
     String direccion;
     int posicionmini=0;
     ArrayList a; ArrayList b; ArrayList c; ArrayList d;
+
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();

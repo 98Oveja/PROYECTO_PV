@@ -28,3 +28,7 @@ hs_err_pid*
 
 .ideas
 appJavaFX.iml
+# images
+*.png
+*.jpg
+*.ico
