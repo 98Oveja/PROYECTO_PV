@@ -20,9 +20,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                     <effect>
-                        <Shadow />
-                     </effect></JFXButton>
+                    </JFXButton>
                   <Label layoutX="70.0" layoutY="53.0" stylesheets="@../../css/menuinicio.css" text="Proveedores">
                      <styleClass>
                         <String fx:value="titleCard" />

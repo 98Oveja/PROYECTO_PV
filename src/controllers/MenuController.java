@@ -3,6 +3,7 @@ package controllers;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,15 +12,22 @@ import javafx.scene.image.ImageView;
 
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class MenuController implements Initializable {
     public JFXButton btnViewProd;
+    public JFXButton btnViewCli;
+    public JFXButton btnViewRep;
+    public JFXButton btnViewVen;
+    public JFXButton btnViewEst;
     @FXML
     private ImageView NewImageProducts;
     @FXML
     private Label titleProduct, brandProduct, desProduct;
+    HomeController homeC = new HomeController();
     public void procutosAnimation(){
         Image images = new Image("images/elClubo.jpg");
         Image images1 = new Image("images/ElCluboP.jpg");
@@ -58,4 +66,33 @@ public class MenuController implements Initializable {
     }
 
 
+    public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
+        if(actionEvent.getSource() == btnViewProd){
+
+        }
+    }
+
+    public void handleActionViewCli(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnViewCli){
+
+        }
+    }
+
+    public void handleActionViewRep(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnViewRep){
+
+        }
+    }
+
+    public void handleActionViewVent(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnViewVen){
+
+        }
+    }
+
+    public void handleActionViewEst(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnViewEst){
+
+        }
+    }
 }
