@@ -39,7 +39,7 @@
                         <Label fx:id="disp1" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio1" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line fx:id="line1" endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
-                        <Button layoutX="375.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button layoutX="375.0" layoutY="28.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -51,7 +51,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="435.0" layoutY="29.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button fx:id="Delete1" layoutX="435.0" layoutY="29.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert1111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -76,7 +76,7 @@
                         <Label fx:id="disp2" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio2" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line fx:id="line2" endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
-                        <Button layoutX="373.0" layoutY="31.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button layoutX="373.0" layoutY="31.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert1112" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -88,7 +88,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="433.0" layoutY="32.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button fx:id="Delete2" layoutX="433.0" layoutY="32.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert11111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -113,7 +113,7 @@
                         <Label fx:id="disp3" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio3" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line fx:id="line3" endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
-                        <Button layoutX="376.0" layoutY="31.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button layoutX="376.0" layoutY="31.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert11121" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -125,7 +125,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="436.0" layoutY="32.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button fx:id="Delete3" layoutX="436.0" layoutY="32.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert111111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -150,7 +150,7 @@
                         <Label fx:id="disp4" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio4" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line fx:id="line4" endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
-                        <Button layoutX="370.0" layoutY="21.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button layoutX="370.0" layoutY="21.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert111211" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -162,7 +162,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="430.0" layoutY="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button fx:id="Delete4" layoutX="430.0" layoutY="22.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert1111111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -187,7 +187,7 @@
                         <Label fx:id="disp5" layoutX="518.0" layoutY="39.0" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: cfffcc; -fx-border-radius: 10px; -fx-padding: 5px; -fx-background-radius: 10px; -fx-text-fill: #677f66;" text="100 en stock" />
                         <Label fx:id="precio5" layoutX="632.0" layoutY="37.0" prefHeight="25.0" prefWidth="90.0" style="-fx-alignment: center;" text="Q. 1000.00" />
                         <Line fx:id="line5" endX="581.0" layoutX="149.0" layoutY="100.0" startX="-149.0" />
-                        <Button layoutX="375.0" layoutY="34.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button layoutX="375.0" layoutY="34.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert1112111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
@@ -199,7 +199,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="435.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                        <Button fx:id="Delete5" layoutX="435.0" layoutY="35.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
                            <graphic>
                               <ImageView fx:id="openModalInsert11111111" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>

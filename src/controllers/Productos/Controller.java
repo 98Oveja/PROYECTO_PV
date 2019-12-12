@@ -17,10 +17,7 @@ import javax.sound.sampled.Line;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -50,12 +47,8 @@ public class Controller implements Initializable {
     @FXML private Button mini5;
     @FXML private Button mini6;
     @FXML private Button mini1;
-    @FXML private Pane P1;
-    @FXML private Pane P2;
-    @FXML private Pane P3;
-    @FXML private Pane P4;
-    @FXML private Pane P5;
-
+    @FXML private Pane P1; @FXML private Pane P2; @FXML private Pane P3; @FXML private Pane P4; @FXML private Pane P5;
+    @FXML private Button Delete1; @FXML private Button Delete2; @FXML private Button Delete3; @FXML private Button Delete4; @FXML private Button Delete5;
 
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
@@ -183,7 +176,7 @@ public class Controller implements Initializable {
         ArrayList<Double>  DISPONIBILIDAD = new ArrayList<Double>();
         ArrayList<Double> PRECIO = new ArrayList<Double>();
         try {
-            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS ORDER BY ID_PRODUCTO DESC;";
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -212,6 +205,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datos();
     }
+
+
     public void cambio(ActionEvent actionEvent) {
         if (actionEvent.getSource()==mini2){
             mini1.setStyle("-fx-background-color: #BCBCCB; -fx-text-fill: #fff;");
@@ -261,5 +256,46 @@ public class Controller implements Initializable {
 
     public void Actualizar(ActionEvent actionEvent) {
        datos();
+    }
+
+    public void Editar(ActionEvent actionEvent) {
+    }
+
+    public void VEliminar(String nombre) throws SQLException {
+        Alert dialogo= new Alert(Alert.AlertType.CONFIRMATION);
+        dialogo.setTitle("Dar de baja Producto");
+        dialogo.setHeaderText(null);
+        dialogo.initStyle(StageStyle.UNDECORATED);
+        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +"\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
+        Optional<ButtonType> result = dialogo.showAndWait();
+        if (result.get()==ButtonType.OK){
+            String query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
+            conexion = conn.getConnection();
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);//insert.execute(query);
+            preparedStatement.execute();
+        }
+    }
+
+    public void Eliminar(ActionEvent actionEvent) throws SQLException {
+        if (actionEvent.getSource()==Delete1)
+        {
+            VEliminar(Nombre1.getText());
+        }
+        if (actionEvent.getSource()==Delete2)
+        {
+
+        }
+        if (actionEvent.getSource()==Delete3)
+        {
+
+        }
+        if (actionEvent.getSource()==Delete4)
+        {
+
+        }
+        if (actionEvent.getSource()==Delete5)
+        {
+
+        }
     }
 }

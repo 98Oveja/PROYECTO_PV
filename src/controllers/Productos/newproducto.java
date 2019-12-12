@@ -121,9 +121,8 @@ public class newproducto implements Initializable {
             }
             query= "INSERT INTO PRODUCTOS (ID_CATEGORIA,ID_PROVEEDORES,ID_COMPRA,MARCA,NOMBRE," +
                     "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO,DESCRIPCION,CODDIGO)" +
-                    "VALUES (" + idCateg +"," + idProv +"," + 1 +"," +  "\'" + marca + "\'" + "," + "\'" + name + "\'" + "," + cantidad +","
-                    + compra +"," + venta +"," + "\'" + direccion + "\'" +"," + estado + "," + "\'" +desc +  "\'" + "," +  "\'" +codig + "\'" +");";
-            System.out.println(query);
+                    "VALUES ("+idCateg +","+idProv +"," + 1 +"," +  "\'"+marca+"\'" + "," + "\'"+name+"\'" + "," + cantidad +","
+                    + compra +"," + venta +"," + "\'"+direccion+"\'" +"," + estado + "," + "\'"+desc +"\'" + "," +  "\'"+codig +"\'" +");";
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);            //insert.execute(query);
             preparedStatement.execute();
