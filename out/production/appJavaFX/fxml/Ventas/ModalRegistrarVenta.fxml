@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -147,20 +149,29 @@
             </VBox>
             <Pane layoutX="52.0" layoutY="77.0" prefHeight="486.0" prefWidth="200.0" styleClass="PanelTablaDetalleVenta">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HeaderTablaDetalleVenta">
+                  <HBox fx:id="HBoxPanel" prefHeight="100.0" prefWidth="200.0" styleClass="HeaderTablaDetalleVenta">
                      <children>
                         <Label prefHeight="58.0" prefWidth="198.0" styleClass="TituloTablaDetalle" text="Detalle Venta" />
+                        <Label fx:id="MensajeAlerta" alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="264.0" styleClass="TituloTablaDetalle" text="" textAlignment="CENTER" translateX="300" visible="false">
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 
+                              </Lighting>
+                           </effect></Label>
                      </children>
                   </HBox>
-                  <TableView layoutY="3.0" prefHeight="200.0" prefWidth="200.0" styleClass="TablaDetalleVenta">
+                  <TableView fx:id="TablaDetalleVenta" layoutY="3.0" prefHeight="200.0" prefWidth="200.0" styleClass="TablaDetalleVenta">
                     <columns>
-                      <TableColumn prefWidth="109.0" resizable="false" text="Cantidad." />
-                      <TableColumn prefWidth="150.0" resizable="false" text="Código." />
-                        <TableColumn minWidth="1.0" prefWidth="276.0" resizable="false" text="Producto." />
-                        <TableColumn minWidth="0.0" prefWidth="112.0" resizable="false" text="Precio Unitario." />
-                        <TableColumn minWidth="0.0" prefWidth="92.0" resizable="false" text="Descuento." />
-                        <TableColumn prefWidth="194.0" resizable="false" text="Opciones." />
-                        <TableColumn prefWidth="113.0" text="Sub Total." />
+                      <TableColumn fx:id="Col_Cantidad" prefWidth="109.0" resizable="false" text="Cantidad." />
+                      <TableColumn fx:id="Col_Codigo" prefWidth="150.0" resizable="false" text="Código." />
+                        <TableColumn fx:id="Col_Producto" minWidth="1.0" prefWidth="276.0" resizable="false" text="Producto." />
+                        <TableColumn fx:id="Col_PrecioUnitario" minWidth="0.0" prefWidth="112.0" resizable="false" text="Precio Unitario." />
+                        <TableColumn fx:id="Col_Descuento" minWidth="0.0" prefWidth="92.0" resizable="false" text="Descuento." />
+                        <TableColumn fx:id="Col_Opciones" prefWidth="194.0" resizable="false" text="Opciones." />
+                        <TableColumn fx:id="Col_SubTotal" prefWidth="113.0" text="Sub Total." />
                     </columns>
                   </TableView>
                   <Label layoutX="952.0" layoutY="459.0" styleClass="labelTotal_EndTable" text="Total Q." />
