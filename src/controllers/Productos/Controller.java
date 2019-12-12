@@ -49,6 +49,8 @@ public class Controller implements Initializable {
     @FXML private Button mini1;
     @FXML private Pane P1; @FXML private Pane P2; @FXML private Pane P3; @FXML private Pane P4; @FXML private Pane P5;
     @FXML private Button Delete1; @FXML private Button Delete2; @FXML private Button Delete3; @FXML private Button Delete4; @FXML private Button Delete5;
+    @FXML private Button Activos;
+    @FXML private Button Inactivos;
 
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
@@ -58,6 +60,7 @@ public class Controller implements Initializable {
     ArrayList<String> b = new ArrayList<String>();
     ArrayList<Double> c = new ArrayList<>();
     ArrayList<Double> d = new ArrayList<>();
+    int act=1;
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
@@ -201,9 +204,42 @@ public class Controller implements Initializable {
         }
     }
 
+    public void bajas(){
+        a.clear();b.clear();c.clear();d.clear();
+        ArrayList<String> URL = new ArrayList<String>();
+        ArrayList<String> NAME = new ArrayList<String>();
+        ArrayList<Double>  DISPONIBILIDAD = new ArrayList<Double>();
+        ArrayList<Double> PRECIO = new ArrayList<Double>();
+        try {
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=0 ORDER BY ID_PRODUCTO DESC;";
+            conexion = conn.getConnection();
+            Statement instruccion= conexion.createStatement();
+            ResultSet resultado = instruccion.executeQuery(Query);
+            if (resultado != null) {
+                while(resultado.next()) {
+                    String url= resultado.getString("IMG");
+                    String nombre= resultado.getString("NOMBRE");
+                    Double disp = resultado.getDouble("CANTIDAD");
+                    Double precio = resultado.getDouble("PRECIO_VENTA");
+                    URL.add(url);
+                    NAME.add(nombre);
+                    DISPONIBILIDAD.add(disp);
+                    PRECIO.add(precio);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR "+e.getErrorCode());;
+        }
+        a=URL; b=NAME; c=DISPONIBILIDAD; d=PRECIO;
+        if(a.size()!=0){
+            mostrar();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        limpiar();
         datos();
+        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
     }
 
 
@@ -254,6 +290,22 @@ public class Controller implements Initializable {
         }
     }
 
+    public void botonesvista(ActionEvent actionEvent){
+        if (actionEvent.getSource()==Activos){
+            limpiar();
+            Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+            Inactivos.setStyle(".PanelLateralOpciones");
+            datos();
+            act=1;
+        }else if(actionEvent.getSource()==Inactivos){
+            limpiar();
+            Inactivos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+            Activos.setStyle(".PanelLateralOpciones");
+            bajas();
+            act=0;
+        }
+    }
+
     public void Actualizar(ActionEvent actionEvent) {
        datos();
     }
@@ -262,6 +314,12 @@ public class Controller implements Initializable {
     }
 
     public void VEliminar(String nombre) throws SQLException {
+        String query=null;
+        if (act==1){
+            query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
+        }else if (act==0){
+            query="UPDATE PRODUCTOS SET ESTADO = 1 WHERE NOMBRE="+'"'+nombre+'"';
+        }
         Alert dialogo= new Alert(Alert.AlertType.CONFIRMATION);
         dialogo.setTitle("Dar de baja Producto");
         dialogo.setHeaderText(null);
@@ -269,7 +327,6 @@ public class Controller implements Initializable {
         dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +"\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
         Optional<ButtonType> result = dialogo.showAndWait();
         if (result.get()==ButtonType.OK){
-            String query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);//insert.execute(query);
             preparedStatement.execute();
@@ -281,21 +338,21 @@ public class Controller implements Initializable {
         {
             VEliminar(Nombre1.getText());
         }
-        if (actionEvent.getSource()==Delete2)
+        else if (actionEvent.getSource()==Delete2)
         {
-
+            VEliminar(Nombre2.getText());
         }
-        if (actionEvent.getSource()==Delete3)
+        else if (actionEvent.getSource()==Delete3)
         {
-
+            VEliminar(Nombre3.getText());
         }
-        if (actionEvent.getSource()==Delete4)
+        else if (actionEvent.getSource()==Delete4)
         {
-
+            VEliminar(Nombre4.getText());
         }
-        if (actionEvent.getSource()==Delete5)
+        else if (actionEvent.getSource()==Delete5)
         {
-
+            VEliminar(Nombre5.getText());
         }
     }
 }

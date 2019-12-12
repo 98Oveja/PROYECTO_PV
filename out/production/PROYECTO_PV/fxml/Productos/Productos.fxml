@@ -213,9 +213,9 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button layoutX="722.0" layoutY="1.0" mnemonicParsing="false" onAction="#Actualizar" prefHeight="42.0" prefWidth="36.0" styleClass="btns_Panel_Lateral">
+                  <Button layoutX="723.0" layoutY="3.0" mnemonicParsing="false" onAction="#Actualizar" prefHeight="25.0" prefWidth="34.0" styleClass="btns_Panel_Lateral">
                      <graphic>
-                        <ImageView fx:id="openModalInsert11" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openModalInsert11" fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <viewport>
                               <Rectangle2D />
                            </viewport>
@@ -289,6 +289,16 @@
                </font>
             </Button>
             <Button fx:id="mini6" ellipsisString="&gt;" layoutX="1216.0" layoutY="702.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&gt;">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="Activos" ellipsisString="1" layoutX="462.0" layoutY="731.0" mnemonicParsing="false" onAction="#botonesvista" prefHeight="39.0" prefWidth="176.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Activos">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="Inactivos" ellipsisString="&lt;" layoutX="656.0" layoutY="731.0" mnemonicParsing="false" onAction="#botonesvista" prefHeight="39.0" prefWidth="190.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Inactivos">
                <font>
                   <Font size="9.0" />
                </font>
