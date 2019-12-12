@@ -87,8 +87,7 @@ public class HomeController implements Initializable {
         pane.getChildren().setAll(root.getChildrenUnmodifiable());
     }
 
-    void addButtons(){
-
+    public void addButtons(){
         listB.add(btninicio);
         listB.add(btnestadistica);
         listB.add(btnempleados);
@@ -104,7 +103,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    void addlist(){
+    public void addlist(){
         list.add(line1);
         list.add(line2);
         list.add(line3);
@@ -130,11 +129,10 @@ public class HomeController implements Initializable {
         }
     }
 
-    public  void avalibleLabel(int date){
+    public void avalibleLabel(int date){
         addlist();
         for (Label a: list) {
             if(a.equals(list.get(date))){
-                //System.out.println("son iguales ");
                 a.setVisible(true);
             }
         }
