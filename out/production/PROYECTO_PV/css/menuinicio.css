@@ -1,0 +1,130 @@
+/*Fuente para los textos en Botones*/
+.tipografia{
+    -fx-font-family: "Source Sans Pro";
+}
+
+/* --------------------------------------------------------------------------------------- */
+/* ACA ESTAN LOS ESTILOS DEL PANEL QUE ESTARA EN EL MENU INICIAL*/
+
+.empPanel{
+    -fx-pref-width: 1340px;
+    -fx-pref-height: 790px;
+    -fx-background-color: #f0eef7;
+}
+
+.emptarjeta{
+    -fx-pref-width: 281px;
+    -fx-pref-height: 273px;
+    -fx-background-color: #3B86FF;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+}
+
+/*.emptarjeta:hover{*/
+/*    -fx-background-color: #274e9c;*/
+/*}*/
+
+/*.emptarjeta:pressed{*/
+/*    -fx-background-color: #274e9c;*/
+/*}*/
+
+
+.empbotonver{
+    -fx-background-color: #295eb2;
+    -fx-pref-width: 160px;
+    -fx-pref-height: 50px;
+    -fx-text-fill: white;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Source Sans Pro";
+}
+
+.empbotonver:hover{
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-font-size: 16px;
+}
+
+.radiobuttonNewProd{
+    -fx-background-color: Tranparent;
+    -fx-border-color: none;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.radiobuttonNewProd:hover{
+    -fx-background-color: #4185a0;
+}
+
+.radiobuttonNewProd:pressed{
+    -fx-background-color: #3C3B54;
+}
+
+/*aca estara todo los estilos para los empledos*/
+
+.empleadoscard{
+    -fx-pref-whidth: 570px;
+    -fx-pref-height: 160.35px;
+    -fx-background-color: white;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 9, 0.5, 0.0, 0.0 );
+    -fx-border-radius: 6px;
+}
+
+.empleadoscard:hover{
+    -fx-background-color: rgb(244, 243, 240);
+}
+
+.titleCard{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.textColorBlack{
+    -fx-text-fill: black;
+}
+.textColorWhite{
+    -fx-text-fill: white;
+}
+
+.textColorWhite{
+    -fx-fill: #4D4F5C;;
+}
+
+.subTitleCard{
+    -fx-font-size: 18px;
+}
+
+.desCard{
+    -fx-font-size: 16px ;
+}
+
+/*Aca estaran los estilos de los modales para agregar a un empleado.*/
+.paneAddEmploy{
+    -fx-pref-width: 570px;
+    -fx-pref-height: 750px;
+    -fx-background-color: #43425D;
+}
+
+.boxOfText{
+    -fx-border-color: #808495;
+    -fx-background-color: #43425D;
+    -fx-border-radius: 4px;
+    -fx-text-fill:white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.boxOfText:hover{
+    -fx-border-color: #295eb2;
+}
+
+.boxOfText:focused{
+    -fx-border-color: #5178af;
+}
+.paneDeleteEmploy{
+    -fx-pref-width: 262px;
+    -fx-pref-height: 200px;
+    -fx-background-color: white;
+    -fx-border-radius: 8px;
+}
+.btn_CloseModal{-fx-background-color:Transparent;-fx-background-radius:30px;-fx-translate-x:1115px;-fx-translate-y:24px;-fx-cursor:hand}
+.btn_CloseModal:hover{-fx-background-color:#43425d}

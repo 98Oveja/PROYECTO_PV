@@ -40,10 +40,13 @@ public class newproducto implements Initializable {
 
     @FXML private TextField Pcompra;
 
-    @FXML private TextField CodigoP;
+    @FXML private Label codigo;
 
     @FXML private ImageView imageview;
 
+    @FXML private TextField Descripcion;
+
+    ArrayList<String> ID = new ArrayList<String>();
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
     eventos event = new eventos();
@@ -79,7 +82,7 @@ public class newproducto implements Initializable {
         return id;
     }
 
-    String direccion, codigo;
+    String direccion;
 
     public void limipiar()
     {
@@ -88,8 +91,9 @@ public class newproducto implements Initializable {
         Cantidad.clear();
         PVenta.clear();
         Pcompra.clear();
-        CodigoP.clear();
-        CodigoP.clear();
+        codigo.setText("");
+        Descripcion.clear();
+        imageview.setImage(null);
     }
 
     public void agregarProducto(ActionEvent actionEvent) throws SQLException {
@@ -101,22 +105,24 @@ public class newproducto implements Initializable {
         String cantidad = Cantidad.getText();
         String venta = PVenta.getText();
         String compra = Pcompra.getText();
-        String codigo = CodigoP.getText();
+        String codig = codigo.getText();
         String categoria = Categoria.getValue();
         String proveedores = Proveedores.getValue();
+        String desc= Descripcion.getText();
         System.out.println(categoria + proveedores);
-        direccion=direccion.replace("\\","*");
-        System.out.println(direccion);
-        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codigo.isEmpty()) {
+        if(direccion!=null){
+            direccion=direccion.replace("\\","*");
+        }
+        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()) {
             idCateg =  consultasID(categoria, "CATEGORIAS");
             idProv = consultasID(proveedores, "PROVEEDORES");
             if (cantidad.equals(0)){
                 estado=0;
             }
             query= "INSERT INTO PRODUCTOS (ID_CATEGORIA,ID_PROVEEDORES,ID_COMPRA,MARCA,NOMBRE," +
-                    "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO)" +
+                    "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO,DESCRIPCION,CODDIGO)" +
                     "VALUES (" + idCateg +"," + idProv +"," + 1 +"," +  "\'" + marca + "\'" + "," + "\'" + name + "\'" + "," + cantidad +","
-                    + compra +"," + venta +"," + "\'" + direccion + "\'" +"," + estado +");";
+                    + compra +"," + venta +"," + "\'" + direccion + "\'" +"," + estado + "," + "\'" +desc +  "\'" + "," +  "\'" +codig + "\'" +");";
             System.out.println(query);
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);            //insert.execute(query);
@@ -152,7 +158,6 @@ public class newproducto implements Initializable {
             System.out.println(e.getErrorCode());;
         }
         return list;
-
     }
 
 
@@ -185,18 +190,14 @@ public class newproducto implements Initializable {
         if (selectedFile != null)
         {
             direccion= selectedFile.getPath();
-            System.out.println(direccion);
-          // System.out.println(direccion.substring(2,direccion.length()));
             Image image;
             image = new Image("file:/"+direccion);
             imageview.setImage(image);
         } else{
-            System.out.println("file is not valid");
+                //System.out.println("file is not valid");
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    void imit(){
         ArrayList<String> lista = Categorias();
         ObservableList<String> categ = FXCollections.observableArrayList();
         categ.addAll(lista);
@@ -212,10 +213,52 @@ public class newproducto implements Initializable {
         event.validarSoloNumeros(Pcompra);
     }
 
+    void ids(){
+        try {
+            conexion = conn.getConnection();
+            String Query = "SELECT ID_PRODUCTO FROM PRODUCTOS;";
+            Statement instruccion= conexion.createStatement();
+            ResultSet resultado = instruccion.executeQuery(Query);
+            if (resultado != null) {
+                while(resultado.next()) {
+                    String nombre= resultado.getString("ID_PRODUCTO");
+                    ID.add(nombre);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getErrorCode());;
+        }
+    }
 
+    void generarCodigo(){
+        int l=ID.size();
+        if (l==0){
+            codigo.setText(Nombre.getText()+1);
+        }
+        else{
+            l=l+1;
+            codigo.setText(Nombre.getText()+l);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    imit();
+    ids();
+    }
+
+Controller controller = new Controller();
 
     public void Cerrar(ActionEvent actionEvent) {
         Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
         stage.close();
+    }
+
+
+
+    public void Generador(KeyEvent keyEvent) {
+        if(Nombre.getText()!=null){
+            generarCodigo();
+        }
     }
 }
