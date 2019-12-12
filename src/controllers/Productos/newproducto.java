@@ -65,7 +65,7 @@ public class newproducto implements Initializable {
             PreparedStatement preparedStatement = conexion.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
-                System.out.println("NO FUNCIONA");
+               // System.out.println("NO FUNCIONA");
             } else {
                 if(tabla=="CATEGORIAS")
                 {
@@ -109,7 +109,7 @@ public class newproducto implements Initializable {
         String categoria = Categoria.getValue();
         String proveedores = Proveedores.getValue();
         String desc= Descripcion.getText();
-        System.out.println(categoria + proveedores);
+        //System.out.println(categoria + proveedores);
         if(direccion!=null){
             direccion=direccion.replace("\\","*");
         }
@@ -154,7 +154,7 @@ public class newproducto implements Initializable {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e.getErrorCode());;
+            //System.out.println(e.getErrorCode());;
         }
         return list;
     }
@@ -225,7 +225,7 @@ public class newproducto implements Initializable {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e.getErrorCode());;
+            //System.out.println(e.getErrorCode());;
         }
     }
 
