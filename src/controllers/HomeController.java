@@ -76,10 +76,8 @@ public class HomeController implements Initializable {
 
     private void setImgUser(String url) {
         Circle circle = new Circle(32,32,16);
-        //circle.setStroke(Color.valueOf("#E8E9EC"));
         Image image = new Image(url,false);
         circle.setFill(new ImagePattern(image));
-        //circle.setEffect(new DropShadow(+10d, 0d, +2d, Color.valueOf("#E8E9EC")));
         imgUser.setCenter(circle);
     }
 
