@@ -7,10 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
@@ -30,6 +32,7 @@ import java.util.regex.Pattern;
 
 public class AddEmployController implements Initializable {
     public BorderPane imgUser;
+    public Button btnCerrarModal;
     Date date =new Date();//varaiables para obtener la fecha actual del system
     long milsec = date.getTime();
     java.sql.Date dia = new java.sql.Date(milsec);
@@ -40,7 +43,7 @@ public class AddEmployController implements Initializable {
 @FXML
     private TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
 @FXML
-    private ImageView photoEmploy;
+    private Button btnAddEmploy;
 @FXML
     private JFXComboBox<String> placeList;
 
@@ -95,8 +98,6 @@ private int idpersona;
             }
             System.out.println(Nueva);
 
-
-
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
         String sqlinsert= "INSERT INTO `PERSONAS` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
@@ -126,20 +127,23 @@ private int idpersona;
          EmployPhone.setText("");
          EmployPlace.setText("");
          EmployEmail.setText("");
-         photoEmploy.setImage(ima);
+         setImgUser("/images/male_user_.png");
          directionImage="NULL";
      }
 
+     public void validatorString(){
+     }
 
-
-    public String searchEmploy(ActionEvent actionEvent) throws IOException {
+     //URL de la imagen
+    @FXML
+    public String searchEmploy(MouseEvent event) throws IOException {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
             directionImage= selectedFile.getPath();
             System.out.println(directionImage);
-            return setImgUser("/images/empleados.png");
+            return setImgUser("file:/"+directionImage);
             //image = new Image("file:/"+directionImage);/root/IdeaProjects/appJavaFX/src/images/empleados.png
 
         } else{

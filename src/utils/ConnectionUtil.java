@@ -10,7 +10,7 @@ public class ConnectionUtil {
     public static String host = "db4free.net";
     public static String user = "admin_e";
     public static String password = "12345678lol";
-    public static String url = "jdbc:mysql://"+host+"/"+dataBase;
+    public static String url = "jdbc:mysql://"+host+"/"+dataBase+"?autoReconnect=true&useSSL=false"; //connection ssl false
     private static Connection conn;
     //Constructor
     public ConnectionUtil(){

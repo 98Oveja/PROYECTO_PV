@@ -14,7 +14,7 @@
                 <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
                   <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
-                        <ImageView fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="imgNotification" fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/notifications.png" />
                             </image>
