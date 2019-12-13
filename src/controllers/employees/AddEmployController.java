@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -103,32 +105,6 @@ private int idpersona;
      EmployPlace.setText(placeList.getValue());
      String email= EmployEmail.getText();
 
-     if (EmployNameOne.getLength() < 3){
-         EmployNameOne.setPromptText("Ingresa un nombre valido");
-         EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
-         warningOne.setVisible(true);
-     }
-     if (EmployLasteNameOne.getLength() < 3){
-         EmployLasteNameOne.setPromptText("Ingresa un apellido valida");
-         EmployLasteNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
-         warningTwo.setVisible(true);
-     }
-     if (EmployDir.getLength() <= 4){
-         EmployDir.setPromptText("Ingresa una direccion valida");
-         EmployDir.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
-         warningThree.setVisible(true);
-     }
-     if (EmployPhone.getLength() < 8){
-         EmployPhone.setPromptText("Ingresa un numero valido");
-         EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
-         warningFour.setVisible(true);
-     }
-
-     if (EmployEmail.getLength() <= 8){
-         EmployEmail.setPromptText("Ingresa un correo valida");
-         EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
-         warningSix.setVisible(true);
-     }
 
      if (placeList.getValue()==null){
          EmployPlace.setPromptText("Elige un puesto");
@@ -220,19 +196,74 @@ private int idpersona;
         circle.setFill(new ImagePattern(image));
         imgUser.setCenter(circle);
         return url;
-    }
-    @FXML
-    private void handler(KeyEvent e){
-        if(e.getCode()== KeyCode.ENTER){
-            EmployNameOne.setFocusTraversable(false);
-            EmployLasteNameOne.setFocusTraversable(true);
-        }
 
     }
     @FXML
-    private void selectItem(ActionEvent event){
-        EmployPlace.setText(placeList.getValue());
+    private void EventKeyEnterNameOne(KeyEvent event){
+        if(event.getCode()==KeyCode.ENTER){ EmployNameTwo.requestFocus(); }
+            if(EmployNameOne.getLength() < 3){
+                EmployNameOne.setPromptText("Ingresa un nombre valido");
+                EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
+                warningOne.setVisible(true);
+             }else{
+         warningOne.setVisible(false);
+        }
+        }
+    @FXML
+    private void EventKeyEnteNameTwo(KeyEvent event){
+     if(event.getCode()==KeyCode.ENTER){
+         EmployLasteNameOne.requestFocus();
+     }
     }
+
+    @FXML
+    private void EventKeyEnterLastNameOne(KeyEvent event){
+     if(event.getCode()==KeyCode.ENTER){ EmployLasteNameTwo.requestFocus();
+         if (EmployLasteNameOne.getLength() < 3){
+             EmployLasteNameOne.setPromptText("Ingresa un apellido valida");
+             EmployLasteNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
+             warningTwo.setVisible(true);
+         }else{
+             warningTwo.setVisible(false);
+         }
+     }}
+    @FXML
+    private void EventKeyEnterLasteNameTwo(KeyEvent event){
+        if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();}
+     }
+
+    @FXML
+    private void EventKeyEnteDir(KeyEvent event){
+     if(event.getCode()==KeyCode.ENTER){ EmployPhone.requestFocus(); }
+        if (EmployDir.getLength() <= 4){
+            EmployDir.setPromptText("Ingresa una direccion valida");
+            EmployDir.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
+            warningThree.setVisible(true);
+        }else{warningThree.setVisible(false);}
+     }
+    @FXML
+    private void EventKeyEnterPhone(KeyEvent event){
+    if(event.getCode()==KeyCode.ENTER){ EmployEmail.requestFocus();}
+            if (EmployPhone.getLength() < 8) {
+                EmployPhone.setPromptText("Ingresa un numero valido");
+                EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+                warningFour.setVisible(true);
+            }else{warningFour.setVisible(false);}
+ }
+
+
+    @FXML
+    private void EventKeyEnterEmail(KeyEvent event){
+     if(event.getCode()==KeyCode.ENTER){ placeList.requestFocus();}
+        if (EmployEmail.getLength() <= 8){
+            EmployEmail.setPromptText("Ingresa un correo valida");
+            EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+            warningSix.setVisible(true);
+        }else{  warningSix.setVisible(false);}
+ }
+
+    @FXML
+    private void selectItem(ActionEvent event){EmployPlace.setText(placeList.getValue()); }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
