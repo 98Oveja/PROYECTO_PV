@@ -26,8 +26,8 @@ hs_err_pid*
 
 # idea ingore
 
-.ideas
-appJavaFX.iml
+#.ideas
+#appJavaFX.iml
 # images
 *.png
 *.jpg
