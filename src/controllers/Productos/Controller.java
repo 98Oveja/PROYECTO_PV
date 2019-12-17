@@ -21,52 +21,34 @@ import java.util.*;
 
 public class Controller implements Initializable {
 
-    @FXML private ImageView imageview1;
-    @FXML private Label Nombre1;
-    @FXML private Label disp1;
-    @FXML private Label precio1;
-    @FXML private ImageView imageview2;
-    @FXML private Label Nombre2;
-    @FXML private Label disp2;
-    @FXML private Label precio2;
-    @FXML private ImageView imageview3;
-    @FXML private Label Nombre3;
-    @FXML private Label disp3;
-    @FXML private Label precio3;
-    @FXML private ImageView imageview4;
-    @FXML private Label Nombre4;
-    @FXML private Label disp4;
-    @FXML private Label precio4;
-    @FXML private ImageView imageview5;
-    @FXML private Label Nombre5;
-    @FXML private Label disp5;
-    @FXML private Label precio5;
-    @FXML private Button mini2;
-    @FXML private Button mini3;
-    @FXML private Button mini4;
-    @FXML private Button mini5;
-    @FXML private Button mini6;
-    @FXML private Button mini1;
+    @FXML private ImageView imageview1;     @FXML private Label Nombre1;
+    @FXML private Label disp1;              @FXML private Label precio1;
+    @FXML private ImageView imageview2;     @FXML private Label Nombre2;
+    @FXML private Label disp2;              @FXML private Label precio2;
+    @FXML private ImageView imageview3;     @FXML private Label Nombre3;
+    @FXML private Label disp3;              @FXML private Label precio3;
+    @FXML private ImageView imageview4;     @FXML private Label Nombre4;
+    @FXML private Label disp4;              @FXML private Label precio4;
+    @FXML private ImageView imageview5;     @FXML private Label Nombre5;
+    @FXML private Label disp5;              @FXML private Label precio5;
+    @FXML private Button mini2;             @FXML private Button mini3;
+    @FXML private Button mini4;             @FXML private Button mini5;
+    @FXML private Button mini6;             @FXML private Button mini1;
     @FXML private Pane P1; @FXML private Pane P2; @FXML private Pane P3; @FXML private Pane P4; @FXML private Pane P5;
     @FXML private Button Delete1; @FXML private Button Delete2; @FXML private Button Delete3; @FXML private Button Delete4; @FXML private Button Delete5;
-    @FXML private Button Activos;
-    @FXML private Button Inactivos;
+    @FXML private Button Activos;    @FXML private Button Inactivos;
 
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
     String direccion;
     int posicionmini=0;
-    ArrayList<String> a = new ArrayList<String>();
-    ArrayList<String> b = new ArrayList<String>();
-    ArrayList<Double> c = new ArrayList<>();
-    ArrayList<Double> d = new ArrayList<>();
+    ArrayList<String> a = new ArrayList<String>();       ArrayList<String> b = new ArrayList<String>();
+    ArrayList<Double> c = new ArrayList<>();        ArrayList<Double> d = new ArrayList<>();
     int act=1;
     @FXML
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
         final Stage dialog = new Stage();
-
-
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         dialog.initOwner(primaryStage);
@@ -81,10 +63,8 @@ public class Controller implements Initializable {
     }
 
     void limpiar(){
-            P1.setVisible(false);
-            P2.setVisible(false);
-            P3.setVisible(false);
-            P4.setVisible(false);
+            P1.setVisible(false);   P2.setVisible(false);
+            P3.setVisible(false);   P4.setVisible(false);
             P5.setVisible(false);
     }
 
@@ -173,6 +153,7 @@ public class Controller implements Initializable {
     }
 
     public void datos(){
+        String url,nombre; Double disp,precio;
         a.clear();b.clear();c.clear();d.clear();
         ArrayList<String> URL = new ArrayList<String>();
         ArrayList<String> NAME = new ArrayList<String>();
@@ -185,10 +166,10 @@ public class Controller implements Initializable {
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
-                    String url= resultado.getString("IMG");
-                    String nombre= resultado.getString("NOMBRE");
-                    Double disp = resultado.getDouble("CANTIDAD");
-                    Double precio = resultado.getDouble("PRECIO_VENTA");
+                    url= resultado.getString("IMG");
+                    nombre= resultado.getString("NOMBRE");
+                    disp = resultado.getDouble("CANTIDAD");
+                    precio = resultado.getDouble("PRECIO_VENTA");
                     URL.add(url);
                     NAME.add(nombre);
                     DISPONIBILIDAD.add(disp);
@@ -205,6 +186,7 @@ public class Controller implements Initializable {
     }
 
     public void bajas(){
+        String url,nombre; Double disp,precio;
         a.clear();b.clear();c.clear();d.clear();
         ArrayList<String> URL = new ArrayList<String>();
         ArrayList<String> NAME = new ArrayList<String>();
@@ -217,10 +199,10 @@ public class Controller implements Initializable {
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
-                    String url= resultado.getString("IMG");
-                    String nombre= resultado.getString("NOMBRE");
-                    Double disp = resultado.getDouble("CANTIDAD");
-                    Double precio = resultado.getDouble("PRECIO_VENTA");
+                    url= resultado.getString("IMG");
+                    nombre= resultado.getString("NOMBRE");
+                    disp = resultado.getDouble("CANTIDAD");
+                    precio = resultado.getDouble("PRECIO_VENTA");
                     URL.add(url);
                     NAME.add(nombre);
                     DISPONIBILIDAD.add(disp);
