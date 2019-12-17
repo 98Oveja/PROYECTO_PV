@@ -276,7 +276,7 @@ Controller controller = new Controller();
 
 
 
-    public void Generador(KeyEvent keyEvent) {
+    public void Generador(KeyEvent keyEvent) { //Generador de codigo
         if(Nombre.getText()!=null){
             generarCodigo();
         }
