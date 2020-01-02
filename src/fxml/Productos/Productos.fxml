@@ -257,6 +257,22 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Button fx:id="Activos" ellipsisString="1" mnemonicParsing="false" onAction="#botonesvista" prefHeight="40.0" prefWidth="330.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Activos">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="Inactivos" ellipsisString="&lt;" mnemonicParsing="false" onAction="#botonesvista" prefHeight="40.0" prefWidth="330.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Inactivos">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                   </VBox>
                   <Line endX="350.0" layoutY="65.0" opacity="0.2" startX="20.0" />
@@ -289,16 +305,6 @@
                </font>
             </Button>
             <Button fx:id="mini6" ellipsisString="&gt;" layoutX="1216.0" layoutY="702.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&gt;">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="Activos" ellipsisString="1" layoutX="462.0" layoutY="731.0" mnemonicParsing="false" onAction="#botonesvista" prefHeight="39.0" prefWidth="176.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Activos">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="Inactivos" ellipsisString="&lt;" layoutX="656.0" layoutY="731.0" mnemonicParsing="false" onAction="#botonesvista" prefHeight="39.0" prefWidth="190.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="Productos Inactivos">
                <font>
                   <Font size="9.0" />
                </font>

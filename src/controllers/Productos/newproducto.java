@@ -126,7 +126,7 @@ public class newproducto implements Initializable {
         if(direccion!=null){
             direccion=direccion.replace("\\","*");
         }
-        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()!=true) {
+        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()==true) {
             idCateg =  consultasID(categoria, "CATEGORIAS");
             idProv = consultasID(proveedores, "PROVEEDORES");
             if (cantidad.equals(0)){
@@ -155,7 +155,6 @@ public class newproducto implements Initializable {
             dialogo.setContentText("Algunos campos no han sido rellenados por favor verifiquelos");
             dialogo.showAndWait();
         }
-        //    conexion.cerrarConexion();
     }
 
     public ArrayList Categorias()
@@ -178,7 +177,6 @@ public class newproducto implements Initializable {
         return list;
     }
 
-
     public ArrayList<String> Proveedores()
     {
         ArrayList<String> list = new ArrayList<String>();
@@ -195,13 +193,12 @@ public class newproducto implements Initializable {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("ERRRRRRRRRRROOOOOOOOOOOOR!!!!!! :(");
+           // System.out.println("ERRRRRRRRRRROOOOOOOOOOOOR!!!!!! :(");
         }
         return list;
     }
 
     public void Search(ActionEvent actionEvent) throws IOException {
-
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
@@ -220,17 +217,14 @@ public class newproducto implements Initializable {
         ObservableList<String> categ = FXCollections.observableArrayList();
         categ.addAll(lista);
         Categoria.setItems(categ);
-
         ArrayList<String> lista1 = Proveedores();
         ObservableList<String> provee = FXCollections.observableArrayList();
         provee.addAll(lista1);
         Proveedores.setItems(provee);
-        event.validarSoloLetras(Nombre);
         event.validarSoloNumeros(Cantidad);
         event.validarSoloNumeros(PVenta);
         event.validarSoloNumeros(Pcompra);
     }
-
     void ids(){
         try {
             String nombre;
@@ -273,8 +267,6 @@ Controller controller = new Controller();
         Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
         stage.close();
     }
-
-
 
     public void Generador(KeyEvent keyEvent) {
         if(Nombre.getText()!=null){

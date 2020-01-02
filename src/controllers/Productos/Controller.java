@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -12,15 +15,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
-
-import javax.sound.sampled.Line;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
 
 public class Controller implements Initializable {
-
+    @FXML private Button mini2;    @FXML private Button mini3;
+    @FXML private Button mini4;    @FXML private Button mini5;
+    @FXML private Button mini6;    @FXML private Button mini1;
+    @FXML private Button Activos;
+    @FXML private Pane P1;@FXML private Pane P2;@FXML private Pane P3;@FXML private Pane P4;@FXML private Pane P5;
+    @FXML private Button Inactivos;
     @FXML private ImageView imageview1;     @FXML private Label Nombre1;
     @FXML private Label disp1;              @FXML private Label precio1;
     @FXML private ImageView imageview2;     @FXML private Label Nombre2;
@@ -31,21 +37,186 @@ public class Controller implements Initializable {
     @FXML private Label disp4;              @FXML private Label precio4;
     @FXML private ImageView imageview5;     @FXML private Label Nombre5;
     @FXML private Label disp5;              @FXML private Label precio5;
-    @FXML private Button mini2;             @FXML private Button mini3;
-    @FXML private Button mini4;             @FXML private Button mini5;
-    @FXML private Button mini6;             @FXML private Button mini1;
-    @FXML private Pane P1; @FXML private Pane P2; @FXML private Pane P3; @FXML private Pane P4; @FXML private Pane P5;
-    @FXML private Button Delete1; @FXML private Button Delete2; @FXML private Button Delete3; @FXML private Button Delete4; @FXML private Button Delete5;
-    @FXML private Button Activos;    @FXML private Button Inactivos;
+    @FXML private Button Delete1;   @FXML private Button Delete2;   @FXML private Button Delete3;   @FXML private Button Delete4;   @FXML private Button Delete5;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        limpiar();
+        datos();
+        mini1.setVisible(false);
+        mini2.setVisible(false);
+        mini3.setVisible(false);
+        mini4.setVisible(false);
+        mini5.setVisible(false);
+        mini6.setVisible(false);
+        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+    }
+
+    int act=1;
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
-    String direccion;
-    int posicionmini=0;
-    ArrayList<String> a = new ArrayList<String>();       ArrayList<String> b = new ArrayList<String>();
-    ArrayList<Double> c = new ArrayList<>();        ArrayList<Double> d = new ArrayList<>();
-    int act=1;
-    @FXML
+    int posicionmini=0,tamaniomini;
+    ArrayList<String> Datosproductos = new ArrayList<String>();
+    String url,nombre; String disp,precio,dato;
+
+    public void datos(){
+        try {
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
+            conexion = conn.getConnection();
+            Statement instruccion= conexion.createStatement();
+            ResultSet resultado = instruccion.executeQuery(Query);
+            if (resultado != null) {
+                while(resultado.next()) {
+                    url= resultado.getString("IMG");
+                    nombre= resultado.getString("NOMBRE");
+                    disp = resultado.getString("CANTIDAD");
+                    precio = resultado.getString("PRECIO_VENTA");
+                    dato=url+"#"+nombre+"#"+disp+"#"+precio;
+                    Datosproductos.add(dato);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR "+e.getErrorCode());;
+        }
+        if(Datosproductos.size()!=0){
+            mostrar();
+        }
+    }
+
+    void limpiar() {
+        P1.setVisible(false);
+        P2.setVisible(false);
+        P3.setVisible(false);
+        P4.setVisible(false);
+        P5.setVisible(false);
+        mini1.setVisible(false);
+        mini2.setVisible(false);
+        mini3.setVisible(false);
+        mini4.setVisible(false);
+        mini5.setVisible(false);
+        mini6.setVisible(false);
+    }
+
+    public void paneles(int panel, String a, String b, String c, String d) {
+        Image img = new Image("file:/" + a);
+        System.out.println(a + " " + b + " " + " " + c + " " + d);
+        if (a != null || a == "") {
+            switch (panel) {
+                case 1:
+                    P1.setVisible(true);
+                    imageview1.setImage(img);
+                    Nombre1.setText(b);
+                    disp1.setText("en Stock " + c);
+                    precio1.setText("Q " + d);
+                    break;
+                case 2:
+                    P2.setVisible(true);
+                    imageview2.setImage(img);
+                    Nombre2.setText(b);
+                    disp2.setText("en Stock " + c);
+                    precio2.setText("Q " + d);
+                    break;
+                case 3:
+                    P3.setVisible(true);
+                    imageview3.setImage(img);
+                    Nombre3.setText(b);
+                    disp3.setText("en Stock " + c);
+                    precio3.setText("Q " + d);
+                    break;
+                case 4:
+                    P4.setVisible(true);
+                    imageview4.setImage(img);
+                    Nombre4.setText(b);
+                    disp4.setText("en Stock " + c);
+                    precio4.setText("Q " + d);
+                    break;
+                case 5:
+                    P5.setVisible(true);
+                    imageview5.setImage(img);
+                    Nombre5.setText(b);
+                    disp5.setText("en Stock " + c);
+                    precio5.setText("Q " + d);
+                    break;
+            }
+        }
+    }
+
+    public  void mostrar(){
+        limpiar();
+        String datos, direccion, nom, cant, prec;
+        int tamanio = Datosproductos.size();
+        int asig, panel=0;
+        tamaniomini=tamanio/5;
+        asig=(posicionmini*5);
+        if (asig<=tamanio)
+        {
+            int limit = asig+5;
+            if(tamanio<=5){
+                for(int x = 0; x<tamanio; x++)
+                {
+                    panel=panel+1;
+                    datos = Datosproductos.get(x).toString();
+                    String[] textElements = datos.split("#");
+                    direccion= textElements[0];
+                    nom=textElements[1];
+                    cant=textElements[2];
+                    prec=textElements[3];
+                    direccion= direccion.replace("*","\\");
+                    paneles(panel,direccion,nom,cant,prec);
+                }
+            }else
+            {
+                for(int x = asig; x<=limit; x++)
+                {
+                    panel=panel+1;
+                    datos = Datosproductos.get(x).toString();
+                    String[] textElements = datos.split("#");
+                    direccion= textElements[0];
+                    nom=textElements[1];
+                    cant=textElements[2];
+                    prec=textElements[3];
+                    direccion= direccion.replace("*","\\");
+                    paneles(panel,direccion,nom,cant,prec);
+                }
+                mostrarminis();
+            }
+        }
+    }
+
+    void mostrarminis() {
+        if (tamaniomini == 2) {
+            mini1.setVisible(false);
+            mini2.setVisible(true);
+            mini3.setVisible(true);
+            mini4.setVisible(false);
+            mini5.setVisible(false);
+            mini6.setVisible(false);
+        }
+        else if (tamaniomini == 3) {
+            mini1.setVisible(false);
+            mini2.setVisible(true);
+            mini3.setVisible(true);
+            mini4.setVisible(true);
+            mini5.setVisible(false);
+            mini6.setVisible(false);
+        }
+        else if (tamaniomini == 4) {
+            mini1.setVisible(false);
+            mini2.setVisible(true);
+            mini3.setVisible(true);
+            mini4.setVisible(true);
+            mini5.setVisible(false);
+            mini6.setVisible(false);
+        }
+        else if (tamaniomini > 4) {
+            mini1.setVisible(true);
+            mini2.setVisible(true);
+            mini3.setVisible(true);
+            mini4.setVisible(true);
+            mini5.setVisible(true);
+            mini6.setVisible(true);
+        }
+    }
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
         final Stage dialog = new Stage();
@@ -62,136 +233,52 @@ public class Controller implements Initializable {
         dialog.show();
     }
 
-    void limpiar(){
-            P1.setVisible(false);   P2.setVisible(false);
-            P3.setVisible(false);   P4.setVisible(false);
-            P5.setVisible(false);
-    }
-
-    public void paneles(int panel,String a, String b, String c, String d){
-        Image img = new Image("file:/"+a);
-        System.out.println(a+" "+b+" "+" "+c+" "+d);
-        if (a!=null||a=="")
-        {
-            switch (panel)
-            {
-                case 1:
-                    P1.setVisible(true);
-                    imageview1.setImage(img);
-                    Nombre1.setText(b);
-                    disp1.setText("en Stock "+c);
-                    precio1.setText("Q "+d);
-                    break;
-                case 2:
-                    P2.setVisible(true);
-                    imageview2.setImage(img);
-                    Nombre2.setText(b);
-                    disp2.setText("en Stock "+c);
-                    precio2.setText("Q "+d);
-                    break;
-                case 3:
-                    P3.setVisible(true);
-                    imageview3.setImage(img);
-                    Nombre3.setText(b);
-                    disp3.setText("en Stock "+c);
-                    precio3.setText("Q "+d);
-                    break;
-                case 4:
-                    P4.setVisible(true);
-                    imageview4.setImage(img);
-                    Nombre4.setText(b);
-                    disp4.setText("en Stock "+c);
-                    precio4.setText("Q "+d);
-                    break;
-                case 5:
-                    P5.setVisible(true);
-                    imageview5.setImage(img);
-                    Nombre5.setText(b);
-                    disp5.setText("en Stock "+c);
-                    precio5.setText("Q "+d);
-                    break;
-            }
+    public void VEliminar(String nombre) throws SQLException {
+        String query=null;
+        if (act==1){
+            query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
+        }else if (act==0){
+            query="UPDATE PRODUCTOS SET ESTADO = 1 WHERE NOMBRE="+'"'+nombre+'"';
         }
-
-
-    }
-
-    public  void mostrar(){
-        limpiar();
-        String direccion, nom, cant, prec;
-        int tamanio = a.size();
-        int asig, panel=0;
-        asig=(posicionmini*5);
-        if (asig<=tamanio)
-        {
-            int limit = asig+5;
-            if(tamanio<=5){
-                for(int x = 0; x<tamanio; x++)
-                {
-                    panel=panel+1;
-                    direccion= a.get(x).toString();
-                    nom=b.get(x).toString();
-                    cant=c.get(x).toString();
-                    prec=d.get(x).toString();
-                    direccion= direccion.replace("*","\\");
-                    paneles(panel,direccion,nom,cant,prec);
-                }
-            }else
-            {
-                for(int x = asig; x<=limit; x++)
-                {
-                    panel=panel+1;
-                    direccion= a.get(x).toString();
-                    nom=b.get(x).toString();
-                    cant=c.get(x).toString();
-                    prec=d.get(x).toString();
-                    direccion= direccion.replace("*","\\");
-                    paneles(panel,direccion,nom,cant,prec);
-                }
-            }
-        }
-    }
-
-    public void datos(){
-        String url,nombre; Double disp,precio;
-        a.clear();b.clear();c.clear();d.clear();
-        ArrayList<String> URL = new ArrayList<String>();
-        ArrayList<String> NAME = new ArrayList<String>();
-        ArrayList<Double>  DISPONIBILIDAD = new ArrayList<Double>();
-        ArrayList<Double> PRECIO = new ArrayList<Double>();
-        try {
-            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
+        Alert dialogo= new Alert(Alert.AlertType.CONFIRMATION);
+        dialogo.setTitle("Dar de baja Producto");
+        dialogo.setHeaderText(null);
+        dialogo.initStyle(StageStyle.UNDECORATED);
+        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +"\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
+        Optional<ButtonType> result = dialogo.showAndWait();
+        if (result.get()==ButtonType.OK){
             conexion = conn.getConnection();
-            Statement instruccion= conexion.createStatement();
-            ResultSet resultado = instruccion.executeQuery(Query);
-            if (resultado != null) {
-                while(resultado.next()) {
-                    url= resultado.getString("IMG");
-                    nombre= resultado.getString("NOMBRE");
-                    disp = resultado.getDouble("CANTIDAD");
-                    precio = resultado.getDouble("PRECIO_VENTA");
-                    URL.add(url);
-                    NAME.add(nombre);
-                    DISPONIBILIDAD.add(disp);
-                    PRECIO.add(precio);
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("ERROR "+e.getErrorCode());;
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);//insert.execute(query);
+            preparedStatement.execute();
         }
-        a=URL; b=NAME; c=DISPONIBILIDAD; d=PRECIO;
-        if(a.size()!=0){
-            mostrar();
+    }
+
+    public void Eliminar(ActionEvent actionEvent) throws SQLException {
+        if (actionEvent.getSource()==Delete1)
+        {
+            VEliminar(Nombre1.getText());
+        }
+        else if (actionEvent.getSource()==Delete2)
+        {
+            VEliminar(Nombre2.getText());
+        }
+        else if (actionEvent.getSource()==Delete3)
+        {
+            VEliminar(Nombre3.getText());
+        }
+        else if (actionEvent.getSource()==Delete4)
+        {
+            VEliminar(Nombre4.getText());
+        }
+        else if (actionEvent.getSource()==Delete5)
+        {
+            VEliminar(Nombre5.getText());
         }
     }
 
     public void bajas(){
-        String url,nombre; Double disp,precio;
-        a.clear();b.clear();c.clear();d.clear();
-        ArrayList<String> URL = new ArrayList<String>();
-        ArrayList<String> NAME = new ArrayList<String>();
-        ArrayList<Double>  DISPONIBILIDAD = new ArrayList<Double>();
-        ArrayList<Double> PRECIO = new ArrayList<Double>();
+        String url,nombre; String disp,precio,dato;
+        Datosproductos.clear();
         try {
             String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=0 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
@@ -201,29 +288,19 @@ public class Controller implements Initializable {
                 while(resultado.next()) {
                     url= resultado.getString("IMG");
                     nombre= resultado.getString("NOMBRE");
-                    disp = resultado.getDouble("CANTIDAD");
-                    precio = resultado.getDouble("PRECIO_VENTA");
-                    URL.add(url);
-                    NAME.add(nombre);
-                    DISPONIBILIDAD.add(disp);
-                    PRECIO.add(precio);
+                    disp = resultado.getString("CANTIDAD");
+                    precio = resultado.getString("PRECIO_VENTA");
+                    dato=url+"#"+nombre+"#"+disp+"#"+precio;
+                    Datosproductos.add(dato);
                 }
             }
         } catch (SQLException e) {
             System.out.println("ERROR "+e.getErrorCode());;
         }
-        a=URL; b=NAME; c=DISPONIBILIDAD; d=PRECIO;
-        if(a.size()!=0){
+        if(Datosproductos.size()!=0){
             mostrar();
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        limpiar();
-        datos();
-        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
-    }
-
 
     public void cambio(ActionEvent actionEvent) {
         if (actionEvent.getSource()==mini2){
@@ -288,53 +365,8 @@ public class Controller implements Initializable {
         }
     }
 
+
     public void Actualizar(ActionEvent actionEvent) {
-       datos();
-    }
-
-    public void Editar(ActionEvent actionEvent) {
-    }
-
-    public void VEliminar(String nombre) throws SQLException {
-        String query=null;
-        if (act==1){
-            query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
-        }else if (act==0){
-            query="UPDATE PRODUCTOS SET ESTADO = 1 WHERE NOMBRE="+'"'+nombre+'"';
-        }
-        Alert dialogo= new Alert(Alert.AlertType.CONFIRMATION);
-        dialogo.setTitle("Dar de baja Producto");
-        dialogo.setHeaderText(null);
-        dialogo.initStyle(StageStyle.UNDECORATED);
-        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +"\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
-        Optional<ButtonType> result = dialogo.showAndWait();
-        if (result.get()==ButtonType.OK){
-            conexion = conn.getConnection();
-            PreparedStatement preparedStatement = conexion.prepareStatement(query);//insert.execute(query);
-            preparedStatement.execute();
-        }
-    }
-
-    public void Eliminar(ActionEvent actionEvent) throws SQLException {
-        if (actionEvent.getSource()==Delete1)
-        {
-            VEliminar(Nombre1.getText());
-        }
-        else if (actionEvent.getSource()==Delete2)
-        {
-            VEliminar(Nombre2.getText());
-        }
-        else if (actionEvent.getSource()==Delete3)
-        {
-            VEliminar(Nombre3.getText());
-        }
-        else if (actionEvent.getSource()==Delete4)
-        {
-            VEliminar(Nombre4.getText());
-        }
-        else if (actionEvent.getSource()==Delete5)
-        {
-            VEliminar(Nombre5.getText());
-        }
+        datos();
     }
 }
