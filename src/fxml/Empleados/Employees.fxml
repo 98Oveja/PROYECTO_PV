@@ -60,7 +60,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="32.0" fitWidth="20.0" onMouseClicked="#pressedAddModal" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="20.0" onMouseClicked="#pressedEditModal" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/icons8_create_50px_1.png" />
                            </image>

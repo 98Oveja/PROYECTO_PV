@@ -22,12 +22,11 @@
     -fx-pref-whidth: 570px;
     -fx-pref-height: 160.35px;
     -fx-background-color: white;
-
     -fx-border-radius: 6px;
 }
 
 .empleadoscard:hover{
-    -fx-background-color: rgb(244, 243, 240);
+    -fx-effect:dropshadow(gaussian, rgba(37, 37, 37, 0.3),10,0.5,0.0,0.0);-fx-font-size:16px
 }
 
 .titleCard{
@@ -81,6 +80,13 @@
     -fx-pref-height: 200px;
     -fx-background-color: white;
     -fx-border-radius: 8px;
+    -fx-border-color: #b9b7b9;
 }
+
+.buttonOption{}
+.buttonOption:hover{
+    -fx-opacity: 0.8;
+}
+
 .btn_CloseModal{-fx-background-color:Transparent;-fx-background-radius:30px;-fx-translate-x:1115px;-fx-translate-y:24px;-fx-cursor:hand}
 .btn_CloseModal:hover{-fx-background-color:#43425d}
