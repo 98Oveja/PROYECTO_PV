@@ -279,32 +279,32 @@
                   <IntegerValidator />
                </children>
             </Pane>
-            <Button fx:id="mini1" ellipsisString="&lt;" layoutX="963.0" layoutY="700.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&lt;">
+            <Button fx:id="mini1" ellipsisString="&lt;" layoutX="934.0" layoutY="595.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&lt;">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="mini2" ellipsisString="1" layoutX="1014.0" layoutY="700.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="1">
+            <Button fx:id="mini2" ellipsisString="1" graphicTextGap="1.0" layoutX="985.0" layoutY="595.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="1">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="mini3" ellipsisString="&lt;" layoutX="1064.0" layoutY="701.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="2">
+            <Button fx:id="mini3" ellipsisString="2" layoutX="1035.0" layoutY="596.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="2">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="mini4" ellipsisString="&lt;" layoutX="1113.0" layoutY="702.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="3">
+            <Button fx:id="mini4" ellipsisString="3" layoutX="1084.0" layoutY="597.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="3">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="mini5" ellipsisString="&lt;" layoutX="1166.0" layoutY="701.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="4">
+            <Button fx:id="mini5" ellipsisString="4" layoutX="1137.0" layoutY="596.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="4">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="mini6" ellipsisString="&gt;" layoutX="1216.0" layoutY="702.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&gt;">
+            <Button fx:id="mini6" ellipsisString="&gt;" layoutX="1187.0" layoutY="597.0" mnemonicParsing="false" onAction="#cambio" prefHeight="30.0" prefWidth="30.0" styleClass="miniboton" stylesheets="@../../css/main.css" text="&gt;">
                <font>
                   <Font size="9.0" />
                </font>

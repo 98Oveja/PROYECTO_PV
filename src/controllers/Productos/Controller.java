@@ -39,27 +39,26 @@ public class Controller implements Initializable {
     @FXML private Label disp5;              @FXML private Label precio5;
     @FXML private Button Delete1;   @FXML private Button Delete2;   @FXML private Button Delete3;   @FXML private Button Delete4;   @FXML private Button Delete5;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        limpiar();
-        datos();
-        mini1.setVisible(false);
-        mini2.setVisible(false);
-        mini3.setVisible(false);
-        mini4.setVisible(false);
-        mini5.setVisible(false);
-        mini6.setVisible(false);
-        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
-    }
-
     int act=1;
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
-    int posicionmini=0,tamaniomini;
+    int posicionmini=0,tamaniomini,pos;
     ArrayList<String> Datosproductos = new ArrayList<String>();
     String url,nombre; String disp,precio,dato;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        pos=1;
+        limpiar();
+        datos();
+        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+        mini2.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+    }
+
+
+
     public void datos(){
+        Datosproductos.clear();
         try {
             String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
@@ -99,7 +98,7 @@ public class Controller implements Initializable {
 
     public void paneles(int panel, String a, String b, String c, String d) {
         Image img = new Image("file:/" + a);
-        System.out.println(a + " " + b + " " + " " + c + " " + d);
+        //System.out.println(a + " " + b + " " + " " + c + " " + d);
         if (a != null || a == "") {
             switch (panel) {
                 case 1:
@@ -154,29 +153,33 @@ public class Controller implements Initializable {
             if(tamanio<=5){
                 for(int x = 0; x<tamanio; x++)
                 {
-                    panel=panel+1;
-                    datos = Datosproductos.get(x).toString();
-                    String[] textElements = datos.split("#");
-                    direccion= textElements[0];
-                    nom=textElements[1];
-                    cant=textElements[2];
-                    prec=textElements[3];
-                    direccion= direccion.replace("*","\\");
-                    paneles(panel,direccion,nom,cant,prec);
+                    if(x<tamanio){
+                        panel=panel+1;
+                        datos = Datosproductos.get(x).toString();
+                        String[] textElements = datos.split("#");
+                        direccion= textElements[0];
+                        nom=textElements[1];
+                        cant=textElements[2];
+                        prec=textElements[3];
+                        direccion= direccion.replace("*","\\");
+                        paneles(panel,direccion,nom,cant,prec);
+                    }
                 }
             }else
             {
                 for(int x = asig; x<=limit; x++)
                 {
-                    panel=panel+1;
-                    datos = Datosproductos.get(x).toString();
-                    String[] textElements = datos.split("#");
-                    direccion= textElements[0];
-                    nom=textElements[1];
-                    cant=textElements[2];
-                    prec=textElements[3];
-                    direccion= direccion.replace("*","\\");
-                    paneles(panel,direccion,nom,cant,prec);
+                    if(x<tamanio){
+                        panel=panel+1;
+                        datos = Datosproductos.get(x).toString();
+                        String[] textElements = datos.split("#");
+                        direccion= textElements[0];
+                        nom=textElements[1];
+                        cant=textElements[2];
+                        prec=textElements[3];
+                        direccion= direccion.replace("*","\\");
+                        paneles(panel,direccion,nom,cant,prec);
+                    }
                 }
                 mostrarminis();
             }
@@ -184,11 +187,18 @@ public class Controller implements Initializable {
     }
 
     void mostrarminis() {
-        if (tamaniomini == 2) {
+        if (tamaniomini == 1) {
             mini1.setVisible(false);
             mini2.setVisible(true);
             mini3.setVisible(true);
             mini4.setVisible(false);
+            mini5.setVisible(false);
+            mini6.setVisible(false);
+        }else if (tamaniomini == 2) {
+            mini1.setVisible(false);
+            mini2.setVisible(true);
+            mini3.setVisible(true);
+            mini4.setVisible(true);
             mini5.setVisible(false);
             mini6.setVisible(false);
         }
@@ -197,26 +207,37 @@ public class Controller implements Initializable {
             mini2.setVisible(true);
             mini3.setVisible(true);
             mini4.setVisible(true);
-            mini5.setVisible(false);
-            mini6.setVisible(false);
-        }
-        else if (tamaniomini == 4) {
-            mini1.setVisible(false);
-            mini2.setVisible(true);
-            mini3.setVisible(true);
-            mini4.setVisible(true);
-            mini5.setVisible(false);
-            mini6.setVisible(false);
-        }
-        else if (tamaniomini > 4) {
-            mini1.setVisible(true);
-            mini2.setVisible(true);
-            mini3.setVisible(true);
-            mini4.setVisible(true);
             mini5.setVisible(true);
-            mini6.setVisible(true);
+            mini6.setVisible(false);
         }
-    }
+        else if (tamaniomini >= 4) {
+            if(posicionmini==0){
+                mini1.setVisible(false);
+                mini2.setVisible(true);
+                mini3.setVisible(true);
+                mini4.setVisible(true);
+                mini5.setVisible(true);
+                mini6.setVisible(true);
+            }else if(posicionmini==tamaniomini)
+            {
+                mini1.setVisible(true);
+                mini2.setVisible(true);
+                mini3.setVisible(true);
+                mini4.setVisible(true);
+                mini5.setVisible(true);
+                mini6.setVisible(false);
+            }
+            else{
+                mini1.setVisible(true);
+                mini2.setVisible(true);
+                mini3.setVisible(true);
+                mini4.setVisible(true);
+                mini5.setVisible(true);
+                mini6.setVisible(true);
+            }
+            }
+            }
+
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
         final Stage dialog = new Stage();
@@ -244,7 +265,8 @@ public class Controller implements Initializable {
         dialogo.setTitle("Dar de baja Producto");
         dialogo.setHeaderText(null);
         dialogo.initStyle(StageStyle.UNDECORATED);
-        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +"\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
+        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +
+                                "\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
         Optional<ButtonType> result = dialogo.showAndWait();
         if (result.get()==ButtonType.OK){
             conexion = conn.getConnection();
@@ -311,7 +333,9 @@ public class Controller implements Initializable {
             mini4.setStyle(".PanelLateralOpciones");
             mini5.setStyle(".PanelLateralOpciones");
             mini6.setStyle(".Cambio");
-            posicionmini=0;
+            posicionmini= Integer.parseInt(mini2.getText());
+            posicionmini=posicionmini-1;
+            pos=1;
             mostrar();
         }
         else if (actionEvent.getSource()==mini3){
@@ -322,7 +346,9 @@ public class Controller implements Initializable {
             mini5.setStyle(".PanelLateralOpciones");
             mini6.setStyle(".Cambio");
             mini1.setStyle(".Cambio");
-            posicionmini=1;
+            posicionmini= Integer.parseInt(mini3.getText());
+            posicionmini=posicionmini-1;
+            pos=2;
             mostrar();
         }
         else if (actionEvent.getSource()==mini4){
@@ -333,7 +359,9 @@ public class Controller implements Initializable {
             mini3.setStyle(".PanelLateralOpciones");
             mini6.setStyle(".Cambio");
             mini1.setStyle(".Cambio");
-            posicionmini=2;
+            posicionmini= Integer.parseInt(mini4.getText());
+            posicionmini=posicionmini-1;
+            pos=3;
             mostrar();
         }
         else if (actionEvent.getSource()==mini5){
@@ -343,9 +371,105 @@ public class Controller implements Initializable {
             mini2.setStyle(".PanelLateralOpciones");
             mini3.setStyle(".PanelLateralOpciones");
             mini4.setStyle(".PanelLateralOpciones");
-            mini6.setStyle("-fx-background-color: #BCBCCB; -fx-text-fill: #fff;");
-            posicionmini=3;
+            mini6.setStyle(".PanelLateralOpciones");
+            posicionmini= Integer.parseInt(mini5.getText());
+            posicionmini=posicionmini-1;
+            pos=4;
             mostrar();
+        }
+        else if (actionEvent.getSource()==mini1){
+           switch (pos){
+                case 1:
+                        mini2.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        if(Integer.parseInt(mini2.getText())!=1){
+                            mini2.setText(String.valueOf(Integer.parseInt(mini2.getText())-1));
+                            mini3.setText(String.valueOf(Integer.parseInt(mini3.getText())-1));
+                            mini4.setText(String.valueOf(Integer.parseInt(mini4.getText())-1));
+                            mini5.setText(String.valueOf(Integer.parseInt(mini5.getText())-1));
+                        }
+                        posicionmini= Integer.parseInt(mini2.getText());
+                        if(posicionmini!=0){
+                            posicionmini=posicionmini-1;
+                        }else {mini1.setVisible(false);posicionmini=0;}
+                        pos=1;
+                        mostrar();
+                    break;
+                case 2:
+                    posicionmini= Integer.parseInt(mini2.getText())-1;
+                    pos=1;
+                    mostrar();
+                    mini2.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        mini3.setStyle(".PanelLateralOpciones");
+                    break;
+                case 3:
+                        posicionmini= Integer.parseInt(mini3.getText())-1;
+                        pos=2;
+                        mostrar();
+                    mini3.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    mini4.setStyle(".PanelLateralOpciones");
+                    break;
+                case 4:
+                        posicionmini= Integer.parseInt(mini4.getText())-1;
+                        pos=3;
+                        mostrar();
+                    mini4.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    mini5.setStyle(".PanelLateralOpciones");
+                    break;
+            }
+        }
+        else if (actionEvent.getSource()==mini6){
+            switch (pos){
+                case 1:
+                        mini3.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        mini2.setStyle(".PanelLateralOpciones");
+                        posicionmini= Integer.parseInt(mini3.getText())-1;
+                        pos=2;
+                        mostrar();
+                    break;
+                case 2:
+                        mini4.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        mini3.setStyle(".PanelLateralOpciones");
+                        posicionmini= Integer.parseInt(mini4.getText())-1;
+                        pos=3;
+                        mostrar();
+                    break;
+                case 3:
+                        mini5.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        mini4.setStyle(".PanelLateralOpciones");
+                        posicionmini= Integer.parseInt(mini5.getText())-1;
+                        pos=4;
+                        mostrar();
+                    break;
+                case 4:
+                        mini5.setStyle("-fx-background-color: #3B86FF;" +
+                                "-fx-text-fill: #fff;");
+                        pos=4;
+                    if(Integer.parseInt(mini2.getText())!=tamaniomini){
+                            mini2.setText(String.valueOf(1+Integer.parseInt(mini2.getText())));
+                            mini3.setText(String.valueOf(1+Integer.parseInt(mini3.getText())));
+                            mini4.setText(String.valueOf(1+Integer.parseInt(mini4.getText())));
+                            mini5.setText(String.valueOf(1+Integer.parseInt(mini5.getText())));
+                            posicionmini= Integer.parseInt(mini5.getText())-1;
+                            mostrar();
+                        }
+                        else if (tamaniomini==Integer.parseInt(mini5.getText())){
+                            mini6.setVisible(false);
+                        }
+                    break;
+            }
+        }
+    }
+
+    public void presionando(int num,int lado){
+        switch (num){
+
         }
     }
 

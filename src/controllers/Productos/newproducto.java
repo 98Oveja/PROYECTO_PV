@@ -92,6 +92,7 @@ public class newproducto implements Initializable {
 
     public void limipiar()
     {
+        ids();
         Nombre.clear();
         Marca.clear();
         Cantidad.clear();
@@ -126,7 +127,7 @@ public class newproducto implements Initializable {
         if(direccion!=null){
             direccion=direccion.replace("\\","*");
         }
-        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()==true) {
+        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()!=true) {
             idCateg =  consultasID(categoria, "CATEGORIAS");
             idProv = consultasID(proveedores, "PROVEEDORES");
             if (cantidad.equals(0)){
@@ -141,7 +142,7 @@ public class newproducto implements Initializable {
             preparedStatement.execute();
             limipiar();
         }
-        else if(validar()!=true){
+        else if(validar()==true){
             Alert dialogo= new Alert(Alert.AlertType.INFORMATION);
             dialogo.setHeaderText(null);
             dialogo.initStyle(StageStyle.UNDECORATED);
@@ -226,6 +227,7 @@ public class newproducto implements Initializable {
         event.validarSoloNumeros(Pcompra);
     }
     void ids(){
+        ID.clear();
         try {
             String nombre;
             conexion = conn.getConnection();
