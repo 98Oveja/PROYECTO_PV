@@ -21,31 +21,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 public class newproducto implements Initializable {
-    public Pane PanelContenedor;
-    @FXML private TextField Nombre;
-
-    @FXML private TextField Marca;
-
-    @FXML private ComboBox<String> Categoria;
-
-    @FXML private ComboBox<String> Proveedores;
-
-    @FXML private TextField Cantidad;
-
-    @FXML private TextField PVenta;
-
-    @FXML private TextField Pcompra;
-
-    @FXML private Label codigo;
-
-    @FXML private ImageView imageview;
-
+    public Pane PanelContenedor;                    @FXML private TextField Nombre;
+    @FXML private TextField Marca;                  @FXML private ComboBox<String> Categoria;
+    @FXML private ComboBox<String> Proveedores;     @FXML private TextField Cantidad;
+    @FXML private TextField PVenta;                 @FXML private TextField Pcompra;
+    @FXML private Label codigo;                     @FXML private ImageView imageview;
     @FXML private TextField Descripcion;
 
+    ArrayList<String> NOMBRE = new ArrayList<String>();
     ArrayList<String> ID = new ArrayList<String>();
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
@@ -82,10 +70,29 @@ public class newproducto implements Initializable {
         return id;
     }
 
+    public void obtenernombres(){
+        NOMBRE.clear();
+        String nombre;
+        String sql = "SELECT NOMBRE FROM PRODUCTOS";
+        try {
+            conexion = conn.getConnection();
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next())
+            {
+                    nombre = resultSet.getString("NOMBRE");
+                    NOMBRE.add(nombre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     String direccion;
 
     public void limipiar()
     {
+        ids();
         Nombre.clear();
         Marca.clear();
         Cantidad.clear();
@@ -94,6 +101,13 @@ public class newproducto implements Initializable {
         codigo.setText("");
         Descripcion.clear();
         imageview.setImage(null);
+    }
+
+    boolean validar(){
+        String name;
+        name=Nombre.getText();
+        boolean result = NOMBRE.contains(name);
+        return result;
     }
 
     public void agregarProducto(ActionEvent actionEvent) throws SQLException {
@@ -113,7 +127,7 @@ public class newproducto implements Initializable {
         if(direccion!=null){
             direccion=direccion.replace("\\","*");
         }
-        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()) {
+        if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()!=true) {
             idCateg =  consultasID(categoria, "CATEGORIAS");
             idProv = consultasID(proveedores, "PROVEEDORES");
             if (cantidad.equals(0)){
@@ -128,15 +142,20 @@ public class newproducto implements Initializable {
             preparedStatement.execute();
             limipiar();
         }
-        else {
-            Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
-            dialogoAlerta.setTitle("Aviso");
-            dialogoAlerta.setHeaderText(null);
-            dialogoAlerta.setContentText("Debe llenar los siguientes campos de manera obligatoria: Nombre   Codigo  Categoria");
-            dialogoAlerta.initStyle(StageStyle.UTILITY);
-            dialogoAlerta.showAndWait();
+        else if(validar()==true){
+            Alert dialogo= new Alert(Alert.AlertType.INFORMATION);
+            dialogo.setHeaderText(null);
+            dialogo.initStyle(StageStyle.UNDECORATED);
+            dialogo.setContentText("El nombre del producto ya existe si desea puede editarlo en el modulo de productos");
+            dialogo.showAndWait();
         }
-        //    conexion.cerrarConexion();
+        else {
+            Alert dialogo= new Alert(Alert.AlertType.INFORMATION);
+            dialogo.setHeaderText(null);
+            dialogo.initStyle(StageStyle.UNDECORATED);
+            dialogo.setContentText("Algunos campos no han sido rellenados por favor verifiquelos");
+            dialogo.showAndWait();
+        }
     }
 
     public ArrayList Categorias()
@@ -159,7 +178,6 @@ public class newproducto implements Initializable {
         return list;
     }
 
-
     public ArrayList<String> Proveedores()
     {
         ArrayList<String> list = new ArrayList<String>();
@@ -176,13 +194,12 @@ public class newproducto implements Initializable {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("ERRRRRRRRRRROOOOOOOOOOOOR!!!!!! :(");
+           // System.out.println("ERRRRRRRRRRROOOOOOOOOOOOR!!!!!! :(");
         }
         return list;
     }
 
     public void Search(ActionEvent actionEvent) throws IOException {
-
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
@@ -201,26 +218,25 @@ public class newproducto implements Initializable {
         ObservableList<String> categ = FXCollections.observableArrayList();
         categ.addAll(lista);
         Categoria.setItems(categ);
-
         ArrayList<String> lista1 = Proveedores();
         ObservableList<String> provee = FXCollections.observableArrayList();
         provee.addAll(lista1);
         Proveedores.setItems(provee);
-        event.validarSoloLetras(Nombre);
         event.validarSoloNumeros(Cantidad);
         event.validarSoloNumeros(PVenta);
         event.validarSoloNumeros(Pcompra);
     }
-
     void ids(){
+        ID.clear();
         try {
+            String nombre;
             conexion = conn.getConnection();
             String Query = "SELECT ID_PRODUCTO FROM PRODUCTOS;";
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
-                    String nombre= resultado.getString("ID_PRODUCTO");
+                    nombre= resultado.getString("ID_PRODUCTO");
                     ID.add(nombre);
                 }
             }
@@ -232,11 +248,11 @@ public class newproducto implements Initializable {
     void generarCodigo(){
         int l=ID.size();
         if (l==0){
-            codigo.setText(Nombre.getText()+1);
+            codigo.setText("00"+l);
         }
         else{
             l=l+1;
-            codigo.setText(Nombre.getText()+l);
+            codigo.setText("00"+l);
         }
     }
 
@@ -244,16 +260,13 @@ public class newproducto implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     imit();
     ids();
+    obtenernombres();
     }
-
-Controller controller = new Controller();
 
     public void Cerrar(ActionEvent actionEvent) {
         Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
         stage.close();
     }
-
-
 
     public void Generador(KeyEvent keyEvent) {
         if(Nombre.getText()!=null){
