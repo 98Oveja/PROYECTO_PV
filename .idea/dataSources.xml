@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://db4free.net:3306/punto_de_venta</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="PdV@hosting.eu" uuid="c2a00380-12b7-4b8b-979d-301178afd869">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://sql309.main-hosting.eu:3306/u376498608_punto_de_venta</jdbc-url>
+    </data-source>
   </component>
 </project>

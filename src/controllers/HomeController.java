@@ -7,12 +7,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -54,6 +58,8 @@ public class HomeController implements Initializable {
     public MenuItem itemClose;
     public MenuItem itemConfig;
     public MenuItem itemHelp;
+    public Pane paneSearch;
+    public TextField txtSearch;
     int status = 0;
     ArrayList<Label> list = new ArrayList<>();
     ArrayList<ToggleButton> listB = new ArrayList<>();
@@ -72,6 +78,18 @@ public class HomeController implements Initializable {
         }
         avalibleLabel(getCode());
         avalibleButton(getCode());
+        txtSearch.textProperty().addListener((Observable, oldValue, newValue) -> {
+            Pane canvas = new Pane();
+            canvas.setStyle("-fx-background-color: black;");
+            canvas.setPrefSize(200,200);
+            Circle circle = new Circle(50,Color.BLUE);
+            circle.relocate(20, 20);
+            Rectangle rectangle = new Rectangle(100,100, Color.RED);
+            rectangle.relocate(70,70);
+            canvas.getChildren().addAll(circle,rectangle);
+            pane.getChildren().addAll(canvas);
+            //System.out.println("paeela");
+        });
     }
 
     private void setImgUser(String url) {
