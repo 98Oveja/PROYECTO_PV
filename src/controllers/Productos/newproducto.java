@@ -263,8 +263,6 @@ public class newproducto implements Initializable {
     obtenernombres();
     }
 
-Controller controller = new Controller();
-
     public void Cerrar(ActionEvent actionEvent) {
         Stage stage = (Stage) this.PanelContenedor.getScene().getWindow();
         stage.close();

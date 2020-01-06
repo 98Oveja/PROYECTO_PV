@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -21,64 +18,126 @@ import java.sql.*;
 import java.util.*;
 
 public class Controller implements Initializable {
-    @FXML private Button mini2;    @FXML private Button mini3;
-    @FXML private Button mini4;    @FXML private Button mini5;
-    @FXML private Button mini6;    @FXML private Button mini1;
-    @FXML private Button Activos;
-    @FXML private Pane P1;@FXML private Pane P2;@FXML private Pane P3;@FXML private Pane P4;@FXML private Pane P5;
-    @FXML private Button Inactivos;
-    @FXML private ImageView imageview1;     @FXML private Label Nombre1;
-    @FXML private Label disp1;              @FXML private Label precio1;
-    @FXML private ImageView imageview2;     @FXML private Label Nombre2;
-    @FXML private Label disp2;              @FXML private Label precio2;
-    @FXML private ImageView imageview3;     @FXML private Label Nombre3;
-    @FXML private Label disp3;              @FXML private Label precio3;
-    @FXML private ImageView imageview4;     @FXML private Label Nombre4;
-    @FXML private Label disp4;              @FXML private Label precio4;
-    @FXML private ImageView imageview5;     @FXML private Label Nombre5;
-    @FXML private Label disp5;              @FXML private Label precio5;
-    @FXML private Button Delete1;   @FXML private Button Delete2;   @FXML private Button Delete3;   @FXML private Button Delete4;   @FXML private Button Delete5;
+    @FXML
+    private Button mini2;
+    @FXML
+    private Button mini3;
+    @FXML
+    private Button mini4;
+    @FXML
+    private Button mini5;
+    @FXML
+    private Button mini6;
+    @FXML
+    private Button mini1;
+    @FXML
+    private Button Activos;
+    @FXML
+    private Pane P1;
+    @FXML
+    private Pane P2;
+    @FXML
+    private Pane P3;
+    @FXML
+    private Pane P4;
+    @FXML
+    private Pane P5;
+    @FXML
+    private Button Inactivos;
+    @FXML
+    private ImageView imageview1;
+    @FXML
+    private Label Nombre1;
+    @FXML
+    private Label disp1;
+    @FXML
+    private Label precio1;
+    @FXML
+    private ImageView imageview2;
+    @FXML
+    private Label Nombre2;
+    @FXML
+    private Label disp2;
+    @FXML
+    private Label precio2;
+    @FXML
+    private ImageView imageview3;
+    @FXML
+    private Label Nombre3;
+    @FXML
+    private Label disp3;
+    @FXML
+    private Label precio3;
+    @FXML
+    private ImageView imageview4;
+    @FXML
+    private Label Nombre4;
+    @FXML
+    private Label disp4;
+    @FXML
+    private Label precio4;
+    @FXML
+    private ImageView imageview5;
+    @FXML
+    private Label Nombre5;
+    @FXML
+    private Label disp5;
+    @FXML
+    private Label precio5;
+    @FXML
+    private Button Delete1;
+    @FXML
+    private Button Delete2;
+    @FXML
+    private Button Delete3;
+    @FXML
+    private Button Delete4;
+    @FXML
+    private Button Delete5;
+    @FXML
+    private TextField labelSearch;
 
-    int act=1;
+    int act = 1;
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
-    int posicionmini=0,tamaniomini,pos;
+    int posicionmini = 0, tamaniomini, pos;
     ArrayList<String> Datosproductos = new ArrayList<String>();
-    String url,nombre; String disp,precio,dato;
+    String url, nombre;
+    String disp, precio, dato;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pos=1;
+        pos = 1;
         limpiar();
         datos();
-        Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
-        mini2.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
+        Activos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+        mini2.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
     }
 
 
-
-    public void datos(){
+    public void datos() {
         Datosproductos.clear();
         try {
             String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
-            Statement instruccion= conexion.createStatement();
+            Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
-                while(resultado.next()) {
-                    url= resultado.getString("IMG");
-                    nombre= resultado.getString("NOMBRE");
+                while (resultado.next()) {
+                    url = resultado.getString("IMG");
+                    nombre = resultado.getString("NOMBRE");
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
-                    dato=url+"#"+nombre+"#"+disp+"#"+precio;
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
                     Datosproductos.add(dato);
+                }
+                if (Datosproductos.size() != 0) {
+                    mostrar();
                 }
             }
         } catch (SQLException e) {
-            System.out.println("ERROR "+e.getErrorCode());;
-        }
-        if(Datosproductos.size()!=0){
-            mostrar();
+            System.out.println("ERROR " + e.getErrorCode());
+            ;
         }
     }
 
@@ -140,45 +199,41 @@ public class Controller implements Initializable {
         }
     }
 
-    public  void mostrar(){
+    public void mostrar() {
         limpiar();
         String datos, direccion, nom, cant, prec;
         int tamanio = Datosproductos.size();
-        int asig, panel=0;
-        tamaniomini=tamanio/5;
-        asig=(posicionmini*5);
-        if (asig<=tamanio)
-        {
-            int limit = asig+5;
-            if(tamanio<=5){
-                for(int x = 0; x<tamanio; x++)
-                {
-                    if(x<tamanio){
-                        panel=panel+1;
+        int asig, panel = 0;
+        tamaniomini = tamanio / 5;
+        asig = (posicionmini * 5);
+        if (asig <= tamanio) {
+            int limit = asig + 5;
+            if (tamanio <= 5) {
+                for (int x = 0; x < tamanio; x++) {
+                    if (x < tamanio) {
+                        panel = panel + 1;
                         datos = Datosproductos.get(x).toString();
                         String[] textElements = datos.split("#");
-                        direccion= textElements[0];
-                        nom=textElements[1];
-                        cant=textElements[2];
-                        prec=textElements[3];
-                        direccion= direccion.replace("*","\\");
-                        paneles(panel,direccion,nom,cant,prec);
+                        direccion = textElements[0];
+                        nom = textElements[1];
+                        cant = textElements[2];
+                        prec = textElements[3];
+                        direccion = direccion.replace("*", "\\");
+                        paneles(panel, direccion, nom, cant, prec);
                     }
                 }
-            }else
-            {
-                for(int x = asig; x<=limit; x++)
-                {
-                    if(x<tamanio){
-                        panel=panel+1;
+            } else {
+                for (int x = asig; x <= limit; x++) {
+                    if (x < tamanio) {
+                        panel = panel + 1;
                         datos = Datosproductos.get(x).toString();
                         String[] textElements = datos.split("#");
-                        direccion= textElements[0];
-                        nom=textElements[1];
-                        cant=textElements[2];
-                        prec=textElements[3];
-                        direccion= direccion.replace("*","\\");
-                        paneles(panel,direccion,nom,cant,prec);
+                        direccion = textElements[0];
+                        nom = textElements[1];
+                        cant = textElements[2];
+                        prec = textElements[3];
+                        direccion = direccion.replace("*", "\\");
+                        paneles(panel, direccion, nom, cant, prec);
                     }
                 }
                 mostrarminis();
@@ -194,40 +249,36 @@ public class Controller implements Initializable {
             mini4.setVisible(false);
             mini5.setVisible(false);
             mini6.setVisible(false);
-        }else if (tamaniomini == 2) {
+        } else if (tamaniomini == 2) {
             mini1.setVisible(false);
             mini2.setVisible(true);
             mini3.setVisible(true);
             mini4.setVisible(true);
             mini5.setVisible(false);
             mini6.setVisible(false);
-        }
-        else if (tamaniomini == 3) {
+        } else if (tamaniomini == 3) {
             mini1.setVisible(false);
             mini2.setVisible(true);
             mini3.setVisible(true);
             mini4.setVisible(true);
             mini5.setVisible(true);
             mini6.setVisible(false);
-        }
-        else if (tamaniomini >= 4) {
-            if(posicionmini==0){
+        } else if (tamaniomini >= 4) {
+            if (posicionmini == 0) {
                 mini1.setVisible(false);
                 mini2.setVisible(true);
                 mini3.setVisible(true);
                 mini4.setVisible(true);
                 mini5.setVisible(true);
                 mini6.setVisible(true);
-            }else if(posicionmini==tamaniomini)
-            {
+            } else if (posicionmini == tamaniomini) {
                 mini1.setVisible(true);
                 mini2.setVisible(true);
                 mini3.setVisible(true);
                 mini4.setVisible(true);
                 mini5.setVisible(true);
                 mini6.setVisible(false);
-            }
-            else{
+            } else {
                 mini1.setVisible(true);
                 mini2.setVisible(true);
                 mini3.setVisible(true);
@@ -235,8 +286,8 @@ public class Controller implements Initializable {
                 mini5.setVisible(true);
                 mini6.setVisible(true);
             }
-            }
-            }
+        }
+    }
 
     public void Abrir(ActionEvent actionEvent) throws IOException {
         final Stage primaryStage = new Stage();
@@ -255,20 +306,20 @@ public class Controller implements Initializable {
     }
 
     public void VEliminar(String nombre) throws SQLException {
-        String query=null;
-        if (act==1){
-            query="UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE="+'"'+nombre+'"';
-        }else if (act==0){
-            query="UPDATE PRODUCTOS SET ESTADO = 1 WHERE NOMBRE="+'"'+nombre+'"';
+        String query = null;
+        if (act == 1) {
+            query = "UPDATE PRODUCTOS SET ESTADO = 0 WHERE NOMBRE=" + '"' + nombre + '"';
+        } else if (act == 0) {
+            query = "UPDATE PRODUCTOS SET ESTADO = 1 WHERE NOMBRE=" + '"' + nombre + '"';
         }
-        Alert dialogo= new Alert(Alert.AlertType.CONFIRMATION);
+        Alert dialogo = new Alert(Alert.AlertType.CONFIRMATION);
         dialogo.setTitle("Dar de baja Producto");
         dialogo.setHeaderText(null);
         dialogo.initStyle(StageStyle.UNDECORATED);
-        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -"+ Nombre1.getText() +
-                                "\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
+        dialogo.setContentText("Seguro que quieres dar de baja el siguiente producto:\n  -" + Nombre1.getText() +
+                "\n\nPodras buscar y cambiar su estado en PRODUCTOS DE BAJA");
         Optional<ButtonType> result = dialogo.showAndWait();
-        if (result.get()==ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);//insert.execute(query);
             preparedStatement.execute();
@@ -276,221 +327,236 @@ public class Controller implements Initializable {
     }
 
     public void Eliminar(ActionEvent actionEvent) throws SQLException {
-        if (actionEvent.getSource()==Delete1)
-        {
+        if (actionEvent.getSource() == Delete1) {
             VEliminar(Nombre1.getText());
-        }
-        else if (actionEvent.getSource()==Delete2)
-        {
+        } else if (actionEvent.getSource() == Delete2) {
             VEliminar(Nombre2.getText());
-        }
-        else if (actionEvent.getSource()==Delete3)
-        {
+        } else if (actionEvent.getSource() == Delete3) {
             VEliminar(Nombre3.getText());
-        }
-        else if (actionEvent.getSource()==Delete4)
-        {
+        } else if (actionEvent.getSource() == Delete4) {
             VEliminar(Nombre4.getText());
-        }
-        else if (actionEvent.getSource()==Delete5)
-        {
+        } else if (actionEvent.getSource() == Delete5) {
             VEliminar(Nombre5.getText());
         }
     }
 
-    public void bajas(){
-        String url,nombre; String disp,precio,dato;
+    public void bajas() {
+        String url, nombre;
+        String disp, precio, dato;
         Datosproductos.clear();
         try {
             String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=0 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
-            Statement instruccion= conexion.createStatement();
+            Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
-                while(resultado.next()) {
-                    url= resultado.getString("IMG");
-                    nombre= resultado.getString("NOMBRE");
+                while (resultado.next()) {
+                    url = resultado.getString("IMG");
+                    nombre = resultado.getString("NOMBRE");
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
-                    dato=url+"#"+nombre+"#"+disp+"#"+precio;
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
                     Datosproductos.add(dato);
                 }
             }
         } catch (SQLException e) {
-            System.out.println("ERROR "+e.getErrorCode());;
+            System.out.println("ERROR " + e.getErrorCode());
+            ;
         }
-        if(Datosproductos.size()!=0){
+        if (Datosproductos.size() != 0) {
             mostrar();
         }
     }
 
     public void cambio(ActionEvent actionEvent) {
-        if (actionEvent.getSource()==mini2){
+        if (actionEvent.getSource() == mini2) {
             mini1.setStyle("-fx-background-color: #BCBCCB; -fx-text-fill: #fff;");
             mini2.setStyle("-fx-background-color: #3B86FF;" +
                     "-fx-text-fill: #fff;");
-            mini3.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-            mini5.setStyle(".PanelLateralOpciones");
-            mini6.setStyle(".Cambio");
-            posicionmini= Integer.parseInt(mini2.getText());
-            posicionmini=posicionmini-1;
-            pos=1;
+            mini3.setStyle(".boton-mini");
+            mini4.setStyle(".boton-mini");
+            mini5.setStyle(".boton-mini");
+            mini6.setStyle(".boton-mini");
+            posicionmini = Integer.parseInt(mini2.getText());
+            posicionmini = posicionmini - 1;
+            pos = 1;
             mostrar();
-        }
-        else if (actionEvent.getSource()==mini3){
+        } else if (actionEvent.getSource() == mini3) {
             mini3.setStyle("-fx-background-color: #3B86FF;" +
                     "-fx-text-fill: #fff;");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-            mini5.setStyle(".PanelLateralOpciones");
-            mini6.setStyle(".Cambio");
-            mini1.setStyle(".Cambio");
-            posicionmini= Integer.parseInt(mini3.getText());
-            posicionmini=posicionmini-1;
-            pos=2;
+            mini2.setStyle(".boton-mini");
+            mini4.setStyle(".boton-mini");
+            mini5.setStyle(".boton-mini");
+            mini6.setStyle(".boton-mini");
+            mini1.setStyle(".boton-mini");
+            posicionmini = Integer.parseInt(mini3.getText());
+            posicionmini = posicionmini - 1;
+            pos = 2;
             mostrar();
-        }
-        else if (actionEvent.getSource()==mini4){
+        } else if (actionEvent.getSource() == mini4) {
             mini4.setStyle("-fx-background-color: #3B86FF;" +
                     "-fx-text-fill: #fff;");
-            mini5.setStyle(".PanelLateralOpciones");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini3.setStyle(".PanelLateralOpciones");
-            mini6.setStyle(".Cambio");
-            mini1.setStyle(".Cambio");
-            posicionmini= Integer.parseInt(mini4.getText());
-            posicionmini=posicionmini-1;
-            pos=3;
+            mini5.setStyle(".boton-mini");
+            mini2.setStyle(".boton-mini");
+            mini3.setStyle(".boton-mini");
+            mini6.setStyle(".boton-mini");
+            mini1.setStyle(".boton-mini");
+            posicionmini = Integer.parseInt(mini4.getText());
+            posicionmini = posicionmini - 1;
+            pos = 3;
             mostrar();
-        }
-        else if (actionEvent.getSource()==mini5){
-            mini1.setStyle(".Cambio");
+        } else if (actionEvent.getSource() == mini5) {
+            mini1.setStyle(".boton-mini");
             mini5.setStyle("-fx-background-color: #3B86FF;" +
                     "-fx-text-fill: #fff;");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini3.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-            mini6.setStyle(".PanelLateralOpciones");
-            posicionmini= Integer.parseInt(mini5.getText());
-            posicionmini=posicionmini-1;
-            pos=4;
+            mini2.setStyle(".boton-mini");
+            mini3.setStyle(".boton-mini");
+            mini4.setStyle(".boton-mini");
+            mini6.setStyle(".boton-mini");
+            posicionmini = Integer.parseInt(mini5.getText());
+            posicionmini = posicionmini - 1;
+            pos = 4;
             mostrar();
-        }
-        else if (actionEvent.getSource()==mini1){
-           switch (pos){
+        } else if (actionEvent.getSource() == mini1) {
+            switch (pos) {
                 case 1:
-                        mini2.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        if(Integer.parseInt(mini2.getText())!=1){
-                            mini2.setText(String.valueOf(Integer.parseInt(mini2.getText())-1));
-                            mini3.setText(String.valueOf(Integer.parseInt(mini3.getText())-1));
-                            mini4.setText(String.valueOf(Integer.parseInt(mini4.getText())-1));
-                            mini5.setText(String.valueOf(Integer.parseInt(mini5.getText())-1));
-                        }
-                        posicionmini= Integer.parseInt(mini2.getText());
-                        if(posicionmini!=0){
-                            posicionmini=posicionmini-1;
-                        }else {mini1.setVisible(false);posicionmini=0;}
-                        pos=1;
-                        mostrar();
+                    mini2.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    if (Integer.parseInt(mini2.getText()) != 1) {
+                        mini2.setText(String.valueOf(Integer.parseInt(mini2.getText()) - 1));
+                        mini3.setText(String.valueOf(Integer.parseInt(mini3.getText()) - 1));
+                        mini4.setText(String.valueOf(Integer.parseInt(mini4.getText()) - 1));
+                        mini5.setText(String.valueOf(Integer.parseInt(mini5.getText()) - 1));
+                    }
+                    posicionmini = Integer.parseInt(mini2.getText());
+                    if (posicionmini != 0) {
+                        posicionmini = posicionmini - 1;
+                    } else {
+                        mini1.setVisible(false);
+                        posicionmini = 0;
+                    }
+                    pos = 1;
+                    mostrar();
                     break;
                 case 2:
-                    posicionmini= Integer.parseInt(mini2.getText())-1;
-                    pos=1;
+                    posicionmini = Integer.parseInt(mini2.getText()) - 1;
+                    pos = 1;
                     mostrar();
                     mini2.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        mini3.setStyle(".PanelLateralOpciones");
+                            "-fx-text-fill: #fff;");
+                    mini3.setStyle(".boton-mini");
                     break;
                 case 3:
-                        posicionmini= Integer.parseInt(mini3.getText())-1;
-                        pos=2;
-                        mostrar();
+                    posicionmini = Integer.parseInt(mini3.getText()) - 1;
+                    pos = 2;
+                    mostrar();
                     mini3.setStyle("-fx-background-color: #3B86FF;" +
                             "-fx-text-fill: #fff;");
-                    mini4.setStyle(".PanelLateralOpciones");
+                    mini4.setStyle(".boton-mini");
                     break;
                 case 4:
-                        posicionmini= Integer.parseInt(mini4.getText())-1;
-                        pos=3;
-                        mostrar();
+                    posicionmini = Integer.parseInt(mini4.getText()) - 1;
+                    pos = 3;
+                    mostrar();
                     mini4.setStyle("-fx-background-color: #3B86FF;" +
                             "-fx-text-fill: #fff;");
-                    mini5.setStyle(".PanelLateralOpciones");
+                    mini5.setStyle(".boton-mini");
                     break;
             }
-        }
-        else if (actionEvent.getSource()==mini6){
-            switch (pos){
+        } else if (actionEvent.getSource() == mini6) {
+            switch (pos) {
                 case 1:
-                        mini3.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        mini2.setStyle(".PanelLateralOpciones");
-                        posicionmini= Integer.parseInt(mini3.getText())-1;
-                        pos=2;
-                        mostrar();
+                    mini3.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    mini2.setStyle(".boton-mini");
+                    posicionmini = Integer.parseInt(mini3.getText()) - 1;
+                    pos = 2;
+                    mostrar();
                     break;
                 case 2:
-                        mini4.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        mini3.setStyle(".PanelLateralOpciones");
-                        posicionmini= Integer.parseInt(mini4.getText())-1;
-                        pos=3;
-                        mostrar();
+                    mini4.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    mini3.setStyle(".boton-mini");
+                    posicionmini = Integer.parseInt(mini4.getText()) - 1;
+                    pos = 3;
+                    mostrar();
                     break;
                 case 3:
-                        mini5.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        mini4.setStyle(".PanelLateralOpciones");
-                        posicionmini= Integer.parseInt(mini5.getText())-1;
-                        pos=4;
-                        mostrar();
+                    mini5.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    mini4.setStyle(".boton-mini");
+                    posicionmini = Integer.parseInt(mini5.getText()) - 1;
+                    pos = 4;
+                    mostrar();
                     break;
                 case 4:
-                        mini5.setStyle("-fx-background-color: #3B86FF;" +
-                                "-fx-text-fill: #fff;");
-                        pos=4;
-                    if(Integer.parseInt(mini2.getText())!=tamaniomini){
-                            mini2.setText(String.valueOf(1+Integer.parseInt(mini2.getText())));
-                            mini3.setText(String.valueOf(1+Integer.parseInt(mini3.getText())));
-                            mini4.setText(String.valueOf(1+Integer.parseInt(mini4.getText())));
-                            mini5.setText(String.valueOf(1+Integer.parseInt(mini5.getText())));
-                            posicionmini= Integer.parseInt(mini5.getText())-1;
-                            mostrar();
-                        }
-                        else if (tamaniomini==Integer.parseInt(mini5.getText())){
-                            mini6.setVisible(false);
-                        }
+                    mini5.setStyle("-fx-background-color: #3B86FF;" +
+                            "-fx-text-fill: #fff;");
+                    pos = 4;
+                    if (Integer.parseInt(mini2.getText()) != tamaniomini) {
+                        mini2.setText(String.valueOf(1 + Integer.parseInt(mini2.getText())));
+                        mini3.setText(String.valueOf(1 + Integer.parseInt(mini3.getText())));
+                        mini4.setText(String.valueOf(1 + Integer.parseInt(mini4.getText())));
+                        mini5.setText(String.valueOf(1 + Integer.parseInt(mini5.getText())));
+                        posicionmini = Integer.parseInt(mini5.getText()) - 1;
+                        mostrar();
+                    } else if (tamaniomini == Integer.parseInt(mini5.getText())) {
+                        mini6.setVisible(false);
+                    }
                     break;
             }
         }
     }
 
-    public void presionando(int num,int lado){
-        switch (num){
-
-        }
-    }
-
-    public void botonesvista(ActionEvent actionEvent){
-        if (actionEvent.getSource()==Activos){
+    public void botonesvista(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == Activos) {
             limpiar();
-            Activos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
-            Inactivos.setStyle(".PanelLateralOpciones");
+            Activos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+            Inactivos.setStyle(".boton-mini");
             datos();
-            act=1;
-        }else if(actionEvent.getSource()==Inactivos){
+            act = 1;
+        } else if (actionEvent.getSource() == Inactivos) {
             limpiar();
-            Inactivos.setStyle("-fx-background-color: #3B86FF;" +"-fx-text-fill: #fff;");
-            Activos.setStyle(".PanelLateralOpciones");
+            Inactivos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+            Activos.setStyle(".boton-mini");
             bajas();
-            act=0;
+            act = 0;
         }
     }
 
 
     public void Actualizar(ActionEvent actionEvent) {
         datos();
+    }
+
+    public void SearchProduct(ActionEvent actionEvent) {
+        String Search = labelSearch.getText().toString();
+        String url, nombre;
+        String disp, precio, dato;
+        Datosproductos.clear();
+        try {
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE NOMBRE LIKE'%" + Search + "%' ORDER BY NOMBRE ASC;";
+            conexion = conn.getConnection();
+            Statement instruccion = conexion.createStatement();
+            ResultSet resultado = instruccion.executeQuery(Query);
+            if (resultado != null) {
+                while (resultado.next()) {
+                    url = resultado.getString("IMG");
+                    nombre = resultado.getString("NOMBRE");
+                    disp = resultado.getString("CANTIDAD");
+                    precio = resultado.getString("PRECIO_VENTA");
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
+                    Datosproductos.add(dato);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR " + e.getErrorCode());
+            ;
+        }
+        if (Datosproductos.size() != 0) {
+            mostrar();
+        }else {
+            datos();
+        }
     }
 }
