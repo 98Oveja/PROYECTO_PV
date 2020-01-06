@@ -9,9 +9,9 @@
 
 <StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
-        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="3033.0" styleClass="panelPrincipal">
+        <Pane  styleClass="panelPrincipal">
             <children>
-                <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
+                <Pane layoutX="260.0"  prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
                   <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
                         <ImageView id="imgNotification" fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">

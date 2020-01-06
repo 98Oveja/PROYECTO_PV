@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="PanelDelete" prefHeight="400.0" prefWidth="600.0" styleClass="paneDeleteEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.DelEmployController">
    <children>
-      <JFXButton layoutY="161.0" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #43425D;" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Confirmar" textFill="WHITE">
+      <JFXButton fx:id="Okay" layoutY="161.0" onMouseClicked="#optionPress" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #43425D;" styleClass="buttonOption" stylesheets="@../../css/menuinicio.css" text="Confirmar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -17,7 +17,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="131.0" layoutY="161.0" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #3B86FF;" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Cancelar" textFill="WHITE">
+      <JFXButton fx:id="Cancel" layoutX="131.0" layoutY="161.0" onMouseClicked="#optionPress" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #3B86FF;" styleClass="buttonOption" stylesheets="@../../css/menuinicio.css" text="Cancelar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -25,17 +25,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="99.0" layoutY="13.0" prefHeight="30.0" prefWidth="66.0" text="Alerta" textFill="#4d4f5c">
+      <Label fx:id="TitleModal" alignment="CENTER" layoutX="51.0" layoutY="15.0" prefHeight="30.0" prefWidth="157.0" text="Alerta" textAlignment="CENTER" textFill="#353a57" wrapText="true">
          <font>
-            <Font size="18.0" />
+            <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="20.0" layoutY="56.0" prefHeight="66.0" prefWidth="218.0" text="Estas seguro que deseas eliminar el Empleado de tú sistema?" textFill="#43425cc0" wrapText="true">
+      <Label fx:id="contentAlert" layoutX="20.0" layoutY="56.0" prefHeight="66.0" prefWidth="218.0" text="Estas seguro que deseas eliminar al empleado de tú sistema?" textFill="#101017bf" wrapText="true">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="27.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="IconModal" fitHeight="35.0" fitWidth="30.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/icons8_box_important_50px_1.png" />
          </image>

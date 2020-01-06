@@ -2,6 +2,7 @@ package controllers.employees;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.mail.handlers.image_gif;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,13 +10,12 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -26,7 +26,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
 
 import java.io.File;
@@ -47,23 +49,45 @@ public class AddEmployController implements Initializable {
     ObservableList<String> list= FXCollections.observableArrayList("Administrador","Bodeguero","Vendedor","Secretaria");
 
 @FXML
-    private AnchorPane PanelAddEmploy;
+    public AnchorPane PanelAddEmploy;
 @FXML
-    private TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
+    public TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
 @FXML
-    private ImageView warningOne, warningTwo, warningThree, warningFour, warningFive, warningSix;
+    public ImageView warningOne, warningTwo, warningThree, warningFour, warningFive, warningSix;
 
 @FXML
-    private JFXComboBox<String> placeList;
-
+    public JFXComboBox<String> placeList;
+@FXML
+    public Label TitleModal;
 
 private int idpersona;
     private String directionImage;
 
  @FXML
     private void CloseModal(){
-     Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
-     stage.close();
+     Image image = new Image("/images/info.png");
+     try {
+         FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
+         Parent root = Loader.load();
+         DelEmployController controller = Loader.getController();
+         controller.TitleModal.setText("Confirmacion");
+         controller.contentAlert.setText("Esta seguro que desea salir del Modal??");
+         controller.IconModal.setImage(image);
+         Scene dialogo = new Scene(root);
+         //abrimos un nuevo escenario
+         Stage stagedialog = new Stage();
+         stagedialog.initStyle(StageStyle.UNDECORATED);
+         stagedialog.initModality(Modality.APPLICATION_MODAL);
+         stagedialog.setScene(dialogo);
+         stagedialog.showAndWait();
+         if(controller.Okay.getOnMouseClicked() != null){
+             Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
+             stage.close();
+         }
+
+
+     }catch (Exception ex){ ex.printStackTrace();}
+
  }
 
     //METODOS PARA VALIDAR SOLO LETRAS
