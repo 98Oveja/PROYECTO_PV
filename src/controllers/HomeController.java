@@ -5,18 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,10 +18,10 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 
 public class HomeController implements Initializable {
@@ -58,12 +52,12 @@ public class HomeController implements Initializable {
     public MenuItem itemClose;
     public MenuItem itemConfig;
     public MenuItem itemHelp;
-    public Pane paneSearch;
     public TextField txtSearch;
+    public MenuButton paneResSearch;
     int status = 0;
-    ArrayList<Label> list = new ArrayList<>();
-    ArrayList<ToggleButton> listB = new ArrayList<>();
-
+    ArrayList<Label> labelArrayList = new ArrayList<>();
+    ArrayList<ToggleButton> toggleButtonArrayList = new ArrayList<>();
+    //String[] services = "Categorias Clientes Compras DetalleVenta Empleados Personas Productos Proveedores Usuarios Ventas";
     public static int getCode() {
         return LoginController.code;
     }
@@ -79,16 +73,38 @@ public class HomeController implements Initializable {
         avalibleLabel(getCode());
         avalibleButton(getCode());
         txtSearch.textProperty().addListener((Observable, oldValue, newValue) -> {
-            Pane canvas = new Pane();
-            canvas.setStyle("-fx-background-color: black;");
-            canvas.setPrefSize(200,200);
-            Circle circle = new Circle(50,Color.BLUE);
-            circle.relocate(20, 20);
-            Rectangle rectangle = new Rectangle(100,100, Color.RED);
-            rectangle.relocate(70,70);
-            canvas.getChildren().addAll(circle,rectangle);
-            pane.getChildren().addAll(canvas);
-            //System.out.println("paeela");
+            if (!newValue.isBlank()) {
+                ArrayList<String> services = new ArrayList<>();
+                Vector<MenuItem> items = new Vector<>();
+
+                for (ToggleButton buton: toggleButtonArrayList) {services.add(buton.getText());}
+
+                for (String service: services) {
+                    if(service.contains(newValue)){items.add(new MenuItem(service));}
+                }
+
+                for (MenuItem item: items){
+                    if(item.getText().equals(newValue)) {
+                        paneResSearch.getItems().clear();
+                        paneResSearch.getItems().add(item);
+                        paneResSearch.show();
+                        item.setOnAction(actionEvent -> {
+                            System.out.println(item.getText()+"+********action");
+                        });
+                        return;
+                    }else{
+                        paneResSearch.getItems().clear();
+                        paneResSearch.getItems().addAll(items);
+                        paneResSearch.show();
+                        item.setOnAction(actionEvent -> {
+                            System.out.println(item.getText()+"+********action");
+                        });
+                        return;
+                    }
+                }
+            }else {
+                paneResSearch.getItems().clear();
+            }
         });
     }
 
@@ -106,41 +122,41 @@ public class HomeController implements Initializable {
     }
 
     public void addButtons(){
-        listB.add(btninicio);
-        listB.add(btnestadistica);
-        listB.add(btnempleados);
-        listB.add(btnproductos);
-        listB.add(btnproveedores);
-        listB.add(btnclientes);
-        listB.add(btncompras);
-        listB.add(btncalendario);
-        listB.add(btnventas);
-        listB.add(btnreportes);
-        for (ToggleButton b : listB) {
+        toggleButtonArrayList.add(btninicio);
+        toggleButtonArrayList.add(btnestadistica);
+        toggleButtonArrayList.add(btnempleados);
+        toggleButtonArrayList.add(btnproductos);
+        toggleButtonArrayList.add(btnproveedores);
+        toggleButtonArrayList.add(btnclientes);
+        toggleButtonArrayList.add(btncompras);
+        toggleButtonArrayList.add(btncalendario);
+        toggleButtonArrayList.add(btnventas);
+        toggleButtonArrayList.add(btnreportes);
+        for (ToggleButton b : toggleButtonArrayList) {
             b.setSelected(false);
         }
     }
 
     public void addlist(){
-        list.add(line1);
-        list.add(line2);
-        list.add(line3);
-        list.add(line4);
-        list.add(line5);
-        list.add(line6);
-        list.add(line7);
-        list.add(line8);
-        list.add(line9);
-        list.add(line10);
-        for (Label a : list) {
+        labelArrayList.add(line1);
+        labelArrayList.add(line2);
+        labelArrayList.add(line3);
+        labelArrayList.add(line4);
+        labelArrayList.add(line5);
+        labelArrayList.add(line6);
+        labelArrayList.add(line7);
+        labelArrayList.add(line8);
+        labelArrayList.add(line9);
+        labelArrayList.add(line10);
+        for (Label a : labelArrayList) {
             a.setVisible(false);
         }
     }
 
     public  void avalibleButton(int date){
         addButtons();
-        for (ToggleButton b: listB) {
-            if(b.equals(listB.get(date))){
+        for (ToggleButton b: toggleButtonArrayList) {
+            if(b.equals(toggleButtonArrayList.get(date))){
                 //System.out.println("son iguales ");
                 b.setSelected(true);
             }
@@ -149,8 +165,8 @@ public class HomeController implements Initializable {
 
     public void avalibleLabel(int date){
         addlist();
-        for (Label a: list) {
-            if(a.equals(list.get(date))){
+        for (Label a: labelArrayList) {
+            if(a.equals(labelArrayList.get(date))){
                 a.setVisible(true);
             }
         }
@@ -278,6 +294,17 @@ public class HomeController implements Initializable {
                     Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
+    }
+
+    public void handleActionText(String value, String newValue) {
+        if (!newValue.isEmpty()) {
+            paneResSearch.getItems().add(new MenuItem(newValue));
+            System.out.println(newValue);
+            //paneResSearch.show();
+        }else {
+            System.out.println("eliminado");
+            paneResSearch.getItems().removeAll();
         }
     }
 }
