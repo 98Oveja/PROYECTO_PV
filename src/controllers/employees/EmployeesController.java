@@ -60,7 +60,6 @@ public class EmployeesController {
 
     @FXML
     private void pressedAddModal() throws IOException {
-
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();

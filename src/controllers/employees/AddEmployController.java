@@ -86,8 +86,6 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
              Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
              stage.close();
          }
-
-
      }catch (Exception ex){ ex.printStackTrace();}
 
  }
@@ -140,19 +138,27 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
 
     }
  @FXML
-    public void AddEmploy(ActionEvent event) throws SQLException {
+    public void AddEmploy(ActionEvent event) throws SQLException, IOException {
      validorGeneral();
-     Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
-     alert.setTitle("Confirmar Informacion...");
-     alert.setContentText("Verifica los datos: Nombres: "+firstName +" "+ secondName +" "+firstLastName+" "+secondLastName+ "\nDireccion: "+direction+" Telefono: "+numberPhone+" Puesto: "+placeList.getValue());
-     //agregamos los botones al dialogo
-     ButtonType yes= new ButtonType("Si!");
-     ButtonType no= new ButtonType("No!");
-     alert.getButtonTypes().setAll(yes,no);
-     Optional<ButtonType> optional= alert.showAndWait();
+//     Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+//     alert.setTitle("Confirmar Informacion...");
+//     alert.setContentText("Verifica los datos: Nombres: "+firstName +" "+ secondName +" "+firstLastName+" "+secondLastName+ "\nDireccion: "+direction+" Telefono: "+numberPhone+" Puesto: "+placeList.getValue());
+//     //agregamos los botones al dialogo
+//     ButtonType yes= new ButtonType("Si!");
+//     ButtonType no= new ButtonType("No!");
+//     alert.getButtonTypes().setAll(yes,no);
+//     Optional<ButtonType> optional= alert.showAndWait();
 
-
-     if (optional.get() == yes) {
+     FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
+     Parent root = Loader.load();
+     InfoEmployController controller = Loader.getController();
+     controller.label1.setText("Nombres:"+firstName+" "+secondName);
+     controller.label2.setText("Apellidos:"+firstLastName+" "+secondLastName);
+     controller.label3.setText("Dirección:"+direction);
+     controller.label4.setText("Teléfono:"+numberPhone);
+     controller.label5.setText("Correo:"+email);
+     controller.label6.setText("Puesto:"+placeList.getValue());
+     if (controller.ActionHanderYes()==true) {
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
             } else {

@@ -84,7 +84,7 @@
 }
 
 .buttonOption{}
-.buttonOption:hover{
+.buttonOption:hover,.infobtn:hover{
     -fx-opacity: 0.8;
 }
 .buttonEditEmploy{
@@ -111,6 +111,10 @@
 }
 .buttonAddEmploy:hover{
     -fx-background-image: url("../images/icons8_add_42px_6.png");
+}
+.infobtn{
+    -fx-background-color: #4475b2;
+    -fx-text-fill: white;
 }
 
 
