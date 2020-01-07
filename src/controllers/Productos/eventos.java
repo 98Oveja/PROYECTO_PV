@@ -17,7 +17,7 @@ public class eventos {
     public void validarSoloNumeros(TextField campo) {
         campo.addEventFilter(KeyEvent.ANY, event -> {
             char c = event.getCharacter().charAt(0);
-            System.out.println(c);
+            //System.out.println(c);
             if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c != '.') {
                 event.consume();
 //                   System.out.println("Dato no valido: "+event.getCode());
