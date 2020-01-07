@@ -65,7 +65,8 @@ public class newproducto implements Initializable {
             }
 
         }catch (Exception e){
-            e.printStackTrace();
+           // e.printStackTrace();
+
         }
         return id;
     }
