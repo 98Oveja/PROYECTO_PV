@@ -20,7 +20,7 @@ public class Main extends Application {
                 loadMainPane()
             )
         );
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
