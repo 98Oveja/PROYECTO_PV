@@ -62,7 +62,7 @@
 }
 
 .boton-edit{
-    -fx-background-color: #fff;
+    -fx-background-color: transparent;
     -fx-background-image: url("../../images/edit.png");
     -fx-background-size: 32px 32px;
     -fx-background-repeat: no-repeat;
@@ -81,7 +81,7 @@
 }
 
 .boton-delete{
-    -fx-background-color: #fff;
+    -fx-background-color: transparent;
     -fx-background-image: url("../../images/icons8_delete_50px_1.png");
     -fx-background-size: 32px 32px;
     -fx-background-repeat: no-repeat;
