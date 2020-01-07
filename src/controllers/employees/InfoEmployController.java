@@ -19,7 +19,6 @@ public class InfoEmployController {
         Stage stage = (Stage) PanelInfo.getScene().getWindow();
         stage.close();
     }
-
     public boolean ActionHanderYes(){
         return true;
     }

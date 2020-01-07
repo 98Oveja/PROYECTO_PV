@@ -55,7 +55,7 @@ public class AddEmployController implements Initializable {
 @FXML
     public TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
 @FXML
-    public ImageView warningOne, warningTwo, warningThree, warningFour, warningFive, warningSix;
+    public ImageView  warningTwo, warningThree, warningFour, warningFive, warningSix;
 
 @FXML
     public JFXComboBox<String> placeList;
@@ -82,11 +82,11 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
          stagedialog.initModality(Modality.APPLICATION_MODAL);
          stagedialog.setScene(dialogo);
          stagedialog.showAndWait();
-         if(controller.Okay.getOnMouseClicked() != null){
+         if(controller.Okay.isPressed()){
              Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
              stage.close();
          }
-     }catch (Exception ex){ ex.printStackTrace();}
+     }catch (Exception ex){ System.out.println(ex);}
 
  }
 
@@ -102,10 +102,8 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
     public void validateNumber(TextField campo){
         campo.addEventFilter(KeyEvent.ANY, event ->{
             char c = event.getCharacter().charAt(0);
-            System.out.println(c);
             if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
                 event.consume();
-//                            }
             if (c == '.' && campo.getText().contains(".")){
                 event.consume();
             }
@@ -140,15 +138,6 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
  @FXML
     public void AddEmploy(ActionEvent event) throws SQLException, IOException {
      validorGeneral();
-//     Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
-//     alert.setTitle("Confirmar Informacion...");
-//     alert.setContentText("Verifica los datos: Nombres: "+firstName +" "+ secondName +" "+firstLastName+" "+secondLastName+ "\nDireccion: "+direction+" Telefono: "+numberPhone+" Puesto: "+placeList.getValue());
-//     //agregamos los botones al dialogo
-//     ButtonType yes= new ButtonType("Si!");
-//     ButtonType no= new ButtonType("No!");
-//     alert.getButtonTypes().setAll(yes,no);
-//     Optional<ButtonType> optional= alert.showAndWait();
-
      FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
      Parent root = Loader.load();
      InfoEmployController controller = Loader.getController();
@@ -158,6 +147,12 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
      controller.label4.setText("Teléfono:"+numberPhone);
      controller.label5.setText("Correo:"+email);
      controller.label6.setText("Puesto:"+placeList.getValue());
+     Scene dialogo = new Scene(root);
+     Stage stagedialog = new Stage();
+     stagedialog.initStyle(StageStyle.UNDECORATED);
+     stagedialog.initModality(Modality.APPLICATION_MODAL);
+     stagedialog.setScene(dialogo);
+     stagedialog.showAndWait();
      if (controller.ActionHanderYes()==true) {
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
@@ -213,11 +208,10 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
 
         if (selectedFile != null) {
             directionImage= selectedFile.getPath();
-            System.out.println(directionImage);
             return setImgUser("file:/"+directionImage);
 
         } else{
-            System.out.println("file is not valid");
+            System.out.println("Archivo no Valido");
             return "NULL";
         }
     }
@@ -229,17 +223,7 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
         return url;
 
     }
-    @FXML
-    private void EventKeyEnterNameOne(KeyEvent event){
-        if(event.getCode()==KeyCode.ENTER){ EmployNameTwo.requestFocus(); }
-            if(EmployNameOne.getLength() <=2){
-                EmployNameOne.setPromptText("Ingresa un nombre valido");
-                EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
-                warningOne.setVisible(true);
-             }else{
-//         warningOne.setVisible(false);
-        }
-        }
+
     @FXML
     private void EventKeyEnteNameTwo(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){

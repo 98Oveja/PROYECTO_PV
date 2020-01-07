@@ -37,7 +37,7 @@
                         </ImageView>
                         <VBox prefHeight="125.0" prefWidth="298.0">
                            <children>
-                              <Label prefHeight="32.0" prefWidth="279.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="David James">
+                              <Label prefHeight="32.0" prefWidth="279.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>

@@ -123,7 +123,6 @@ public class HomeController implements Initializable {
         addButtons();
         for (ToggleButton b: listB) {
             if(b.equals(listB.get(date))){
-                //System.out.println("son iguales ");
                 b.setSelected(true);
             }
         }

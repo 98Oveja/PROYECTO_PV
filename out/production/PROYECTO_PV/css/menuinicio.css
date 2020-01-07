@@ -25,7 +25,7 @@
     -fx-border-radius: 6px;
 }
 
-.empleadoscard:hover{
+.empleadoscard:hover,.btn_CloseModal:hover{
     -fx-effect:dropshadow(gaussian, rgba(37, 37, 37, 0.3),10,0.5,0.0,0.0);-fx-font-size:16px
 }
 
@@ -89,24 +89,24 @@
 }
 .buttonEditEmploy{
     -fx-background-image: url("../images/icons8_create_22px_.png");
-    -fx-background-color: Tranparent;
+    -fx-background-color: transparent;
 }
 .buttonEditEmploy:hover{
     -fx-background-image: url("../images/icons8_create_22px_3.png");
 }
 
 .buttonDeleteEmploy{
+    -fx-background-color: Transparent;
     -fx-background-image: url("../images/icons8_delete_22px_1.png");
-    -fx-background-color: Tranparent;
 }
 .buttonDeleteEmploy:hover{
     -fx-background-image: url("../images/icons8_multiply_22px.png");
 }
 .buttonDeleteEmploy:pressed, .buttonEditEmploy:pressed, .buttonAddEmploy:pressed{
-    -fx-background-color: Tranparent;
+    -fx-background-color: Transparent;
 }
 .buttonAddEmploy{
-    -fx-background-color: Tranparent;
+    -fx-background-color: Transparent;
     -fx-background-image: url("../images/icons8_add_42px.png");
 }
 .buttonAddEmploy:hover{
@@ -117,6 +117,8 @@
     -fx-text-fill: white;
 }
 
-
-.btn_CloseModal{-fx-background-color:Transparent;-fx-background-radius:30px;-fx-translate-x:1115px;-fx-translate-y:24px;-fx-cursor:hand}
-.btn_CloseModal:hover{-fx-background-color:#43425d}
+.btn_CloseModal{
+    -fx-background-color:Transparent;
+    -fx-cursor:hand;
+    -fx-background-image: url("../images/cancel_32.png");
+}

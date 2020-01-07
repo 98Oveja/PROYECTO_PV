@@ -9,8 +9,8 @@
 
 <AnchorPane fx:id="PanelInfo" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.InfoEmployController">
    <children>
-      <Button layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#closeInfoModal" prefHeight="22.0" prefWidth="22.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css" />
-      <Label fx:id="TituloInfo" layoutX="94.0" layoutY="15.0" prefHeight="25.0" prefWidth="232.0" text="Confirmacion de datos" textFill="#8f8994">
+      <Button layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeInfoModal" onMouseClicked="#closeInfoModal" prefHeight="22.0" prefWidth="22.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css" />
+      <Label layoutX="94.0" layoutY="15.0" prefHeight="25.0" prefWidth="232.0" text="Confirmacion de datos" textFill="#8f8994">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
@@ -26,16 +26,34 @@
          <children>
             <VBox layoutX="84.0" layoutY="10.0" prefHeight="149.0" prefWidth="343.0">
                <children>
-                  <Label fx:id="label1" prefHeight="22.0" prefWidth="350.0" text="n1" textFill="#685f6f">
+                  <Label fx:id="label1" prefHeight="22.0" prefWidth="350.0" text="n1" textFill="#86838a">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Label>
-                  <Label fx:id="label2" prefHeight="22.0" prefWidth="342.0" text="n1" textFill="#685f6f" />
-                  <Label fx:id="label3" prefHeight="22.0" prefWidth="348.0" text="n1" textFill="#685f6f" />
-                  <Label fx:id="label4" prefHeight="22.0" prefWidth="352.0" text="n1" textFill="#685f6f" />
-                  <Label fx:id="label5" prefHeight="22.0" prefWidth="365.0" text="n1" textFill="#685f6f" />
-                  <Label fx:id="label6" prefHeight="22.0" prefWidth="349.0" text="n1" textFill="#685f6f" />
+                  <Label fx:id="label2" prefHeight="22.0" prefWidth="342.0" text="n1" textFill="#86838a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label fx:id="label3" prefHeight="22.0" prefWidth="348.0" text="n1" textFill="#86838a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label fx:id="label4" prefHeight="22.0" prefWidth="352.0" text="n1" textFill="#86838a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label fx:id="label5" prefHeight="22.0" prefWidth="365.0" text="n1" textFill="#86838a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label fx:id="label6" prefHeight="22.0" prefWidth="349.0" text="n1" textFill="#86838a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </VBox>
          </children>

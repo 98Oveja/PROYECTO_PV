@@ -36,12 +36,10 @@ public class EmployeesController {
 
     @FXML
     private void DeleteEmploy() throws IOException {
-    int optionPress;
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();
             DelEmployController controller = Loader.getController();
-            optionPress = controller.status;
             Scene dialogo = new Scene(root);
             //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
@@ -50,7 +48,7 @@ public class EmployeesController {
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
 
-            if(optionPress==1){
+            if(controller.BtnOk==1){
                System.out.println("ya dio");
                controller.pressedExit();
             }
