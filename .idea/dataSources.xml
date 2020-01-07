@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@u376498608_punto_de_venta" uuid="489a446e-6b60-4d23-82d0-2d62996d78e5">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="MariaDB - u376498608_punto_de_venta@sql309.main-hosting.eu" uuid="15b334e4-846a-4b48-bc2f-f7f7c4dc80e9">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://sql309.main-hosting.eu:3306/u376498608_punto_de_venta</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://sql309.main-hosting.eu:3306/u376498608_punto_de_venta</jdbc-url>
     </data-source>
   </component>
 </project>

@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,107 +21,76 @@ import java.sql.*;
 import java.util.*;
 
 public class Controller implements Initializable {
-    @FXML
-    private Button mini2;
-    @FXML
-    private Button mini3;
-    @FXML
-    private Button mini4;
-    @FXML
-    private Button mini5;
-    @FXML
-    private Button mini6;
-    @FXML
-    private Button mini1;
-    @FXML
-    private Button Activos;
-    @FXML
-    private Pane P1;
-    @FXML
-    private Pane P2;
-    @FXML
-    private Pane P3;
-    @FXML
-    private Pane P4;
-    @FXML
-    private Pane P5;
-    @FXML
-    private Button Inactivos;
-    @FXML
-    private ImageView imageview1;
-    @FXML
-    private Label Nombre1;
-    @FXML
-    private Label disp1;
-    @FXML
-    private Label precio1;
-    @FXML
-    private ImageView imageview2;
-    @FXML
-    private Label Nombre2;
-    @FXML
-    private Label disp2;
-    @FXML
-    private Label precio2;
-    @FXML
-    private ImageView imageview3;
-    @FXML
-    private Label Nombre3;
-    @FXML
-    private Label disp3;
-    @FXML
-    private Label precio3;
-    @FXML
-    private ImageView imageview4;
-    @FXML
-    private Label Nombre4;
-    @FXML
-    private Label disp4;
-    @FXML
-    private Label precio4;
-    @FXML
-    private ImageView imageview5;
-    @FXML
-    private Label Nombre5;
-    @FXML
-    private Label disp5;
-    @FXML
-    private Label precio5;
-    @FXML
-    private Button Delete1;
-    @FXML
-    private Button Delete2;
-    @FXML
-    private Button Delete3;
-    @FXML
-    private Button Delete4;
-    @FXML
-    private Button Delete5;
-    @FXML
-    private TextField labelSearch;
+    @FXML    private Button mini2;
+    @FXML    private Button mini3;
+    @FXML    private Button mini4;
+    @FXML    private Button mini5;
+    @FXML    private Button mini6;
+    @FXML    private Button mini1;
+    @FXML    private Button Activos;
+    @FXML    private Pane P1;
+    @FXML    private Pane P2;
+    @FXML    private Pane P3;
+    @FXML    private Pane P4;
+    @FXML    private Pane P5;
+    @FXML    private Button Inactivos;
+    @FXML    private ImageView imageview1;
+    @FXML    private Label Nombre1;
+    @FXML    private Label disp1;
+    @FXML    private Label precio1;
+    @FXML    private ImageView imageview2;
+    @FXML    private Label Nombre2;
+    @FXML    private Label disp2;
+    @FXML    private Label precio2;
+    @FXML    private ImageView imageview3;
+    @FXML    private Label Nombre3;
+    @FXML    private Label disp3;
+    @FXML    private Label precio3;
+    @FXML    private ImageView imageview4;
+    @FXML    private Label Nombre4;
+    @FXML    private Label disp4;
+    @FXML    private Label precio4;
+    @FXML    private ImageView imageview5;
+    @FXML    private Label Nombre5;
+    @FXML    private Label disp5;
+    @FXML    private Label precio5;
+    @FXML    private Button Delete1;
+    @FXML    private Button Delete2;
+    @FXML    private Button Delete3;
+    @FXML    private Button Delete4;
+    @FXML    private Button Delete5;
+    @FXML    private TextField labelSearch;
+    @FXML    private Label DescripcionProducto;
+    @FXML    private Button Edit1;          @FXML    private Button Edit2;      @FXML    private Button Edit3;
+    @FXML    private Button Edit4;          @FXML    private Button Edit5;
 
     int act = 1;
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
     int posicionmini = 0, tamaniomini, pos;
     ArrayList<String> Datosproductos = new ArrayList<String>();
-    String url, nombre;
+    String url, nombre, descripcion;
     String disp, precio, dato;
+    ArrayList<String> DescripcionProductos = new ArrayList<String>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Buscando(labelSearch);
         pos = 1;
         limpiar();
         datos();
-        Activos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+        Activos.setStyle("-fx-font-size: 20px;\n" +
+                "    -fx-background-color: #3B86FF;\n" +
+                "    -fx-text-fill: #fff;\n");
         mini2.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
     }
 
 
     public void datos() {
         Datosproductos.clear();
+        DescripcionProductos.clear();
         try {
-            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=1 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -128,7 +100,8 @@ public class Controller implements Initializable {
                     nombre = resultado.getString("NOMBRE");
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
-                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
+                    descripcion= resultado.getString("DESCRIPCION");
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio+ "#" +descripcion;
                     Datosproductos.add(dato);
                 }
                 if (Datosproductos.size() != 0) {
@@ -136,7 +109,7 @@ public class Controller implements Initializable {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("ERROR " + e.getErrorCode());
+            //System.out.println("ERROR " + e.getErrorCode());
             ;
         }
     }
@@ -153,13 +126,18 @@ public class Controller implements Initializable {
         mini4.setVisible(false);
         mini5.setVisible(false);
         mini6.setVisible(false);
+        DescripcionProducto.setText("");
+        DescripcionProductos.clear();
     }
 
     public void paneles(int panel, String a, String b, String c, String d) {
-        Image img = new Image("file:/" + a);
-        //System.out.println(a + " " + b + " " + " " + c + " " + d);
-        if (a != null || a == "") {
-            switch (panel) {
+        Image img;
+        if(a.equals("null")){
+            img = new Image("/images/herramientas.png");
+        }else{
+            img = new Image("file:/" + a);
+        }
+        switch (panel) {
                 case 1:
                     P1.setVisible(true);
                     imageview1.setImage(img);
@@ -196,12 +174,13 @@ public class Controller implements Initializable {
                     precio5.setText("Q " + d);
                     break;
             }
-        }
+        //}
     }
 
     public void mostrar() {
         limpiar();
-        String datos, direccion, nom, cant, prec;
+        DescripcionProductos.clear();
+        String datos, direccion, nom, cant, prec,desc;
         int tamanio = Datosproductos.size();
         int asig, panel = 0;
         tamaniomini = tamanio / 5;
@@ -218,6 +197,8 @@ public class Controller implements Initializable {
                         nom = textElements[1];
                         cant = textElements[2];
                         prec = textElements[3];
+                        desc = textElements[4];
+                        DescripcionProductos.add(desc);
                         direccion = direccion.replace("*", "\\");
                         paneles(panel, direccion, nom, cant, prec);
                     }
@@ -232,6 +213,8 @@ public class Controller implements Initializable {
                         nom = textElements[1];
                         cant = textElements[2];
                         prec = textElements[3];
+                        desc = textElements[4];
+                        DescripcionProductos.add(desc);
                         direccion = direccion.replace("*", "\\");
                         paneles(panel, direccion, nom, cant, prec);
                     }
@@ -341,11 +324,11 @@ public class Controller implements Initializable {
     }
 
     public void bajas() {
-        String url, nombre;
+        String url, nombre,desc;
         String disp, precio, dato;
         Datosproductos.clear();
         try {
-            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE ESTADO=0 ORDER BY ID_PRODUCTO DESC;";
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=0 ORDER BY ID_PRODUCTO DESC;";
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -355,7 +338,8 @@ public class Controller implements Initializable {
                     nombre = resultado.getString("NOMBRE");
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
-                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
+                    desc= resultado.getString("DESCRIPCION");
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio + "#" + desc;
                     Datosproductos.add(dato);
                 }
             }
@@ -511,13 +495,17 @@ public class Controller implements Initializable {
     public void botonesvista(ActionEvent actionEvent) {
         if (actionEvent.getSource() == Activos) {
             limpiar();
-            Activos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+            Activos.setStyle("-fx-font-size: 20px;\n" +
+                    "    -fx-background-color: #3B86FF;\n" +
+                    "    -fx-text-fill: #fff;\n");
             Inactivos.setStyle(".boton-mini");
             datos();
             act = 1;
         } else if (actionEvent.getSource() == Inactivos) {
             limpiar();
-            Inactivos.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
+            Inactivos.setStyle("-fx-font-size: 20px;\n" +
+                    "    -fx-background-color: #3B86FF;\n" +
+                    "    -fx-text-fill: #fff;\n" );
             Activos.setStyle(".boton-mini");
             bajas();
             act = 0;
@@ -529,13 +517,15 @@ public class Controller implements Initializable {
         datos();
     }
 
-    public void SearchProduct(ActionEvent actionEvent) {
+    void searching(){
         String Search = labelSearch.getText().toString();
-        String url, nombre;
+        String url, nombre, desc;
         String disp, precio, dato;
         Datosproductos.clear();
+        Activos.setStyle(".boton-mini");
+        Inactivos.setStyle(".boton-mini");
         try {
-            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA FROM PRODUCTOS WHERE NOMBRE LIKE'%" + Search + "%' ORDER BY NOMBRE ASC;";
+            String Query = "SELECT IMG,NOMBRE,CANTIDAD,PRECIO_VENTA,DESCRIPCION FROM PRODUCTOS WHERE NOMBRE LIKE'%" + Search + "%' ORDER BY NOMBRE ASC;";
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -545,7 +535,8 @@ public class Controller implements Initializable {
                     nombre = resultado.getString("NOMBRE");
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
-                    dato = url + "#" + nombre + "#" + disp + "#" + precio;
+                    desc = resultado.getString("DESCRIPCION");
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio + "#" + desc;
                     Datosproductos.add(dato);
                 }
             }
@@ -558,5 +549,77 @@ public class Controller implements Initializable {
         }else {
             datos();
         }
+    }
+
+    public void SearchProduct(ActionEvent actionEvent) {
+        searching();
+    }
+
+    public void View(MouseEvent mouseEvent) {
+        String descr = DescripcionProductos.get(0);
+        DescripcionProducto.setText("Descripcion\n"+descr);
+    }
+
+    public void View1(MouseEvent mouseEvent) {
+        String descr = DescripcionProductos.get(1);
+        DescripcionProducto.setText("Descripcion\n"+descr);
+    }
+    public void View2(MouseEvent mouseEvent) {
+        String descr = DescripcionProductos.get(2);
+        DescripcionProducto.setText("Descripcion\n"+descr);
+    }
+    public void View3(MouseEvent mouseEvent) {
+        String descr = DescripcionProductos.get(3);
+        DescripcionProducto.setText("Descripcion\n"+descr);
+    }
+    public void View4(MouseEvent mouseEvent) {
+        String descr = DescripcionProductos.get(4);
+        DescripcionProducto.setText("Descripcion\n"+descr);
+    }
+    static String name = null;
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return this.name;
+    }
+
+    public void Editar(ActionEvent actionEvent) {
+
+        if (actionEvent.getSource() == Edit1) {
+            name=Nombre1.getText().toString();
+        } else if (actionEvent.getSource() == Edit2) {
+            name=Nombre2.getText().toString();
+        } else if (actionEvent.getSource() == Edit3) {
+            name=Nombre3.getText().toString();
+        } else if (actionEvent.getSource() == Edit4) {
+            name=Nombre4.getText().toString();
+        } else if (actionEvent.getSource() == Edit5) {
+            name=Nombre5.getText().toString();
+        }
+        EditProduct edit = new EditProduct();
+        final Stage primaryStage = new Stage();
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.initOwner(primaryStage);
+        dialog.setX(300);
+        dialog.setY(100);
+
+        Scene dialogScene = null;
+        try {
+            dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos/editarproducto.fxml")));
+        } catch (IOException e) {
+
+        }
+        dialog.setScene(dialogScene);
+
+        dialog.show();
+    }
+
+    public void Buscando(TextField campo) {
+        campo.addEventFilter(KeyEvent.ANY, event ->{
+            searching();
+        });
     }
 }

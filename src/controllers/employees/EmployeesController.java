@@ -24,11 +24,35 @@ public class EmployeesController {
 
     @FXML
     private void DeleteEmploy() throws IOException {
-
+    int optionPress;
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();
             DelEmployController controller = Loader.getController();
+            optionPress = controller.status;
+            Scene dialogo = new Scene(root);
+            //abrimos un nuevo escenario
+            Stage stagedialog = new Stage();
+            stagedialog.initStyle(StageStyle.UNDECORATED);
+            stagedialog.initModality(Modality.APPLICATION_MODAL);
+            stagedialog.setScene(dialogo);
+            stagedialog.showAndWait();
+
+            if(optionPress==1){
+               System.out.println("ya dio");
+               controller.pressedExit();
+            }
+
+        }catch (Exception ex){ ex.printStackTrace();}
+    }
+
+    @FXML
+    private void pressedAddModal() throws IOException {
+
+        try {
+            FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
+            Parent root = Loader.load();
+            AddEmployController controller = Loader.getController();
             Scene dialogo = new Scene(root);
             //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
@@ -41,12 +65,12 @@ public class EmployeesController {
     }
 
     @FXML
-    private void pressedAddModal() throws IOException {
-
+    private void pressedEditModal() throws IOException {
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
             AddEmployController controller = Loader.getController();
+            controller.TitleModal.setText("Editar Empleados");
             Scene dialogo = new Scene(root);
             //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
