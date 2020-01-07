@@ -1,5 +1,6 @@
 package controllers.employees;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.sun.mail.handlers.image_gif;
@@ -43,6 +44,7 @@ import java.util.regex.Pattern;
 public class AddEmployController implements Initializable {
     public BorderPane imgUser;
     public Button btnCerrarModal;
+    public JFXButton BtnSaveEmploy, BtnUpdateEmploy;
     Date date =new Date();//varaiables para obtener la fecha actual del system
     long milsec = date.getTime();
     java.sql.Date dia = new java.sql.Date(milsec);
@@ -60,11 +62,11 @@ public class AddEmployController implements Initializable {
 @FXML
     public Label TitleModal;
 
-private int idpersona;
-    private String directionImage;
+public int idpersona;
+public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone;
 
  @FXML
-    private void CloseModal(){
+    public void CloseModal(){
      Image image = new Image("/images/info.png");
      try {
          FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
@@ -113,30 +115,33 @@ private int idpersona;
         }
         );
     }
+
+    @FXML
+    public void validorGeneral(){
+        validateLetter(EmployNameOne);
+        validateLetter(EmployNameTwo);
+        validateLetter(EmployLasteNameOne);
+        validateLetter(EmployLasteNameTwo);
+        validateNumber(EmployPhone);
+        firstName= EmployNameOne.getText();
+        secondName= EmployNameTwo.getText();
+        firstLastName= EmployLasteNameOne.getText();
+        secondLastName= EmployLasteNameTwo.getText();
+        direction= EmployDir.getText();
+        numberPhone= EmployPhone.getText();
+        EmployPlace.setText(placeList.getValue());
+        email= EmployEmail.getText();
+
+        if (placeList.getValue()==null){
+            EmployPlace.setPromptText("Elige un puesto");
+            EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+            warningFive.setVisible(true);
+        }
+
+    }
  @FXML
     public void AddEmploy(ActionEvent event) throws SQLException {
-     validateLetter(EmployNameOne);
-     validateLetter(EmployNameTwo);
-     validateLetter(EmployLasteNameOne);
-     validateLetter(EmployLasteNameTwo);
-     validateNumber(EmployPhone);
-
-     String firstName= EmployNameOne.getText();
-     String secondName= EmployNameTwo.getText();
-     String firstLastName= EmployLasteNameOne.getText();
-     String secondLastName= EmployLasteNameTwo.getText();
-     String direction= EmployDir.getText();
-     String numberPhone= EmployPhone.getText();
-     EmployPlace.setText(placeList.getValue());
-     String email= EmployEmail.getText();
-
-
-     if (placeList.getValue()==null){
-         EmployPlace.setPromptText("Elige un puesto");
-         EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
-         warningFive.setVisible(true);
-     }
-
+     validorGeneral();
      Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
      alert.setTitle("Confirmar Informacion...");
      alert.setContentText("Verifica los datos: Nombres: "+firstName +" "+ secondName +" "+firstLastName+" "+secondLastName+ "\nDireccion: "+direction+" Telefono: "+numberPhone+" Puesto: "+placeList.getValue());
@@ -146,25 +151,20 @@ private int idpersona;
      alert.getButtonTypes().setAll(yes,no);
      Optional<ButtonType> optional= alert.showAndWait();
 
-        if(optional.get() == yes) {
-            querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone,placeList.getValue(), email);//metodo insertar
-            ClearTextField();//limipiar los textfield
-        }else{
-            System.out.println("Cancelo el ingreso");
-        }
+
+     if (optional.get() == yes) {
+                querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
+                ClearTextField();//limipiar los textfield
+            } else {
+                System.out.println("Cancelo el ingreso");
+            }
 
  }
 
      //METODO PARA REALIZAR EL INGRESO DE UN CLIENTE
     public void querySql(String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email) throws SQLException {
-        String Nueva = "";
-            String separador = Pattern.quote("\\");
-            String[] dir = directionImage.split(separador);
 
-            for (int i = 0; i <= (dir.length - 1); i++) {
-                Nueva = Nueva + dir[i] + "*";
-            }
-            System.out.println(Nueva);
+        String Nueva = directionImage.replace("\\","*");
 
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
@@ -182,11 +182,11 @@ private int idpersona;
         //esteremos realizando el segundo insert para la tabla empleados
         String sql2= "INSERT INTO `EMPLEADOS` (`ID_EMPLEADO`, `ID_PERSONA`, `ESTADO`, `FECHA_CONTRATACION`, `FECHA_RETIRO`, `CARGO`) VALUES (NULL,'"+idpersona+"', '1', '"+dia.toString()+"', NULL, '"+place+"')";
         statement.executeUpdate(sql2);
+        statement.close();
     }
 
     //metodo para limpiar las variales
      public void ClearTextField(){
-         Image ima = new Image("/images/male_user_.png");
          EmployNameOne.setText("");
          EmployNameTwo.setText("");
          EmployLasteNameOne.setText("");
@@ -215,7 +215,7 @@ private int idpersona;
             return "NULL";
         }
     }
-    private String setImgUser(String url) {
+    public String setImgUser(String url) {
         Circle circle = new Circle(86,86,43);
         Image image = new Image(url,false);
         circle.setFill(new ImagePattern(image));
@@ -226,18 +226,25 @@ private int idpersona;
     @FXML
     private void EventKeyEnterNameOne(KeyEvent event){
         if(event.getCode()==KeyCode.ENTER){ EmployNameTwo.requestFocus(); }
-            if(EmployNameOne.getLength() < 3){
+            if(EmployNameOne.getLength() <=2){
                 EmployNameOne.setPromptText("Ingresa un nombre valido");
                 EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
                 warningOne.setVisible(true);
              }else{
-         warningOne.setVisible(false);
+//         warningOne.setVisible(false);
         }
         }
     @FXML
     private void EventKeyEnteNameTwo(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){
          EmployLasteNameOne.requestFocus();
+         if (EmployNameOne.getLength() <=2){
+             EmployNameOne.setPromptText("Ingresa un apellido valida");
+             EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
+             warningTwo.setVisible(true);
+         }else{
+             warningTwo.setVisible(false);
+         }
      }
     }
 
@@ -254,7 +261,15 @@ private int idpersona;
      }}
     @FXML
     private void EventKeyEnterLasteNameTwo(KeyEvent event){
-        if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();}
+        if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();
+            if (EmployLasteNameTwo.getLength() < 3){
+                EmployLasteNameTwo.setPromptText("Ingresa un apellido valida");
+                EmployLasteNameTwo.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
+                warningTwo.setVisible(true);
+            }else{
+                warningTwo.setVisible(false);
+            }
+        }
      }
 
     @FXML
@@ -269,7 +284,7 @@ private int idpersona;
     @FXML
     private void EventKeyEnterPhone(KeyEvent event){
     if(event.getCode()==KeyCode.ENTER){ EmployEmail.requestFocus();}
-            if (EmployPhone.getLength() < 8) {
+            if (EmployPhone.getLength() <=7) {
                 EmployPhone.setPromptText("Ingresa un numero valido");
                 EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
                 warningFour.setVisible(true);

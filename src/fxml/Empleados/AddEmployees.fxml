@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.AddEmployController">
+<AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.AddEmployController">
    <children>
-      <Label fx:id="TitleModal" layoutX="25.0" layoutY="35.0" prefHeight="38.0" prefWidth="286.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Agregar Empleado" textFill="WHITE">
+      <Label fx:id="TitleModal" layoutX="26.0" layoutY="34.0" prefHeight="38.0" prefWidth="286.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Agregar Empleado" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -34,21 +40,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="EmployNameOne" layoutX="129.0" layoutY="102.0" prefHeight="35.0" prefWidth="180.0" promptText="Escribe el primer nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <TextField fx:id="EmployNameOne" layoutX="109.0" layoutY="102.0" onKeyPressed="#EventKeyEnterNameOne" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="507.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="-595.0" layoutY="-14.0" mnemonicParsing="false" onAction="#CloseModal" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal">
-         <graphic>
-            <ImageView fx:id="exitAddEmploy" fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/cancel_32.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="-595.0" layoutY="-14.0" mnemonicParsing="false" onAction="#CloseModal" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal" />
 
       <TextField fx:id="EmployLasteNameOne" layoutX="111.0" layoutY="166.0" onKeyPressed="#EventKeyEnterLastNameOne" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <ImageView fx:id="warningTwo" fitHeight="27.0" fitWidth="20.0" layoutX="514.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -113,7 +111,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXComboBox>
-      <TextField fx:id="EmployNameTwo" layoutX="308.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo nombre" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <TextField fx:id="EmployNameTwo" layoutX="304.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo nombre" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <TextField fx:id="EmployLasteNameTwo" layoutX="306.0" layoutY="166.0" onKeyPressed="#EventKeyEnterLasteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <Label layoutX="256.0" layoutY="623.0" text="Foto de perfil" textFill="WHITE">
          <font>
@@ -133,5 +131,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fx:id="exitAddEmploy" fitHeight="28.0" fitWidth="28.0" layoutX="513.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/cancel_32.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="BtnUpdateEmploy" layoutX="197.0" layoutY="658.0" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Actualizar Empleado" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
