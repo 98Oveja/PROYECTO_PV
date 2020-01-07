@@ -82,7 +82,7 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
          stagedialog.initModality(Modality.APPLICATION_MODAL);
          stagedialog.setScene(dialogo);
          stagedialog.showAndWait();
-         if(controller.Okay.isPressed()){
+         if(controller.BtnOk==1 && controller.Okay.getOnMouseClicked() != null ){
              Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
              stage.close();
          }

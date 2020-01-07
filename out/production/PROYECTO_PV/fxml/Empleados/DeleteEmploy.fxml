@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="PanelDelete" prefHeight="400.0" prefWidth="600.0" styleClass="paneDeleteEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.DelEmployController">
    <children>
-      <JFXButton fx:id="Okay" layoutY="161.0" onAction="#pressOK" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #43425D;" styleClass="buttonOption" stylesheets="@../../css/menuinicio.css" text="Confirmar" textFill="WHITE">
+      <JFXButton fx:id="Okay" layoutY="161.0" onAction="#pressOK" onMouseClicked="#pressOK" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #43425D;" styleClass="buttonOption" stylesheets="@../../css/menuinicio.css" text="Confirmar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
