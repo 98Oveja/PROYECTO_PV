@@ -31,6 +31,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+import utils.ParseEmail;
 
 import javax.management.Notification;
 import java.io.File;
@@ -305,8 +306,8 @@ public void CloseModal(){
 
     @FXML
     private void EventKeyEnterEmail(KeyEvent event){
-     if(event.getCode()==KeyCode.ENTER){ placeList.requestFocus();}
-        if (EmployEmail.getLength() <= 8){
+        ParseEmail valEmali= new ParseEmail();
+        if (!valEmali.isValid(EmployEmail.getText())){
             EmployEmail.setPromptText("Ingresa un correo valida");
             EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningSix.setVisible(true);
