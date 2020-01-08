@@ -80,7 +80,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="EmployEmail" layoutX="140.0" layoutY="493.0" onKeyPressed="#EventKeyEnterEmail" prefHeight="35.0" prefWidth="361.0" promptText="Escribe el correo aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <TextField fx:id="EmployEmail" layoutX="140.0" layoutY="493.0" onKeyReleased="#EventKeyEnterEmail" prefHeight="35.0" prefWidth="361.0" promptText="Escribe el correo aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <JFXButton fx:id="BtnSaveEmploy" layoutX="197.0" layoutY="658.0" onAction="#AddEmploy" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Guardar Empleado" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
