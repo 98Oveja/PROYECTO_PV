@@ -20,5 +20,6 @@ public class InfoEmployController {
     }
     public void ActionHanderYes(){
         status =1;
+        closeInfoModal();
     }
 }

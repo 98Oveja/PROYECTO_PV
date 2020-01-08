@@ -34,8 +34,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="EmployNameOne" layoutX="109.0" layoutY="102.0" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="507.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <TextField fx:id="EmployNameOne" layoutX="109.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameOne" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <ImageView fx:id="warningOne" fitHeight="20.0" fitWidth="30.0" layoutX="507.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>

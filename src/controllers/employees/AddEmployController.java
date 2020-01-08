@@ -56,7 +56,7 @@ public class AddEmployController implements Initializable {
 @FXML
     public TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
 @FXML
-    public ImageView  warningTwo, warningThree, warningFour, warningFive, warningSix;
+    public ImageView   warningOne,warningTwo, warningThree, warningFour, warningFive, warningSix;
 
 @FXML
     public JFXComboBox<String> placeList;
@@ -65,16 +65,19 @@ public class AddEmployController implements Initializable {
 
 public int idpersona;
 public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone;
-
- @FXML
-    public void CloseModal(){
-     Image image = new Image("/images/info.png");
+@FXML
+public void CloseModal(){
+    Image image = new Image("/images/info.png");
+    CloseModalMethod("Confirmacion","Esta seguro que desea salir del Modal??",image,1);
+}
+@FXML
+    public void CloseModalMethod(String title,String contenido,Image image,int op){
      try {
          FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
          Parent root = Loader.load();
          DelEmployController controller = Loader.getController();
-         controller.TitleModal.setText("Confirmacion");
-         controller.contentAlert.setText("Esta seguro que desea salir del Modal??");
+         controller.TitleModal.setText(title);
+         controller.contentAlert.setText(contenido);
          controller.IconModal.setImage(image);
          Scene dialogo = new Scene(root);
          //abrimos un nuevo escenario
@@ -83,7 +86,7 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
          stagedialog.initModality(Modality.APPLICATION_MODAL);
          stagedialog.setScene(dialogo);
          stagedialog.showAndWait();
-         if(controller.BtnOk==1 && controller.Okay.getOnMouseClicked() != null ){
+         if(controller.BtnOk==1 && op==1){
              Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
              stage.close();
          }
@@ -112,14 +115,8 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
         }
         );
     }
-
     @FXML
-    public void validorGeneral(){
-        validateLetter(EmployNameOne);
-        validateLetter(EmployNameTwo);
-        validateLetter(EmployLasteNameOne);
-        validateLetter(EmployLasteNameTwo);
-        validateNumber(EmployPhone);
+    public void AddEmploy(ActionEvent event) throws SQLException, IOException {
         firstName= EmployNameOne.getText();
         secondName= EmployNameTwo.getText();
         firstLastName= EmployLasteNameOne.getText();
@@ -128,43 +125,42 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
         numberPhone= EmployPhone.getText();
         EmployPlace.setText(placeList.getValue());
         email= EmployEmail.getText();
-
-        if (placeList.getValue()==null){
+        if (EmployPlace.getText()==null){
             EmployPlace.setPromptText("Elige un puesto");
             EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningFive.setVisible(true);
         }
+        if(firstName.length()==0 || firstLastName.length()==0 || direction.length()==0 || numberPhone.length()<=6 || EmployPlace.getLength()==0 || email.length()==00){
+            Image image = new Image("/images/info.png");
+        CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
+        }else {
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
+            Parent root = Loader.load();
+            InfoEmployController controller = Loader.getController();
+            controller.label1.setText("Nombres: " + firstName + " " + secondName);
+            controller.label2.setText("Apellidos: " + firstLastName + " " + secondLastName);
+            controller.label3.setText("Dirección: " + direction);
+            controller.label4.setText("Teléfono: " + numberPhone);
+            controller.label5.setText("Correo: " + email);
+            controller.label6.setText("Puesto: " + placeList.getValue());
+            Scene dialogo = new Scene(root);
+            Stage stagedialog = new Stage();
+            stagedialog.initStyle(StageStyle.UNDECORATED);
+            stagedialog.initModality(Modality.APPLICATION_MODAL);
+            stagedialog.setScene(dialogo);
+            stagedialog.showAndWait();
 
-    }
- @FXML
-    public void AddEmploy(ActionEvent event) throws SQLException, IOException {
-     validorGeneral();
-     FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
-     Parent root = Loader.load();
-     InfoEmployController controller = Loader.getController();
-     controller.label1.setText("Nombres: "+firstName+" "+secondName);
-     controller.label2.setText("Apellidos: "+firstLastName+" "+secondLastName);
-     controller.label3.setText("Dirección: "+direction);
-     controller.label4.setText("Teléfono: "+numberPhone);
-     controller.label5.setText("Correo: "+email);
-     controller.label6.setText("Puesto: "+placeList.getValue());
-     Scene dialogo = new Scene(root);
-     Stage stagedialog = new Stage();
-     stagedialog.initStyle(StageStyle.UNDECORATED);
-     stagedialog.initModality(Modality.APPLICATION_MODAL);
-     stagedialog.setScene(dialogo);
-     stagedialog.showAndWait();
-     if (controller.status==1) {
-         System.out.println("Ingreso un Empleado");
+            if (controller.status == 1) {
+                System.out.println("Ingreso un Empleado");
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
             } else {
                 System.out.println("Cancelo el ingreso");
             }
+        }
+    }
 
- }
-
-     //METODO PARA REALIZAR EL INGRESO DE UN CLIENTE
+    //METODO PARA REALIZAR EL INGRESO DE UN CLIENTE
     public void querySql(String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email) throws SQLException {
 
         String Nueva = directionImage.replace("\\","*");
@@ -189,20 +185,20 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
     }
 
     //metodo para limpiar las variales
-     public void ClearTextField(){
-         EmployNameOne.setText("");
-         EmployNameTwo.setText("");
-         EmployLasteNameOne.setText("");
-         EmployLasteNameTwo.setText("");
-         EmployDir.setText("");
-         EmployPhone.setText("");
-         EmployPlace.setText("");
-         EmployEmail.setText("");
-         setImgUser("/images/male_user_.png");
-         directionImage="NULL";
-     }
+    public void ClearTextField(){
+        EmployNameOne.setText("");
+        EmployNameTwo.setText("");
+        EmployLasteNameOne.setText("");
+        EmployLasteNameTwo.setText("");
+        EmployDir.setText("");
+        EmployPhone.setText("");
+        EmployPlace.setText("");
+        EmployEmail.setText("");
+        setImgUser("/images/male_user_.png");
+        directionImage="NULL";
+    }
 
-     //URL de la imagen
+    //URL de la imagen
     @FXML
     public String searchEmploy(MouseEvent event) throws IOException {
         FileChooser fc = new FileChooser();
@@ -226,6 +222,29 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
 
     }
 
+
+    @FXML
+    public void validorGeneral(){
+        validateLetter(EmployNameOne);
+        validateLetter(EmployNameTwo);
+        validateLetter(EmployLasteNameOne);
+        validateLetter(EmployLasteNameTwo);
+        validateNumber(EmployPhone);
+    }
+
+    @FXML
+    private void EventKeyEnteNameOne(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            EmployNameTwo.requestFocus();
+            if (EmployNameOne.getLength() <= 1) {
+                EmployNameOne.setPromptText("Ingresa un nombre valida");
+                EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
+                warningOne.setVisible(true);
+            } else {
+                warningOne.setVisible(false);
+            }
+        }
+    }
     @FXML
     private void EventKeyEnteNameTwo(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){
@@ -233,9 +252,9 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
          if (EmployNameOne.getLength() <=2){
              EmployNameOne.setPromptText("Ingresa un apellido valida");
              EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
-             warningTwo.setVisible(true);
+             warningOne.setVisible(true);
          }else{
-             warningTwo.setVisible(false);
+             warningOne.setVisible(false);
          }
      }
     }
@@ -276,7 +295,7 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
     @FXML
     private void EventKeyEnterPhone(KeyEvent event){
     if(event.getCode()==KeyCode.ENTER){ EmployEmail.requestFocus();}
-            if (EmployPhone.getLength() <=7) {
+            if (EmployPhone.getLength() <=6) {
                 EmployPhone.setPromptText("Ingresa un numero valido");
                 EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
                 warningFour.setVisible(true);
@@ -295,7 +314,10 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
  }
 
     @FXML
-    private void selectItem(ActionEvent event){EmployPlace.setText(placeList.getValue()); }
+    private void selectItem(ActionEvent event){
+     EmployPlace.setText(placeList.getValue());
+     warningFive.setVisible(false);
+ }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -303,6 +325,7 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
         EmployDate.setText(dia.toString());
         placeList.setItems(list);
         EmployPlace.setEditable(false);
+        validorGeneral();
     }
 }
 

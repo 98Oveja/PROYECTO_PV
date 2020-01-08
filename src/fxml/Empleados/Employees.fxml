@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -37,26 +38,38 @@
                         </ImageView>
                         <VBox prefHeight="125.0" prefWidth="298.0">
                            <children>
-                              <Label prefHeight="32.0" prefWidth="279.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
+                              <Label prefHeight="32.0" prefWidth="279.0" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="2.0" top="24.0" />
                                  </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="tipografia" />
+                                    <String fx:value="titleEmploy" />
+                                 </styleClass>
                               </Label>
-                              <Label prefHeight="27.0" prefWidth="269.0" styleClass="tipografia" text="Estados Unidos" textFill="#43425c9c">
+                              <Label prefHeight="27.0" prefWidth="269.0" text="Estados Unidos" textFill="#43425c9c">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="2.0" />
                                  </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="tipografia" />
+                                    <String fx:value="subTitleEmploy" />
+                                 </styleClass>
                               </Label>
-                              <Label prefHeight="28.0" prefWidth="280.0" styleClass="tipografia" text="Movil: 48009871" textFill="#43425ca6">
+                              <Label prefHeight="28.0" prefWidth="280.0" text="Movil: 48009871" textFill="#43425ca6">
                                  <VBox.margin>
                                     <Insets left="2.0" />
                                  </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="tipografia" />
+                                    <String fx:value="subTitleEmploy" />
+                                 </styleClass>
                               </Label>
                            </children>
                         </VBox>

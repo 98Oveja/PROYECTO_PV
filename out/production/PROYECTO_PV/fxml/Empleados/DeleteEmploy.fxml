@@ -40,13 +40,6 @@
             <Image url="@../../images/icons8_box_important_50px_1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="16.0" layoutX="222.0" layoutY="22.0" onMouseClicked="#pressedExit" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/icon_close.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
+      <Button layoutX="212.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressedExit" prefHeight="28.0" prefWidth="28.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css" />
    </children>
 </AnchorPane>
