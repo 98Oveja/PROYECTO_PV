@@ -1,7 +1,6 @@
 package controllers.employees;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -14,12 +13,12 @@ public class InfoEmployController {
     public JFXButton infoSi,infoNo;
     @FXML
     public AnchorPane PanelInfo;
-
+    public int status;
     public void closeInfoModal(){
         Stage stage = (Stage) PanelInfo.getScene().getWindow();
         stage.close();
     }
-    public boolean ActionHanderYes(){
-        return true;
+    public void ActionHanderYes(){
+        status =1;
     }
 }

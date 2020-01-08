@@ -60,15 +60,15 @@
                               </Label>
                            </children>
                         </VBox>
-                        <Button minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onMouseClicked="#pressedEditModal" prefHeight="22.0" prefWidth="22.0" styleClass="buttonEditEmploy" stylesheets="@../../css/menuinicio.css">
+                        <Button minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#pressedEditModal" prefHeight="28.0" prefWidth="28.0" styleClass="buttonEditEmploy" stylesheets="@../../css/menuinicio.css">
                            <HBox.margin>
-                              <Insets left="70.0" top="22.0" />
+                              <Insets left="65.0" top="22.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onMouseClicked="#DeleteEmploy" prefHeight="22.0" prefWidth="22.0" styleClass="buttonDeleteEmploy">
+                        <Button minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#DeleteEmploy" prefHeight="28.0" prefWidth="28.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css">
                            <HBox.margin>
                               <Insets left="10.0" top="24.0" />
                            </HBox.margin>

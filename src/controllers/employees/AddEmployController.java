@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
 
+import javax.management.Notification;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -141,19 +142,20 @@ public String directionImage,firstName,secondName,firstLastName,secondLastName,d
      FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
      Parent root = Loader.load();
      InfoEmployController controller = Loader.getController();
-     controller.label1.setText("Nombres:"+firstName+" "+secondName);
-     controller.label2.setText("Apellidos:"+firstLastName+" "+secondLastName);
-     controller.label3.setText("Dirección:"+direction);
-     controller.label4.setText("Teléfono:"+numberPhone);
-     controller.label5.setText("Correo:"+email);
-     controller.label6.setText("Puesto:"+placeList.getValue());
+     controller.label1.setText("Nombres: "+firstName+" "+secondName);
+     controller.label2.setText("Apellidos: "+firstLastName+" "+secondLastName);
+     controller.label3.setText("Dirección: "+direction);
+     controller.label4.setText("Teléfono: "+numberPhone);
+     controller.label5.setText("Correo: "+email);
+     controller.label6.setText("Puesto: "+placeList.getValue());
      Scene dialogo = new Scene(root);
      Stage stagedialog = new Stage();
      stagedialog.initStyle(StageStyle.UNDECORATED);
      stagedialog.initModality(Modality.APPLICATION_MODAL);
      stagedialog.setScene(dialogo);
      stagedialog.showAndWait();
-     if (controller.ActionHanderYes()==true) {
+     if (controller.status==1) {
+         System.out.println("Ingreso un Empleado");
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
             } else {
