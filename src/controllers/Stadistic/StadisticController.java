@@ -30,6 +30,9 @@ public class StadisticController implements Initializable {
     XYChart.Series series1 = new XYChart.Series();
     XYChart.Series series2 = new XYChart.Series();
     XYChart.Series series3 = new XYChart.Series();
+    XYChart.Series series4 = new XYChart.Series();
+    XYChart.Series series5 = new XYChart.Series();
+    XYChart.Series series6 = new XYChart.Series();
     XYChart.Series seriesAux = new XYChart.Series();
 
     void setdata() {
@@ -51,6 +54,24 @@ public class StadisticController implements Initializable {
     series3.getData().add(new XYChart.Data("cemento" , 100005));
     series3.getData().add(new XYChart.Data("tubos"   , 3540731));
     series3.getData().add(new XYChart.Data("cal"     , 120008));
+
+        series4.getData().add(new XYChart.Data("martillo", 25601.34));
+        series4.getData().add(new XYChart.Data("carretas", 20148.82));
+        series4.getData().add(new XYChart.Data("cemento" , 10000));
+        series4.getData().add(new XYChart.Data("tubos"   , 35407.15));
+        series4.getData().add(new XYChart.Data("cal"     , 12000));
+
+        series5.getData().add(new XYChart.Data("martillo", 256013));
+        series5.getData().add(new XYChart.Data("carretas", 20148));
+        series5.getData().add(new XYChart.Data("cemento" , 1000035));
+        series5.getData().add(new XYChart.Data("tubos"   , 35407));
+        series5.getData().add(new XYChart.Data("cal"     , 12000));
+
+        series6.getData().add(new XYChart.Data("martillo", 256015));
+        series6.getData().add(new XYChart.Data("carretas", 2014855));
+        series6.getData().add(new XYChart.Data("cemento" , 100005));
+        series6.getData().add(new XYChart.Data("tubos"   , 3540731));
+        series6.getData().add(new XYChart.Data("cal"     , 120008));
 
 
 }
@@ -74,6 +95,7 @@ public class StadisticController implements Initializable {
         //if(!(seriesAux == series1)) {
             //action(series1,"Diario");
         //}
+
     }
 
     public void handlePaneWeekAction(MouseEvent mouseEvent) {
@@ -82,13 +104,14 @@ public class StadisticController implements Initializable {
         //}s
         ;
 
-        mainChart.getData().add(series2.getChart());
+        mainChart.getData().add(series3);
     }
 
     public void handlePaneMontAction(MouseEvent mouseEvent) {
-        if(!(seriesAux == series3)) {
-            action(series3,"Mensual");
-        }
+       //if(!(seriesAux == series3)) {
+       //    action(series3,"Mensual");
+       //}
+        mainChart.getData().setAll(series4);
     }
 
 

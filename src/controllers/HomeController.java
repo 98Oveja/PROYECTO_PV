@@ -89,7 +89,8 @@ public class HomeController implements Initializable {
                         .text("texto")
                         .hideAfter(Duration.seconds(5))
                         .showError();
- */
+
+                 */
                 for (MenuItem item: items){
                     if(item.getText().equals(newValue)) {
                         paneResSearch.getItems().clear();
