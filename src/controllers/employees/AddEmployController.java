@@ -26,8 +26,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 
@@ -149,17 +147,10 @@ public void CloseModal(){
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
+
             if (controller.status == 1) {
-                ClearTextField();//limipiar los textfield
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
-
-                Notifications.create()
-                        .title("titulo")
-                        .text("texto")
-                        .hideAfter(Duration.seconds(5))
-                        .showError();
-
-
+                ClearTextField();//limipiar los textfield
             } else {
                 System.out.println("Cancelo el ingreso");
             }
@@ -227,6 +218,7 @@ public void CloseModal(){
         return url;
 
     }
+
 
     @FXML
     public void validorGeneral(){
@@ -306,6 +298,7 @@ public void CloseModal(){
                 warningFour.setVisible(true);
             }else{warningFour.setVisible(false);}
  }
+
 
     @FXML
     private void EventKeyEnterEmail(KeyEvent event){
