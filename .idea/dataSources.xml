@@ -4,6 +4,7 @@
     <data-source source="LOCAL" name="SqlPv@hosting.eu" uuid="8ca67b1e-1508-456b-b3ee-c08129fd98bc">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>Base de datos Rermota</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://sql309.main-hosting.eu:3306/u376498608_punto_de_venta</jdbc-url>
     </data-source>

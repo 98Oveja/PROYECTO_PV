@@ -2,13 +2,13 @@ package models.Employ;
 
 public class dataEmploy {
     public String name1, name2, lastname1, lastname2, dir, correo,img,fechaInicio,cargo;
-    public int id, tel;
+    public int idper,idemp, tel;
     public boolean estado;
     public String getName1() {
         return name1;
     }
     public int getId() {
-        return id;
+        return idemp;
     }
     public String getCorreo() {
         return correo;
@@ -50,7 +50,7 @@ public class dataEmploy {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idemp = id;
     }
 
     public void setName2(String name2) {

@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class DelEmployController {
-    public int status = 0;
+    public int BtnOk;
     @FXML
     public AnchorPane PanelDelete;
     @FXML
@@ -20,7 +20,6 @@ public class DelEmployController {
     @FXML
     public ImageView IconModal;
 
-
     @FXML
     public void pressedExit(){
         Stage stage = (Stage) PanelDelete.getScene().getWindow();
@@ -28,13 +27,9 @@ public class DelEmployController {
     }
 
     @FXML
-    public void optionPress(){
-        if (Okay.getOnMouseClicked() != null){
-            status = 1;
-        }
-        if (Cancel.getOnMouseClicked() != null){
-            status = 2;
-            pressedExit();
-        }
+    public void pressOK(){
+        BtnOk=1;
+        pressedExit();
     }
 }
+
