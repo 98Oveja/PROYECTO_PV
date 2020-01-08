@@ -103,7 +103,7 @@ public class HomeController implements Initializable {
                                 //e.printStackTrace();
                             }
                         });
-
+return;
                     }else{
                         paneResSearch.getItems().clear();
                         paneResSearch.getItems().addAll(items);
