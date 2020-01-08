@@ -150,11 +150,10 @@ public void CloseModal(){
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
-
             if (controller.status == 1) {
-                System.out.println("Ingreso un Empleado");
-                querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
+                querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
+                Notification
             } else {
                 System.out.println("Cancelo el ingreso");
             }
@@ -222,7 +221,6 @@ public void CloseModal(){
         return url;
 
     }
-
 
     @FXML
     public void validorGeneral(){
@@ -302,7 +300,6 @@ public void CloseModal(){
                 warningFour.setVisible(true);
             }else{warningFour.setVisible(false);}
  }
-
 
     @FXML
     private void EventKeyEnterEmail(KeyEvent event){
