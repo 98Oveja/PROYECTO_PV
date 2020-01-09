@@ -125,7 +125,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton fx:id="BtnUpdateEmploy" layoutX="197.0" layoutY="658.0" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Actualizar Empleado" textFill="WHITE" visible="false">
+      <JFXButton fx:id="BtnUpdateEmploy" layoutX="197.0" layoutY="658.0" onAction="#btnUpdate" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Actualizar Empleado" textFill="WHITE" visible="false">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

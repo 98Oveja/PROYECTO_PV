@@ -61,7 +61,7 @@ public class AddEmployController implements Initializable {
 @FXML
     public Label TitleModal;
 
-public int idpersona;
+public int idpersona,status;
 public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone;
 @FXML
 public void CloseModal(){
@@ -131,6 +131,7 @@ public void CloseModal(){
         if(firstName.length()==0 || firstLastName.length()==0 || direction.length()==0 || numberPhone.length()<=6 || EmployPlace.getLength()==0 || email.length()==00){
             Image image = new Image("/images/info.png");
         CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
+
         }else {
             FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
             Parent root = Loader.load();
@@ -218,7 +219,6 @@ public void CloseModal(){
         return url;
 
     }
-
 
     @FXML
     public void validorGeneral(){
@@ -314,7 +314,12 @@ public void CloseModal(){
     private void selectItem(ActionEvent event){
      EmployPlace.setText(placeList.getValue());
      warningFive.setVisible(false);
- }
+    }
+    @FXML
+    public int btnUpdate() {
+        status=1;
+        return status;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
