@@ -161,6 +161,7 @@ return;
                 avalibleButton(6);
                 break;
             case "Calendario":
+                setVista("/fxml/Calendar/CalendarPane.fxml");
                 avalibleLabel(7);
                 avalibleButton(7);
                 break;

@@ -1,7 +1,6 @@
 package controllers.Stadistic;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
@@ -9,10 +8,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import utils.ConnectionUtil;
 
-import javax.swing.text.html.StyleSheet;
 import java.net.URL;
-import java.util.Arrays;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class StadisticController implements Initializable {
@@ -33,51 +34,53 @@ public class StadisticController implements Initializable {
     XYChart.Series series5 = new XYChart.Series();
     XYChart.Series series6 = new XYChart.Series();
     XYChart.Series seriesAux = new XYChart.Series();
+    ConnectionUtil conn = new ConnectionUtil();
+    Connection con = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    ConnectionUtil connectionUtil = new ConnectionUtil();
 
+    XYChart.Series setSeries(String query) throws Exception {
+        XYChart.Series series = new XYChart.Series<>();
+
+        con = conn.getConnection();
+        preparedStatement = con.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+
+        if (resultSet != null){
+            while (resultSet.next()){
+                System.out.println(resultSet.getInt("UNIDADES")+" "+resultSet.getString("NOMBRE"));
+                series.getData().add(new XYChart.Data(resultSet.getString("NOMBRE"),resultSet.getInt("UNIDADES")));
+            }
+        }
+        return series;
+    }
+
+    private void getSeries(){
+        try {
+            String slq =
+                    "select count(NOMBRE)as UNIDADES, NOMBRE from DETALLE_VENTA inner join PRODUCTOS P on DETALLE_VENTA.ID_PRODUCTO = P.ID_PRODUCTO group by DETALLE_VENTA.ID_PRODUCTO;";
+            setSeries(slq);
+        }catch (Exception ex){
+            System.out.println("error"+ex);
+        }
+    }
     void setdata() {
+        String sql = null;
+        sql = "select count(NOMBRE)as UNIDADES, NOMBRE from DETALLE_VENTA inner join PRODUCTOS P on DETALLE_VENTA.ID_PRODUCTO = P.ID_PRODUCTO group by DETALLE_VENTA.ID_PRODUCTO;";
+        try {
+            //mainChart.getData().addAll(setSeries(sql));
+            String sql2 = "select count(NOMBRE)as UNIDADES, NOMBRE from DETALLE_VENTA inner join PRODUCTOS P on DETALLE_VENTA.ID_PRODUCTO = P.ID_PRODUCTO inner join VENTAS V on DETALLE_VENTA.ID_VENTA = V.ID_VENTA where V.FECHA < current_timestamp group by DETALLE_VENTA.ID_PRODUCTO order by UNIDADES;";
 
-    series1.getData().add(new XYChart.Data("martillo", 25601.34));
-    series1.getData().add(new XYChart.Data("carretas", 20148.82));
-    series1.getData().add(new XYChart.Data("cemento" , 10000));
-    series1.getData().add(new XYChart.Data("tubos"   , 35407.15));
-    series1.getData().add(new XYChart.Data("cal"     , 12000));
-
-    series2.getData().add(new XYChart.Data("martillo", 256013));
-    series2.getData().add(new XYChart.Data("carretas", 20148));
-    series2.getData().add(new XYChart.Data("cemento" , 1000035));
-    series2.getData().add(new XYChart.Data("tubos"   , 35407));
-    series2.getData().add(new XYChart.Data("cal"     , 12000));
-
-    series3.getData().add(new XYChart.Data("martillo", 256015));
-    series3.getData().add(new XYChart.Data("carretas", 2014855));
-    series3.getData().add(new XYChart.Data("cemento" , 100005));
-    series3.getData().add(new XYChart.Data("tubos"   , 3540731));
-    series3.getData().add(new XYChart.Data("cal"     , 120008));
-
-        series4.getData().add(new XYChart.Data("martillo", 25601.34));
-        series4.getData().add(new XYChart.Data("carretas", 20148.82));
-        series4.getData().add(new XYChart.Data("cemento" , 10000));
-        series4.getData().add(new XYChart.Data("tubos"   , 35407.15));
-        series4.getData().add(new XYChart.Data("cal"     , 12000));
-
-        series5.getData().add(new XYChart.Data("martillo", 256013));
-        series5.getData().add(new XYChart.Data("carretas", 20148));
-        series5.getData().add(new XYChart.Data("cemento" , 1000035));
-        series5.getData().add(new XYChart.Data("tubos"   , 35407));
-        series5.getData().add(new XYChart.Data("cal"     , 12000));
-
-        series6.getData().add(new XYChart.Data("martillo", 256015));
-        series6.getData().add(new XYChart.Data("carretas", 2014855));
-        series6.getData().add(new XYChart.Data("cemento" , 100005));
-        series6.getData().add(new XYChart.Data("tubos"   , 3540731));
-        series6.getData().add(new XYChart.Data("cal"     , 120008));
-
-
-}
+            chartDay.getData().setAll(setSeries(sql2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initChart();
+        //initChart();
         setstatusPaneDay();
         setstatusPaneWeek();
         setstatusPaneMont();
