@@ -1,29 +1,18 @@
 package controllers.employees;
 
-import com.mysql.cj.protocol.SocksProxySocketFactory;
-import com.mysql.cj.protocol.StandardSocketFactory;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.EditEmploy;
 import models.Employ.dataEmploy;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.awt.font.LayoutPath;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class EmployeesController {
 
@@ -97,7 +86,8 @@ public class EmployeesController {
             controller.BtnUpdateEmploy.setVisible(true);
             String traslate= res.img.replace("*","\\");
             controller.setImgUser("file:/"+traslate);
-            if(controller.BtnUpdateEmploy.getOnMouseClicked() != null) {
+            
+            if(controller.btnUpdate()==1) {
                 editEmploy.updateEmploy(res.idper, res.idemp, res.name1, res.name2, res.lastname1, res.lastname2, res.dir, res.tel, res.correo, res.img, res.fechaInicio, res.cargo);
                 System.out.println("Actualizacion exitosa");
             }

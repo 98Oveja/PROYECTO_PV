@@ -2,21 +2,17 @@ package controllers.employees;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
-import com.sun.mail.handlers.image_gif;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -33,15 +29,16 @@ import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 
-import javax.management.Notification;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
-import java.sql.*;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
+
 
 public class AddEmployController implements Initializable {
     public BorderPane imgUser;
@@ -64,7 +61,7 @@ public class AddEmployController implements Initializable {
 @FXML
     public Label TitleModal;
 
-public int idpersona;
+public int idpersona,status;
 public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone;
 @FXML
 public void CloseModal(){
@@ -134,6 +131,7 @@ public void CloseModal(){
         if(firstName.length()==0 || firstLastName.length()==0 || direction.length()==0 || numberPhone.length()<=6 || EmployPlace.getLength()==0 || email.length()==00){
             Image image = new Image("/images/info.png");
         CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
+
         }else {
             FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
             Parent root = Loader.load();
@@ -152,7 +150,6 @@ public void CloseModal(){
             stagedialog.showAndWait();
 
             if (controller.status == 1) {
-                System.out.println("Ingreso un Empleado");
                 querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
                 ClearTextField();//limipiar los textfield
             } else {
@@ -222,7 +219,6 @@ public void CloseModal(){
         return url;
 
     }
-
 
     @FXML
     public void validorGeneral(){
@@ -318,7 +314,12 @@ public void CloseModal(){
     private void selectItem(ActionEvent event){
      EmployPlace.setText(placeList.getValue());
      warningFive.setVisible(false);
- }
+    }
+    @FXML
+    public int btnUpdate() {
+        status=1;
+        return status;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
