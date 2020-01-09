@@ -26,7 +26,6 @@ public class StadisticController implements Initializable {
     public Label lblPane;                public JFXComboBox cbxTime;
     public ImageView imgStatusMont;
 
-
     XYChart.Series series1 = new XYChart.Series();
     XYChart.Series series2 = new XYChart.Series();
     XYChart.Series series3 = new XYChart.Series();
@@ -89,13 +88,15 @@ public class StadisticController implements Initializable {
         chartDay.getData().setAll(series1);
         chartWek.getData().setAll(series2);
         chartMont.getData().setAll(series3);
+        //mainChart.getData().addAll(series4,series5,series6);
     }
 
     public void handlePaneDayAction(MouseEvent mouseEvent) {
         //if(!(seriesAux == series1)) {
             //action(series1,"Diario");
         //}
-
+        mainChart.getData().clear();
+        mainChart.getData().addAll(series4);
     }
 
     public void handlePaneWeekAction(MouseEvent mouseEvent) {
@@ -103,15 +104,16 @@ public class StadisticController implements Initializable {
           //  action(series2,"Semanal");
         //}s
         ;
-
-        mainChart.getData().add(series3);
+        mainChart.getData().removeAll();
+        mainChart.getData().add(series5);
     }
 
     public void handlePaneMontAction(MouseEvent mouseEvent) {
        //if(!(seriesAux == series3)) {
        //    action(series3,"Mensual");
        //}
-        mainChart.getData().setAll(series4);
+        mainChart.getData().removeAll();
+       mainChart.getData().setAll(series6);
     }
 
 
