@@ -1,42 +1,28 @@
 package controllers.Ventas;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import models.Ventas_Compras.Ventas;
-
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.Callable;
 
 public class ModalVentaController implements Initializable {
-    @FXML
-    private TableView<Ventas> TablaDetalleVenta;
-    @FXML
-    private TableColumn Col_Cantidad;
-    @FXML
-    private TableColumn Col_Codigo;
-    @FXML
-    private TableColumn Col_Producto;
-    @FXML
-    private TableColumn Col_PrecioUnitario;
-    @FXML
-    private TableColumn Col_Descuento;
-    @FXML
-    private TableColumn <Ventas, JFXButton>Col_Opciones;
-    @FXML
-    private TableColumn Col_SubTotal;
-
-
     public Label MensajeAlerta;
     @FXML
     AnchorPane panelContenedor;
@@ -68,6 +54,13 @@ public class ModalVentaController implements Initializable {
     public JFXTextField txt_fechaVenta;
     @FXML
     private TextField total_txt;
+    @FXML
+    public VBox CardContainer;
+//
+    @FXML
+    public Pane PanelContTarjet; //PANEL QUE CONTIENE TODO EL CON CONTENOD DE LA TARJETA DE VENTA
+    int contador;
+    ArrayList<Pane> nuevasTarjetasPanels;
     Ventas ventas = new Ventas();
     ArrayList datosModalVentas = new ArrayList<String>();
     ObservableList<Ventas> ModeloTablaVentas;
@@ -75,14 +68,11 @@ public class ModalVentaController implements Initializable {
     String CODIGOPRODUCTO = "";
     String PRECIOVENTA = "";
     String EXITENCIAPRODUCTO = "";
-
-
     public void mensajeDeAlertaLabel(){
         MensajeAlerta.setVisible(true);
         MensajeAlerta.setText("Por favor llena los campos");
         MensajeAlerta.setStyle("-fx-text-fill: red;");
     }
-
     public void CloseModal(ActionEvent actionEvent) {
         //MANERA EN CERRA EL MODAL
         Stage stage = (Stage) panelContenedor.getScene().getWindow();
@@ -96,7 +86,7 @@ public class ModalVentaController implements Initializable {
 
 
     }
-    public void GuardarVentaEnDB(ActionEvent actionEvent) {
+    public void GuardarVentaEnDB(ActionEvent actionEvent){
     }
 /*    mostrar la fecha y la hora en un label*/
     public void mostrarFecha(){
@@ -125,7 +115,6 @@ public class ModalVentaController implements Initializable {
         listadoProductos.setItems(itemsProd);
         listadoProductos.setVisibleRowCount(3);
     }
-
     public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
     public void verificarTodoLosInputs(){
 //        boolean vacio = true;
@@ -176,36 +165,13 @@ public class ModalVentaController implements Initializable {
         }
         System.out.println("Campos llenos "+ camposLlenos);
 }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ModeloTablaVentas = FXCollections.observableArrayList();
-        this.Col_Cantidad.setCellValueFactory(new PropertyValueFactory("cantidad"));
-        this.Col_Codigo.setCellValueFactory(new PropertyValueFactory("codigoProducto"));
-        this.Col_Producto.setCellValueFactory(new PropertyValueFactory("producoComprado"));
-        this.Col_PrecioUnitario.setCellValueFactory(new PropertyValueFactory("precioUnitario"));
-        this.Col_Descuento.setCellValueFactory(new PropertyValueFactory("descuento"));
-        Callback<TableColumn<Ventas, JFXButton>,TableCell<Ventas,JFXButton>> cellCallback =
-                new Callback<TableColumn<Ventas, JFXButton>, TableCell<Ventas, JFXButton>>() {
-                    @Override
-                    public TableCell<Ventas, JFXButton> call(TableColumn<Ventas, JFXButton> ventasJFXButtonTableColumn) {
-                        JFXButton btn =  new JFXButton("Editar");
-                        {
-                            btn.setOnAction((ActionEvent event)-> {
-                                System.out.println("Mensaje del boton");
-                            });
-                        }
-
-                        return null;
-                    }
-                };
-
-
-
-
-        this.Col_SubTotal.setCellValueFactory(new PropertyValueFactory("subtota"));
-
-
+        nuevasTarjetasPanels=new ArrayList<>();
         MensajeAlerta.setVisible(false);
+
+        contador = 0;
         mostrarFecha();
         cargarClientes();
         cargarProductos();
@@ -254,22 +220,13 @@ public class ModalVentaController implements Initializable {
         });
     }
 
-    public void btn_ShopingCar(ActionEvent actionEvent) {
-        try {
-        verificarTodoLosInputs();
-        Ventas nuevaVenta = new Ventas();
-        nuevaVenta.setCantidad(Double.parseDouble(cantidad_text.getText()));
-        nuevaVenta.setCodigoProducto(CODIGOPRODUCTO);
-        nuevaVenta.setProducoComprado(producto_text.getText());
-        nuevaVenta.setPrecioUnitario(Double.parseDouble(PRECIOVENTA));
-        nuevaVenta.setDescuento(Double.parseDouble(descuento_text.getText()));
-        nuevaVenta.setButton2(new JFXButton("INFO"));
-        nuevaVenta.setSubtota(subtotalCalculado);
-        this.ModeloTablaVentas.add(nuevaVenta);
-        this.TablaDetalleVenta.setItems(ModeloTablaVentas);
-        }catch (Exception e){
-            System.out.println(e.getCause());
-        }
+    public void btn_ShopingCar(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fXMLLoader;
+        Parent parent = new FXMLLoader().load(getClass().getResource("/fxml/Ventas/cardprod.fxml"));
+        CardContainer.setTranslateX(5);
+        CardContainer.getChildren().addAll(parent);
+
+
 
 
     }
