@@ -25,12 +25,10 @@ public class EmployeesController {
     private void DeleteEmploy() {
         
         try {
-
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();
             DelEmployController controller = Loader.getController();
             Scene dialogo = new Scene(root);
-            //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
             stagedialog.initStyle(StageStyle.UNDECORATED);
             stagedialog.initModality(Modality.APPLICATION_MODAL);
@@ -40,7 +38,7 @@ public class EmployeesController {
             if(controller.BtnOk==1){
                 EditEmploy del = new EditEmploy();
                 del.deleteEmploy(2);
-               System.out.println("ya dio");
+               System.out.println("ya dio LA ELIMINACION");
                controller.pressedExit();
             }else{
                 System.out.println("NO SE DIO DE BAJA");
