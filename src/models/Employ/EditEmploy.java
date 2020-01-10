@@ -1,10 +1,18 @@
 package models.Employ;
+
 import javafx.fxml.FXML;
 import utils.ConnectionUtil;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 public class EditEmploy {
-
+    Date date =new Date();//varaiables para obtener la fecha actual del system
+    long milsec = date.getTime();
+    java.sql.Date dia = new java.sql.Date(milsec);
         @FXML
         public dataEmploy searchData(int id_employ) {
         dataEmploy xd = new dataEmploy();
@@ -54,5 +62,20 @@ public class EditEmploy {
         statement.executeUpdate(sql2);
         System.out.println(sql2);
         statement.close();
+    }
+
+    public void deleteEmploy(int idemp){
+            try{
+                ConnectionUtil connectionClass= new ConnectionUtil();
+                Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+                String sqlDelete= "UPDATE EMPLEADOS SET ESTADO = 0, FECHA_RETIRO = '"+dia+"' WHERE ID_EMPLEADO="+idemp+"";
+                Statement statement= connection.createStatement();
+                statement.executeUpdate(sqlDelete); //aca insertamos los dato
+                System.out.println(sqlDelete +" CON EXITO");
+                statement.close();
+            }catch (Exception ex){
+                System.out.println("ERROR EN DELETEeMPLOY "+ex);
+            }
+
     }
 }

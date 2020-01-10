@@ -12,8 +12,6 @@ import javafx.stage.StageStyle;
 import models.Employ.EditEmploy;
 import models.Employ.dataEmploy;
 
-import java.io.IOException;
-
 public class EmployeesController {
 
     public Button mini1;
@@ -24,8 +22,10 @@ public class EmployeesController {
     public Button mini6;
 
     @FXML
-    private void DeleteEmploy() throws IOException {
+    private void DeleteEmploy() {
+        
         try {
+
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();
             DelEmployController controller = Loader.getController();
@@ -38,19 +38,22 @@ public class EmployeesController {
             stagedialog.showAndWait();
 
             if(controller.BtnOk==1){
+                EditEmploy del = new EditEmploy();
+                del.deleteEmploy(2);
                System.out.println("ya dio");
                controller.pressedExit();
+            }else{
+                System.out.println("NO SE DIO DE BAJA");
             }
 
         }catch (Exception ex){ ex.printStackTrace();}
     }
 
     @FXML
-    private void pressedAddModal() throws IOException {
+    private void pressedAddModal() {
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
-            AddEmployController controller = Loader.getController();
             Scene dialogo = new Scene(root);
             //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
@@ -63,10 +66,10 @@ public class EmployeesController {
     }
 
     @FXML
-    private void pressedEditModal() throws IOException {
+    private void pressedEditModal() {
 
         try {
-            dataEmploy res= new dataEmploy();
+            dataEmploy res;
             EditEmploy editEmploy = new EditEmploy();
             res = editEmploy.searchData(3);
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
