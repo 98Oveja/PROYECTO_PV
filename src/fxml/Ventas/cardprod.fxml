@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="PanelContTarjet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1020" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.CartaProducto">
+   <children>
+      <HBox fx:id="containCard" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="40.0" prefWidth="1020.0" styleClass="CardPanel" stylesheets="@../../css/Ventas/Ventas_Compras.css">
+         <children>
+            <JFXTextField fx:id="EtextCantidad" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" promptText="Cantidad" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="EtextCodProd" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="109.0" promptText="Código Producto" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="EtextProducto" alignment="CENTER" editable="false" layoutX="145.0" layoutY="10.0" prefHeight="25.0" prefWidth="277.0" promptText="Producto" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="EtextPrecio" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="103.0" promptText="Precio Unitario" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="EtextDescuento" alignment="CENTER" editable="false" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="93.0" promptText="Descuento" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <Button fx:id="btnEdirar" alignment="CENTER" contentDisplay="CENTER" maxHeight="32.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#EdirarAlgo" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: transparent; -fx-cursor: hand;" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fx:id="imgEdit" fitHeight="24.0" fitWidth="29.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icon_edit.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="BtnEliminar" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#ElimiarProduvto" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: transparent; -fx-cursor: hand;" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fx:id="imgCancel" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+                     <image>
+                        <Image url="@../../images/cancel_32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <JFXTextField fx:id="EtextSutTotal" alignment="CENTER" editable="false" layoutX="145.0" layoutY="10.0" prefHeight="25.0" prefWidth="103.0" promptText="Sub Total" styleClass="labelCardPanel">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+      </HBox>
+   </children>
+</Pane>
