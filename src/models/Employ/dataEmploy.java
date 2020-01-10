@@ -1,8 +1,8 @@
 package models.Employ;
 
 public class dataEmploy {
-    public String name1, name2, lastname1, lastname2, dir, correo,img,fechaInicio,cargo;
-    public int idper,idemp, tel;
+    public String name1, name2, lastname1, lastname2, dir, correo,img,fechaInicio,cargo,tel;
+    public int idper,idemp;
     public boolean estado;
     public String getName1() {
         return name1;
@@ -26,7 +26,7 @@ public class dataEmploy {
     public String getName2() {
         return name2;
     }
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
     public void setDir(String dir) {
@@ -57,7 +57,4 @@ public class dataEmploy {
         this.name2 = name2;
     }
 
-    public void setTel(int tel) {
-        this.tel = tel;
-    }
 }

@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="PanelInfo" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.InfoEmployController">
    <children>
-      <Button layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeInfoModal" onMouseClicked="#closeInfoModal" prefHeight="22.0" prefWidth="22.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css" />
+      <Button layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeInfoModal" onMouseClicked="#closeInfoModal" prefHeight="25.0" prefWidth="25.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css" />
       <Label layoutX="94.0" layoutY="15.0" prefHeight="25.0" prefWidth="232.0" text="Confirmacion de datos" textFill="#8f8994">
          <font>
             <Font name="Arial Bold" size="16.0" />

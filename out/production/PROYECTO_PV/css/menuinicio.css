@@ -66,7 +66,7 @@
     -fx-border-radius: 4px;
     -fx-text-fill:white;
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
+    -fx-font-weight: normal;
 }
 .boxOfText:hover{
     -fx-border-color: #295eb2;
@@ -79,11 +79,13 @@
     -fx-pref-width: 262px;
     -fx-pref-height: 200px;
     -fx-background-color: white;
-    -fx-border-radius: 8px;
     -fx-border-color: #b9b7b9;
 }
 
-.buttonOption{}
+.buttonOption{
+    -fx-background-color: #3B86FF;
+    -fx-text-fill: white;
+}
 .buttonOption:hover,.infobtn:hover{
     -fx-opacity: 0.8;
 }

@@ -68,7 +68,7 @@ public class EmployeesController {
         try {
             dataEmploy res= new dataEmploy();
             EditEmploy editEmploy = new EditEmploy();
-            res = editEmploy.searchData(2);
+            res = editEmploy.searchData(3);
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
             AddEmployController controller = Loader.getController();
@@ -84,21 +84,32 @@ public class EmployeesController {
             controller.EmployEmail.setText(res.correo);
             controller.BtnSaveEmploy.setVisible(false);
             controller.BtnUpdateEmploy.setVisible(true);
-            String traslate= res.img.replace("*","\\");
-            controller.setImgUser("file:/"+traslate);
-            
-            if(controller.btnUpdate()==1) {
-                editEmploy.updateEmploy(res.idper, res.idemp, res.name1, res.name2, res.lastname1, res.lastname2, res.dir, res.tel, res.correo, res.img, res.fechaInicio, res.cargo);
-                System.out.println("Actualizacion exitosa");
-            }
+            controller.initDatos(controller.EmployPlace.getText());
 
+            if(res.img!="NULL"){
+                String traslate= res.img.replace("*","\\");
+                controller.setImgUser("file:/"+traslate);
+            }else {
+                controller.setImgUser("/images/male_user_.png");
+            }
             Scene dialogo = new Scene(root);
-            //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
             stagedialog.initStyle(StageStyle.UNDECORATED);
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
+
+            if(controller.status == 1){
+
+                controller.loaderModalInfo();
+                if(controller.infoStatus==1) {
+                    editEmploy.updateEmploy(res.idper, res.idemp, controller.EmployNameOne.getText(),controller.EmployNameTwo.getText(),controller.EmployLasteNameOne.getText(), res.lastname2, res.dir, res.tel, res.correo, res.img, res.cargo);
+                    System.out.println("Actualizacion exitosa");
+                }else{
+                    pressedEditModal();
+                }
+            }
+
 
 
         }catch (Exception ex){ System.out.println(ex);}
