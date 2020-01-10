@@ -10,9 +10,9 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.EmployeesController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
+      <Pane fx:id="containerFather" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <children>
-             <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" />
+            <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" />
 
             <Pane layoutX="731.0" layoutY="30.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
                <children>
@@ -125,6 +125,8 @@
                </font>
             </Button>
             <Button layoutX="1196.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#pressedAddModal" prefHeight="42.0" prefWidth="42.0" styleClass="buttonAddEmploy" />
+            <Button layoutX="385.0" layoutY="30.0" mnemonicParsing="false" onAction="#card" prefHeight="25.0" prefWidth="135.0" text="click me" />
+            <VBox fx:id="contenedor" layoutX="77.0" layoutY="276.0" prefHeight="430.0" prefWidth="674.0" />
          </children>
       </Pane>
    </children>
