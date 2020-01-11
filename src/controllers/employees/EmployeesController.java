@@ -12,9 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employ.EditEmploy;
-import models.Employ.dataEmploy;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,31 +28,7 @@ public class EmployeesController implements Initializable {
     public Button mini5;
     public Button mini6;
 
-    @FXML
-    private void DeleteEmploy() {
-        
-        try {
-            FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
-            Parent root = Loader.load();
-            DelEmployController controller = Loader.getController();
-            Scene dialogo = new Scene(root);
-            Stage stagedialog = new Stage();
-            stagedialog.initStyle(StageStyle.UNDECORATED);
-            stagedialog.initModality(Modality.APPLICATION_MODAL);
-            stagedialog.setScene(dialogo);
-            stagedialog.showAndWait();
 
-            if(controller.BtnOk==1){
-                EditEmploy del = new EditEmploy();
-                del.deleteEmploy(2);
-               System.out.println("ya dio LA ELIMINACION");
-               controller.pressedExit();
-            }else{
-                System.out.println("NO SE DIO DE BAJA");
-            }
-
-        }catch (Exception ex){ ex.printStackTrace();}
-    }
 
     @FXML
     private void pressedAddModal() {
@@ -70,59 +43,6 @@ public class EmployeesController implements Initializable {
             stagedialog.showAndWait();
 
         }catch (Exception ex){ ex.printStackTrace();}
-    }
-
-    @FXML
-    private void pressedEditModal() {
-
-        try {
-            dataEmploy res;
-            EditEmploy editEmploy = new EditEmploy();
-            res = editEmploy.searchData(3);
-            FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
-            Parent root = Loader.load();
-            AddEmployController controller = Loader.getController();
-            controller.TitleModal.setText("Editar Empleados");
-            controller.EmployNameOne.setText(res.name1);
-            controller.EmployNameTwo.setText(res.name2);
-            controller.EmployLasteNameOne.setText(res.lastname1);
-            controller.EmployLasteNameTwo.setText(res.lastname2);
-            controller.EmployDir.setText(res.dir);
-            controller.EmployPhone.setText(res.tel+"");
-            controller.EmployDate.setText(res.fechaInicio);
-            controller.EmployPlace.setText(res.cargo);
-            controller.EmployEmail.setText(res.correo);
-            controller.BtnSaveEmploy.setVisible(false);
-            controller.BtnUpdateEmploy.setVisible(true);
-            controller.initDatos(controller.EmployPlace.getText());
-
-            if(res.img!="NULL"){
-                String traslate= res.img.replace("*","\\");
-                controller.setImgUser("file:/"+traslate);
-            }else {
-                controller.setImgUser("/images/male_user_.png");
-            }
-            Scene dialogo = new Scene(root);
-            Stage stagedialog = new Stage();
-            stagedialog.initStyle(StageStyle.UNDECORATED);
-            stagedialog.initModality(Modality.APPLICATION_MODAL);
-            stagedialog.setScene(dialogo);
-            stagedialog.showAndWait();
-
-            if(controller.status == 1){
-
-                controller.loaderModalInfo();
-                if(controller.infoStatus==1) {
-                    editEmploy.updateEmploy(res.idper, res.idemp, controller.EmployNameOne.getText(),controller.EmployNameTwo.getText(),controller.EmployLasteNameOne.getText(), res.lastname2, res.dir, res.tel, res.correo, res.img, res.cargo);
-                    System.out.println("Actualizacion exitosa");
-                }else{
-                    pressedEditModal();
-                }
-            }
-
-
-
-        }catch (Exception ex){ System.out.println(ex);}
     }
 
 
@@ -162,11 +82,6 @@ public class EmployeesController implements Initializable {
         contenedor.setTranslateX(0);
         contenedor.getChildren().addAll(parent);
 
-        //        Parent parent = new FXMLLoader().load(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
-//        Image n= new Image("images/male_user_.png");
-//        CardEmployController con= new CardEmployController(1,2,"Juan","ciudad","8711979",n);
-//        contenedor.setTranslateX(276);
-//        contenedor.getChildren().addAll(parent);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

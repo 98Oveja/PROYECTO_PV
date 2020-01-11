@@ -83,7 +83,6 @@ public void CloseModal(){
              controller.Okay.setText("Ok");
          }
          Scene dialogo = new Scene(root);
-         //abrimos un nuevo escenario
          Stage stagedialog = new Stage();
          stagedialog.initStyle(StageStyle.UNDECORATED);
          stagedialog.initModality(Modality.APPLICATION_MODAL);
