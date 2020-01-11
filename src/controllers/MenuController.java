@@ -13,10 +13,6 @@ import javafx.scene.image.ImageView;
 
 import javafx.util.Duration;
 import utils.ConnectionUtil;
-
-import javax.swing.*;
-import javax.tools.Diagnostic;
-import java.io.DataInput;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
+
 
 public class MenuController implements Initializable {
     public JFXButton btnViewProd;
@@ -124,7 +120,8 @@ public class MenuController implements Initializable {
 
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
         if(actionEvent.getSource() == btnViewProd){
-            homeC.btnproductos.isSelected();
+           HomeController hm= new HomeController();
+           hm.handleActionSetViewSelect("Estadisticas");
         }
     }
 
