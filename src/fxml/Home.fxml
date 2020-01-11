@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -9,9 +11,9 @@
 
 <StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
-        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1600.0" styleClass="panelPrincipal">
+        <Pane styleClass="panelPrincipal">
             <children>
-                <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
+                <Pane layoutX="260.0" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
                     <children>
                   <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
                         <ImageView id="imgNotification" fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
@@ -29,7 +31,7 @@
                                         <Image url="@../images/search.png" />
                                     </image>
                                 </ImageView>
-                                <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                                <TextField fx:id="txtSearch" layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
                             </children>
                         </Pane><Line endX="100.0" fill="#ebebf2" layoutX="1063.0" layoutY="17.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
                   <Pane layoutX="1175.0" layoutY="23.0" prefHeight="25.0" prefWidth="83.0">
@@ -45,9 +47,29 @@
                             <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
                               <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
                           </items>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
                         </MenuButton>
                      </children>
                   </Pane>
+                  <MenuButton layoutX="1124.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../css/main.css" textFill="#bdb7ca">
+                     <items>
+                        <MenuItem fx:id="itemx" mnemonicParsing="false" text="sin notificaciones" />
+                     </items>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton fx:id="paneResSearch" layoutX="55.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../css/main.css" textFill="#bdb7ca">
+                     <styleClass>
+                        <String fx:value="tipografia" />
+
+                     </styleClass>
+                  </MenuButton>
                     </children></Pane>
                 <Pane fx:id="components" prefHeight="861.0" prefWidth="1600.0" styleClass="menulateral">
                     <children>

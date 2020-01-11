@@ -48,6 +48,7 @@ public class MenuController implements Initializable {
         Image images3 = new Image("file:/"+products.get(3).img.replace("*","\\"));
         Image images4 = new Image("file:/"+products.get(4).img.replace("*","\\"));
         Timeline timeline = new Timeline();
+
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0), (event) -> {
             NewImageProducts.setImage(images);
             titleProduct.setText(products.get(0).name);

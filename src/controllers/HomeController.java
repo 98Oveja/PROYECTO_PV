@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -16,12 +14,13 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,10 +53,12 @@ public class HomeController implements Initializable {
     public MenuItem itemClose;
     public MenuItem itemConfig;
     public MenuItem itemHelp;
+    public TextField txtSearch;
+    public MenuButton paneResSearch;
     int status = 0;
-    ArrayList<Label> list = new ArrayList<>();
-    ArrayList<ToggleButton> listB = new ArrayList<>();
-
+    ArrayList<Label> labelArrayList = new ArrayList<>();
+    ArrayList<ToggleButton> toggleButtonArrayList = new ArrayList<>();
+    //String[] services = "Categorias Clientes Compras DetalleVenta Empleados Personas Productos Proveedores Usuarios Ventas";
     public static int getCode() {
         return LoginController.code;
     }
@@ -72,6 +73,107 @@ public class HomeController implements Initializable {
         }
         avalibleLabel(getCode());
         avalibleButton(getCode());
+        txtSearch.textProperty().addListener((Observable, oldValue, newValue) -> {
+            if (!newValue.isBlank()) {
+                ArrayList<String> services = new ArrayList<>();
+                Vector<MenuItem> items = new Vector<>();
+
+                for (ToggleButton buton: toggleButtonArrayList) {services.add(buton.getText());}
+
+                for (String service: services) {
+                    if(service.contains(newValue)){items.add(new MenuItem(service));}
+                }
+                /*
+                Notifications.create()
+                        .title("titulo")
+                        .text("texto")
+                        .hideAfter(Duration.seconds(5))
+                        .showError();
+
+                 */
+                for (MenuItem item: items){
+                    if(item.getText().equals(newValue)) {
+                        paneResSearch.getItems().clear();
+                        paneResSearch.getItems().add(item);
+                        paneResSearch.show();
+                        item.setOnAction(actionEvent -> {
+                            //System.out.println(item.getText()+"+********action");
+                            try {
+                                handleActionSetViewSelect(item.getText());
+                            } catch (IOException e) {
+                                //e.printStackTrace();
+                            }
+                        });
+return;
+                    }else{
+                        paneResSearch.getItems().clear();
+                        paneResSearch.getItems().addAll(items);
+                        paneResSearch.show();
+                        item.setOnAction(actionEvent -> {
+                            //System.out.println(item.getText()+"+********action");
+                            try {
+                                handleActionSetViewSelect(item.getText());
+                            } catch (IOException e) {
+                                //e.printStackTrace();
+                            }
+                        });
+                        //return;
+                    }
+                }
+            }else {
+                paneResSearch.getItems().clear();
+            }
+        });
+    }
+
+    public void handleActionSetViewSelect(String text) throws IOException {
+        switch (text){
+            case "Inicio":
+                setVista("/fxml/Empleados/menu.fxml");
+                avalibleLabel(0);
+                avalibleButton(0);
+                break;
+            case "Estadisticas":
+                setVista("/fxml/Stadistic.fxml");
+                avalibleLabel(1);
+                avalibleButton(1);
+                break;
+            case "Empleados":
+                setVista("/fxml/Empleados/Employees.fxml");
+                avalibleLabel(2);
+                avalibleButton(2);
+                break;
+            case "Productos":
+                setVista("/fxml/Productos/Productos.fxml");
+                avalibleLabel(3);
+                avalibleButton(3);
+                break;
+            case "Proveedores":
+                avalibleLabel(4);
+                avalibleButton(4);
+                break;
+            case "Clientes":
+                avalibleLabel(5);
+                avalibleButton(5);
+                break;
+            case "Compras":
+                avalibleLabel(6);
+                avalibleButton(6);
+                break;
+            case "Calendario":
+                avalibleLabel(7);
+                avalibleButton(7);
+                break;
+            case "Ventas":
+                setVista("/fxml/Ventas/PanelVentas.fxml");
+                avalibleLabel(8);
+                avalibleButton(8);
+                break;
+            case "Reportes":
+                avalibleLabel(9);
+                avalibleButton(9);
+                break;
+        }
     }
 
     private void setImgUser(String url) {
@@ -88,41 +190,42 @@ public class HomeController implements Initializable {
     }
 
     public void addButtons(){
-        listB.add(btninicio);
-        listB.add(btnestadistica);
-        listB.add(btnempleados);
-        listB.add(btnproductos);
-        listB.add(btnproveedores);
-        listB.add(btnclientes);
-        listB.add(btncompras);
-        listB.add(btncalendario);
-        listB.add(btnventas);
-        listB.add(btnreportes);
-        for (ToggleButton b : listB) {
+        toggleButtonArrayList.add(btninicio);
+        toggleButtonArrayList.add(btnestadistica);
+        toggleButtonArrayList.add(btnempleados);
+        toggleButtonArrayList.add(btnproductos);
+        toggleButtonArrayList.add(btnproveedores);
+        toggleButtonArrayList.add(btnclientes);
+        toggleButtonArrayList.add(btncompras);
+        toggleButtonArrayList.add(btncalendario);
+        toggleButtonArrayList.add(btnventas);
+        toggleButtonArrayList.add(btnreportes);
+        for (ToggleButton b : toggleButtonArrayList) {
             b.setSelected(false);
         }
     }
 
     public void addlist(){
-        list.add(line1);
-        list.add(line2);
-        list.add(line3);
-        list.add(line4);
-        list.add(line5);
-        list.add(line6);
-        list.add(line7);
-        list.add(line8);
-        list.add(line9);
-        list.add(line10);
-        for (Label a : list) {
+        labelArrayList.add(line1);
+        labelArrayList.add(line2);
+        labelArrayList.add(line3);
+        labelArrayList.add(line4);
+        labelArrayList.add(line5);
+        labelArrayList.add(line6);
+        labelArrayList.add(line7);
+        labelArrayList.add(line8);
+        labelArrayList.add(line9);
+        labelArrayList.add(line10);
+        for (Label a : labelArrayList) {
             a.setVisible(false);
         }
     }
 
     public  void avalibleButton(int date){
         addButtons();
-        for (ToggleButton b: listB) {
-            if(b.equals(listB.get(date))){
+        for (ToggleButton b: toggleButtonArrayList) {
+            if(b.equals(toggleButtonArrayList.get(date))){
+                //System.out.println("son iguales ");
                 b.setSelected(true);
             }
         }
@@ -130,8 +233,8 @@ public class HomeController implements Initializable {
 
     public void avalibleLabel(int date){
         addlist();
-        for (Label a: list) {
-            if(a.equals(list.get(date))){
+        for (Label a: labelArrayList) {
+            if(a.equals(labelArrayList.get(date))){
                 a.setVisible(true);
             }
         }
@@ -139,77 +242,61 @@ public class HomeController implements Initializable {
 
     public void handleHome(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btninicio){
-            setVista("/fxml/Empleados/menu.fxml");
-            avalibleLabel(0);
-            avalibleButton(0);
-
+            handleActionSetViewSelect("Inicio");
         }
     }
 
     public void handleEst(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnestadistica){
-            setVista("/fxml/Stadistic.fxml");
-            avalibleLabel(1);
-            avalibleButton(1);
+            handleActionSetViewSelect("Estadisticas");
         }
     }
 
     public void handleEmpl(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnempleados){
-            setVista("/fxml/Empleados/Employees.fxml");
-            avalibleLabel(2);
-            avalibleButton(2);
+            handleActionSetViewSelect("Empleados");
         }
     }
 
     public void handleProd(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnproductos){
-            setVista("/fxml/Productos/Productos.fxml");
-            avalibleLabel(3);
-            avalibleButton(3);
+            handleActionSetViewSelect("Productos");
         }
     }
 
-    public void handleProve(ActionEvent mouseEvent) {
+    public void handleProve(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnproveedores){
-            avalibleLabel(4);
-            avalibleButton(4);
+            handleActionSetViewSelect("Proveedores");
         }
     }
 
-    public void handleCli(ActionEvent mouseEvent) {
+    public void handleCli(ActionEvent mouseEvent) throws IOException {
         if (mouseEvent.getSource() == btnclientes) {
-            avalibleLabel(5);
-            avalibleButton(5);
+            handleActionSetViewSelect("Clientes");
         }
     }
 
-    public void handleComp(ActionEvent mouseEvent) {
+    public void handleComp(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btncompras){
-            avalibleLabel(6);
-            avalibleButton(6);
+            handleActionSetViewSelect("Compras");
         }
     }
 
-    public void handleCal(ActionEvent mouseEvent) {
+    public void handleCal(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btncalendario){
-            avalibleLabel(7);
-            avalibleButton(7);
+            handleActionSetViewSelect("Calendario");
         }
     }
 
     public void handleVen(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnventas){
-            setVista("/fxml/Ventas/PanelVentas.fxml");
-            avalibleLabel(8);
-            avalibleButton(8);
+            handleActionSetViewSelect("Ventas");
         }
     }
 
-    public void handleRep(ActionEvent mouseEvent) {
+    public void handleRep(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnreportes){
-            avalibleLabel(9);
-            avalibleButton(9);
+            handleActionSetViewSelect("Reportes");
         }
     }
 
@@ -259,6 +346,17 @@ public class HomeController implements Initializable {
                     Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
+    }
+
+    public void handleActionText(String value, String newValue) {
+        if (!newValue.isEmpty()) {
+            paneResSearch.getItems().add(new MenuItem(newValue));
+            System.out.println(newValue);
+            //paneResSearch.show();
+        }else {
+            System.out.println("eliminado");
+            paneResSearch.getItems().removeAll();
         }
     }
 }

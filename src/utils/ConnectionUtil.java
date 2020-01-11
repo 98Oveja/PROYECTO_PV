@@ -23,9 +23,9 @@ public static String driver = "org.mariadb.jdbc.Driver";
         conn = null;
         try {
             Class.forName(driver);
-            conn = DriverManager.getConnection(url, user, password);
+            //conn = DriverManager.getConnection(url, user, password);
           //  System.out.println(conn != null? "Data base is connected": "Data base is not connected");
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Internal Error: "+e.getMessage());
         }
     }
