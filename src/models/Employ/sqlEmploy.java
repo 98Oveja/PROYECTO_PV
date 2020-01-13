@@ -35,7 +35,7 @@ public class sqlEmploy {
                     xd.dir = result.getString("DIRECCION");
                     xd.correo = result.getString("CORREO");
                     xd.tel = result.getString("TELEFONO");
-                    xd.img = result.getString("url_foto");
+                    xd.img = result.getString("url_foto").replace("*","\\");
                     xd.estado = result.getBoolean("ESTADO");
                     xd.fechaInicio = result.getString("FECHA_CONTRATACION");
                     xd.cargo = result.getString("CARGO");
@@ -50,12 +50,13 @@ public class sqlEmploy {
 
     }
 
-    public void updateEmploy(int id, int idemploy, String name1,String name2, String last1, String last2,String dir, String tel, String email, String url,String place) throws SQLException {
-
+    public void updateEmploy(int id, int idemploy, String tel, String url,String place) throws SQLException {
+        url.replace("file:/","");
         String urlimage= url.replace("\\","*");
+        System.out.println("----62: "+urlimage);
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-        String sqlUpdate= "UPDATE PERSONAS SET PRIMER_NOMBRE= '"+name1+"', SEGUNDO_NOMBRE='"+name2+"', PRIMER_APELLIDO='"+last1+"', SEGUNDO_APELLIDO='"+last2+"',DIRECCION= '"+dir+"' , TELEFONO ='"+tel+"', CORREO='"+email+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
+        String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlUpdate); //aca insertamos los dato
         System.out.println(sqlUpdate);
@@ -73,7 +74,6 @@ public class sqlEmploy {
                 String sqlDelete= "UPDATE EMPLEADOS SET ESTADO = 0, FECHA_RETIRO = '"+dia+"' WHERE ID_EMPLEADO="+idemp+"";
                 Statement statement= connection.createStatement();
                 statement.executeUpdate(sqlDelete); //aca insertamos los dato
-                System.out.println(sqlDelete +" CON EXITO");
                 statement.close();
             }catch (Exception ex){
                 System.out.println("ERROR EN DELETEeMPLOY "+ex);
@@ -82,7 +82,6 @@ public class sqlEmploy {
     }
 
     public List<dataEmploy> employDB(){
-        System.out.println("entro a la funcion");
         try {
             data.clear();
 
@@ -103,7 +102,7 @@ public class sqlEmploy {
                     empl.dir = resulte.getString("DIRECCION");
                     empl.correo = resulte.getString("CORREO");
                     empl.tel = resulte.getString("TELEFONO");
-                    empl.img = resulte.getString("url_foto");
+                    empl.img =  resulte.getString("url_foto");
                     empl.estado = resulte.getBoolean("ESTADO");
                     empl.fechaInicio = resulte.getString("FECHA_CONTRATACION");
                     empl.cargo = resulte.getString("CARGO");

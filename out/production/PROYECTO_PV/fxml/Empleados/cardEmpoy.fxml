@@ -4,22 +4,18 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="560.0" prefHeight="160.35" prefWidth="560.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
+<AnchorPane minHeight="160.35" minWidth="560.0" prefHeight="160.35" prefWidth="560.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
     <children>
         <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="560.0">
             <children>
-                <ImageView fx:id="photo" fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                    <HBox.margin>
-                        <Insets left="22.0" right="22.0" top="24.0" />
-                    </HBox.margin>
-                    <image>
-                        <Image url="@../../images/comment_1.png" />
-                    </image>
-                </ImageView>
+            <BorderPane fx:id="photoEmploy" minHeight="86.0" minWidth="86.0" prefHeight="86.0" prefWidth="86.0">
+               <HBox.margin>
+                  <Insets bottom="12.0" left="10.0" right="5.0" top="23.0" />
+               </HBox.margin>
+            </BorderPane>
                 <VBox prefHeight="125.0" prefWidth="298.0">
                     <children>
                         <Label fx:id="name" prefHeight="32.0" prefWidth="279.0" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">

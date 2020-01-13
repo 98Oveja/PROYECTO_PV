@@ -26,6 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import models.Employ.dataEmploy;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 
@@ -44,12 +45,7 @@ public class AddEmployController implements Initializable {
     public BorderPane imgUser;
     public Button btnCerrarModal;
     public JFXButton BtnSaveEmploy, BtnUpdateEmploy;
-    Date date =new Date();//varaiables para obtener la fecha actual del system
-    long milsec = date.getTime();
-    java.sql.Date dia = new java.sql.Date(milsec);
-    ObservableList<String> list= FXCollections.observableArrayList("Administrador","Bodeguero","Vendedor","Secretaria");
-
-@FXML
+    @FXML
     public AnchorPane PanelAddEmploy;
 @FXML
     public TextField EmployNameOne, EmployNameTwo, EmployLasteNameOne, EmployLasteNameTwo, EmployDir, EmployPhone, EmployDate, EmployPlace, EmployEmail;
@@ -61,8 +57,14 @@ public class AddEmployController implements Initializable {
 @FXML
     public Label TitleModal;
 
+    Date date =new Date();//varaiables para obtener la fecha actual del system
+    long milsec = date.getTime();
+    java.sql.Date dia = new java.sql.Date(milsec);
+    ObservableList<String> list= FXCollections.observableArrayList("Administrador","Bodeguero","Vendedor","Secretaria");
+
 public int idpersona,status,infoStatus;
-public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone,places;
+//public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone,places;
+public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
     Image image = new Image("/images/info.png");
@@ -97,14 +99,14 @@ public void CloseModal(){
  }
  @FXML
  public void initDatos(String place){
-     firstName= EmployNameOne.getText();
-     secondName= EmployNameTwo.getText();
-     firstLastName= EmployLasteNameOne.getText();
-     secondLastName= EmployLasteNameTwo.getText();
-     direction= EmployDir.getText();
-     numberPhone= EmployPhone.getText();
-     places = place;
-     email= EmployEmail.getText();
+     emDb.name1= EmployNameOne.getText();
+     emDb.name2= EmployNameTwo.getText();
+     emDb.lastname1= EmployLasteNameOne.getText();
+     emDb.lastname2= EmployLasteNameTwo.getText();
+     emDb.dir= EmployDir.getText();
+     emDb.tel= EmployPhone.getText();
+     emDb.cargo = place;
+     emDb.correo= EmployEmail.getText();
  }
 
     @FXML
@@ -116,14 +118,13 @@ public void CloseModal(){
             EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningFive.setVisible(true);
         }
-        if(firstName.length()==0 || firstLastName.length()==0 || direction.length()==0 || numberPhone.length()<=6 || EmployPlace.getLength()==0 || email.length()==00){
+        if(emDb.name1.length()==0 || emDb.name2.length()==0 || emDb.dir.length()==0 || emDb.tel.length()<=6 || EmployPlace.getLength()==0 || emDb.correo.length()==0){
             Image image = new Image("/images/info.png");
             CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
-
         }else {
            loaderModalInfo();
             if (infoStatus == 1) {
-                querySql(firstName, secondName, firstLastName, secondLastName, direction, numberPhone, placeList.getValue(), email);//metodo insertar
+                querySql(emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo);//metodo insertar
                 ClearTextField();//limipiar los textfield
                 System.out.println("Insertado...");
             } else {
@@ -155,8 +156,8 @@ public void CloseModal(){
     public void querySql(String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email) throws SQLException {
 
         String Nueva;
-        if(directionImage != null){
-         Nueva=directionImage.replace("\\","*");
+        if(emDb.img != null){
+         Nueva=emDb.img.replace("\\","*");
         }else{
             Nueva="NULL";
         }
@@ -189,7 +190,7 @@ public void CloseModal(){
         EmployPlace.setText("");
         EmployEmail.setText("");
         setImgUser("/images/male_user_.png");
-        directionImage="NULL";
+        emDb.img="NULL";
     }
 
     //URL de la imagen
@@ -199,8 +200,8 @@ public void CloseModal(){
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
-            directionImage= selectedFile.getPath();
-            return setImgUser("file:/"+directionImage);
+           emDb.img= selectedFile.getPath();
+            return setImgUser("file:/"+emDb.img);
 
         } else{
             System.out.println("Archivo no Valido");

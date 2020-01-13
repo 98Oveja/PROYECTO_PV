@@ -53,7 +53,7 @@
             </Button>
             <Button layoutX="1196.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#pressedAddModal" prefHeight="42.0" prefWidth="42.0" styleClass="buttonAddEmploy" />
             <Button layoutX="385.0" layoutY="30.0" mnemonicParsing="false" onAction="#card" prefHeight="25.0" prefWidth="135.0" text="click me" />
-            <GridPane fx:id="containercard" alignment="CENTER" gridLinesVisible="true" hgap="30.0" layoutX="77.0" layoutY="111.0" prefHeight="521.0" prefWidth="1170.0" scaleShape="false" vgap="20.0">
+            <GridPane fx:id="containercard" alignment="CENTER" hgap="30.0" layoutX="77.0" layoutY="111.0" prefHeight="521.0" prefWidth="1170.0" scaleShape="false" vgap="20.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

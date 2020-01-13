@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
