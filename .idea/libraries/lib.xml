@@ -5,10 +5,7 @@
       <root url="jar://$PROJECT_DIR$/lib/mail.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jfoenix-9.0.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/controlsfx-11.0.1.jar!/" />
-<<<<<<< HEAD
       <root url="jar://$USER_HOME$/Downloads/mariadb-java-client-2.5.3.jar!/" />
-=======
->>>>>>> 941e4bcbe1e84810c5ffecc309c8437c662259f2
     </CLASSES>
     <JAVADOC />
     <SOURCES />

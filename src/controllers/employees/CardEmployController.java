@@ -1,16 +1,18 @@
 package controllers.employees;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employ.EditEmploy;
 import models.Employ.dataEmploy;
+import models.Employ.sqlEmploy;
 
 public class CardEmployController {
     @FXML
@@ -19,16 +21,31 @@ public class CardEmployController {
     public Label city,name,phone;
     @FXML
     public ImageView photo;
-    public int idEmpl, idPer;
+    public dataEmploy employ;
 
-//    public CardEmployController(int idem, int idp,String nam, String cit, String phon ,Image img){
-//        name.setText(nam);
-//        city.setText(cit);
-//        phone.setText(phon);
-//        photo.setImage(img);
-//        idEmpl = idem;
-//        idPer = idp;
-//    }
+    public void addData(dataEmploy empData){
+        employ = empData;
+    }
+    public void initDatoCard(){
+        name.setText(employ.name1+" "+employ.name2);
+        city.setText(employ.dir);
+        phone.setText("Movil: " +employ.tel);
+        Image ima=new Image("images/male_user_.png");
+        System.out.println("-------"+employ.img);
+        photo.setImage(ima);
+    }
+
+    public Image validorImage(){
+        Image img;
+        if(employ.img.length()<6){
+            String replaceImge= employ.img.replace("*","\\");
+            img= new Image("file"+replaceImge);
+        }else{
+            img= new Image("images/male_user_.png");
+        }
+        return img;
+    }
+
     @FXML
     private void DeleteEmploy() {
 
@@ -44,8 +61,8 @@ public class CardEmployController {
             stagedialog.showAndWait();
 
             if(controller.BtnOk==1){
-                EditEmploy del = new EditEmploy();
-                del.deleteEmploy(idEmpl);
+                sqlEmploy del = new sqlEmploy();
+                del.deleteEmploy(employ.idemp);
                 System.out.println("ya dio LA ELIMINACION");
                 controller.pressedExit();
             }else{
@@ -60,8 +77,8 @@ public class CardEmployController {
 
         try {
             dataEmploy res;
-            EditEmploy editEmploy = new EditEmploy();
-            res = editEmploy.searchData(idEmpl);
+            sqlEmploy editEmploy = new sqlEmploy();
+            res = editEmploy.searchData(employ.idemp);
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
             AddEmployController controller = Loader.getController();

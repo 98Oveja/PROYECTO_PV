@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="160.35" prefWidth="570.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
+<AnchorPane minWidth="560.0" prefHeight="160.35" prefWidth="560.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
     <children>
-        <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="570.0">
+        <HBox layoutX="-1.0" prefHeight="125.0" prefWidth="560.0">
             <children>
                 <ImageView fx:id="photo" fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                     <HBox.margin>
