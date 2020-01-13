@@ -8,5 +8,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://sql309.main-hosting.eu:3306/u376498608_punto_de_venta</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="161d8e60-4b0c-4354-9ec7-bb9035304e4b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+    </data-source>
   </component>
 </project>

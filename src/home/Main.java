@@ -37,10 +37,11 @@ public class Main extends Application {
 
         Pane mainPane = (Pane) loader.load(
             getClass().getResourceAsStream(
-                ViewNavigator.MAIN_LOGIN
+
+                    ViewNavigator.MAIN_LOGIN
             )
         );
-
+        // linea 40 -> ViewNavigator.MAIN_LOGIN
         MainController mainController = loader.getController();
 
         ViewNavigator.setMainController(mainController);

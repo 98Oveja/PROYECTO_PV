@@ -1,6 +1,9 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.StackPane;
 import models.Employ.newProducts;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,7 +27,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class MenuController implements Initializable {
     public JFXButton btnViewProd;
@@ -32,13 +34,14 @@ public class MenuController implements Initializable {
     public JFXButton btnViewRep;
     public JFXButton btnViewVen;
     public JFXButton btnViewEst;
+    public StackPane ContenedorMenu;
     @FXML
     private ImageView NewImageProducts;
     @FXML
     private Label titleProduct, brandProduct, desProduct;
     @FXML
     public ArrayList<newProducts> products= new ArrayList<>();
-    HomeController homeC = new HomeController();
+
 
     public void produtosAnimation() {
         newProducts();
@@ -122,11 +125,6 @@ public class MenuController implements Initializable {
     }
 
 
-    public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
-        if(actionEvent.getSource() == btnViewProd){
-            homeC.btnproductos.isSelected();
-        }
-    }
 
     public void handleActionViewCli(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewCli){

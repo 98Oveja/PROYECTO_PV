@@ -6,10 +6,15 @@ import java.sql.SQLException;
 
 public class ConnectionUtil {
     public static String driver = "com.mysql.cj.jdbc.Driver";
-    public static String dataBase = "u376498608_punto_de_venta";
-    public static String host = "sql309.main-hosting.eu";
-    public static String user = "u376498608_admin_e";
-    public static String password = "12345678lol";
+    //public static String dataBase = "u376498608_punto_de_venta";
+    //public static String host = "sql309.main-hosting.eu";
+    //public static String user = "u376498608_admin_e";
+    //public static String password = "12345678lol";
+    public static String dataBase = "punto_de_venta";
+    public static String host = "localhost";
+    public static String user = "admin_x";
+    public static String password = "123a";
+
     public static String url = "jdbc:mysql://"+host+"/"+dataBase+"?autoReconnect=true&useSSL=false"; //connection ssl false
     private static Connection conn;
     //Constructor

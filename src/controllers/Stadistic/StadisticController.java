@@ -38,7 +38,6 @@ public class StadisticController implements Initializable {
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    ConnectionUtil connectionUtil = new ConnectionUtil();
 
     XYChart.Series setSeries(String query) throws Exception {
         XYChart.Series series = new XYChart.Series<>();
