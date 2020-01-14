@@ -85,7 +85,6 @@ public class Controller implements Initializable {
         mini2.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
     }
 
-
     public void datos() {
         Datosproductos.clear();
         DescripcionProductos.clear();
@@ -174,11 +173,10 @@ public class Controller implements Initializable {
                     precio5.setText("Q " + d);
                     break;
             }
-        //}
     }
 
     public void mostrar() {
-        limpiar();
+            limpiar();
         DescripcionProductos.clear();
         String datos, direccion, nom, cant, prec,desc;
         int tamanio = Datosproductos.size();
@@ -280,10 +278,8 @@ public class Controller implements Initializable {
         dialog.initOwner(primaryStage);
         dialog.setX(300);
         dialog.setY(100);
-
         Scene dialogScene = null;
-        dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos/nuevoproducto.fxml")));
-
+        dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Proveedores/NuevoProveedor.fxml")));
         dialog.setScene(dialogScene);
         dialog.show();
     }

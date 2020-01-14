@@ -171,8 +171,9 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void handleProve(ActionEvent mouseEvent) {
+    public void handleProve(ActionEvent mouseEvent) throws IOException {
         if(mouseEvent.getSource() == btnproveedores){
+            setVista("/fxml/Test/PaneResponsive.fxml");
             avalibleLabel(4);
             avalibleButton(4);
         }
