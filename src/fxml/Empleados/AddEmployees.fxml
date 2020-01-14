@@ -65,13 +65,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="436.0" prefHeight="21.0" prefWidth="200.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Puesto en la empresa:" textFill="WHITE">
+      <Label layoutX="25.0" layoutY="436.0" prefHeight="21.0" prefWidth="175.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Puesto en la empresa:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <TextField fx:id="EmployDate" disable="true" editable="false" layoutX="210.0" layoutY="365.0" prefHeight="35.0" prefWidth="289.0" promptText="Se agregara la fecha de hoy." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
+      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado     " styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
          <cursor>
             <Cursor fx:constant="DISAPPEAR" />
          </cursor></TextField>
@@ -100,7 +100,7 @@
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="431.0" layoutY="436.0" onAction="#selectItem" prefHeight="25.0" prefWidth="50.0" unFocusColor="#43425d">
+      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="220.0" layoutY="436.0" onAction="#selectItem" opacity="0.0" prefHeight="25.0" prefWidth="273.0" unFocusColor="#43425d">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -133,5 +133,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Button layoutX="461.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" />
    </children>
 </AnchorPane>

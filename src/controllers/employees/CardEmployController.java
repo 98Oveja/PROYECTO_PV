@@ -117,7 +117,7 @@ public class CardEmployController {
             controller.BtnSaveEmploy.setVisible(false);
             controller.BtnUpdateEmploy.setVisible(true);
             controller.initDatos(controller.EmployPlace.getText());
-            System.out.println("DIRECCION DE LA IMAGEN "+res.img);
+
             if(res.img.contains("\\")){
                 controller.setImgUser("file:/"+res.img);
             }else{

@@ -32,7 +32,7 @@ public class EmployeesController implements Initializable {
     public Button mini5;
     public Button mini6;
     public int posx, posy;
-    public int idcard;
+    public int idcard,cantEmploy;
     public sqlEmploy dataEmp = new sqlEmploy();
     public List<dataEmploy> arrayEmploy= new ArrayList<>();
 
@@ -54,15 +54,13 @@ public class EmployeesController implements Initializable {
 
     public void cambio(ActionEvent actionEvent) {
         if (actionEvent.getSource()==mini2){
-            mini2.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
+            mini2.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
             mini3.setStyle(".PanelLateralOpciones");
             mini4.setStyle(".PanelLateralOpciones");
             mini5.setStyle(".PanelLateralOpciones");
         }
         else if (actionEvent.getSource()==mini3){
-            mini3.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
+            mini3.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
             mini2.setStyle(".PanelLateralOpciones");
             mini4.setStyle(".PanelLateralOpciones");
             mini5.setStyle(".PanelLateralOpciones");
@@ -83,7 +81,6 @@ public class EmployeesController implements Initializable {
         }
     }
     public void card() throws IOException {
-
         FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
         Parent parent= fxmlLoader.load();
         CardEmployController cn =fxmlLoader.getController();
@@ -106,6 +103,11 @@ public class EmployeesController implements Initializable {
         arrayEmploy = dataEmp.employDB();
     }
 
+    public void calcularDatashow(){
+        cantEmploy = arrayEmploy.size();
+        
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -113,7 +115,19 @@ public class EmployeesController implements Initializable {
         posy = 0;
         idcard=0;
         loaderArrayData();
+
+        System.out.println(cantEmploy+"**-*-*-*-*-*--");
+
+        while (idcard < 6 ){
+            try {
+                card();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
 
   }
 

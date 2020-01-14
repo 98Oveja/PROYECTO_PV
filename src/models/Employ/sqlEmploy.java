@@ -53,7 +53,6 @@ public class sqlEmploy {
     public void updateEmploy(int id, int idemploy, String tel, String url,String place) throws SQLException {
         url.replace("file:/","");
         String urlimage= url.replace("\\","*");
-        System.out.println("----62: "+urlimage);
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
         String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
@@ -87,7 +86,7 @@ public class sqlEmploy {
 
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
-            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO=1 ORDER BY ID_EMPLEADO desc";
+            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet resulte = instruccion.executeQuery(sle);
             if (resulte != null) {
