@@ -14,8 +14,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-//import javafx.util.Duration;
-//import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
