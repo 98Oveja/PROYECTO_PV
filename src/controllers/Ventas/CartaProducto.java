@@ -1,16 +1,15 @@
 package controllers.Ventas;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import models.Ventas_Compras.Ventas;
 
-import javax.swing.*;
+import java.text.DecimalFormat;
 
 public class CartaProducto{
         @FXML
@@ -28,7 +27,7 @@ public class CartaProducto{
         @FXML
         private JFXTextField EtextDescuento;
         @FXML
-        private Button btnEditar;
+        private Button btnEdirar;
         @FXML
         private ImageView imgEdit;
         @FXML
@@ -36,7 +35,7 @@ public class CartaProducto{
         @FXML
         private ImageView imgCancel;
         @FXML
-        private JFXTextField EtextSubTotal;
+        private JFXTextField EtextSutTotal;
         //GETERS
         public HBox getContenedor(){
                 return containCard;
@@ -57,15 +56,8 @@ public class CartaProducto{
                 return EtextDescuento.getText();
         }
         public String getEtextSubTotal(){
-                return EtextSubTotal.getText();
+                return EtextSutTotal.getText();
         }
-        public Button getBtnEditar() {
-                return btnEditar;
-        }
-        public Button getBtnEliminar() {
-                return BtnEliminar;
-        }
-
         //SETERS
         public void setEtextCantidad(String dato){
                 EtextCantidad.setText(dato);
@@ -83,25 +75,42 @@ public class CartaProducto{
                 EtextDescuento.setText(dato);
         }
         public void setEtextSubTotal(String dato){
-                EtextSubTotal.setText(dato);
+            EtextSutTotal.setText(dato);
         }
 //      METODOS
         public void EdirarAlgo(ActionEvent actionEvent) {
                 EtextCantidad.setEditable(true);
                 EtextDescuento.setEditable(true);
+                EtextCantidad.requestFocus();
+                EtextDescuento.requestFocus();
         }
-
         public void ElimiarProduvto(ActionEvent actionEvent) {
-                PanelContTarjet.getChildren().removeAll();
-
+                PanelContTarjet.getChildren().clear();
         }
-
-
-//Actions
-
-
-
-
-    }
+        public void recalcularDescuento(KeyEvent keyEvent) {
+                Ventas ventas = new Ventas();
+                ventas.validarSoloNumeros(EtextCantidad);
+                ventas.validarSoloNumeros(EtextDescuento);
+                Integer canti =Integer.parseInt(EtextCantidad.getText());
+                Integer descu = Integer.parseInt(EtextDescuento.getText());
+                if ((canti<=0)||(descu<0)){
+                        EtextCantidad.setText("1"); EtextDescuento.setText("0");
+                        EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText()));
+                }else{
+                        EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText()));
+                }
+        }
+        public void recalcularCantidad(KeyEvent keyEvent) {
+                Ventas ventas = new Ventas();
+                ventas.validarSoloNumeros(EtextCantidad);
+                ventas.validarSoloNumeros(EtextDescuento);
+                Integer canti =Integer.parseInt(EtextCantidad.getText());
+                Integer descu = Integer.parseInt(EtextDescuento.getText());
+                if ((canti<=0)||(descu<0)){
+                        EtextCantidad.setText("1"); EtextDescuento.setText("0");
+                        EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText()));
+                }else{ EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText())); }
+        }
+}
 
 

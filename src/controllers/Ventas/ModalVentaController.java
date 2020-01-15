@@ -1,8 +1,8 @@
 package controllers.Ventas;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
@@ -13,21 +13,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class ModalVentaController implements Initializable {
-    public Label MensajeAlerta;
-    @FXML
-    AnchorPane panelContenedor;
-    @FXML
-    Button btnCerrarModal;
+//  ELEMENTOS DEL FXML
+    public ScrollPane PanelScroleable;
+    public Button btnCarritoCompra;
+    public Label MensajedeAlertaCampos;
+    public JFXProgressBar barradeProgresoAlerta;
+    public AnchorPane panelContenedor;
+    public Button btnCerrarModal;
     @FXML
     private JFXTextField cliente_text;
     @FXML
@@ -54,25 +60,17 @@ public class ModalVentaController implements Initializable {
     public JFXTextField txt_fechaVenta;
     @FXML
     private TextField total_txt;
-    @FXML
     public VBox CardContainer;
-//
-    @FXML
-    public Pane PanelContTarjet; //PANEL QUE CONTIENE TODO EL CON CONTENOD DE LA TARJETA DE VENTA
-    int contador;
-    ArrayList<Pane> nuevasTarjetasPanels;
+//  VARIABLES GLOBALES Y AUXILIAS
+    int contadorDePaneles;
+    int cuantoCamposVacios;
     Ventas ventas = new Ventas();
-    ArrayList datosModalVentas = new ArrayList<String>();
-    ObservableList<Ventas> ModeloTablaVentas;
     double subtotalCalculado = 0;
     String CODIGOPRODUCTO = "";
     String PRECIOVENTA = "";
     String EXITENCIAPRODUCTO = "";
-    public void mensajeDeAlertaLabel(){
-        MensajeAlerta.setVisible(true);
-        MensajeAlerta.setText("Por favor llena los campos");
-        MensajeAlerta.setStyle("-fx-text-fill: red;");
-    }
+    String search_id;
+    ArrayList<Ventas> ventasArrayList = new ArrayList<>();
     public void CloseModal(ActionEvent actionEvent) {
         //MANERA EN CERRA EL MODAL
         Stage stage = (Stage) panelContenedor.getScene().getWindow();
@@ -86,9 +84,7 @@ public class ModalVentaController implements Initializable {
 
 
     }
-    public void GuardarVentaEnDB(ActionEvent actionEvent){
-    }
-/*    mostrar la fecha y la hora en un label*/
+    /*    mostrar la fecha y la hora en un label*/
     public void mostrarFecha(){
         Date date = new Date();
         long miliSec = date.getTime();
@@ -115,88 +111,65 @@ public class ModalVentaController implements Initializable {
         listadoProductos.setItems(itemsProd);
         listadoProductos.setVisibleRowCount(3);
     }
-    public boolean validarCampos(String campo){ return campo.length()!=0?true:false; }
-    public void verificarTodoLosInputs(){
-//        boolean vacio = true;
-        int camposLlenos = 0;
-        if (validarCampos(cliente_text.getText())==false){
-            cliente_text.promptTextProperty().setValue("INGRESA O SELECCIONA UN NOMBRE");
-            cliente_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(nit_txt.getText())==false){
-            nit_txt.promptTextProperty().setValue("C/F");
-            nit_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(telefono_txt.getText())==false){
-            telefono_txt.promptTextProperty().setValue("No Phone");
-            telefono_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(direccion_txt.getText())==false){
-            direccion_txt.promptTextProperty().setValue("Ciudad");
-            direccion_txt.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(producto_text.getText())==false){
-            producto_text.promptTextProperty().setValue("SELECCIONA UN PRODUCTO");
-            producto_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(cantidad_text.getText())==false){
-            cantidad_text.promptTextProperty().setValue("1");
-            cantidad_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(descripcion_text.getText())==false){
-            descripcion_text.promptTextProperty().setValue("Descripcion del Producto");
-            descripcion_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{camposLlenos +=1;}
-        if (validarCampos(descuento_text.getText())==false){
-            descuento_text.promptTextProperty().setValue("00");
-            descuento_text.setStyle("-fx-prompt-text-fill: rgba(205, 121, 192, 0.88)");
-            mensajeDeAlertaLabel();
-        }else{
-            camposLlenos +=1;
-            Double descuento_dbl = Double.parseDouble(descuento_text.getText());
+    public void cargarTarjetaPrducto() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/cardprod.fxml"));
+        Parent parent = loader.load();
+        CartaProducto cartaProducto = loader.getController();
+        cartaProducto.setEtextCodProd(CODIGOPRODUCTO);
+        cartaProducto.setEtextCantidad(cantidad_text.getText());
+        cartaProducto.setEtextPrecio(PRECIOVENTA);
+        cartaProducto.setEtextProductos(producto_text.getText());
+        cartaProducto.setEtextDescuento(descuento_text.getText());
+        cartaProducto.setEtextSubTotal(ventas.calculoDeDescuentos(PRECIOVENTA,cantidad_text.getText(),descuento_text.getText()));
+        contadorDePaneles++;
+        CardContainer.getChildren().addAll(parent);
+    }
+    public int todolosCamposVacios(){
+        cuantoCamposVacios =0;
+       if (ventas.camposVacios(cliente_text)){cuantoCamposVacios+=1;}
+       if (ventas.camposVacios(nit_txt)){cuantoCamposVacios+=1;}
+       if (ventas.camposVacios(telefono_txt)){cuantoCamposVacios+=1;}
 
-        }
-        System.out.println("Campos llenos "+ camposLlenos);
-}
+       if (ventas.camposVacios(direccion_txt)){cuantoCamposVacios+=1;}
+       if (ventas.camposVacios(producto_text)){cuantoCamposVacios+=1;}
+       if (ventas.camposVacios(cantidad_text)){cuantoCamposVacios+=1;}
 
+       if (ventas.camposVacios(descuento_text)){cuantoCamposVacios+=1;}
+       if (ventas.camposVacios(descripcion_text)){cuantoCamposVacios+=1;}
+       return cuantoCamposVacios;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nuevasTarjetasPanels=new ArrayList<>();
-        MensajeAlerta.setVisible(false);
-
-        contador = 0;
+        MensajedeAlertaCampos.setText("");
+        MensajedeAlertaCampos.setVisible(false);
+        barradeProgresoAlerta.setVisible(false);
+        PanelScroleable.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //Oculta el escrol del panel de manera horizontal
+        contadorDePaneles = 0;
         mostrarFecha();
         cargarClientes();
         cargarProductos();
-        ventas.validarSoloLetras(cliente_text,nit_txt);
-        ventas.validarSoloLetras(direccion_txt,producto_text);
-        ventas.validarSoloLetras(producto_text,cantidad_text);
-        ventas.validarSoloNumeros(nit_txt,telefono_txt);
-        ventas.validarSoloNumeros(telefono_txt,direccion_txt);
-        ventas.validarSoloNumeros(descuento_text,descripcion_text);
-        ventas.validarSoloNumeros(cantidad_text,descuento_text);
+        ventas.validarSoloLetras(cliente_text);
+        ventas.validarSoloLetras(direccion_txt);
+        ventas.validarSoloLetras(producto_text);
+        ventas.validarNit(nit_txt);
+        ventas.validarSoloNumeros(telefono_txt);
+        ventas.validarSoloNumeros(descuento_text);
+        ventas.validarSoloNumeros(cantidad_text);
+        descuento_text.setText("0");
 //      Seleccion de los datos para el Cliente
         listadoClietes.setOnAction(actionEvent -> { cliente_text.setText(listadoClietes.getValue());
-            MensajeAlerta.setVisible(false);
             String CadenadeClientes = cliente_text.getText();
             String[] SeparadaCadena = CadenadeClientes.split(" ");
             String nombreCliente = SeparadaCadena[0];
             String apelliCliente = SeparadaCadena[1];
-            String search_id = ventas.getIdCostumerInDB(nombreCliente,apelliCliente);
+            search_id = ventas.getIdCostumerInDB(nombreCliente,apelliCliente);
+            System.out.println("Este es el ID del cliente "+search_id);
             ArrayList queryResultCustomer = ventas.getCustomerDatabyId(search_id);
             String datosClientes= queryResultCustomer.get(0).toString();
             String [] containerDataCustomer = datosClientes.split("#");
                 telefono_txt.setText(containerDataCustomer[0]);
                 direccion_txt.setText(containerDataCustomer[1]);
                 nit_txt.setText(containerDataCustomer[2]);
-            System.out.println();
         });
 //      Seleccion de los datos para el producto
         listadoProductos.setOnAction(actionEvent -> {producto_text.setText(listadoProductos.getValue());
@@ -206,7 +179,6 @@ public class ModalVentaController implements Initializable {
             PRECIOVENTA = contenedorConsultaProducto[1];
             CODIGOPRODUCTO = contenedorConsultaProducto[2];
             descripcion_text.setText(contenedorConsultaProducto[3]);
-
             if (cantidad_text.getLength() != 0){
                 subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
                         Double.parseDouble(cantidad_text.getText()),
@@ -214,20 +186,53 @@ public class ModalVentaController implements Initializable {
                         Double.parseDouble(contenedorConsultaProducto[0])
                 );
                 System.out.println("EL subtotal es = "+subtotalCalculado);
-//                total_txt.setText(String.valueOf(subtotalCalculado));
             }
-
         });
     }
-
     public void btn_ShopingCar(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fXMLLoader;
-        Parent parent = new FXMLLoader().load(getClass().getResource("/fxml/Ventas/cardprod.fxml"));
-        CardContainer.setTranslateX(5);
-        CardContainer.getChildren().addAll(parent);
+        if (todolosCamposVacios()<8){
+            visualizarVentas();
+            MensajedeAlertaCampos.setVisible(true);
+            barradeProgresoAlerta.setVisible(true);
+            MensajedeAlertaCampos.setText("Llena los Campos");
+        }else{
+            cliente_text.setDisable(true);
+            nit_txt.setDisable(true);
+            telefono_txt.setDisable(true);
+            direccion_txt.setDisable(true);
+            listadoClietes.setDisable(true);
+            MensajedeAlertaCampos.setVisible(false);
+            barradeProgresoAlerta.setVisible(false);
+            cargarTarjetaPrducto();
+        }
+    }
+    public void GuardarVentaEnDB(ActionEvent actionEvent){
+/*        1. Al realizar una venta lo primero es obtener el total en el label total
+             (Sumar todo los subtotales en los paneles) almacenarlo en el metodo
+*
+*
+*
+* */
 
-
-
+        Ventas newVentas = new Ventas();
+        contadorDePaneles+=2;
+        newVentas.setCodigoCLiente((1+contadorDePaneles));
+        newVentas.setCodigoEmpleado(3+contadorDePaneles);
+        newVentas.setTotal(90+contadorDePaneles);
+        contadorDePaneles++;
+        ventasArrayList.add(newVentas);
+//        JOptionPane.showMessageDialog(null,ventas.almacenarVentasenDB(1,3,90));
 
     }
+
+    public void visualizarVentas() {
+        int contaodir = 0;
+        for (Ventas v : ventasArrayList) {
+            contaodir++;
+            System.out.println("Cod Cliente " + v.getCodigoCLiente() +
+                    "  Cod Empleado " + v.getCodigoEmpleado() +
+                    "  Total Q " + v.getTotal()+"  Fila #"+contaodir);
+        }
+    }
+
 }

@@ -3,12 +3,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import utils.ConnectionUtil;
 
 import java.net.Socket;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 public class Ventas {
     ConnectionUtil cone = new ConnectionUtil();
@@ -18,27 +21,25 @@ public class Ventas {
     Statement statement = null;
     ArrayList<String> dataContainer = new ArrayList<>();
     String resultQuery = "";
-//  Modelo de la Venta
-    String nombreCliente, nitCliente, telefonoCliente, direccionCliente, producoComprado,descripcionProducto,codigoProducto;
-    double cantidad, descuento, subtota, total,precioUnitario;
-//  Botones para colocarlo en la tabla para la columna Opciones
-    JFXButton btnEditar, btnCancelar;
-
+    //  Modelo de la Venta
+    String descripcionProducto;
+    double subtotal, total;
+    int id_Venta,cantidad, id_producto,codigoCLiente, codigoEmpleado;
 public Ventas() {
     }
-//METODOS PARA VALIDAR SOLO LETRAS
-public void validarSoloLetras(JFXTextField campoDeTexto,JFXTextField focus) {
+//METODOS PARA LAS VALIDADCIONES
+public void validarSoloLetras(JFXTextField campoDeTexto) {
    campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
      char c = event.getCharacter().charAt(0);
       if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
           event.consume();
       }
-       if (event.getCode() == KeyCode.ENTER ){
-           focus.requestFocus();
-       }
+//       if (event.getCode() == KeyCode.ENTER ){
+//           focus.requestFocus();
+//       }
    });
 }
-public void validarSoloNumeros(JFXTextField campo, JFXTextField newFocus){
+public void validarSoloNumeros(JFXTextField campo){
    campo.addEventFilter(KeyEvent.ANY, event ->{
      char c = event.getCharacter().charAt(0);
       if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
@@ -47,10 +48,24 @@ public void validarSoloNumeros(JFXTextField campo, JFXTextField newFocus){
       if (c == '.' && campo.getText().contains(".")){
           event.consume();
       }
-      if (event.getCode() == KeyCode.ENTER){
-          newFocus.requestFocus();
-      }
+//      if (event.getCode() == KeyCode.ENTER){
+//          newFocus.requestFocus();
+//      }
    });
+}
+public void validarNit(JFXTextField campo){
+    campo.addEventFilter(KeyEvent.ANY, event ->{
+        char c = event.getCharacter().charAt(0);
+        if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+            event.consume();
+        }
+        if (c == '-' && campo.getText().contains("-")){
+            event.consume();
+        }
+    });
+}
+public boolean camposVacios(JFXTextField jfxTextField){
+    return jfxTextField.getLength()!=0?true:false;
 }
 //  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
 public String getIdCostumerInDB(String Nombre, String Apellido) {
@@ -127,7 +142,7 @@ public ArrayList getProductByName(String thisProduct){
         while (resultSet.next()) {
             dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
                     resultSet.getString("PRECIO_VENTA")+"#"+
-                    resultSet.getString("CODDIGO")+"#"+
+                    resultSet.getString("CODIGO")+"#"+
                     resultSet.getString("DESCRIPCION"));
 
         }
@@ -135,6 +150,18 @@ public ArrayList getProductByName(String thisProduct){
         System.out.println("I can't get the Product's Data : "+e.getMessage());
     }
     return dataContainer;
+}
+public String calculoDeDescuentos(String precioin, String cantidadin, String descuentoin){
+    double precioProd = Double.parseDouble(precioin);
+    double cantidad = Double.parseDouble(cantidadin);
+    double descuento = Double.parseDouble(descuentoin)/100;
+    double subTotalSinDescuento = (precioProd * cantidad);
+    double elDescuento = subTotalSinDescuento*descuento;
+    double subConDescuento = subTotalSinDescuento-elDescuento;
+    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+//    String sub = String.valueOf(Math.round(Float.parseFloat(decimalFormat.format(subTotal-subConDescuento))));
+    String sub = String.valueOf(decimalFormat.format(subConDescuento));
+    return sub;
 }
 //  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
 //  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
@@ -144,71 +171,38 @@ public double calcularSubtotal_andUpdateCantidad(double cantidadProduct, double 
     }
         return this.total = cantidadProduct * precioProducto;
 }
-
-//Metodos GETERS y SETERS
-public void setNombreCliente(String nombre){
-this.nombreCliente = nombre;
-}
-public String getNombreCliente(){
-    return this.nombreCliente;
-}
-public void setNitCliente(String nit){
-    this.nitCliente = nit;
-}
-public String getNitCliente(){
-    return this.nitCliente;
-}
-public void setTelefonoClienteCliente(String telefono){
-    this.telefonoCliente = telefono;
-}
-public String getTelefonoClienteCliente(){
-    return this.telefonoCliente;
-}
-public void setDireccionClienteCliente(String direccion){
-    this.direccionCliente = direccion;
-}
-public String getDireccionClienteCliente(){
-    return this.direccionCliente;
-}
-public void setProducoComprado(String producto){ this.producoComprado = producto; }
-public String getProducoComprado(){
-        return this.producoComprado;
+//Manera en que almacenamos los datos en la base de datos
+public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalVenta){
+    try {
+        String sql = "{call insertVentas(?,?,?)}";
+        callableStatement = connection.prepareCall(sql);
+        callableStatement.setInt(1,idClienteG);
+        callableStatement.setInt(2, idEmpleadoG);
+        callableStatement.setDouble(3, totalVenta);
+        callableStatement.execute();
+    } catch (SQLException e) {
+        return ("Error isert Ventas: " + e.getMessage());
     }
-public void setDescripcionProducto(String descipcion){
-    this.descripcionProducto = descipcion;
+    return "Venta Gurdada en la BD";
 }
-public String getDescripcionProducto(){return this.descripcionProducto;}
-public void setCantidad(double cantidad){this.cantidad = cantidad;}
-public double getCantidad(){return this.cantidad;}
-public void setDescuento(double descuento){this.descuento = descuento;}
-public double getDescuento(){return this.descuento;}
-public void setSubtota (double subtota){this.subtota = subtota;}
-public double getSubtota(){return this.subtota;}
-public void setTotal(double total){this.total = total;}
+//SET Venta
+public void setCodigoCLiente(int id_cliente){this.codigoCLiente=id_cliente;}
+public void setCodigoEmpleado(int id_empleado){this.codigoEmpleado=id_empleado;}
+public void setTotal(double elTotal){this.total=elTotal;}
+//Set Detalle Venta
+public void setIdVenta(int id_Venta){this.id_Venta=id_Venta;}
+public void setIdProducto(int id_producto){this.id_producto=id_producto;}
+public void setDescripcionProducto(String descipcion){this.descripcionProducto = descipcion;}
+public void setCantidad(int cantidad){this.cantidad=cantidad;}
+public void setSubtotal(double subtotal){this.subtotal=subtotal;}
+//GET Venta
+public int getCodigoCLiente(){return this.codigoCLiente;}
+public int getCodigoEmpleado(){return this.codigoEmpleado;}
 public double getTotal(){return this.total;}
-public void setCodigoProducto(String codigoProducto){this.codigoProducto = codigoProducto;}
-public String getCodigoProducto(){return this.codigoProducto;}
-public void setPrecioUnitario(double precioUnitario){this.precioUnitario = precioUnitario;}
-public double getPrecioUnitario(){return this.precioUnitario;}
-public void  setButton1(JFXButton button){this.btnCancelar = button;
-btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
-    @Override
-    public void handle(ActionEvent actionEvent) {
-        System.out.println("Boton de OPcion1");
-    }
-});
-}
-
-public JFXButton getOpcion1Button(){
-    return this.btnCancelar;
-}
-public void setButton2(JFXButton button1){this.btnEditar = button1;
-    btnEditar.setOnMouseClicked(mouseEvent -> {
-        System.out.println("Has precionado opcion 2");
-    });
-}
-public JFXButton getOpcion2Button(){
-    return this.btnEditar;
-}
-
+//get Detalle Venta
+public int getIdVenta(){return this.id_Venta;}
+public int getIdProducto(){return  this.id_producto;}
+public String getDescripcionProducto(){return this.descripcionProducto;}
+public int getCantidad(){return this.cantidad;}
+public double getSubtotal(){return this.subtotal;}
 }

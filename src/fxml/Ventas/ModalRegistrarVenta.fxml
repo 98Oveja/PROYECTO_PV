@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!--fx:controller="fxml.Ventas.ModalRegistrarVenta"-->
 
-<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
+<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
    <children>
       <Pane id="HeaderModal" prefHeight="200.0" prefWidth="200.0" styleClass="PanelHeaderModal_insert">
          <children>
@@ -121,7 +130,7 @@
                         </JFXTextField>
                         <Label prefHeight="32.0" prefWidth="155.0" styleClass="Labels_SaveVentas" text="Fecha de Venta" />
                         <JFXTextField fx:id="txt_fechaVenta" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="159.0" promptText="Fecha de compra" styleClass="TodolosInputs" />
-                        <Button mnemonicParsing="false" onAction="#btn_ShopingCar" styleClass="Btn_ShopingAdd">
+                        <Button fx:id="btnCarritoCompra" mnemonicParsing="false" onAction="#btn_ShopingCar" styleClass="Btn_ShopingAdd">
                            <graphic>
                               <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateY="3.0">
                                  <image>
@@ -141,21 +150,105 @@
                <children>
                   <HBox fx:id="HBoxPanel" prefHeight="100.0" prefWidth="200.0" styleClass="HeaderTablaDetalleVenta">
                      <children>
-                        <Label prefHeight="58.0" prefWidth="198.0" styleClass="TituloTablaDetalle" text="Detalle Venta" />
-                        <Label fx:id="MensajeAlerta" alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="264.0" styleClass="TituloTablaDetalle" text="" textAlignment="CENTER" translateX="200.0" visible="false">
-                           <effect>
-                              <Lighting>
-                                 <bumpInput>
-                                    <Shadow />
-                                 </bumpInput>
-
-                              </Lighting>
-                           </effect></Label>
+                        <Label prefHeight="52.0" prefWidth="152.0" styleClass="TituloTablaDetalle" text="Detalle Venta" textFill="#4d4f5c" />
+                        <Label fx:id="MensajedeAlertaCampos" alignment="CENTER" prefHeight="43.0" prefWidth="277.0" text="Mensaje de Alerta" textAlignment="CENTER" textFill="#f80000" translateX="640.0" translateY="5.0">
+                           <font>
+                              <Font name="Serif Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXProgressBar fx:id="barradeProgresoAlerta" prefHeight="1.0" prefWidth="242.0" translateX="390.0" translateY="55.0" />
                      </children>
                   </HBox>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="TablaDetalleVenta">
+                  <HBox fx:id="HeadetTableDetalleLabels" layoutX="20" layoutY="64" prefHeight="45" prefWidth="1048.0" style="-fx-background-color: #F5F6FA;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="64.0" text="Cantidad" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="132.0" text="Código Producto" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="300.0" text="Producto" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="10.0" prefHeight="26.0" prefWidth="118.0" text="Precio Unitario" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="10.0" prefHeight="26.0" prefWidth="84.0" text="Descuento" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="10.0" prefHeight="26.0" prefWidth="185.0" text="Opciones" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="10.0" prefHeight="26.0" prefWidth="98.0" text="Sub Total" textAlignment="CENTER" textFill="#a3a6b4">
+                           <font>
+                              <Font name="Source Serif Pro Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" right="30.0" />
+                     </padding>
+                  </HBox>
+                  <ScrollPane fx:id="PanelScroleable" layoutY="40.0" prefHeight="332.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="TablaDetalleVenta">
                      <content>
-                        <VBox fx:id="CardContainer" prefHeight="606.0" prefWidth="1030.0" />
+                        <VBox fx:id="CardContainer" prefHeight="317.0" prefWidth="1044.0" style="-fx-background-color: #ffffff;">
+                           
+                        </VBox>
+
                      </content>
                   </ScrollPane>
                   <Label layoutX="952.0" layoutY="459.0" styleClass="labelTotal_EndTable" text="Total Q." />

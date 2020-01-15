@@ -17,6 +17,8 @@ public class VentasController {
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setY(30);
+            stage.setX(330);
             stage.setScene(scene);
             stage.showAndWait();
         }catch (IOException e) {
