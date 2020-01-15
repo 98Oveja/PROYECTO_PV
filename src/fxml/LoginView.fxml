@@ -7,7 +7,7 @@
 
 <?import javafx.scene.control.*?>
 
-<StackPane fx:id="vista1" prefHeight="960.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<StackPane fx:id="vista1" prefHeight="860.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <Pane onKeyPressed="#handleButtonActionKey" prefHeight="960.0" prefWidth="1600.0" style="-fx-background-color: white;" stylesheets="@../css/main.css">
          <children>
