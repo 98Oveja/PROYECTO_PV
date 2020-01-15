@@ -75,7 +75,7 @@
               </HBox>
          </center>
          <bottom>
-              <Separator prefHeight="48.0" prefWidth="429.0" BorderPane.alignment="TOP_CENTER" />
+              <Separator prefHeight="43.0" prefWidth="560.0" BorderPane.alignment="TOP_CENTER" />
          </bottom></BorderPane>
     </children>
 </AnchorPane>
