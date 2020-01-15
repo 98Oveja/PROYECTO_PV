@@ -11,7 +11,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +35,6 @@ public class EditProduct implements Initializable {
         double PrecioCompra =0, PrecioVenta=0,cantidad=0;
         try {
             String Query = "SELECT ID_PRODUCTO,MARCA,NOMBRE,CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE NOMBRE='" + nombre + "';";
-            //String Query = "SELECT * FROM PRODUCTOS WHERE NOMBRE=\"Martillo\";";
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);

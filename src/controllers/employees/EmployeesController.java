@@ -1,69 +1,47 @@
 package controllers.employees;
 
-import com.mysql.cj.protocol.SocksProxySocketFactory;
-import com.mysql.cj.protocol.StandardSocketFactory;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employ.EditEmploy;
 import models.Employ.dataEmploy;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.awt.font.LayoutPath;
+import models.Employ.sqlEmploy;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.time.LocalDate;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class EmployeesController {
-
+public class EmployeesController implements Initializable {
+    @FXML
+    public Pane containerFather;
+    @FXML
+    public GridPane containercard;
     public Button mini1;
     public Button mini2;
     public Button mini3;
     public Button mini4;
     public Button mini5;
     public Button mini6;
+    public int posx, posy;
+    public int idcard,cantEmploy;
+    public sqlEmploy dataEmp = new sqlEmploy();
+    public List<dataEmploy> arrayEmploy= new ArrayList<>();
 
     @FXML
-    private void DeleteEmploy() throws IOException {
-        try {
-            FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
-            Parent root = Loader.load();
-            DelEmployController controller = Loader.getController();
-            Scene dialogo = new Scene(root);
-            //abrimos un nuevo escenario
-            Stage stagedialog = new Stage();
-            stagedialog.initStyle(StageStyle.UNDECORATED);
-            stagedialog.initModality(Modality.APPLICATION_MODAL);
-            stagedialog.setScene(dialogo);
-            stagedialog.showAndWait();
-
-            if(controller.BtnOk==1){
-               System.out.println("ya dio");
-               controller.pressedExit();
-            }
-
-        }catch (Exception ex){ ex.printStackTrace();}
-    }
-
-    @FXML
-    private void pressedAddModal() throws IOException {
+    private void pressedAddModal() {
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
-            AddEmployController controller = Loader.getController();
             Scene dialogo = new Scene(root);
-            //abrimos un nuevo escenario
             Stage stagedialog = new Stage();
             stagedialog.initStyle(StageStyle.UNDECORATED);
             stagedialog.initModality(Modality.APPLICATION_MODAL);
@@ -71,61 +49,18 @@ public class EmployeesController {
             stagedialog.showAndWait();
 
         }catch (Exception ex){ ex.printStackTrace();}
-    }
-
-    @FXML
-    private void pressedEditModal() throws IOException {
-
-        try {
-            dataEmploy res= new dataEmploy();
-            EditEmploy editEmploy = new EditEmploy();
-            res = editEmploy.searchData(2);
-            FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
-            Parent root = Loader.load();
-            AddEmployController controller = Loader.getController();
-            controller.TitleModal.setText("Editar Empleados");
-            controller.EmployNameOne.setText(res.name1);
-            controller.EmployNameTwo.setText(res.name2);
-            controller.EmployLasteNameOne.setText(res.lastname1);
-            controller.EmployLasteNameTwo.setText(res.lastname2);
-            controller.EmployDir.setText(res.dir);
-            controller.EmployPhone.setText(res.tel+"");
-            controller.EmployDate.setText(res.fechaInicio);
-            controller.EmployPlace.setText(res.cargo);
-            controller.EmployEmail.setText(res.correo);
-            controller.BtnSaveEmploy.setVisible(false);
-            controller.BtnUpdateEmploy.setVisible(true);
-            String traslate= res.img.replace("*","\\");
-            controller.setImgUser("file:/"+traslate);
-            if(controller.BtnUpdateEmploy.getOnMouseClicked() != null) {
-                editEmploy.updateEmploy(res.idper, res.idemp, res.name1, res.name2, res.lastname1, res.lastname2, res.dir, res.tel, res.correo, res.img, res.fechaInicio, res.cargo);
-                System.out.println("Actualizacion exitosa");
-            }
-
-            Scene dialogo = new Scene(root);
-            //abrimos un nuevo escenario
-            Stage stagedialog = new Stage();
-            stagedialog.initStyle(StageStyle.UNDECORATED);
-            stagedialog.initModality(Modality.APPLICATION_MODAL);
-            stagedialog.setScene(dialogo);
-            stagedialog.showAndWait();
-
-
-        }catch (Exception ex){ System.out.println(ex);}
     }
 
 
     public void cambio(ActionEvent actionEvent) {
         if (actionEvent.getSource()==mini2){
-            mini2.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
+            mini2.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
             mini3.setStyle(".PanelLateralOpciones");
             mini4.setStyle(".PanelLateralOpciones");
             mini5.setStyle(".PanelLateralOpciones");
         }
         else if (actionEvent.getSource()==mini3){
-            mini3.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
+            mini3.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
             mini2.setStyle(".PanelLateralOpciones");
             mini4.setStyle(".PanelLateralOpciones");
             mini5.setStyle(".PanelLateralOpciones");
@@ -145,4 +80,54 @@ public class EmployeesController {
             mini4.setStyle(".PanelLateralOpciones");
         }
     }
+    public void card() throws IOException {
+        FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
+        Parent parent= fxmlLoader.load();
+        CardEmployController cn =fxmlLoader.getController();
+        cn.addData(arrayEmploy.get(idcard));
+        cn.initDatoCard();
+        containercard.setRowIndex(parent,posx);
+        containercard.setColumnIndex(parent,posy);
+        containercard.getChildren().addAll(parent);
+            posx=posx+1;
+            System.out.println(" linea x : "+posx);
+            System.out.println(" linea y : "+posy);
+        if(posx==3){
+            posy=1;
+            posx=0;
+        }else {}
+
+        idcard =idcard+1;
+    }
+    public void loaderArrayData(){
+        arrayEmploy = dataEmp.employDB();
+    }
+
+    public void calcularDatashow(){
+        cantEmploy = arrayEmploy.size();
+        
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        posx = 0;
+        posy = 0;
+        idcard=0;
+        loaderArrayData();
+
+        System.out.println(cantEmploy+"**-*-*-*-*-*--");
+
+//        while (idcard < 6 ){
+//            try {
+//                card();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+    }
+
+
+
   }
+

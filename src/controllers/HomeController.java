@@ -14,8 +14,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -83,14 +81,7 @@ public class HomeController implements Initializable {
                 for (String service: services) {
                     if(service.contains(newValue)){items.add(new MenuItem(service));}
                 }
-                /*
-                Notifications.create()
-                        .title("titulo")
-                        .text("texto")
-                        .hideAfter(Duration.seconds(5))
-                        .showError();
 
-                 */
                 for (MenuItem item: items){
                     if(item.getText().equals(newValue)) {
                         paneResSearch.getItems().clear();
@@ -149,6 +140,7 @@ return;
                 avalibleButton(3);
                 break;
             case "Proveedores":
+                setVista("/fxml/Proveedores/Proveedores.fxml");
                 avalibleLabel(4);
                 avalibleButton(4);
                 break;
