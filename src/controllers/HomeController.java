@@ -140,7 +140,7 @@ return;
                 avalibleButton(3);
                 break;
             case "Proveedores":
-                setVista("/fxml/Test/PaneResponsive.fxml");
+                setVista("/fxml/Proveedores/Proveedores.fxml");
                 avalibleLabel(4);
                 avalibleButton(4);
                 break;

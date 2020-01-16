@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.util.Duration;
 import utils.ConnectionUtil;
 import java.io.IOException;
@@ -19,6 +18,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -34,52 +34,36 @@ public class MenuController implements Initializable {
     private Label titleProduct, brandProduct, desProduct;
     @FXML
     public ArrayList<newProducts> products= new ArrayList<>();
-    HomeController homeC = new HomeController();
 
     public void produtosAnimation() {
         newProducts();
-        Image images = new Image("file:/" +products.get(0).img.replace("*","\\"));
-        Image images1 = new Image("file:/"+products.get(1).img.replace("*","\\"));
-        Image images2 = new Image("file:/"+products.get(2).img.replace("*","\\"));
-        Image images3 = new Image("file:/"+products.get(3).img.replace("*","\\"));
-        Image images4 = new Image("file:/"+products.get(4).img.replace("*","\\"));
+        List<Image> imageList = new ArrayList<Image>();
+        List<KeyFrame>  keyFrames =  new ArrayList<KeyFrame>();
+        int timeSeparation=3;
         Timeline timeline = new Timeline();
 
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0), (event) -> {
-            NewImageProducts.setImage(images);
-            titleProduct.setText(products.get(0).name);
-            brandProduct.setText(products.get(0).mark);
-            desProduct.setText(products.get(0).description);
-        });
-
-        KeyFrame keyFrame2=new KeyFrame(Duration.seconds(3), (event)-> {
-            NewImageProducts.setImage(images1);
-            titleProduct.setText(products.get(1).name);
-            brandProduct.setText(products.get(1).mark);
-            desProduct.setText(products.get(1).description);
-        });
-        KeyFrame keyFrame3=new KeyFrame(Duration.seconds(6), (event)->{NewImageProducts.setImage(images2);
-            titleProduct.setText(products.get(2).name);
-            brandProduct.setText(products.get(2).mark);
-            desProduct.setText(products.get(2).description);
-        });
-        KeyFrame keyFrame4=new KeyFrame(Duration.seconds(9), (event)->{NewImageProducts.setImage(images3);
-            titleProduct.setText(products.get(3).name);
-            brandProduct.setText(products.get(3).mark);
-            desProduct.setText(products.get(3).description);
-        });
-        KeyFrame keyFrame5=new KeyFrame(Duration.seconds(12), (event)->{NewImageProducts.setImage(images4);
-            titleProduct.setText(products.get(4).name);
-            brandProduct.setText(products.get(4).mark);
-            desProduct.setText(products.get(4).description);
-        });
-
+        int pos=0;
+        for(int x=0; x < products.size() && x < 5; x++ ){
+            if(products.get(pos).img.equals(null) || products.get(pos).img.contains("null")){
+                Image imgDefault = new Image("images/herramientas.png");
+                imageList.add(imgDefault);
+            }else{
+                Image img = new Image("file:/" +products.get(pos).img.replace("*","\\"));
+                imageList.add(img);
+            }
+            int finalPos = pos;
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(timeSeparation), (event) -> {
+                NewImageProducts.setImage(imageList.get(finalPos));
+                titleProduct.setText(products.get(finalPos).name);
+                brandProduct.setText(products.get(finalPos).mark);
+                desProduct.setText(products.get(finalPos).description);
+            });
+            keyFrames.add(keyFrame);
+            timeline.getKeyFrames().add(keyFrame);
+            timeSeparation = timeSeparation + 3;
+            pos++;
+        }
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.getKeyFrames().add(keyFrame2);
-        timeline.getKeyFrames().add(keyFrame3);
-        timeline.getKeyFrames().add(keyFrame4);
-        timeline.getKeyFrames().add(keyFrame5);
         timeline.play();
     }
 
@@ -113,7 +97,9 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-            produtosAnimation();
+            if(products.size() < 5){
+                produtosAnimation();
+            }
 
     }
 

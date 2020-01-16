@@ -101,11 +101,19 @@ public class EmployeesController implements Initializable {
     }
     public void loaderArrayData(){
         arrayEmploy = dataEmp.employDB();
+        cantEmploy = arrayEmploy.size();
     }
 
-    public void calcularDatashow(){
-        cantEmploy = arrayEmploy.size();
-        
+    public void initShowCard() throws IOException {
+        if(cantEmploy != 0){
+        while (idcard < cantEmploy && idcard < 6 ){
+                card();
+        }
+        }else{
+            FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
+            Parent parent= fxmlLoader.load();
+            containercard.getChildren().addAll(parent);
+        }
     }
 
 
@@ -117,14 +125,12 @@ public class EmployeesController implements Initializable {
         loaderArrayData();
 
         System.out.println(cantEmploy+"**-*-*-*-*-*--");
-
-        while (idcard < 6 ){
-            try {
-                card();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            initShowCard();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
 

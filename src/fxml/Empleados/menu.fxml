@@ -119,8 +119,13 @@
             </Pane>
             <Pane layoutX="387.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 ); -fx-background-color: #fff;">
                <children>
-                  <ImageView fx:id="NewImageProducts" fitHeight="273.0" fitWidth="281.0" pickOnBounds="true" />
-               </children></Pane>
+                  <ImageView fx:id="NewImageProducts" fitHeight="273.0" fitWidth="281.0" pickOnBounds="true" >
+                     <image>
+                        <Image url="@../../images/herramientas.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
             <Pane layoutX="670.0" layoutY="113.0" prefHeight="273.0" prefWidth="281.0" style="-fx-background-color: white; -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );;">
                <children>
                   <JFXButton contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver ">
@@ -131,18 +136,18 @@
                         <Shadow />
                      </effect>
                   </JFXButton>
-                  <Label fx:id="titleProduct" layoutX="31.0" layoutY="27.0" prefHeight="41.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Titulo">
+                  <Label fx:id="titleProduct" layoutX="31.0" layoutY="27.0" prefHeight="41.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Producto.">
                      <styleClass>
                         <String fx:value="titleCard" />
                         <String fx:value="tipografia" />
                      </styleClass></Label>
-                  <Label fx:id="brandProduct" layoutX="30.0" layoutY="77.0" prefHeight="36.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Subtitulo">
+                  <Label fx:id="brandProduct" layoutX="30.0" layoutY="77.0" prefHeight="36.0" prefWidth="237.0" stylesheets="@../../css/menuinicio.css" text="Marca del producto">
                      <styleClass>
                         <String fx:value="subTitleCard" />
                         <String fx:value="textColorBlack" />
                         <String fx:value="tipografia" />
                      </styleClass></Label>
-                  <Label fx:id="desProduct" layoutX="32.0" layoutY="108.0" prefHeight="89.0" prefWidth="226.0" stylesheets="@../../css/menuinicio.css" text="Martillo para uso general, albanieria, carpinteria" wrapText="true">
+                  <Label fx:id="desProduct" layoutX="32.0" layoutY="108.0" prefHeight="89.0" prefWidth="226.0" stylesheets="@../../css/menuinicio.css" text="Una breve descripcion del producto nuevo" wrapText="true">
                      <styleClass>
                         <String fx:value="desCard" />
                         <String fx:value="textColorBlack" />
