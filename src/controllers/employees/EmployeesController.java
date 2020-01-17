@@ -47,10 +47,8 @@ public class EmployeesController implements Initializable {
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
-
         }catch (Exception ex){ ex.printStackTrace();}
     }
-
 
     public void cambio(ActionEvent actionEvent) {
         if (actionEvent.getSource()==mini2){
@@ -80,6 +78,7 @@ public class EmployeesController implements Initializable {
             mini4.setStyle(".PanelLateralOpciones");
         }
     }
+
     public void card() throws IOException {
         FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
         Parent parent= fxmlLoader.load();
@@ -90,18 +89,26 @@ public class EmployeesController implements Initializable {
         containercard.setColumnIndex(parent,posy);
         containercard.getChildren().addAll(parent);
             posx=posx+1;
-            System.out.println(" linea x : "+posx);
-            System.out.println(" linea y : "+posy);
+//            System.out.println(" linea x : "+posx);
+//            System.out.println(" linea y : "+posy);
         if(posx==3){
             posy=1;
             posx=0;
-        }else {}
-
+        }
+        if(posy == 1 && posx== 3){
+            containercard.getChildren().clear();
+            while (idcard < cantEmploy && idcard < 12){
+                card();
+            }
+        }
         idcard =idcard+1;
     }
     public void loaderArrayData(){
         arrayEmploy = dataEmp.employDB();
         cantEmploy = arrayEmploy.size();
+        posx = 0;
+        posy = 0;
+        idcard=0;
     }
 
     public void initShowCard() throws IOException {
@@ -112,28 +119,21 @@ public class EmployeesController implements Initializable {
         }else{
             FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
             Parent parent= fxmlLoader.load();
+            CardEmployController cn =fxmlLoader.getController();
+            cn.setImgUser("images/male_user_.png");
             containercard.getChildren().addAll(parent);
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        posx = 0;
-        posy = 0;
-        idcard=0;
         loaderArrayData();
-
-        System.out.println(cantEmploy+"**-*-*-*-*-*--");
         try {
             initShowCard();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-
 
   }
 

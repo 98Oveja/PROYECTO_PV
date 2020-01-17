@@ -20,7 +20,7 @@ public class CardEmployController {
     @FXML
     public Button delet,edit;
     @FXML
-    public Label city,name,phone;
+    public Label city,name,phone,Organitation;
     @FXML
     public BorderPane photoEmploy;
     public dataEmploy employ;
@@ -29,10 +29,12 @@ public class CardEmployController {
     public void addData(dataEmploy empData){
         employ = empData;
     }
+
     public void initDatoCard(){
         name.setText(employ.name1+" "+employ.lastname1);
         city.setText("De: "+employ.dir);
         phone.setText("Movil: " +employ.tel);
+        Organitation.setText(employ.cargo.toUpperCase());
         imaConverter();
         setImgUser(imgTemporal);
     }
@@ -47,8 +49,7 @@ public class CardEmployController {
     }
 
     public void setImgUser(String url) {
-        Circle circle = new Circle(72,72,36);
-
+        Circle circle = new Circle(80,80,40);
         try{
             Image image = new Image(url,false);
             circle.setFill(new ImagePattern(image));
@@ -59,12 +60,9 @@ public class CardEmployController {
             circle.setFill(new ImagePattern(image));
             photoEmploy.setCenter(circle);
         }
-
-
     }
     @FXML
     private void DeleteEmploy() {
-
         try {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();

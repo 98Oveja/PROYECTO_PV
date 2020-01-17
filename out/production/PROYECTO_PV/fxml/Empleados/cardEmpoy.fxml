@@ -13,12 +13,12 @@
          <center>
               <HBox prefHeight="121.0" prefWidth="415.0" BorderPane.alignment="CENTER">
                   <children>
-                  <BorderPane fx:id="photoEmploy" minHeight="86.0" minWidth="86.0" prefHeight="86.0" prefWidth="86.0">
+                  <BorderPane fx:id="photoEmploy" minHeight="86.0" minWidth="86.0" prefHeight="91.0" prefWidth="95.0">
                      <HBox.margin>
-                        <Insets bottom="12.0" left="10.0" right="5.0" top="23.0" />
+                        <Insets bottom="10.0" left="10.0" right="5.0" top="20.0" />
                      </HBox.margin>
                   </BorderPane>
-                      <VBox prefHeight="97.0" prefWidth="294.0">
+                      <VBox prefHeight="121.0" prefWidth="283.0">
                           <children>
                               <Label fx:id="name" prefHeight="32.0" prefWidth="279.0" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
                                   <font>
@@ -75,7 +75,17 @@
               </HBox>
          </center>
          <bottom>
-              <Separator prefHeight="43.0" prefWidth="560.0" BorderPane.alignment="TOP_CENTER" />
+            <VBox prefHeight="39.0" prefWidth="560.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="560.0" />
+                  <Label fx:id="Organitation" alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="664.0" stylesheets="@../../css/menuinicio.css" text="Label" textAlignment="CENTER" textFill="#43425ca6">
+                     <styleClass>
+                        <String fx:value="subTitleCard" />
+                        <String fx:value="tipografia" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </VBox>
          </bottom></BorderPane>
     </children>
 </AnchorPane>

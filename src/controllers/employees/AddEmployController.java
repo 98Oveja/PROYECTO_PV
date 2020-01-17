@@ -63,7 +63,6 @@ public class AddEmployController implements Initializable {
     ObservableList<String> list= FXCollections.observableArrayList("Administrador","Bodeguero","Vendedor","Secretaria");
 
 public int idpersona,status,infoStatus;
-//public String directionImage,firstName,secondName,firstLastName,secondLastName,direction,email,numberPhone,places;
 public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
@@ -95,8 +94,8 @@ public void CloseModal(){
              stage.close();
          }
      }catch (Exception ex){ System.out.println(ex);}
-
  }
+
  @FXML
  public void initDatos(String place){
      emDb.name1= EmployNameOne.getText();
@@ -118,7 +117,7 @@ public void CloseModal(){
             EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningFive.setVisible(true);
         }
-        if(emDb.name1.length()==0 || emDb.name2.length()==0 || emDb.dir.length()==0 || emDb.tel.length()<=6 || EmployPlace.getLength()==0 || emDb.correo.length()==0){
+        if(warningOne.isVisible() || warningTwo.isVisible() || warningThree.isVisible() || warningFour.isVisible() || warningFive.isVisible() || warningSix.isVisible()){
             Image image = new Image("/images/info.png");
             CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
         }else {
@@ -137,12 +136,12 @@ public void CloseModal(){
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/Empleados/InfoEmploy.fxml"));
         Parent root = Loader.load();
         InfoEmployController controller = Loader.getController();
-        controller.label1.setText("Nombres: " + EmployNameOne.getText() + " " + EmployNameTwo.getText());
-        controller.label2.setText("Apellidos: " + EmployLasteNameOne .getText()+ " " + EmployLasteNameTwo.getText());
-        controller.label3.setText("Dirección: " + EmployDir.getText());
-        controller.label4.setText("Teléfono: " + EmployPhone.getText());
-        controller.label5.setText("Correo: " + EmployEmail.getText());
-        controller.label6.setText("Puesto: " + EmployPlace.getText());
+        controller.label1.setText("Nombres:  " + EmployNameOne.getText() + " " + EmployNameTwo.getText());
+        controller.label2.setText("Apellidos:  " + EmployLasteNameOne .getText()+ " " + EmployLasteNameTwo.getText());
+        controller.label3.setText("Dirección:  " + EmployDir.getText());
+        controller.label4.setText("Teléfono:  " + EmployPhone.getText());
+        controller.label5.setText("Correo:  " + EmployEmail.getText());
+        controller.label6.setText("Puesto:  " + EmployPlace.getText());
         Scene dialogo = new Scene(root);
         Stage stagedialog = new Stage();
         stagedialog.initStyle(StageStyle.UNDECORATED);
@@ -154,19 +153,15 @@ public void CloseModal(){
 
     //METODO PARA REALIZAR EL INGRESO DE UN CLIENTE
     public void querySql(String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email) throws SQLException {
-
-        String Nueva;
-        if(emDb.img != null){
+        String Nueva = null;
+        if(emDb.img.equals(null)){
          Nueva=emDb.img.replace("\\","*");
-        }else{
-            Nueva="NULL";
         }
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
         String sqlinsert= "INSERT INTO `PERSONAS` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlinsert); //aca insertamos los dato
-
         //aca buscaremos el id de la persona ingresada--
         String searchId = "SELECT `ID_PERSONA` FROM `PERSONAS` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"' AND `CORREO` = '"+email+"' ORDER BY ID_PERSONA DESC";
         ResultSet result = statement.executeQuery(searchId);
@@ -204,17 +199,16 @@ public void CloseModal(){
             return setImgUser("file:/"+emDb.img);
 
         } else{
-            System.out.println("Archivo no Valido");
             return "/images/male_user_.png";
         }
     }
+
     public String setImgUser(String url) {
         Circle circle = new Circle(86,86,43);
         Image image = new Image(url,false);
         circle.setFill(new ImagePattern(image));
         imgUser.setCenter(circle);
         return url;
-
     }
     //METODOS PARA VALIDAR SOLO LETRAS
     public void validateLetter(TextField campoDeTexto) {
@@ -225,18 +219,17 @@ public void CloseModal(){
             }
         });
     }
+
     public void validateNumber(TextField campo){
         campo.addEventFilter(KeyEvent.ANY, event ->{
                     char c = event.getCharacter().charAt(0);
                     if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
                         event.consume();
-                        if (c == '.' && campo.getText().contains(".")){
-                            event.consume();
-                        }
+                        if (c == '.' && campo.getText().contains(".")){event.consume();}
                     }
-                }
-        );
+                });
     }
+
     @FXML
     public void validorGeneral(){
         validateLetter(EmployNameOne);
@@ -259,6 +252,7 @@ public void CloseModal(){
             }
         }
     }
+
     @FXML
     private void EventKeyEnteNameTwo(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){
@@ -284,6 +278,7 @@ public void CloseModal(){
              warningTwo.setVisible(false);
          }
      }}
+
     @FXML
     private void EventKeyEnterLasteNameTwo(KeyEvent event){
         if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();
@@ -306,6 +301,7 @@ public void CloseModal(){
             warningThree.setVisible(true);
         }else{warningThree.setVisible(false);}
      }
+
     @FXML
     private void EventKeyEnterPhone(KeyEvent event){
     if(event.getCode()==KeyCode.ENTER){ EmployEmail.requestFocus();}
@@ -314,8 +310,7 @@ public void CloseModal(){
                 EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
                 warningFour.setVisible(true);
             }else{warningFour.setVisible(false);}
- }
-
+    }
 
     @FXML
     private void EventKeyEnterEmail(KeyEvent event){
@@ -325,7 +320,7 @@ public void CloseModal(){
             EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningSix.setVisible(true);
         }else{  warningSix.setVisible(false);}
- }
+    }
 
     @FXML
     public void selectItem(ActionEvent event){
@@ -348,4 +343,3 @@ public void CloseModal(){
         validorGeneral();
     }
 }
-
