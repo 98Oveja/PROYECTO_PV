@@ -1,4 +1,5 @@
 package models.Ventas_Compras;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -7,7 +8,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import utils.ConnectionUtil;
 
-import java.net.Socket;
 import java.sql.*;
 import java.util.ArrayList;
 public class Ventas {

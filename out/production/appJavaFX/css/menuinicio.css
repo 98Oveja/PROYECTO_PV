@@ -1,48 +1,4 @@
-/*Fuente para los textos en Botones*/
-.tipografia{
-    -fx-font-family: "Source Sans Pro";
-}
-
-/* --------------------------------------------------------------------------------------- */
-/* ACA ESTAN LOS ESTILOS DEL PANEL QUE ESTARA EN EL MENU INICIAL*/
-
-.empPanel{
-    -fx-pref-width: 1340px;
-    -fx-pref-height: 790px;
-    -fx-background-color: #f0eef7;
-}
-
-.emptarjeta{
-    -fx-pref-width: 281px;
-    -fx-pref-height: 273px;
-    -fx-background-color: #3B86FF;
-
-}
-
-/*.emptarjeta:hover{*/
-/*    -fx-background-color: #274e9c;*/
-/*}*/
-
-/*.emptarjeta:pressed{*/
-/*    -fx-background-color: #274e9c;*/
-/*}*/
-
-
-.empbotonver{
-    -fx-background-color: #295eb2;
-    -fx-pref-width: 160px;
-    -fx-pref-height: 50px;
-    -fx-text-fill: white;
-    -fx-border-radius: 8px;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-font-family: "Source Sans Pro";
-}
-
-.empbotonver:hover{
-    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
-    -fx-font-size: 16px;
-}
+.tipografia{-fx-font-family:"Source Sans Pro"}.empPanel{-fx-pref-width:1340px;-fx-pref-height:790px;-fx-background-color:#f0eef7}.emptarjeta{-fx-pref-width:281px;-fx-pref-height:273px;-fx-background-color:#3B86FF}.empbotonver{-fx-background-color:#295eb2;-fx-pref-width:160px;-fx-pref-height:50px;-fx-text-fill:#fff;-fx-border-radius:8px;-fx-font-size:14px;-fx-font-weight:bold;-fx-font-family:"Source Sans Pro"}.empbotonver:hover{-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.4),10,0.5,0.0,0.0);-fx-font-size:16px}
 
 .radiobuttonNewProd{
     -fx-background-color: Tranparent;
@@ -66,12 +22,11 @@
     -fx-pref-whidth: 570px;
     -fx-pref-height: 160.35px;
     -fx-background-color: white;
-
     -fx-border-radius: 6px;
 }
 
-.empleadoscard:hover{
-    -fx-background-color: rgb(244, 243, 240);
+.empleadoscard:hover,.btn_CloseModal:hover{
+    -fx-effect:dropshadow(gaussian, rgba(37, 37, 37, 0.3),10,0.5,0.0,0.0);-fx-font-size:16px
 }
 
 .titleCard{
@@ -111,7 +66,7 @@
     -fx-border-radius: 4px;
     -fx-text-fill:white;
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
+    -fx-font-weight: normal;
 }
 .boxOfText:hover{
     -fx-border-color: #295eb2;
@@ -124,7 +79,61 @@
     -fx-pref-width: 262px;
     -fx-pref-height: 200px;
     -fx-background-color: white;
-    -fx-border-radius: 8px;
+    -fx-border-color: #b9b7b9;
 }
-.btn_CloseModal{-fx-background-color:Transparent;-fx-background-radius:30px;-fx-translate-x:1115px;-fx-translate-y:24px;-fx-cursor:hand}
-.btn_CloseModal:hover{-fx-background-color:#43425d}
+
+.buttonOption{
+    -fx-background-color: #3B86FF;
+    -fx-text-fill: white;
+}
+.buttonOption:hover,.infobtn:hover{
+    -fx-opacity: 0.8;
+}
+.buttonEditEmploy{
+    -fx-background-image: url("../images/icons8_create_28px_1.png");
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+.buttonEditEmploy:hover{
+    -fx-background-image: url("../images/icons8_create_29px.png");
+}
+
+.buttonDeleteEmploy{
+    -fx-background-color: Transparent;
+    -fx-background-image: url("../images/icons8_delete_27px.png");
+    -fx-cursor:hand;
+}
+.buttonDeleteEmploy:hover{
+    -fx-background-image: url("../images/icons8_delete_28px_1.png");
+}
+.buttonDeleteEmploy:pressed, .buttonEditEmploy:pressed, .buttonAddEmploy:pressed{
+    -fx-background-color: Transparent;
+}
+.buttonAddEmploy{
+    -fx-background-color: Transparent;
+    -fx-background-image: url("../images/icons8_add_42px.png");
+    -fx-cursor: hand;
+}
+.buttonAddEmploy:hover{
+    -fx-background-image: url("../images/icons8_add_42px_6.png");
+}
+.infobtn{
+    -fx-background-color: #4475b2;
+    -fx-text-fill: white;
+}
+.titleEmploy{
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-text-fill: #9e9ca4;
+}
+
+.subTitleEmploy{
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(67, 66, 92, 0.61);
+}
+
+.btn_CloseModal{
+    -fx-background-color:Transparent;
+    -fx-cursor:hand;
+    -fx-background-image: url("../images/cancel_32.png");
+}

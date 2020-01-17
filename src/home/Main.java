@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import navigator.ViewNavigator;
 
 import java.io.IOException;
@@ -37,10 +36,11 @@ public class Main extends Application {
 
         Pane mainPane = (Pane) loader.load(
             getClass().getResourceAsStream(
-                ViewNavigator.MAIN_LOGIN
+
+                    ViewNavigator.MAIN_LOGIN
             )
         );
-
+        // linea 40 -> ViewNavigator.MAIN_LOGIN
         MainController mainController = loader.getController();
 
         ViewNavigator.setMainController(mainController);

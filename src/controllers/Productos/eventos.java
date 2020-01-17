@@ -1,6 +1,5 @@
 package controllers.Productos;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 

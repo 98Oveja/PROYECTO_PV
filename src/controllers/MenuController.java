@@ -107,7 +107,7 @@ public class MenuController implements Initializable {
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
         if(actionEvent.getSource() == btnViewProd){
            HomeController hm= new HomeController();
-           hm.handleActionSetViewSelect("Estadisticas");
+//           hm.handleActionSetViewSelect("Estadisticas");
         }
     }
 

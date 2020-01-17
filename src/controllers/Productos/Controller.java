@@ -1,4 +1,5 @@
 package controllers.Productos;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
