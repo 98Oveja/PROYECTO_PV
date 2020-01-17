@@ -16,6 +16,8 @@ import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class CardEmployController {
     @FXML
     public Button delet,edit;
@@ -42,7 +44,7 @@ public class CardEmployController {
     public void imaConverter(){
         if(employ.img.contains("*")){
             imgTemporal ="file:/" + employ.img.replace("*","\\");
-            employ.img =  employ.img.replace("*","\\");
+            //employ.img =  employ.img.replace("*","\\");
         }else{
             imgTemporal = "images/male_user_.png";
         }
@@ -50,17 +52,44 @@ public class CardEmployController {
 
     public void setImgUser(String url) {
         Circle circle = new Circle(80,80,40);
-        try{
-            Image image = new Image(url,false);
-            circle.setFill(new ImagePattern(image));
-            photoEmploy.setCenter(circle);
-        }catch (Exception ex){
-            System.out.println("No se encontro la imagen");
-            Image image = new Image("images/male_user_.png",false);
-            circle.setFill(new ImagePattern(image));
-            photoEmploy.setCenter(circle);
+        Image image = new Image(url,true);
+        Image ima = new Image("images/male_user_.png", false);
+//          image.errorProperty().addListener(
+//                  (obs,ov,nv) -> {
+//                      System.out.println("line 56 progreso ----- " + nv);
+//                      if(nv==true){
+//                          circle.setFill(new ImagePattern(image));
+//                      }
+//                  }
+//          );
+//
+//          image.exceptionProperty().addListener((obs,ov,nv) -> {
+//              if(nv.getMessage().contains("java.io.FileNotFoundException:")){
+//                  System.out.println("Cubrio el error--75");
+//                  circle.setFill(new ImagePattern(ima));
+//              }
+//          });
+        AtomicBoolean sta = new AtomicBoolean(false);
+        image.errorProperty().addListener((obs,ov,nv) -> {
+            System.out.println("error=" + nv);
+            if(nv.booleanValue() == true){
+                System.out.println("Line 73: "+nv.booleanValue());
+             sta.set(nv.booleanValue());
+            }
+        });
+        if(sta.get()){
+            System.out.println("sta.get" + sta.get());
         }
+//        circle.setFill(new ImagePattern(image));
+        image.exceptionProperty().addListener((obs,ov,nv) ->{
+                System.out.println("exception=" + nv.getClass() + ", msg=" + nv.getMessage());
+                    circle.setFill(new ImagePattern(ima));
+                }
+        );
+
+        photoEmploy.setCenter(circle);
     }
+
     @FXML
     private void DeleteEmploy() {
         try {

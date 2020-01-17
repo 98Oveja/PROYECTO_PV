@@ -5,18 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-    public static String driver = "com.mysql.cj.jdbc.Driver";
-    public static String dataBase = "u376498608_punto_de_venta";
-    public static String host = "sql309.main-hosting.eu";
-    public static String user = "u376498608_admin_e";
-    public static String password = "12345678lol";
-//public static String driver = "org.mariadb.jdbc.Driver";
-//    public static String dataBase = "punto_de_venta";
-//    public static String host = "127.0.01:3306";
-//    public static String user = "root";
-//    public static String password = "";
-//    public static String url = "jdbc:mariadb://"+host+"/"+dataBase+""; //connection ssl false
-public static String url = "jdbc:mysql://"+host+"/"+dataBase+""; //connection ssl false
+//    public static String driver = "com.mysql.cj.jdbc.Driver";
+//    public static String dataBase = "u376498608_punto_de_venta";
+//    public static String host = "sql309.main-hosting.eu";
+//    public static String user = "u376498608_admin_e";
+//    public static String password = "12345678lol";
+public static String driver = "org.mariadb.jdbc.Driver";
+    public static String dataBase = "punto_de_venta";
+    public static String host = "127.0.01:3306";
+    public static String user = "root";
+    public static String password = "";
+    public static String url = "jdbc:mariadb://"+host+"/"+dataBase+""; //connection ssl false
+//public static String url = "jdbc:mysql://"+host+"/"+dataBase+""; //connection ssl false
     private static Connection conn;
 
     //Constructor
