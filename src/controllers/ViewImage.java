@@ -10,34 +10,34 @@ public class ViewImage {
     public String getImageItem(String url){
         String aux = null;
         switch (url){
-            case "inicio":
+            case "Inicio":
                 aux = HOME_IMAGE;
                 break;
-            case "estadisiticas":
+            case "Estadisiticas":
                 aux = STATISTICS_IMAGE;
                 break;
-            case "empleados":
+            case "Empleados":
                 aux = EMPLOYEES_IMAGE;
                 break;
-            case "productos":
+            case "Productos":
                 aux = PRODUCTS_IMAGE;
                 break;
-            case "proveedores":
+            case "Proveedores":
                 aux = SUPPLIERS_IMAGE;
                 break;
-            case "clientes":
+            case "Clientes":
                 aux = CUSTOMERS_IMAGE;
                 break;
-            case "compras":
+            case "Compras":
                 aux = PURCHASES_IMAGE;
                 break;
-            case "calendario":
+            case "Calendario":
                 aux = CALENDAR_IMAGE;
                 break;
-            case "ventas":
+            case "Ventas":
                 aux = SALES_IMAGE;
                 break;
-            case "reportes":
+            case "Reportes":
                 aux = REPORTS_IMAGE;
                 break;
         }

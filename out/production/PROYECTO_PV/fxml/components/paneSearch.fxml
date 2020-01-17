@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
+
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-
-
+<?import javafx.scene.shape.Line?>
+<?import java.lang.String?>
 <Pane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
    <children>
        <Pane fx:id="paneSearch"  prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css">

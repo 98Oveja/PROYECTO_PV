@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<?import java.lang.String?>
-<StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0"  xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
          <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Inicio" textFill="#43425d" />
          <children>
             <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
-                  <JFXButton fx:id="btnViewProd"  contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" >
+                  <JFXButton fx:id="btnViewProd" onAction="#handleActionViewProd" contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" >
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

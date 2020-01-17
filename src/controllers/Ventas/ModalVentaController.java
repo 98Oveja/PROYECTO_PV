@@ -1,13 +1,14 @@
 package controllers.Ventas;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -15,8 +16,10 @@ import javafx.util.Callback;
 import models.Ventas_Compras.Ventas;
 
 import java.net.URL;
-import java.util.*;
-import java.util.concurrent.Callable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class ModalVentaController implements Initializable {
     @FXML

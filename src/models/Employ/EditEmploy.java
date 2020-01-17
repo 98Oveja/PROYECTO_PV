@@ -1,7 +1,12 @@
 package models.Employ;
+
 import javafx.fxml.FXML;
 import utils.ConnectionUtil;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class EditEmploy {
 

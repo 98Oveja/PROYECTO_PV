@@ -5,8 +5,19 @@
 
 }
 
-.toggle-buttonB:hover{-fx-background-color:#3C3B54}
+.toggle-buttonB:hover{-fx-background-color:#3C3B54;-fx-font-size:19px}
 .toggle-buttonB{-fx-font-family:"Source Sans Pro";-fx-font-size:18px;-fx-text-fill:#fff;-fx-pref-width:255px;-fx-pref-height:53px;-fx-max-width:255px;-fx-max-height:53px;-fx-min-height:53px;-fx-min-width:255;-fx-padding:0 0 0 52px;-fx-background-color:transparent;-fx-translate-x:0;-fx-alignment:baseline_left;-fx-cursor:HAND;-fx-focus-traversable:False}
 .toggle-buttonB:selected{-fx-background-color:#3C3B54}
 .toggle-buttonB:pressed{-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.4),10,0.5,0.0,0.0); }
-.toggle-buttonB:focused{-fx-background-color:red}
+
+.jfx-progress-bar > .track, .jfx-progress-bar > .bar {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+.jfx-progress-bar > .bar {
+    -fx-background-color: #3C3B54;
+}
+
+.jfx-progress-bar > .track {
+    -fx-background-color: transparent;
+}

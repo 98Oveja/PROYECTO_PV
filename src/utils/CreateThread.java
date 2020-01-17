@@ -1,51 +1,43 @@
 package utils;
 
 import javafx.concurrent.Task;
+import models.User;
+import models.interfaces.userImpl;
+import models.usages.UserImplem;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+public class CreateThread extends Task<User>{
 
-public class CreateThread extends Task<ResultSet> {
+    String email;
+    String pass;
+    User userAux;
 
-    String sql = null;
-    ConnectionUtil conn = null;
-    Connection con = null;
-    PreparedStatement preparedStatement = null;
+    public User getUserAux() {
+        return userAux;
+    }
 
-    public CreateThread(String value) {
-        sql = value;
+    public CreateThread(String email, String pass) {
+        this.email = email;
+        this.pass = pass;
+    }
+
+    public CreateThread() {
     }
 
     @Override
-    protected ResultSet call() throws Exception {
-        updateMessage("Processing");
-        ResultSet result = returnData();
-        updateMessage("Done");
-
-        return result;
-    }
-
-    private void createConection() throws SQLException {
-        conn = new ConnectionUtil();
-        con = conn.getConnection();
-        preparedStatement = con.prepareStatement(sql);
-
-    }
-
-    private ResultSet returnData(){
+    protected User call() {
+        updateMessage("Processing...");
+        userImpl user = new UserImplem();
+        userAux = user.read(email,pass);
+        updateMessage("Success.");
         try {
-            createConection();
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet != null){
-                return resultSet;
+            Thread.sleep(1000);
+        } catch (InterruptedException interrupted) {
+            if (isCancelled()) {
+                updateMessage("Cancelled");
             }
-        }catch (Exception e ){
-            System.out.println(e+"error");
         }
-        return null;
-    }
 
+        return userAux;
+    }
 
 }

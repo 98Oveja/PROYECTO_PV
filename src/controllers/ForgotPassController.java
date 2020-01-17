@@ -9,18 +9,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import navigator.ViewNavigator;
 import utils.CodeUtil;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 import utils.SendEmail;
-
 
 import java.io.IOException;
 import java.sql.Connection;

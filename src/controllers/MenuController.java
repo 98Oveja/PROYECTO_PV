@@ -1,10 +1,6 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
-import models.Employ.newProducts;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -13,14 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import models.Employ.newProducts;
 import utils.ConnectionUtil;
 
-import javax.swing.*;
-import javax.tools.Diagnostic;
-import java.io.DataInput;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;

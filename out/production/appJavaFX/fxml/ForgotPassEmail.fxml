@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="408.0"  onKeyPressed="#handleButtonActionKey" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ForgotPassEmailController">
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="408.0" onKeyPressed="#handleButtonActionKey" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ForgotPassEmailController">
    <children>
                <JFXButton fx:id="btnForgot" layoutX="89.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1062e5;" stylesheets="@../css/main.css" text="Guardar" />
                <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="374.0" layoutY="14.0" onMouseClicked="#handleActionClose" pickOnBounds="true" preserveRatio="true">

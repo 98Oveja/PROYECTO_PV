@@ -1,7 +1,7 @@
 package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
@@ -15,7 +15,7 @@ public class ControllerItem implements Initializable {
     public ImageView img;
     public Label statusItem;
     public HBox item;
-    public ToggleButton btn;
+    public Button btn;
     private String URL = "/images/home.png";
 
     public void setUrlImg(String url){
@@ -40,7 +40,10 @@ public class ControllerItem implements Initializable {
 
     ControllerItemSelected controllerItemSelected = new ControllerItemSelected();
 
-    public void action(ActionEvent actionEvent) {
-        controllerItemSelected.setItemSelected(btn.getText());
+    public void action() {
+        btn.setStyle("-fx-background-color:#3C3B54; ");
+        statusItem.setVisible(true);
+        System.out.println(btn.getText());
+
     }
 }
