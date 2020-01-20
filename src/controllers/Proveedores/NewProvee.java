@@ -74,7 +74,8 @@ public class NewProvee implements Initializable {
                 a1=ape[0];a2=ape[1];
             }else{a1=apellido;a2="";}
             query= "INSERT INTO PERSONAS (PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,DIRECCION,TELEFONO,CORREO,url_foto)" +
-                    "VALUES('"+n1+"','"+n2+"','"+a1+"','"+a2+"','"+direccion+"',"+tel+",'"+correo+"','"+photo+"');";
+                    "VALUES('"+n1+"','"+n2+"','"+a1+"','"+a2+"','"+direccion+"','"+tel+"','"+correo+"','"+photo+"');";
+            System.out.println(query);
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);
             preparedStatement.execute();
