@@ -2,20 +2,19 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import navigator.ViewNavigator;
 import utils.CodeUtil;
-import utils.ConnectionUtil;
 import utils.ParseEmail;
 import utils.SendEmail;
 
@@ -24,14 +23,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ForgotPassController {
+public class ForgotPassController implements ControlledScreen {
 
     static String code, Destino;
+    public Button btnReturn;
+
+    ScreensController myController;
 
     Connection con = null;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
-
 
     String Remitente,Password, Asunto, Mensaje;
 
@@ -41,21 +42,13 @@ public class ForgotPassController {
     public JFXTextField txtUsername;
     public JFXButton btnForgot;
     public Label lblErrors;
-    public ForgotPassController(){
+    //public ForgotPassController(){
 //        con = ConnectionUtil.conDB();
-        ConnectionUtil con4 = new ConnectionUtil();
-    }
-
-    public void handleButtonActionKey(KeyEvent event) throws IOException {
-        if (event.getCode().equals(KeyCode.ENTER)) {
-            forgotFunction();
-        }
-    }
-
-    public void handleButtonAction(MouseEvent event) throws IOException {
-        if (event.getSource() == btnForgot) {
-            forgotFunction();
-        }
+      //  ConnectionUtil con4 = new ConnectionUtil();
+    //}
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 
     private void forgotFunction() throws IOException {
@@ -126,9 +119,16 @@ public class ForgotPassController {
         return status;
     }
 
-    @FXML
-    void previousPane() {
-        ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW);
+    public void actionReturnPane(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnReturn) {
+            myController.setScreen(LoginController.screen1ID);
+        }
+    }
+
+    public void actionSendEmail(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == btnForgot) {
+            forgotFunction();
+        }
     }
 
 }

@@ -19,18 +19,11 @@ public class Main extends Application {
                 loadMainPane()
             )
         );
+        //stage.setResizable(true);
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
-    /**
-     * Loads the main fxml layout.
-     * Sets up the vista switching navigator.VistaNavigator.
-     * Loads the first vista into the fxml layout.
-     *
-     * @return the loaded pane.
-     * @throws IOException if the pane could not be loaded.
-     */
     private Pane loadMainPane() throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -40,7 +33,7 @@ public class Main extends Application {
                     ViewNavigator.MAIN_LOGIN
             )
         );
-        // linea 40 -> ViewNavigator.MAIN_LOGIN
+
         MainController mainController = loader.getController();
 
         ViewNavigator.setMainController(mainController);
@@ -49,13 +42,6 @@ public class Main extends Application {
         return mainPane;
     }
 
-    /**
-     * Creates the main application scene.
-     *
-     * @param mainPane the main application layout.
-     *
-     * @return the created scene.
-     */
     private Scene createScene(Pane mainPane) {
         Scene scene = new Scene(
             mainPane
@@ -64,7 +50,6 @@ public class Main extends Application {
         scene.getStylesheets().setAll(
             getClass().getResource("/css/main.css").toExternalForm()
         );
-
         return scene;
     }
 

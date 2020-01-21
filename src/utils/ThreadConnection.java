@@ -2,14 +2,9 @@ package utils;
 
 
 import javafx.application.Platform;
-import models.User;
-import models.interfaces.userImpl;
-import models.usages.UserImplem;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ThreadConnection {

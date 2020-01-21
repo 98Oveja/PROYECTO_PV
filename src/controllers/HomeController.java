@@ -1,5 +1,7 @@
 package controllers;
 
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -13,16 +15,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeController implements Initializable , ControlledScreen {
 
     public StackPane pane;
     public MenuButton paneResSearch;
     public VBox paneItemRoot;
     public Pane paneSearch;
+    ScreensController myController;
 
-    public static int getCode() {
-        return LoginController.code;
-    }
+
     public static String items; public static String[] itemsX;
     public static String item = null;
     @Override
@@ -37,7 +38,7 @@ public class HomeController implements Initializable {
                 loadPane();
             }
             loadSearchPane();
-            setVista("/fxml/Empleados/menu.fxml");
+            //setVista("/fxml/Empleados/menu.fxml");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,5 +70,11 @@ public class HomeController implements Initializable {
             paneResSearch.getItems().removeAll();
         }
     }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
+
 }
 
