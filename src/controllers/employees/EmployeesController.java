@@ -115,19 +115,17 @@ public class EmployeesController implements Initializable {
         posy = 0;
         idcard=0;
         loaderArrayData();
-
         System.out.println(cantEmploy+"**-*-*-*-*-*--");
-
-//        while (idcard < 6 ){
-//            try {
-//                card();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        while (idcard < 6){
+            try {
+                card();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-
+//C:\Users\User\Desktop\Umg\Semestre 8\Etica Profecional\my-digital-book\img
 
   }
 

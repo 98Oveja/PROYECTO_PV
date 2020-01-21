@@ -34,7 +34,7 @@ public class CardEmployController {
         city.setText("De: "+employ.dir);
         phone.setText("Movil: " +employ.tel);
         imaConverter();
-        setImgUser(imgTemporal);
+        setImgUser("images/male_user_.png");
     }
 
     public void imaConverter(){

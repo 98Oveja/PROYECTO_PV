@@ -2,40 +2,35 @@ package controllers.Ventas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXTextField;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.Ventas_Compras.Ventas;
 
+import java.awt.*;
 import java.text.DecimalFormat;
 
 public class CartaProducto{
-        @FXML
-        private Pane PanelContTarjet;
-        @FXML
-        private HBox containCard;
-        @FXML
-        private JFXTextField EtextCantidad;
-        @FXML
-        private JFXTextField EtextCodProd;
-        @FXML
-        private JFXTextField EtextProducto;
-        @FXML
-        private JFXTextField EtextPrecio;
-        @FXML
-        private JFXTextField EtextDescuento;
-        @FXML
-        private Button btnEdirar;
-        @FXML
-        private ImageView imgEdit;
-        @FXML
-        private Button BtnEliminar;
-        @FXML
-        private ImageView imgCancel;
-        @FXML
-        private JFXTextField EtextSutTotal;
+        @FXML private Pane PanelContTarjet;
+        @FXML private HBox containCard;
+        @FXML private JFXTextField EtextCantidad;
+        @FXML private JFXTextField EtextCodProd;
+        @FXML private JFXTextField EtextProducto;
+        @FXML private JFXTextField EtextPrecio;
+        @FXML private JFXTextField EtextDescuento;
+        @FXML private Button btnEdirar;
+        @FXML private ImageView imgEdit;
+        @FXML private Button BtnEliminar;
+        @FXML private ImageView imgCancel;
+        @FXML private JFXTextField EtextSutTotal;
+        public boolean hasEliminadounPanel;
+        int numPanel;
         //GETERS
         public HBox getContenedor(){
                 return containCard;
@@ -85,7 +80,11 @@ public class CartaProducto{
                 EtextDescuento.requestFocus();
         }
         public void ElimiarProduvto(ActionEvent actionEvent) {
-                PanelContTarjet.getChildren().clear();
+        hasEliminadounPanel = true;
+//        PanelContTarjet.getChildren().clear();
+//        PanelContTarjet.getChildren().remove(this.PanelContTarjet.getParent())
+        System.out.println("BRN de Eliminar el Panel Activado "+hasEliminadounPanel);
+        System.out.println("Boton Precionado desde el Panel #"+ElNumeroDelPanel());
         }
         public void recalcularDescuento(KeyEvent keyEvent) {
                 Ventas ventas = new Ventas();
@@ -111,6 +110,10 @@ public class CartaProducto{
                         EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText()));
                 }else{ EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText())); }
         }
+        public boolean getPanelEliminado(boolean siEliminado){return hasEliminadounPanel;}
+        public int ElNumeroDelPanel(){return numPanel;}
+        public void setElNumPanel(int elPanel){this.numPanel = elPanel;}
+
 }
 
 

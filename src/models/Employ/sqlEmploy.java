@@ -21,7 +21,9 @@ public class sqlEmploy {
         try {
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
-            String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ID_EMPLEADO = "+id_employ+"";
+            String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, " +
+                    "P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_photo, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO " +
+                    "FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ID_EMPLEADO = "+id_employ+" order by ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet result = instruccion.executeQuery(Query);
             if (result != null) {
@@ -35,7 +37,7 @@ public class sqlEmploy {
                     xd.dir = result.getString("DIRECCION");
                     xd.correo = result.getString("CORREO");
                     xd.tel = result.getString("TELEFONO");
-                    xd.img = result.getString("url_foto").replace("*","\\");
+                    xd.img = result.getString("url_photo").replace("*","\\");
                     xd.estado = result.getBoolean("ESTADO");
                     xd.fechaInicio = result.getString("FECHA_CONTRATACION");
                     xd.cargo = result.getString("CARGO");
@@ -55,7 +57,7 @@ public class sqlEmploy {
         String urlimage= url.replace("\\","*");
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-        String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
+        String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_photo='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlUpdate); //aca insertamos los dato
         System.out.println(sqlUpdate);
@@ -86,7 +88,8 @@ public class sqlEmploy {
 
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
-            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
+            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, " +
+                    "P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_photo, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet resulte = instruccion.executeQuery(sle);
             if (resulte != null) {
@@ -101,7 +104,7 @@ public class sqlEmploy {
                     empl.dir = resulte.getString("DIRECCION");
                     empl.correo = resulte.getString("CORREO");
                     empl.tel = resulte.getString("TELEFONO");
-                    empl.img =  resulte.getString("url_foto");
+                    empl.img =  resulte.getString("url_photo");
                     empl.estado = resulte.getBoolean("ESTADO");
                     empl.fechaInicio = resulte.getString("FECHA_CONTRATACION");
                     empl.cargo = resulte.getString("CARGO");

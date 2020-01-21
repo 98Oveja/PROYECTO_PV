@@ -25,6 +25,8 @@ public class Ventas {
     String descripcionProducto;
     double subtotal, total;
     int id_Venta,cantidad, id_producto,codigoCLiente, codigoEmpleado;
+    int numeracionPanel = 0;
+    Pane panelContenedorTarjeta = new Pane();
 public Ventas() {
     }
 //METODOS PARA LAS VALIDADCIONES
@@ -205,4 +207,16 @@ public int getIdProducto(){return  this.id_producto;}
 public String getDescripcionProducto(){return this.descripcionProducto;}
 public int getCantidad(){return this.cantidad;}
 public double getSubtotal(){return this.subtotal;}
+
+//COLOCACION DEL PANEL EN UN METODO AND ALMACENALRO
+public void almacenadorDePanelconIndece(){
+}
+public void setPanelProducto(Pane pp){this.panelContenedorTarjeta=pp;}
+public void setIncicePanel(int numPanel){this.numeracionPanel=numPanel;}
+public Pane getPanelProducto(){return this.panelContenedorTarjeta;}
+public int getIndicePanel(){return this.numeracionPanel;}
+
+
+
+
 }

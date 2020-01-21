@@ -10,7 +10,8 @@ import java.io.IOException;
 public class VentasController {
     public void OpenModal_InsertSale(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/ModalRegistrarVenta.fxml"));
+//            new FXMLLoader(getClass().getResource("/fxml/Ventas/ModalRegistrarVenta.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/ModalVentas.fxml"));
             Parent root = loader.load();
             ModalVentaController controller = loader.getController();
             Scene scene = new Scene(root);

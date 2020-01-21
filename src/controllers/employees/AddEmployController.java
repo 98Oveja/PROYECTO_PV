@@ -68,6 +68,7 @@ public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
     Image image = new Image("/images/info.png");
+//    images/info.png
     CloseModalMethod("Salir","Esta seguro que desea salir del Modal??",image,1);
 }
 @FXML
@@ -163,7 +164,9 @@ public void CloseModal(){
         }
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-        String sqlinsert= "INSERT INTO `PERSONAS` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
+        String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
+                "`SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, " +
+                "`DIRECCION`, `TELEFONO`, `CORREO`, `url_photo`) VALUES ('"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlinsert); //aca insertamos los dato
 
@@ -174,7 +177,7 @@ public void CloseModal(){
             idpersona = result.getInt("ID_PERSONA");
         }
         //esteremos realizando el segundo insert para la tabla empleados
-        String sql2= "INSERT INTO `EMPLEADOS` (`ID_EMPLEADO`, `ID_PERSONA`, `ESTADO`, `FECHA_CONTRATACION`, `FECHA_RETIRO`, `CARGO`) VALUES (NULL,'"+idpersona+"', '1', '"+dia.toString()+"', NULL, '"+place+"')";
+        String sql2= "INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `ESTADO`,`FECHA_RETIRO`, `CARGO`) VALUES ('"+idpersona+"', '1', NULL, '"+place+"')";
         statement.executeUpdate(sql2);
         statement.close();
     }
