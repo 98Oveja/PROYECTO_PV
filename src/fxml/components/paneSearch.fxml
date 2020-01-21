@@ -42,7 +42,7 @@
 
                             </styleClass>
                      </MenuButton>
-                   <Pane fx:id="paneSearch" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
+                   <Pane  prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
                      <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0" />
          </children>
       </HBox>

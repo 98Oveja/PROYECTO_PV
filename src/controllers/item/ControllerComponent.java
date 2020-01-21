@@ -54,9 +54,10 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @FXML
     public void handleButtonAction(MouseEvent event){
-        if(event.getSource() == btnSignin){
-            logIn();
-        }
+       // if(event.getSource() == btnSignin){
+         //   logIn();
+        //}
+        ViewNavigator.loadVista(ViewNavigator.HOME);
     }
 
    // public void handleButtonActionKey(KeyEvent keyEvent) {

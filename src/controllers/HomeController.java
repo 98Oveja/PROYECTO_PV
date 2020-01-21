@@ -20,7 +20,7 @@ public class HomeController implements Initializable , ControlledScreen {
     public StackPane pane;
     public MenuButton paneResSearch;
     public VBox paneItemRoot;
-    public Pane paneSearch;
+    public StackPane paneSearch;
     ScreensController myController;
 
 

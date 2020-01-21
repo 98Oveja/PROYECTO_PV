@@ -10,7 +10,7 @@
             <HBox prefHeight="70.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
                         <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="121.0" styleClass="ferreteria" stylesheets="@../css/main.css" text="Ferreteria" />
-                      <Pane fx:id="paneSearch" prefHeight="59.0" prefWidth="540.0" styleClass="panelbusqueda" />
+                  <StackPane fx:id="paneSearch" />
                </children>
             </HBox>
          </top>
