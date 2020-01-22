@@ -103,7 +103,7 @@ public class EmployeesController implements Initializable {
         idcard=0;
     }
 
-    public void initShowCard() throws IOException {
+    public void initShowCard( ) throws IOException {
         if(cantEmploy != 0){
         while (idcard < cantEmploy && idcard < 6 ){
                 card();
