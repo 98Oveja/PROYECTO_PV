@@ -113,8 +113,7 @@ public class sqlEmploy {
             System.out.println(data.size()+" recividos");
             return data;
         } catch (Exception ex) {
-            System.out.println(ex +"error aqui");
-            System.out.println("linea 117 ******************************************");
+            System.out.println("linea 117 ******************************************" + ex);
             return null;
         }
     }

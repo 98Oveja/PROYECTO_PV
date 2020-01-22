@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <left>
+            <VBox prefHeight="400.0" prefWidth="152.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton mnemonicParsing="false" prefHeight="53.0" prefWidth="155.0" text="Inicio" />
+                  <ToggleButton fx:id="btnproveedores" mnemonicParsing="false" onAction="#handleProve" prefHeight="55.0" prefWidth="157.0" text="Proveedores" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <StackPane fx:id="pane" prefHeight="533.0" prefWidth="765.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

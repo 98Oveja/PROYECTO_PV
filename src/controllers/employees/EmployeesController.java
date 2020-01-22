@@ -89,19 +89,11 @@ public class EmployeesController implements Initializable {
         containercard.setColumnIndex(parent,posy);
         containercard.getChildren().addAll(parent);
             posx=posx+1;
-//            System.out.println(" linea x : "+posx);
-//            System.out.println(" linea y : "+posy);
         if(posx==3){
             posy=1;
             posx=0;
         }
-        if(posy == 1 && posx== 3){
-            containercard.getChildren().clear();
-            while (idcard < cantEmploy && idcard < 12){
-                card();
-            }
-        }
-        idcard =idcard+1;
+     idcard =idcard+1;
     }
     public void loaderArrayData(){
         arrayEmploy = dataEmp.employDB();
@@ -134,6 +126,5 @@ public class EmployeesController implements Initializable {
             e.printStackTrace();
         }
     }
-
   }
 

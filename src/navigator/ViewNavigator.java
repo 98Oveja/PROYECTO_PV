@@ -16,7 +16,8 @@ public class ViewNavigator {
     public static final String MAIN_LOGIN = "/fxml/Login.fxml";
     public static final String LOGIN_VIEW = "/fxml/LoginView.fxml";
     public static final String LOGIN_VIEW_PASS = "/fxml/ForgotPass.fxml";
-    public static final String HOME = "/fxml/Home.fxml";
+//    public static final String HOME = "/fxml/Home.fxml";
+    public static final String HOME = "/fxml/Empleados/Employees.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

@@ -1,5 +1,7 @@
 package controllers.employees;
 
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +18,13 @@ import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CardEmployController {
     @FXML
@@ -50,42 +58,34 @@ public class CardEmployController {
         }
     }
 
+    public int errorLoadImage( String dir){
+        Image image = new Image(dir,true);
+        AtomicInteger ex = new AtomicInteger();
+        image.errorProperty().addListener(o -> {
+            System.err.println("Error Loading Image " + image.getUrl());
+            ex.getAndIncrement();
+        } );
+
+        return ex.get();
+    }
+
     public void setImgUser(String url) {
         Circle circle = new Circle(80,80,40);
-        Image image = new Image(url,true);
+        Image image;
         Image ima = new Image("images/male_user_.png", false);
-//          image.errorProperty().addListener(
-//                  (obs,ov,nv) -> {
-//                      System.out.println("line 56 progreso ----- " + nv);
-//                      if(nv==true){
-//                          circle.setFill(new ImagePattern(image));
-//                      }
-//                  }
-//          );
-//
-//          image.exceptionProperty().addListener((obs,ov,nv) -> {
-//              if(nv.getMessage().contains("java.io.FileNotFoundException:")){
-//                  System.out.println("Cubrio el error--75");
-//                  circle.setFill(new ImagePattern(ima));
-//              }
-//          });
-        AtomicBoolean sta = new AtomicBoolean(false);
-        image.errorProperty().addListener((obs,ov,nv) -> {
-            System.out.println("error=" + nv);
-            if(nv.booleanValue() == true){
-                System.out.println("Line 73: "+nv.booleanValue());
-             sta.set(nv.booleanValue());
-            }
-        });
-        if(sta.get()){
-            System.out.println("sta.get" + sta.get());
+
+        try{
+            URL url1= new URL(url);
+            URLConnection connection = url1.openConnection();
+            InputStream inputStreamReader = connection.getInputStream();
+            image = new Image(inputStreamReader);
+            circle.setFill(new ImagePattern(image));
+            System.out.println("logro cargar la imagen buena");
+        }catch (Exception ex){
+            System.err.println("Linea 90 " + ex);
+           imgTemporal = "images/male_user_.png";
+            circle.setFill( new ImagePattern(ima));
         }
-//        circle.setFill(new ImagePattern(image));
-        image.exceptionProperty().addListener((obs,ov,nv) ->{
-                System.out.println("exception=" + nv.getClass() + ", msg=" + nv.getMessage());
-                    circle.setFill(new ImagePattern(ima));
-                }
-        );
 
         photoEmploy.setCenter(circle);
     }
@@ -103,16 +103,11 @@ public class CardEmployController {
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
-
             if(controller.BtnOk==1){
                 sqlEmploy del = new sqlEmploy();
                 del.deleteEmploy(employ.idemp);
-                System.out.println("ya dio LA ELIMINACION");
                 controller.pressedExit();
-            }else{
-                System.out.println("NO SE DIO DE BAJA");
             }
-
         }catch (Exception ex){ ex.printStackTrace();}
     }
 
@@ -144,12 +139,8 @@ public class CardEmployController {
             controller.BtnSaveEmploy.setVisible(false);
             controller.BtnUpdateEmploy.setVisible(true);
             controller.initDatos(controller.EmployPlace.getText());
+            controller.setImgUser(imgTemporal);
 
-            if(res.img.contains("\\")){
-                controller.setImgUser("file:/"+res.img);
-            }else{
-            controller.setImgUser("images/male_user_.png");
-            }
             Scene dialogo = new Scene(root);
             Stage stagedialog = new Stage();
             stagedialog.initStyle(StageStyle.UNDECORATED);
