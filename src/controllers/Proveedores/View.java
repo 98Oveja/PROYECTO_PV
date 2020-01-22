@@ -3,7 +3,6 @@ package controllers.Proveedores;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import utils.ConnectionUtil;
 import utils.closeView;
@@ -59,7 +58,6 @@ public class View implements Initializable {
                 Cuenta.setText("No. Cuenta: "+cuenta);
             }
         }
-
     }
 
     public void Cerrar(javafx.event.ActionEvent actionEvent) {

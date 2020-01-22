@@ -33,20 +33,27 @@ import java.util.stream.Collectors;
 
 public class Principal implements Initializable{
     ArrayList<String> Proveedores = new ArrayList<String>();
-    ConnectionUtil conn = new ConnectionUtil();
-    Connection conexion = null;
+        ConnectionUtil conn = new ConnectionUtil();
+        Connection conexion = null;
     @FXML private TextField labelSearch;
     @FXML private GridPane Pane;
+    @FXML private Button activo, inactivo;
     static String nombre,descripcion,movil,org,path;
+    String Query1 = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO, DIRECCION, TELEFONO, url_foto, ORG, NO_CUENTA FROM PERSONAS INNER JOIN PROVEEDORES " +
+            "WHERE PERSONAS.ID_PERSONA=PROVEEDORES.ID_PERSONA AND PROVEEDORES.ESTADO=1;";
+    String Query2 = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO, DIRECCION, TELEFONO, url_foto, ORG, NO_CUENTA FROM PERSONAS INNER JOIN PROVEEDORES " +
+            "WHERE PERSONAS.ID_PERSONA=PROVEEDORES.ID_PERSONA AND PROVEEDORES.ESTADO=0;";
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    datos();
+        datos(Query1);
     }
     String getNombre(){return nombre;}
     String getDescripcion(){return descripcion;}
     String getMovil(){return movil;}
     String getOrg(){return org;}
-    String getPath(){return path;}
+    String getPath(){return path;
+    }
 
     public void rellenar(int row,int column){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Proveedores/Card.fxml"));
@@ -74,12 +81,12 @@ public class Principal implements Initializable{
         }
     }
 
-    public void datos() {
+    public void datos(String Query) {
+        activo.setStyle("-fx-font-size: 16px;    -fx-background-color: #3B86FF;");
+        inactivo.setStyle(".boton-mini");
         Proveedores.clear();
         String nombre, apellido, direccion, org, tel, dato, photo, cuenta;
         try {
-            String Query = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO, DIRECCION, TELEFONO, url_foto, ORG, NO_CUENTA FROM PERSONAS INNER JOIN PROVEEDORES " +
-                    "WHERE PERSONAS.ID_PERSONA=PROVEEDORES.ID_PERSONA AND PROVEEDORES.ESTADO=1;";
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
@@ -104,16 +111,32 @@ public class Principal implements Initializable{
     }
 
     public void Abrir(ActionEvent actionEvent) throws IOException {
+        Double height = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        Double width = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         final Stage primaryStage = new Stage();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         dialog.initOwner(primaryStage);
-        dialog.setX(500);
-        dialog.setY(100);
+        dialog.setX((width/2)-(570/2));
+        dialog.setY((height/2)-(779/2));
         Scene dialogScene = null;
         dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Proveedores/NuevoProveedor.fxml")));
         dialog.setScene(dialogScene);
         dialog.show();
+    }
+
+    public void Inactivos(ActionEvent actionEvent) {
+        Pane.getChildren().clear();
+        datos(Query2);
+        inactivo.setStyle("-fx-font-size: 16px;    -fx-background-color: #3B86FF;");
+        activo.setStyle(".boton-mini");
+    }
+
+    public void Activos(ActionEvent actionEvent) {
+        Pane.getChildren().clear();
+        datos(Query1);
+        activo.setStyle("-fx-font-size: 16px;    -fx-background-color: #3B86FF;");
+        inactivo.setStyle(".boton-mini");
     }
 }

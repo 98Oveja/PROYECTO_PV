@@ -8,23 +8,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+import utils.closeView;
+
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class NewProvee implements Initializable {
-    @FXML private TextField Nombre;
-    @FXML private TextField Apellidos;
-    @FXML private TextField Direccion;
-    @FXML private TextField Telefono;
-    @FXML private TextField Correo;
-    @FXML private TextField Organizacion;
-    @FXML private TextField Cuenta;
+    @FXML private TextField Nombre,Apellidos,Direccion,Telefono,Correo,Organizacion,Cuenta;
     @FXML private ImageView Photo;
+    @FXML private Pane Container;
 
     eventos event = new eventos();String path;
     ConnectionUtil conn = new ConnectionUtil();
@@ -100,7 +98,6 @@ public class NewProvee implements Initializable {
         }
     }
 
-
     private void limipiar() {
         Nombre.clear();
         Apellidos.clear();
@@ -110,5 +107,10 @@ public class NewProvee implements Initializable {
         Organizacion.clear();
         Cuenta.clear();
         Photo.setImage(null);
+    }
+
+    public void Close(ActionEvent actionEvent) {
+        closeView close= new closeView();
+        close.Cerrar(Container);
     }
 }
