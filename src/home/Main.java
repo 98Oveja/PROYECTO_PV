@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import navigator.ViewNavigator;
 
 import java.io.IOException;
@@ -19,7 +20,8 @@ public class Main extends Application {
                 loadMainPane()
             )
         );
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
