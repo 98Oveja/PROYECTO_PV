@@ -22,12 +22,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import models.User;
 import navigator.ViewNavigator;
-import utils.ConnectionUtil;
 import utils.CreateThread;
 import utils.ParseEmail;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 import java.util.Timer;
 
@@ -127,10 +125,10 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TasKT taskTime = new TasKT(btnSignin);
-        Timer temporizador = new Timer();
-        Integer segundos = 2;
-        temporizador.scheduleAtFixedRate(taskTime, 0, 1000*segundos);
+        //TasKT taskTime = new TasKT(btnSignin);
+        //Timer temporizador = new Timer();
+        //Integer segundos = 2;
+        // temporizador.scheduleAtFixedRate(taskTime, 0, 1000*segundos);
 
     }
 

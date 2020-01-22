@@ -1,6 +1,8 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -21,13 +23,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class MenuController implements Initializable, ControlledScreen {
     public JFXButton btnViewProd;
     public JFXButton btnViewCli;
     public JFXButton btnViewRep;
     public JFXButton btnViewVen;
     public JFXButton btnViewEst;
     public StackPane ContenedorMenu;
+
+    ScreensController myController;
+
     @FXML
     private ImageView NewImageProducts;
     @FXML
@@ -113,7 +118,7 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-            produtosAnimation();
+            //produtosAnimation();
 
     }
 
@@ -140,5 +145,10 @@ public class MenuController implements Initializable {
     public void handleActionViewEst(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewEst){
         }
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }
