@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 
-<StackPane prefWidth="800.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
+<StackPane prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
          <children>
       <HBox alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="657.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" styleClass="boton-notificaciones" />
-                             <MenuButton ellipsisString="User" mnemonicParsing="false" prefHeight="42.0" prefWidth="169.0" styleClass="tipografia" text="Usuario" textFill="#bdb7ca">
+                             <MenuButton ellipsisString="User" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" styleClass="tipografia" text="Usuario" textFill="#bdb7ca">
                                  <items>
                                      <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
                                      <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
