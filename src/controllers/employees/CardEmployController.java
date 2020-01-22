@@ -115,27 +115,27 @@ public class CardEmployController {
     private void pressedEditModal() {
 
         try {
-            dataEmploy res;
-            sqlEmploy editEmploy = new sqlEmploy();
-            res = editEmploy.searchData(employ.idemp);
+//            dataEmploy res;
+//            sqlEmploy editEmploy = new sqlEmploy();
+//            res = editEmploy.searchData(employ.idemp);
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
             AddEmployController controller = Loader.getController();
             controller.TitleModal.setText("Editar Empleados");
-            controller.EmployNameOne.setText(res.name1);
+            controller.EmployNameOne.setText(employ.name1);
             controller.EmployNameOne.setDisable(true);
-            controller.EmployNameTwo.setText(res.name2);
+            controller.EmployNameTwo.setText(employ.name2);
             controller.EmployNameTwo.setDisable(true);
-            controller.EmployLasteNameOne.setText(res.lastname1);
+            controller.EmployLasteNameOne.setText(employ.lastname1);
             controller.EmployLasteNameOne.setDisable(true);
-            controller.EmployLasteNameTwo.setText(res.lastname2);
+            controller.EmployLasteNameTwo.setText(employ.lastname2);
             controller.EmployLasteNameTwo.setDisable(true);
-            controller.EmployDir.setText(res.dir);
+            controller.EmployDir.setText(employ.dir);
             controller.EmployDir.setDisable(true);
-            controller.EmployPhone.setText(res.tel+"");
-            controller.EmployDate.setText(res.fechaInicio);
-            controller.EmployPlace.setText(res.cargo);
-            controller.EmployEmail.setText(res.correo);
+            controller.EmployPhone.setText(employ.tel+"");
+            controller.EmployDate.setText(employ.fechaInicio);
+            controller.EmployPlace.setText(employ.cargo);
+            controller.EmployEmail.setText(employ.correo);
             controller.BtnSaveEmploy.setVisible(false);
             controller.BtnUpdateEmploy.setVisible(true);
             controller.initDatos(controller.EmployPlace.getText());
@@ -147,21 +147,15 @@ public class CardEmployController {
             stagedialog.initModality(Modality.APPLICATION_MODAL);
             stagedialog.setScene(dialogo);
             stagedialog.showAndWait();
-
             if(controller.emDb.img!=null){
-                res.img = controller.emDb.img;
-            }else {
-
+                employ.img = controller.emDb.img;
             }
-            if(controller.status == 1){
-                controller.loaderModalInfo();
                 if(controller.infoStatus==1) {
-                    editEmploy.updateEmploy(res.idper, res.idemp, controller.EmployPhone.getText(), res.img, controller.EmployPlace.getText());
+                    sqlEmploy editEmploy = new sqlEmploy();
+                    editEmploy.updateEmploy(employ.idper, employ.idemp, controller.EmployPhone.getText(), employ.img, controller.EmployPlace.getText());
                     System.out.println("Actualizacion exitosa");
-                }else{
-                    pressedEditModal();
                 }
-            }
+
         }catch (Exception ex){
             System.out.println("linea 146 ------- "+ex);}
     }

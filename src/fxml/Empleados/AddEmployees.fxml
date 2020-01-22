@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.AddEmployController">
    <children>
       <Label fx:id="TitleModal" layoutX="26.0" layoutY="34.0" prefHeight="38.0" prefWidth="286.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Agregar Empleado" textFill="WHITE">
@@ -73,10 +71,7 @@
          </font>
       </Label>
       <TextField fx:id="EmployDate" disable="true" editable="false" layoutX="210.0" layoutY="365.0" prefHeight="35.0" prefWidth="289.0" promptText="Se agregara la fecha de hoy." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado     " styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
-         <cursor>
-            <Cursor fx:constant="DISAPPEAR" />
-         </cursor></TextField>
+      <TextField fx:id="EmployPlace" layoutX="213.0" layoutY="431.0" onKeyPressed="#validatorPlace" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado     " styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <Label layoutX="25.0" layoutY="498.0" prefHeight="21.0" prefWidth="82.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Correo:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -102,7 +97,7 @@
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="220.0" layoutY="436.0" onAction="#selectItem" opacity="0.0" prefHeight="25.0" prefWidth="273.0" unFocusColor="#43425d">
+      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="272.0" layoutY="431.0" onAction="#selectItem" opacity="0.0" prefHeight="35.0" prefWidth="221.0" unFocusColor="#43425d">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -135,6 +130,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Button layoutX="461.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" />
    </children>
 </AnchorPane>

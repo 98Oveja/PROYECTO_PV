@@ -62,7 +62,7 @@ public class AddEmployController implements Initializable {
     java.sql.Date dia = new java.sql.Date(milsec);
     ObservableList<String> list= FXCollections.observableArrayList("Administrador","Bodeguero","Vendedor","Secretaria");
 
-public int idpersona,status,infoStatus;
+public int idpersona,infoStatus;
 public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
@@ -90,8 +90,7 @@ public void CloseModal(){
          stagedialog.setScene(dialogo);
          stagedialog.showAndWait();
          if(controller.BtnOk==1 && op==1){
-             Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
-             stage.close();
+             exitAddEmployModal();
          }
      }catch (Exception ex){ System.out.println(ex);}
  }
@@ -110,26 +109,32 @@ public void CloseModal(){
 
     @FXML
     public void AddEmploy(ActionEvent event) throws SQLException, IOException {
-       initDatos(placeList.getValue());
-       EmployPlace.setText(placeList.getValue());
-        if (EmployPlace.getText()==null){
-            EmployPlace.setPromptText("Elige un puesto");
-            EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
-            warningFive.setVisible(true);
-        }
-        if(warningOne.isVisible() || warningTwo.isVisible() || warningThree.isVisible() || warningFour.isVisible() || warningFive.isVisible() || warningSix.isVisible()){
+        initDatos(placeList.getValue());
+
+        validatorPlace();
+          int vl = validatorWarnings();
+            if(vl == 0) {
+                loaderModalInfo();
+                if (infoStatus == 1) {
+                    querySql(emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo);//metodo insertar
+                    ClearTextField();//limipiar los textfield
+                    System.out.println("Insertado...");
+                } else {
+                    System.out.println("Cancelo el ingreso");
+                }
+            }
+    }
+
+    public int validatorWarnings(){
+        if(warningOne.isVisible() || warningTwo.isVisible() || warningThree.isVisible() || warningFour.isVisible() || warningFive.isVisible() || warningSix.isVisible() ||
+            EmployPlace.getLength() == 0 || EmployNameOne.getLength() == 0 || EmployLasteNameOne.getLength() == 0 || EmployDir.getLength() == 0 || EmployEmail.getLength() == 0 || EmployPhone.getLength() == 0){
             Image image = new Image("/images/info.png");
             CloseModalMethod("Informacion","Debe llenar los datos requeridos",image,0);
+            return 1;
         }else {
-           loaderModalInfo();
-            if (infoStatus == 1) {
-                querySql(emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo);//metodo insertar
-                ClearTextField();//limipiar los textfield
-                System.out.println("Insertado...");
-            } else {
-                System.out.println("Cancelo el ingreso");
-            }
+            return 0;
         }
+
     }
 
     public void loaderModalInfo() throws IOException {
@@ -188,7 +193,6 @@ public void CloseModal(){
         emDb.img="NULL";
     }
 
-    //URL de la imagen
     @FXML
     public String searchEmploy(MouseEvent event) throws IOException {
         FileChooser fc = new FileChooser();
@@ -197,7 +201,6 @@ public void CloseModal(){
         if (selectedFile != null) {
            emDb.img= selectedFile.getPath();
             return setImgUser("file:/"+emDb.img);
-
         } else{
             return "/images/male_user_.png";
         }
@@ -279,6 +282,15 @@ public void CloseModal(){
          }
      }}
 
+     @FXML
+     private void validatorPlace(){
+         if ( EmployPlace.getText() == null ){
+             EmployPlace.setPromptText("Elige un puesto");
+             EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
+             warningFive.setVisible(true);
+         }
+     }
+
     @FXML
     private void EventKeyEnterLasteNameTwo(KeyEvent event){
         if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();
@@ -328,10 +340,18 @@ public void CloseModal(){
      warningFive.setVisible(false);
     }
     @FXML
-    public void btnUpdate(){
+    public void btnUpdate() throws IOException {
+       int n = validatorWarnings();
+        if( n == 0){
+            loaderModalInfo();
+            if(infoStatus == 1){
+                exitAddEmployModal();
+            }
+        }
+    }
+    public void exitAddEmployModal(){
         Stage stage = (Stage) PanelAddEmploy.getScene().getWindow();
         stage.close();
-        status = 1;
     }
 
     @Override
@@ -339,7 +359,6 @@ public void CloseModal(){
         setImgUser("/images/male_user_.png");
         EmployDate.setText(dia.toString());
         placeList.setItems(list);
-        EmployPlace.setEditable(false);
         validorGeneral();
     }
 }
