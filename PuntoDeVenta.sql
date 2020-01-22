@@ -1,61 +1,67 @@
 CREATE TABLE CATEGORIAS (
                             `ID_CATEGORIA` int(11) NOT NULL auto_increment,
-                            `NOMBRE` varchar(20) NOT NULL,
-                            `DESCRIPCION` varchar(50) NOT NULL,
+                            `NOMBRE` varchar(50) NOT NULL,
+                            `DESCRIPCION` varchar(100) NOT NULL,
                             constraint PK_Categoria primary key (ID_CATEGORIA)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
--- drop table Categorias; -- select * from Categorias;
--- Volcado de datos para la tabla `CATEGORIAS`
-INSERT INTO CATEGORIAS(`NOMBRE`, `DESCRIPCION`) VALUES
-('producto1', 'descripcion de producto 1'),
-('producto2', 'descripcion de producto 2'),
-('producto3', 'descripcion de producto 3'),
-('producto4', 'descripcion de producto 4'),
-('producto5', 'descripcion de producto 5'),
-('producto6', 'descripcion de producto 6'),
-('producto7', 'descripcion de producto 7');
--- select * from Categorias;
+
+SELECT * FROM CATEGORIAS;
+
+INSERT INTO CATEGORIAS (NOMBRE,DESCRIPCION)
+VALUES ("Otros","Categoria desconocida"),
+       ("Herramientas de mano","Herramientas pequeñas que caben en la mano"),
+       ("Herramientas de sujeción ","Herramientas que sujetan o de apriete"),
+       ("Elementos de unión","Para unir madera metal u otros materiales"),
+       ("Herramientas para construcción e instaladores","Herramientas para construcciones"),
+       ("Herramientas para máquina-herramienta","Herramientas para euqipos electricos u otros"),
+       ("Herramientas para madera y carpintería","Madera y herramientas de carpinteria"),
+       ("Herramientas abrasivas","Herramientas varios"),
+       ("Herramientas eléctricas y neumáticas","Herramientas varios"),
+       ("Herramientas automotrices para jardinería","Herramientas varios"),
+       ("Herramientas manuales para huerto y jardín","Herramientas varios"),
+       ("Máquinas manuales para construcción y obra pública","Herramientas varios"),
+       ("Materiales de desgaste para construcción y obra pública","Herramientas varios"),
+       ("Medios y equipos de obra","Herramientas varios"),
+       ("Herrajes","Herramientas varios"),
+       ("Automatismos para puertas y ventanas","Herramientas varios"),
+       ("Artículos de seguridad","Herramientas varios"),
+       ("Equipamiento para soldadura","Herramientas varios"),
+       ("Válvulas","Herramientas varios"),
+       ("Tuberías y sus accesorios","Herramientas varios"),
+       ("Componentes diversos","Herramientas varios"),
+       ("Productos de fijación y sellado","Herramientas varios"),
+       ("Pinturas, esmaltes y barnices","Herramientas varios"),
+       ("Escaleras","Herramientas varios"),
+       ("Equipamiento de taller","Herramientas varios"),
+       ("Lubricantes","Herramientas varios"),
+       ("Productos para limpieza profesional","Herramientas varios"),
+       ("Utensilios de limpieza","Herramientas varios"),
+       ("Productos de higiene personal","Herramientas varios"),
+       ("Equipos de protección individual","Herramientas varios"),
+       ("Menaje de cocina","Herramientas varios"),
+       ("Artículos para el hogar","Herramientas varios"),
+       ("Iluminación y alumbrado","Herramientas varios"),
+       ("Medición dimensional","Herramientas varios"),
+       ("Software para Ferretería y Suministro Industrial","Herramientas varios"),
+       ("Varios ferretería","Herramientas varios"),
+       ("Compra-venta","Herramientas varios"),
+       ("Distribución","Herramientas varios");
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `PERSONAS`
 CREATE TABLE `PERSONAS` (
                             `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT,
-                            `PRIMER_NOMBRE` varchar(12) NOT NULL,
-                            `SEGUNDO_NOMBRE` varchar(12) NOT NULL,
-                            `PRIMER_APELLIDO` varchar(12) NOT NULL,
-                            `SEGUNDO_APELLIDO` varchar(12) NOT NULL,
-                            `DIRECCION` varchar(40) DEFAULT "CIUDAD",
-                            `TELEFONO` varchar(10) DEFAULT "NO PHONE",
+                            `PRIMER_NOMBRE` varchar(20) NOT NULL,
+                            `SEGUNDO_NOMBRE` varchar(20) NOT NULL,
+                            `PRIMER_APELLIDO` varchar(20) NOT NULL,
+                            `SEGUNDO_APELLIDO` varchar(20) NOT NULL,
+                            `DIRECCION` varchar(50) DEFAULT "CIUDAD",
+                            `TELEFONO` varchar(12) DEFAULT "NO PHONE",
                             `CORREO` varchar(20) DEFAULT "NO EMAIL",
                             CONSTRAINT PK_PERSONAS PRIMARY KEY (ID_PERSONA)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 -- Volcado de datos para la tabla `PERSONAS`
-INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`) VALUES
-('Alfredo', 'Manuel', 'Bautista', 'Encina', 'Guatemala', '87238723', 'algred@gmail.com'),
-('Alejandro', 'Rodrigo', 'Mejía', 'Vázquez', 'Solola', '87420012', 'alejandro@gmail.com'),
-('Juan', 'Miguel', 'de Jesús', 'Benítez', 'Quetzaltenango', '67210902', 'juanmi@gmail.com'),
-('Manrique', 'José', 'Gregorio', 'Bermúdez', 'Totonicapan', '87239912', 'manjose@gmail.com'),
-('Antonio', 'Bermúdez', 'Salvador', 'Bernal', 'Guatemala', '98325200', 'antonio@gmail.com'),
-('Taide', 'Betancourt', 'Rosales', 'Gigliola', 'San Marcos', '87310022', 'taideb@gmail.com'),
-('Miguel', 'Ángel', 'Vázquez', 'Betanzos', 'Jutiapa', '57230211', 'miguel@gmail.com'),
-('Torres', 'Noel', 'Blanco', 'Velasco', 'Guatemala', '84002312', 'noel@gmail.com'),
-('Humberto', 'Alejandro', 'Bolaños', 'Sánchez', 'Guatemala', '33202312', 'torres@gmail.com'),
-('César', 'Bremermann', 'Borraz', 'Briseño', 'Quetzaltenango', '63219832', 'cesar@gmail.com'),
-('Abel', 'Arias', 'Buenfil', 'Díaz', 'Guatemala', '87238723', 'algred@gmail.com'),
-('Iván', 'Solis', 'Burguete', 'García', 'Totonicapan', '32400193', 'ivan@gmail.com'),
-('Miguel', 'Ángel', 'Bustamante', 'Guerrero', 'Quetzaltenango', '88734522', 'miguel@gmail.com'),
-('Maria', 'Cristina', 'Guerrero', 'Gomez', 'Totonicapan', '77340293', 'maria@gmail.com'),
-('Celia', 'Carolina', 'Torres', 'Mendez', 'Quetzaltenango', '87420323', 'celia@gmail.com'),
-('Fredy', 'Francisco', 'Alarcon', 'Licona', 'Guatemala', '87321104', 'fredy@gmail.com'),
-('Leonel', 'Herson', 'López', 'Pérez', 'Solola', '76421200', 'leonel@gmail.com'),
-('José', 'Daniel', 'Camacho', 'Porras', 'Guatemala', '98123200', 'jose@gmail.com'),
-('Diana', 'Carina', 'Barrera', 'Mendez', 'Quetzaltenango', '76231222', 'diana@gmail.com'),
-('Ana', 'Sofia', 'Porras', 'Vásquez', 'Totonicapan', '53232309', 'ana@gmail.com'),
-('Elizabeth', 'Sofia', 'Garcia', 'Loarca', 'Quetzaltenango', '87324534', 'elizabeth@gmail.com');
-SELECT * FROM PERSONAS;
-insert INTO PERSONAS(`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`)
-VALUES
-('Luis', 'Fernando', 'Palomo', 'Kempez');
-delete from Personas where id_persona = 23;
+INSERT INTO PERSONAS (`PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`) VALUES
+('Desconocido', '', 'Desconocido', '', 'Desconocido', '', 'desconocido');
 -- ---------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `CLIENTES`
@@ -71,22 +77,6 @@ CREATE TABLE CLIENTES (
 --
 -- Volcado de datos para la tabla `CLIENTES`
 --
-
-INSERT INTO `CLIENTES` (`ID_PERSONA`, `NIT`) VALUES
-(11, '174887-4'),
-(12, '782312-5'),
-(13, '87211A-9'),
-(14, '87323F-9'),
-(15, '828210-F'),
-(16, '98234F-5'),
-(17, '983241-8'),
-(18, '87123C-2'),
-(18, '983144-1'),
-(20, '873212-G');
-
-INSERT INTO `CLIENTES` (`ID_PERSONA`) VALUES
-(21),(22);
-select * from Clientes;
 --
 -- Estructura de tabla para la tabla `EMPLEADOS`
 --
@@ -106,14 +96,6 @@ CREATE TABLE `EMPLEADOS` (
 --
 -- Volcado de datos para la tabla `EMPLEADOS`
 --
-
-INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `CARGO`) VALUES
-(6, 'Administrador'),
-(7, 'Vendedor'),
-(8, 'Vendedor'),
-(9, 'Bodegero'),
-(10,'Bodegero');
-SELECT * FROM EMPLEADOS;
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `PROVEEDORES`
@@ -133,21 +115,13 @@ CREATE TABLE `PROVEEDORES` (
 -- Volcado de datos para la tabla `PROVEEDORES`
 --
 INSERT INTO `PROVEEDORES` (`ID_PERSONA`, `ORG`, `NO_CUENTA`) VALUES
-(1, 'organizacion xc', '1223445xxxx'),
-(2, 'organizacion x4', '1233445xxxx'),
-(3, 'organizacion xd', '1234445xxxx'),
-(4, 'organizacion xr', '1234455xxxx');
-INSERT INTO `PROVEEDORES` (`ID_PERSONA`) VALUES
-(5),(21);
-SELECT * FROM PROVEEDORES;
-
-
+(1, 'Desconocido', '');
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `COMPRAS`
 --
 
-CREATE TABLE `COMPRAS` (
+CREATE TABLE `COMPRAS` IF NOT EXISTS (
                            `ID_COMPRA` int(11) NOT NULL auto_increment,
                            `FECHA` datetime default current_timestamp,
                            `CANTIDAD` decimal(10,0) NOT NULL,
@@ -158,15 +132,6 @@ CREATE TABLE `COMPRAS` (
 -- Volcado de datos para la tabla `COMPRAS`
 --
 
-INSERT INTO `COMPRAS` (`FECHA`, `CANTIDAD`) VALUES
-('2019-11-12 14:30:55', '12'),
-('2019-11-16 8:30:55', '13'),
-('2019-11-17 12:30:55', '14'),
-('2019-11-20 09:30:55', '10'),
-('2019-11-22 17:30:55', '11');
-select * from COMPRAS;
-INSERT INTO `COMPRAS` (`CANTIDAD`) VALUES('10');
-select * from compras;
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `PRODUCTOS`
@@ -179,30 +144,25 @@ CREATE TABLE `PRODUCTOS` (
                              `ID_COMPRA` int(11) NOT NULL,
                              `MARCA` varchar(40) default "Sin Marca",
                              `NOMBRE` varchar(40) NOT NULL,
+                             `DESCRIPCION` varchar(255) DEFAULT "",
+                             `CODIGO` varchar(8) NOT NULL,
                              `CANTIDAD` decimal(10,00) NOT NULL,
                              `PRECIO_COMPRA` double NOT NULL,
                              `PRECIO_VENTA` double NOT NULL,
-                             `IMG` varchar(150) default "URL no Found",
+                             `IMG` varchar(150),
                              `ESTADO` tinyint(1) default 1,
                              CONSTRAINT PK_Producto primary key (id_producto),
                              CONSTRAINT FK_Producto_Categoria FOREIGN KEY (id_categoria)
-                                 REFERENCES categorias (id_categoria),
+                                 REFERENCES CATEGORIAS (id_categoria),
                              CONSTRAINT FK_Producto_Compra FOREIGN KEY (id_compra)
-                                 REFERENCES compras (id_compras)
---   constraint FK_Producto_Proveedor foreign key (id_proveedores)
--- references Proveedor (id_proveedor)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-alter table PRODUCTOS add constraint FK_Producto_Proveedor foreign key (ID_PROVEEDORES)
-    references PROVEEDORES (ID_PROVEEDOR);
-desc PRODUCTOS;
+                                 REFERENCES COMPRAS (ID_COMPRA),
+                                 constraint FK_Producto_Proveedor foreign key (ID_PROVEEDORES)
+                                 references PROVEEDORES (ID_PROVEEDOR)
+)
+    ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `PRODUCTOS`
 --
-
-INSERT INTO `PRODUCTOS` (`ID_CATEGORIA`, `ID_PROVEEDORES`, `ID_COMPRA`, `MARCA`, `NOMBRE`, `CANTIDAD`, `PRECIO_COMPRA`, `PRECIO_VENTA`, `IMG`, `ESTADO`) VALUES
-(1, 3, 4, 'Marca x', 'martillo', '123', 11.24, 15.5, 'img/martillo.jpg', 1),
-(1, 1, 5, 'Marca x', 'martillo', '123', 11.24, 15.5, 'img/martillo.jpg', 1);
-select * from PRODUCTOS;
 -- Estructura de tabla para la tabla `DETALLE_VENTA`
 --
 
@@ -255,7 +215,6 @@ CREATE TABLE `USUARIOS` (
                             `CARGO` varchar(20) NOT NULL,
                             constraint PK_usuraio primary key (id_usuario)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-select * from USUARIOS;
 -- --------------------------------------------------------
 
 --
@@ -270,8 +229,7 @@ CREATE TABLE `VENTAS` (
                           `FECHA` datetime NOT NULL default current_timestamp,
                           constraint PK_ventas primary key (id_venta)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-select * from ventas;
-desc ventas;
+
 -- ---------------------
 SELECT Host, User FROM mysql.user;
 -- WHERE LENGTH(Password) > 16;

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="PaneConteiner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="376.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.View">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="photo" fitHeight="230.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <BorderPane fx:id="Border" prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <VBox prefHeight="230.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="Nombre" prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,.5);" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="Tel" layoutX="20.0" layoutY="20.0" prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,.5);" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="Organ" layoutX="10.0" layoutY="66.0" prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,.5);" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="Direc" layoutX="10.0" layoutY="112.0" prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,.5);" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="Cuenta" layoutX="10.0" layoutY="188.0" prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,.5);" text="No. Cuenta:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+         <right>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Cerrar" prefHeight="31.0" prefWidth="32.0" style="-fx-background-color: rgba(0,0,0,.5);" styleClass="boton-delete" stylesheets="@../../css/Proveedores/Style.css">
+                     <VBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </right></BorderPane>
+   </children>
+</StackPane>

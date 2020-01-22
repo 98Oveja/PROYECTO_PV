@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+<StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <children>
       <BorderPane>
          <top>
-            <HBox prefHeight="70.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="70.0" prefWidth="963.0" BorderPane.alignment="CENTER">
                <children>
                         <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="121.0" styleClass="ferreteria" stylesheets="@../css/main.css" text="Ferreteria" />
-                  <StackPane fx:id="paneSearch" />
+                  <StackPane fx:id="paneSearch" prefHeight="70.0" prefWidth="851.0" />
                </children>
             </HBox>
          </top>

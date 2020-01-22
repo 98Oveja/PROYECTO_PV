@@ -24,27 +24,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    @FXML    private Button mini2;
-    @FXML    private Button mini3;
-    @FXML    private Button mini4;
-    @FXML    private Button mini5;
-    @FXML    private Button mini6;
-    @FXML    private Button mini1;
-    @FXML    private Button Activos;
-    @FXML    private Pane P1;
-    @FXML    private Pane P2;
-    @FXML    private Pane P3;
-    @FXML    private Pane P4;
-    @FXML    private Pane P5;
+    @FXML    private Button mini2,mini3,mini4,mini5,mini6,mini1,Activos;
+    @FXML    private Pane P1,P2,P3,P4,P5;
     @FXML    private Button Inactivos;
     @FXML    private ImageView imageview1;
-    @FXML    private Label Nombre1;
-    @FXML    private Label disp1;
-    @FXML    private Label precio1;
+    @FXML    private Label Nombre1,disp1,precio1;
     @FXML    private ImageView imageview2;
-    @FXML    private Label Nombre2;
-    @FXML    private Label disp2;
-    @FXML    private Label precio2;
+    @FXML    private Label Nombre2,disp2,precio2;
     @FXML    private ImageView imageview3;
     @FXML    private Label Nombre3;
     @FXML    private Label disp3;
@@ -88,7 +74,6 @@ public class Controller implements Initializable {
         mini2.setStyle("-fx-background-color: #3B86FF;" + "-fx-text-fill: #fff;");
     }
 
-
     public void datos() {
         Datosproductos.clear();
         DescripcionProductos.clear();
@@ -104,7 +89,7 @@ public class Controller implements Initializable {
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
                     descripcion= resultado.getString("DESCRIPCION");
-                    dato = url + "#" + nombre + "#" + disp + "#" + precio+ "#" +descripcion;
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio+ "#" +descripcion+".";
                     Datosproductos.add(dato);
                 }
                 if (Datosproductos.size() != 0) {
@@ -177,11 +162,10 @@ public class Controller implements Initializable {
                     precio5.setText("Q " + d);
                     break;
             }
-        //}
     }
 
     public void mostrar() {
-        limpiar();
+            limpiar();
         DescripcionProductos.clear();
         String datos, direccion, nom, cant, prec,desc;
         int tamanio = Datosproductos.size();
@@ -283,10 +267,8 @@ public class Controller implements Initializable {
         dialog.initOwner(primaryStage);
         dialog.setX(300);
         dialog.setY(100);
-
         Scene dialogScene = null;
         dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos/nuevoproducto.fxml")));
-
         dialog.setScene(dialogScene);
         dialog.show();
     }
@@ -342,7 +324,7 @@ public class Controller implements Initializable {
                     disp = resultado.getString("CANTIDAD");
                     precio = resultado.getString("PRECIO_VENTA");
                     desc= resultado.getString("DESCRIPCION");
-                    dato = url + "#" + nombre + "#" + disp + "#" + precio + "#" + desc;
+                    dato = url + "#" + nombre + "#" + disp + "#" + precio + "#" + desc+".";
                     Datosproductos.add(dato);
                 }
             }

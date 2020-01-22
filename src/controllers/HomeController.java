@@ -38,7 +38,7 @@ public class HomeController implements Initializable {
     public static String screen4ID = "screen4";
     public static String screen4File = "/fxml/ForgotPass";
     public static String screen5ID = "screen5";
-    public static String screen5File = "/fxml/ForgotPass";
+    public static String screen5File = "/fxml/Proveedores/Proveedores.fxml";
     public static String screen6ID = "screen6";
     public static String screen6File = "/fxml/ForgotPass";
     public static String screen7ID = "screen7";
@@ -133,7 +133,7 @@ public class HomeController implements Initializable {
         mainContainer.loadScreen(HomeController.screen8ID, HomeController.screen8File);
         mainContainer.loadScreen(HomeController.screen9ID, HomeController.screen9File);
 
-        mainContainer.setScreen(HomeController.screen0ID);
+        mainContainer.setScreen(HomeController.screen5ID);
         return mainContainer;
     }
 }

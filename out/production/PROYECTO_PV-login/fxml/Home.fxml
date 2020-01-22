@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="900.0" prefWidth="1600.0" styleClass="panelPrincipal" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+    <children>
+        <Pane maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1600.0" styleClass="panelPrincipal">
+            <children>
+                <Pane layoutX="260.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda">
+                    <children>
+                  <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
+                        <ImageView id="imgNotification" fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/notifications.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <Pane layoutX="7.0" layoutY="11.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/search.png" />
+                                    </image>
+                                </ImageView>
+                                <TextField layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                            </children>
+                        </Pane><Line endX="100.0" fill="#ebebf2" layoutX="1063.0" layoutY="17.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
+                  <Pane layoutX="1175.0" layoutY="23.0" prefHeight="25.0" prefWidth="83.0">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="62.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrows.png" />
+                           </image>
+                        </ImageView>
+                        <MenuButton mnemonicParsing="false" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#bdb7ca">
+                          <items>
+                            <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
+                            <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
+                              <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </Pane>
+                    </children></Pane>
+                <Pane fx:id="components" prefHeight="861.0" prefWidth="1600.0" styleClass="menulateral">
+                    <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="121.0" styleClass="ferreteria" stylesheets="@../css/main.css" text="Ferreteria" />
+                        <ImageView fitHeight="150.0" fitWidth="18.0" layoutX="126.0" layoutY="802.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/facebook.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="18.0" layoutX="168.0" layoutY="802.0" pickOnBounds="true" preserveRatio="true">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <image>
+                                <Image url="@../images/twiter.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="18.0" layoutX="201.0" layoutY="802.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/whatsapp.png" />
+                            </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </ImageView>
+                        <Label layoutX="135.0" layoutY="831.0" text="Contactanos." textFill="#a3a0fb">
+                            <font>
+                                <Font name="Arial Bold" size="10.0" />
+                            </font>
+                        </Label>
+                  <ToggleButton fx:id="btninicio" layoutY="73.0" mnemonicParsing="false" onAction="#handleHome" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Inicio" />
+                  <ToggleButton fx:id="btnestadistica" layoutY="129.0" mnemonicParsing="false" onAction="#handleEst" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Estadisticas" />
+                  <ToggleButton fx:id="btnempleados" layoutY="185.0" mnemonicParsing="false" onAction="#handleEmpl" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Empleados" />
+                  <ToggleButton fx:id="btnproductos" layoutY="241.0" mnemonicParsing="false" onAction="#handleProd" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Productos" />
+                  <ToggleButton fx:id="btnproveedores" layoutY="297.0" mnemonicParsing="false" onAction="#handleProve" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Proveedores" />
+                  <ToggleButton fx:id="btnclientes" layoutY="353.0" mnemonicParsing="false" onAction="#handleCli" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Clientes" />
+                  <ToggleButton fx:id="btncompras" layoutY="409.0" mnemonicParsing="false" onAction="#handleComp" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Compras" />
+                  <ToggleButton fx:id="btncalendario" layoutY="465.0" mnemonicParsing="false" onAction="#handleCal" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Calendario" />
+                  <ToggleButton fx:id="btnventas" layoutY="521.0" mnemonicParsing="false" onAction="#handleVen" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Ventas" />
+                  <ToggleButton fx:id="btnreportes" layoutY="577.0" mnemonicParsing="false" onAction="#handleRep" styleClass="toggle-buttonB" stylesheets="@../css/main.css" text="Reportes" />
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/estadistica.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/empleados.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" focusTraversable="true" layoutX="25.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/home.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/producto.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="26.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/provider.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/customers.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="26.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icon_cart.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="26.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/Calendar.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/sales.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/report.png" />
+                            </image>
+                        </ImageView>
+                  <Label fx:id="line2" layoutY="129.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line3" layoutY="185.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line4" layoutY="241.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line5" layoutY="297.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line6" layoutY="353.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line7" layoutY="409.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line8" layoutY="465.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line9" layoutY="521.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line10" layoutY="577.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                  <Label fx:id="line1" layoutY="73.0" prefHeight="53.0" prefWidth="5.0" styleClass="btnseleccionado" stylesheets="@../css/main.css" visible="false" />
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+      <StackPane fx:id="pane" layoutX="260.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" style="-fx-background-color: #f0eef7;" translateX="260.0" translateY="70.0" />
+    </children>
+</StackPane>
