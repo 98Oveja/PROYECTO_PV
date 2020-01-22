@@ -42,9 +42,9 @@
 
                             </styleClass>
                      </MenuButton>
-                   <Pane  prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
                      <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0" />
          </children>
       </HBox>
+             <Pane prefHeight="70.0" prefWidth="302.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
          </children>
       </StackPane>

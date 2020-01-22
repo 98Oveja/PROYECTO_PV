@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.ScreenController.ImplementsU.ControlledScreen;
 import controllers.ScreenController.ScreensController;
+import controllers.item.ControllerComponent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,7 +29,11 @@ public class HomeController implements Initializable , ControlledScreen {
     public static String item = null;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        items = "Inicio,Estadisiticas,Empleados,Productos,Proveedores,Clientes,Compras,Calendario,Ventas,Reportes";
+        if(ControllerComponent.admin == true) {
+            items = "Inicio,Estadisiticas,Empleados,Productos,Proveedores,Clientes,Compras,Calendario,Ventas,Reportes";
+        }else {
+            items = "Inicio,Clientes,Compras,Calendario,Ventas,Reportes";
+        }
         itemsX = items.split(",");
         ControllerItemSelected controllerItemSelected =  new ControllerItemSelected();
         String aux = controllerItemSelected.getItem();
@@ -39,7 +44,6 @@ public class HomeController implements Initializable , ControlledScreen {
             }
             loadSearchPane();
             //setVista("/fxml/Empleados/menu.fxml");
-
         } catch (IOException e) {
             e.printStackTrace();
         }

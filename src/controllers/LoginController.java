@@ -12,9 +12,6 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
 
-
-
-
     public StackPane vista1;
     public VBox VboxD;
 
@@ -37,8 +34,6 @@ public class LoginController implements Initializable{
         vista1.setPrefHeight(height);
         vista1.setPrefWidth(width);
     }
-
-
 
     void initViewLogin() {
         VboxD.getChildren().addAll(setContainerScreen());

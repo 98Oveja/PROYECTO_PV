@@ -7,6 +7,9 @@ import com.jfoenix.controls.JFXTextField;
 import controllers.LoginController;
 import controllers.ScreenController.ImplementsU.ControlledScreen;
 import controllers.ScreenController.ScreensController;
+import javafx.beans.InvalidationListener;
+import javafx.beans.binding.Bindings;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,6 +29,7 @@ import utils.ParseEmail;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class ControllerComponent implements Initializable, ControlledScreen {
     public Button btnForgot;
@@ -38,26 +42,21 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     ScreensController myController;
 
-
     @FXML
     void nextPane(ActionEvent event)  {
-        myController.setScreen(LoginController.screen2ID);
+        if(event.getSource() == btnForgot) {
+            myController.setScreen(LoginController.screen2ID);
+        }
     }
-
-    public static int code;
-    Connection con;
     User user;
-    ConnectionUtil connectionUtil = new ConnectionUtil();
     String status = "";
-
-    //public LoginController() {con = connectionUtil.getConnection();}
-
+    public static boolean admin = false;
     @FXML
     public void handleButtonAction(MouseEvent event){
-       // if(event.getSource() == btnSignin){
-         //   logIn();
-        //}
-        ViewNavigator.loadVista(ViewNavigator.HOME);
+        if(event.getSource() == btnSignin){
+          logIn();
+       }
+       // ViewNavigator.loadVista(ViewNavigator.HOME);
     }
 
    // public void handleButtonActionKey(KeyEvent keyEvent) {
@@ -99,13 +98,16 @@ public class ControllerComponent implements Initializable, ControlledScreen {
                 btnSignin.setDisable(false);
                 statusProgess.setVisible(false);
                 user = task.getUserAux();
-                System.out.println(user);
+
                 if(user == null){
                     status = "Error";
                     setLblError(Color.TOMATO, "Usuario invalido");
                 }else if(user!= null){
                     status="Success";
                     setLblError(Color.GREEN,"Login success...");
+                    if (user.getAdmin().equals("admin")){
+                        admin = true;
+                    }
                     ViewNavigator.loadVista(ViewNavigator.HOME);
                 }
             });
@@ -125,14 +127,11 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-  /*if (con == null) {
-                lblErrors.setTextFill(Color.TOMATO);
-                lblErrors.setText("Server Error : Check.");
-               btnSignin.setDisable(true);
-            } else if (btnSignin.isDisable()) {
-                System.out.println("boton desactivado por conexion");
-            }
-             */
+        TasKT taskTime = new TasKT(btnSignin);
+        Timer temporizador = new Timer();
+        Integer segundos = 2;
+        temporizador.scheduleAtFixedRate(taskTime, 0, 1000*segundos);
+
     }
 
 }
