@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
 
-<StackPane prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
+<StackPane prefWidth="800.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
          <children>
-      <HBox>
+      <HBox alignment="CENTER">
          <children>
-                       <TextField fx:id="txtSearch" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
-                     <Pane prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;" />
+                       <TextField fx:id="txtSearch" prefHeight="42.0" prefWidth="946.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" styleClass="label-search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="35.0" right="10.0" />
+               </padding></TextField>
                   <Line endX="100.0" fill="#ebebf2" startX="100.0" startY="36.0" stroke="#ebebf2" />
-                       <MenuButton mnemonicParsing="false" styleClass="tipografia" stylesheets="@../../css/main.css" text="Usuario" textFill="#bdb7ca">
-                           <items>
-                               <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
-                               <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
-                               <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
-                           </items>
-                           <cursor>
-                               <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <effect>
-                               <Glow />
-                           </effect>
-                       </MenuButton>
-                     <Pane prefHeight="25.0" prefWidth="83.0" />
-                     <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
-                         <items>
-                             <MenuItem fx:id="itemx" mnemonicParsing="false" text="sin notificaciones" />
-                         </items>
-                         <cursor>
-                             <Cursor fx:constant="HAND" />
-                         </cursor>
-                     </MenuButton>
-                     <MenuButton fx:id="paneResSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
-                         <styleClass>
-                             <String fx:value="tipografia" />
-
-                            </styleClass>
-                     </MenuButton>
-                     <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="657.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" styleClass="boton-notificaciones" />
+                             <MenuButton ellipsisString="User" mnemonicParsing="false" prefHeight="42.0" prefWidth="169.0" styleClass="tipografia" text="Usuario" textFill="#bdb7ca">
+                                 <items>
+                                     <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
+                                     <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
+                                     <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
+                                 </items>
+                                 <cursor>
+                                     <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <effect>
+                                     <Glow />
+                                 </effect>
+                             </MenuButton>
+                           <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </BorderPane>
+               </children>
+            </HBox>
          </children>
       </HBox>
-             <Pane prefHeight="70.0" prefWidth="302.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
          </children>
       </StackPane>

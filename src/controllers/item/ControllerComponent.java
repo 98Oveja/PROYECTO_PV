@@ -53,10 +53,10 @@ public class ControllerComponent implements Initializable, ControlledScreen {
     public static boolean admin = false;
     @FXML
     public void handleButtonAction(MouseEvent event){
-        if(event.getSource() == btnSignin){
-          logIn();
-       }
-       // ViewNavigator.loadVista(ViewNavigator.HOME);
+        //if(event.getSource() == btnSignin){
+         // logIn();
+       //}
+       ViewNavigator.loadVista(ViewNavigator.HOME);
     }
 
    // public void handleButtonActionKey(KeyEvent keyEvent) {

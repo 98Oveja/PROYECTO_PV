@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,7 +44,7 @@ public class HomeController implements Initializable , ControlledScreen {
                 loadPane();
             }
             loadSearchPane();
-            //setVista("/fxml/Empleados/menu.fxml");
+            //setVista("/fxml/Empleados/menu.fxmlgit");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,6 +57,8 @@ public class HomeController implements Initializable , ControlledScreen {
     private void loadSearchPane() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/components/paneSearch.fxml"));
         paneSearch.getChildren().addAll(root);
+        double width= Toolkit.getDefaultToolkit().getScreenSize().width;
+        paneSearch.setPrefWidth(width-260);
     }
 
     public void setVista(String fxml) throws IOException {

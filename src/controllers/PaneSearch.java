@@ -28,13 +28,10 @@ import java.util.logging.Logger;
 public class PaneSearch  implements Initializable {
     public StackPane paneSearch;
     public BorderPane imgUser;
-    public ImageView imgNotification;
     public TextField txtSearch;
     public MenuItem itemHelp;
     public MenuItem itemConfig;
     public MenuItem itemClose;
-    public MenuItem itemx;
-    public MenuButton paneResSearch;
     int status = 0;
 
     public void goToURL(String URL){
