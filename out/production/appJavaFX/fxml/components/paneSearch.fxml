@@ -1,44 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Line?>
-<?import java.lang.String?>
-<Pane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
-   <children>
-       <Pane fx:id="paneSearch"  prefHeight="70.0" prefWidth="1340.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css">
-           <children>
-               <BorderPane fx:id="imgUser" layoutX="1266.0" layoutY="17.0" prefHeight="38.0" prefWidth="38.0" />
-               <ImageView id="imgNotification" fx:id="imgNotification" fitHeight="18.0" fitWidth="18.0" layoutX="1133.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../../images/notifications.png" />
-                   </image>
-                   <cursor>
-                       <Cursor fx:constant="HAND" />
-                   </cursor>
-               </ImageView>
-               <Pane layoutX="7.0" layoutY="11.0" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;">
-                   <children>
-                       <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@../../images/search.png" />
-                           </image>
-                       </ImageView>
-                       <TextField fx:id="txtSearch" layoutX="40.0" layoutY="4.0" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
-                   </children>
-               </Pane>
-            <Line endX="100.0" fill="#ebebf2" layoutX="1063.0" layoutY="17.0" startX="100.0" startY="36.0" stroke="#ebebf2" />
-               <Pane layoutX="1175.0" layoutY="23.0" prefHeight="25.0" prefWidth="83.0">
-                   <children>
-                       <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="62.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@../../images/arrows.png" />
-                           </image>
-                       </ImageView>
+<?import javafx.scene.shape.*?>
+
+<StackPane prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSearch">
+         <children>
+      <HBox>
+         <children>
+                       <TextField fx:id="txtSearch" prefHeight="42.0" prefWidth="409.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                     <Pane prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: white; -fx-background-radius: 8;" />
+                  <Line endX="100.0" fill="#ebebf2" startX="100.0" startY="36.0" stroke="#ebebf2" />
                        <MenuButton mnemonicParsing="false" styleClass="tipografia" stylesheets="@../../css/main.css" text="Usuario" textFill="#bdb7ca">
                            <items>
                                <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
@@ -52,23 +27,24 @@
                                <Glow />
                            </effect>
                        </MenuButton>
-                   </children>
-               </Pane>
-               <MenuButton layoutX="1124.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
-                   <items>
-                       <MenuItem fx:id="itemx" mnemonicParsing="false" text="sin notificaciones" />
-                   </items>
-                   <cursor>
-                       <Cursor fx:constant="HAND" />
-                   </cursor>
-               </MenuButton>
-               <MenuButton fx:id="paneResSearch" layoutX="55.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
-                   <styleClass>
-                       <String fx:value="tipografia" />
-   
-                      </styleClass>
-               </MenuButton>
-           </children>
-      </Pane>
-   </children>
-</Pane>
+                     <Pane prefHeight="25.0" prefWidth="83.0" />
+                     <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
+                         <items>
+                             <MenuItem fx:id="itemx" mnemonicParsing="false" text="sin notificaciones" />
+                         </items>
+                         <cursor>
+                             <Cursor fx:constant="HAND" />
+                         </cursor>
+                     </MenuButton>
+                     <MenuButton fx:id="paneResSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" stylesheets="@../../css/main.css" textFill="#bdb7ca">
+                         <styleClass>
+                             <String fx:value="tipografia" />
+
+                            </styleClass>
+                     </MenuButton>
+                     <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0" />
+         </children>
+      </HBox>
+             <Pane prefHeight="70.0" prefWidth="302.0" styleClass="panelbusqueda" stylesheets="@../../css/main.css" />
+         </children>
+      </StackPane>

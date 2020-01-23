@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
@@ -25,15 +26,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PaneSearch  implements Initializable {
-    public Pane paneSearch;
+    public StackPane paneSearch;
     public BorderPane imgUser;
-    public ImageView imgNotification;
     public TextField txtSearch;
     public MenuItem itemHelp;
     public MenuItem itemConfig;
     public MenuItem itemClose;
-    public MenuItem itemx;
-    public MenuButton paneResSearch;
     int status = 0;
 
     public void goToURL(String URL){

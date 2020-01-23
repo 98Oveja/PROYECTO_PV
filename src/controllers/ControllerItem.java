@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -41,9 +42,7 @@ public class ControllerItem implements Initializable {
     ControllerItemSelected controllerItemSelected = new ControllerItemSelected();
 
     public void action() {
-        btn.setStyle("-fx-background-color:#3C3B54; ");
-        statusItem.setVisible(true);
-        System.out.println(btn.getText());
 
     }
+
 }

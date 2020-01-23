@@ -1,6 +1,5 @@
 package models.usages;
 
-import javafx.application.Platform;
 import models.User;
 import models.interfaces.userImpl;
 import utils.ConnectionUtil;
