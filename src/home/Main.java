@@ -19,7 +19,7 @@ public class Main extends Application {
                 loadMainPane()
             )
         );
-        stage.setResizable(false);
+        //stage.setResizable(false);
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }

@@ -39,10 +39,7 @@ public class ControllerItem implements Initializable {
         setPropertiesItem();
     }
 
-    ControllerItemSelected controllerItemSelected = new ControllerItemSelected();
-
     public void action() {
-
     }
 
 }

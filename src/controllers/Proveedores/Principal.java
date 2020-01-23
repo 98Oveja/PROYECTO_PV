@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
@@ -23,6 +24,8 @@ import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
 import utils.Consultas;
 import utils.Views;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -35,12 +38,14 @@ import java.util.stream.Collectors;
 
 public class Principal implements Initializable, ControlledScreen {
 
+    public StackPane mainContainer;
     ArrayList<String> Proveedores = new ArrayList<String>();
-        ConnectionUtil conn = new ConnectionUtil();
+    ConnectionUtil conn = new ConnectionUtil();
+    Connection conexion = null;
 
-        Connection conexion = null;
     ScreensController myController;
-        @FXML private TextField labelSearch;
+
+    @FXML private TextField labelSearch;
     @FXML private GridPane Pane;
     @FXML private Button activo, inactivo;
     static String nombre,descripcion,movil,org,path;
@@ -49,16 +54,22 @@ public class Principal implements Initializable, ControlledScreen {
     String Query2 = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO, DIRECCION, TELEFONO, url_foto, ORG, NO_CUENTA FROM PERSONAS INNER JOIN PROVEEDORES " +
             "WHERE PERSONAS.ID_PERSONA=PROVEEDORES.ID_PERSONA AND PROVEEDORES.ESTADO=0;";
 
+    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datos(Query1);
+        mainContainer.setPrefWidth(width-260);
+        mainContainer.setPrefHeight(height-110);
     }
+
     String getNombre(){return nombre;}
     String getDescripcion(){return descripcion;}
     String getMovil(){return movil;}
     String getOrg(){return org;}
-    String getPath(){return path;
-    }
+    String getPath(){return path; }
+
 
     public void rellenar(int row,int column){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Proveedores/Card.fxml"));
