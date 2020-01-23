@@ -10,7 +10,8 @@
 
 <!--fx:controller="fxml.Ventas.ModalRegistrarVenta"-->
 
-<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
+<AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
    <children>
       <Pane id="HeaderModal" prefHeight="200.0" prefWidth="200.0" styleClass="PanelHeaderModal_insert">
          <children>
@@ -236,7 +237,7 @@
                   </HBox>
                   <ScrollPane fx:id="PanelScroleable" layoutY="40.0" prefHeight="332.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="TablaDetalleVenta">
                      <content>
-                        <VBox fx:id="CardContainer" onMouseClicked="#repintarPaneles" prefHeight="317.0" prefWidth="1044.0" style="-fx-background-color: #ffffff;">
+                        <VBox fx:id="CardContainer" prefHeight="317.0" prefWidth="1044.0" style="-fx-background-color: #ffffff;">
                            
                         </VBox>
 

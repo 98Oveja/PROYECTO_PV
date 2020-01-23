@@ -3,7 +3,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
@@ -14,18 +13,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Ventas_Compras.Ventas;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.*;
 public class ModalVentaController implements Initializable {
     //  ELEMENTOS DEL FXML
@@ -59,10 +53,7 @@ public class ModalVentaController implements Initializable {
     String PRECIOVENTA = "";
     String EXITENCIAPRODUCTO = "";
     String search_id;
-    ArrayList<Ventas> ventasArrayList = new ArrayList<>();
     ArrayList<Double> totalCalculadoDoubles = new ArrayList<>();
-    ArrayList<Pane> paneArrayList = new ArrayList<>();
-    ArrayList<Pane> panelesAuxiliar = new ArrayList<>();
     ArrayList<Ventas> ventasPanels = new ArrayList<>();
     CartaProducto cartaProducto = new CartaProducto();
     public void CloseModal(ActionEvent actionEvent) {
@@ -121,9 +112,8 @@ public class ModalVentaController implements Initializable {
         cartaProducto.setEtextSubTotal(ventas.calculoDeDescuentos(PRECIOVENTA, cantidad_text.getText(), descuento_text.getText()));
         cartaProducto.setElNumPanel(contadorDePaneles);
         contadorDePaneles++;
-        paneArrayList.add((Pane) parent);
-        ventasPanelesVentas.setPanelProducto((Pane) parent);
-        ventasPanelesVentas.setIncicePanel(contadorDePaneles);
+//        ventasPanelesVentas.setPanelProducto((Pane) parent);
+
         ventasPanels.add(ventasPanelesVentas);
         CardContainer.getChildren().addAll(parent);
     }
@@ -199,14 +189,7 @@ public class ModalVentaController implements Initializable {
             PRECIOVENTA = contenedorConsultaProducto[1];
             CODIGOPRODUCTO = contenedorConsultaProducto[2];
             descripcion_text.setText(contenedorConsultaProducto[3]);
-            if (cantidad_text.getLength() != 0) {
-                subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
-                        Double.parseDouble(cantidad_text.getText()),
-                        Double.parseDouble(contenedorConsultaProducto[1]),
-                        Double.parseDouble(contenedorConsultaProducto[0])
-                );
-                System.out.println("EL subtotal es = " + subtotalCalculado);
-            }
+
         });
     }
     public void btn_ShopingCar(ActionEvent actionEvent)throws IOException{
@@ -252,47 +235,45 @@ public class ModalVentaController implements Initializable {
 //        ventasArrayList.add(newVentas);
 ////        JOptionPane.showMessageDialog(null,ventas.almacenarVentasenDB(1,3,90));
     }
-    public void visualizarVentas(){
-//        CardContainer.getChildren().clear();
-//        for (Ventas vf: ventasPanels) {
-//            vf.getPanelProducto();
-//            vf.getIndicePanel();
-//            CardContainer.getChildren().addAll(vf.getPanelProducto());
-//        }
+//    public void visualizarVentas(){
+////        CardContainer.getChildren().clear();
+////        for (Ventas vf: ventasPanels) {
+////            vf.getPanelProducto();
+////            vf.getIndicePanel();
+////            CardContainer.getChildren().addAll(vf.getPanelProducto());
+////        }
+////    }
+////        int contaodir = 0;
+////        totalCalculadoDoubles.clear();
+////        for (Ventas v : ventasArrayList) {
+////            contaodir++;
+////            System.out.println("Cod Cliente " + v.getCodigoCLiente() +
+////                    "  Cod Empleado " + v.getCodigoEmpleado() +
+////                    "  Total Q " + v.getTotal() + "  Fila #" + contaodir);
+////            totalCalculadoDoubles.add(v.getTotal());
+////        }
+////        float elTotal = 0;
+////        int contador = 0;
+////        for (Double tt : totalCalculadoDoubles) {
+////            System.out.print(" " + tt.toString() + " || ");
+////            elTotal += tt;
+////
+////        }
+////        System.out.println("\n\tEL TOTAL Q "+elTotal);
+////        if (cartaProducto.hasEliminadounPanel){
+////            for (int i = 0; i <CardContainer.getChildren().size(); i++) {
+////                panelesAuxiliar.add((Pane) CardContainer.getChildren());
+////            }
+////            for (Node p:CardContainer.getChildren()) {
+////                CardContainer.getChildren().addAll(p);
+////            }
+////        }
+////        CardContainer.getChildren().clear();
+////        for (Pane p: paneArrayList) {
+////            this.CardContainer.getChildren().addAll(p.getChildrenUnmodifiable());
+////        }System.out.println("Hay "+paneArrayList.size()+" Paneles");
 //    }
-//        int contaodir = 0;
-//        totalCalculadoDoubles.clear();
-//        for (Ventas v : ventasArrayList) {
-//            contaodir++;
-//            System.out.println("Cod Cliente " + v.getCodigoCLiente() +
-//                    "  Cod Empleado " + v.getCodigoEmpleado() +
-//                    "  Total Q " + v.getTotal() + "  Fila #" + contaodir);
-//            totalCalculadoDoubles.add(v.getTotal());
-//        }
-//        float elTotal = 0;
-//        int contador = 0;
-//        for (Double tt : totalCalculadoDoubles) {
-//            System.out.print(" " + tt.toString() + " || ");
-//            elTotal += tt;
-//
-//        }
-//        System.out.println("\n\tEL TOTAL Q "+elTotal);
-//        if (cartaProducto.hasEliminadounPanel){
-//            for (int i = 0; i <CardContainer.getChildren().size(); i++) {
-//                panelesAuxiliar.add((Pane) CardContainer.getChildren());
-//            }
-//            for (Node p:CardContainer.getChildren()) {
-//                CardContainer.getChildren().addAll(p);
-//            }
-//        }
-//        CardContainer.getChildren().clear();
-//        for (Pane p: paneArrayList) {
-//            this.CardContainer.getChildren().addAll(p.getChildrenUnmodifiable());
-//        }System.out.println("Hay "+paneArrayList.size()+" Paneles");
-    }
-    public void repintarPaneles(MouseEvent mouseEvent) {
-//     JOptionPane.showMessageDialog(null, "Repintar el Panel Se Activa al dar un Click en el contenedor");
-        System.out.println("Repintar el Panel Se Activa al dar un Click en el contenedor");
-//        this.CardContainer
-    }
+//    public void repintarPaneles(MouseEvent mouseEvent) {
+//        System.out.println("Repintar el Panel Se Activa al dar un Click en el contenedor");
+//    }
 }

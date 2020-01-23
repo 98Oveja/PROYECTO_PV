@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPVentas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentas">
     <top>
         <TextFlow nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1200.0" styleClass="headerGridFerreteria" BorderPane.alignment="CENTER">
             <children>
+                <Button id="Btn_CloseModal" fx:id="btnCerrarModal" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="btn_CloseModal" translateX="1160.0" translateY="-10.0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/cancel_32.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
                 <Label text="Ferreteria" textAlignment="CENTER" textFill="WHITE" translateX="525.0">
                     <font>
                         <Font size="33.0" />
                     </font>
                 </Label>
-                <Button alignment="CENTER" contentDisplay="CENTER" layoutY="5.0" mnemonicParsing="false" styleClass="btnCloseModal" text="X" textFill="WHITE" translateX="1010.0" translateY="-5.0">
-                    <font>
-                        <Font name="Berlin Sans FB Demi Bold" size="14.0" />
-                    </font>
-                </Button>
             </children>
             <opaqueInsets>
                 <Insets />
@@ -27,8 +36,8 @@
     <center>
         <GridPane alignment="CENTER" hgap="40.0" prefHeight="745.0" prefWidth="1160.0" BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="695.0" minWidth="10.0" prefWidth="565.6666870117188" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.3333129882812" minWidth="10.0" prefWidth="554.3333129882812" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="297.6666564941406" minHeight="10.0" prefHeight="179.0" vgrow="SOMETIMES" />
@@ -53,44 +62,57 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <SplitMenuButton alignment="CENTER" layoutX="72.0" layoutY="7.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="224.0" text="Clientes">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                    </items>
-                                    <font>
-                                        <Font size="13.0" />
-                                    </font>
-                                </SplitMenuButton>
-                                <Label layoutX="4.0" layoutY="49.0" text="Dirección" textAlignment="JUSTIFY" textFill="WHITE">
+                                <Label layoutX="4.0" layoutY="65.0" text="Dirección" textAlignment="JUSTIFY" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <TextField layoutX="72.0" layoutY="44.0" prefHeight="25.0" prefWidth="248.0" styleClass="inputsLabels" />
-                                <Button layoutX="296.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="30.0" styleClass="btnAddCliente" text="+" textFill="#09f201">
+                                <TextField fx:id="direccion_text" layoutX="72.0" layoutY="60.0" prefHeight="25.0" prefWidth="248.0" promptText="Dirección" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <Button fx:id="addNewCustomer" layoutX="296.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="30.0" styleClass="btnAddCliente" text="+" textFill="#09f201">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Button>
-                                <Label layoutX="5.0" layoutY="80.0" text="Teléfono" textAlignment="JUSTIFY" textFill="WHITE">
+                                <Label layoutX="5.0" layoutY="104.0" text="Teléfono" textAlignment="JUSTIFY" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="7.0" layoutY="109.0" text="NIT" textAlignment="JUSTIFY" textFill="WHITE">
+                                <Label layoutX="328.0" layoutY="64.0" text="NIT" textAlignment="JUSTIFY" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <TextField layoutX="72.0" layoutY="74.0" prefHeight="25.0" prefWidth="248.0" styleClass="inputsLabels" />
-                                <TextField layoutX="72.0" layoutY="103.0" prefHeight="25.0" prefWidth="248.0" styleClass="inputsLabels" />
+                                <TextField fx:id="telefono_text" layoutX="72.0" layoutY="98.0" prefHeight="25.0" prefWidth="248.0" promptText="########" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <TextField fx:id="nit_text" layoutX="389.0" layoutY="57.0" prefHeight="32.0" prefWidth="153.0" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
                                 <Label layoutX="330.0" layoutY="11.0" text="Fecha" textAlignment="JUSTIFY" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <DatePicker layoutX="373.0" layoutY="9.0" prefHeight="25.0" prefWidth="174.0" styleClass="inputsLabels" />
+                        <JFXDatePicker fx:id="fecha_text" defaultColor="#04d9ff" layoutX="389.0" layoutY="7.0" prefHeight="28.0" prefWidth="150.0" promptText="22/01/2020" style="-fx-prompt-text-fill: #ffffff;" styleClass="date-picker, text-field" stylesheets="@../../css/Ventas/Ventas_Compras.css">
+                           <padding>
+                              <Insets left="10.0" right="5.0" />
+                           </padding>
+                           <styleClass>
+                              <String fx:value="date-picker" />
+                              <String fx:value="text-field" />
+                           </styleClass></JFXDatePicker>
+                        <JFXComboBox fx:id="listadoClientes" focusColor="#09e810" layoutX="72.0" layoutY="11.0" prefHeight="23.0" prefWidth="228.0" promptText="Clientes" style="-jfx-label-float: true; -fx-prompt-text-fill: #B4C292;" stylesheets="@../../css/Ventas/Ventas_Compras.css" unFocusColor="#0cd5f0" visibleRowCount="5">
+                           <styleClass>
+                              <String fx:value="combo-box" />
+                              <String fx:value="list-view" />
+                              <String fx:value="list-cell" />
+                           </styleClass></JFXComboBox>
                             </children>
                             <VBox.margin>
                                 <Insets />
@@ -113,28 +135,22 @@
                         </Label>
                         <Pane prefHeight="168.0" prefWidth="560.0">
                             <children>
-                                <SplitMenuButton alignment="CENTER" layoutX="87.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Productos">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                    </items>
-                                </SplitMenuButton>
                                 <Label layoutX="9.0" layoutY="8.0" text="Producto" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="9.0" layoutY="40.0" text="Descripción" textFill="WHITE">
+                                <Label layoutX="9.0" layoutY="53.0" text="Descripción" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="9.0" layoutY="73.0" text="Precio      Q" textFill="WHITE">
+                                <Label layoutX="9.0" layoutY="88.0" text="Precio      Q" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="9.0" layoutY="103.0" text="Cantidad" textFill="WHITE">
+                                <Label layoutX="9.0" layoutY="122.0" text="Cantidad" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -144,35 +160,91 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="312.0" layoutY="41.0" text="Descuento" textFill="WHITE">
+                                <Label layoutX="314.0" layoutY="85.0" text="Descuento" textFill="WHITE">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <TextField layoutX="88.0" layoutY="37.0" prefHeight="27.0" prefWidth="213.0" promptText="Descipcion" styleClass="inputsLabels" />
-                                <TextField layoutX="88.0" layoutY="69.0" prefHeight="27.0" prefWidth="82.0" promptText="000" styleClass="inputsLabels" />
-                                <TextField layoutX="88.0" layoutY="100.0" prefHeight="27.0" prefWidth="82.0" promptText="000" styleClass="inputsLabels" />
-                                <TextField layoutX="408.0" layoutY="6.0" prefHeight="27.0" prefWidth="100.0" styleClass="inputsLabels" />
-                                <TextField layoutX="408.0" layoutY="38.0" prefHeight="27.0" prefWidth="100.0" styleClass="inputsLabels" />
-                                <Button alignment="CENTER" layoutX="224.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #FF6565;" text="Agregar a la Venta" textAlignment="CENTER" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="14.0" />
-                                    </font>
-                                </Button>
+                                <TextField fx:id="descripcion_text" editable="false" layoutX="91.0" layoutY="50.0" prefHeight="27.0" prefWidth="420.0" promptText="Descipcion" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <TextField fx:id="precio_text" editable="false" layoutX="88.0" layoutY="84.0" prefHeight="27.0" prefWidth="82.0" promptText="000" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <TextField fx:id="cantidad_text" layoutX="88.0" layoutY="119.0" prefHeight="27.0" prefWidth="82.0" promptText="000" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <TextField fx:id="disponibilidad_text" editable="false" layoutX="408.0" layoutY="6.0" prefHeight="27.0" prefWidth="104.0" promptText="0" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                                <TextField fx:id="descuento_text" layoutX="407.0" layoutY="84.0" prefHeight="27.0" prefWidth="105.0" promptText="0" styleClass="inputsLabels">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                        <JFXComboBox fx:id="listadoProductos" focusColor="#09e810" layoutX="91.0" layoutY="2.0" prefHeight="24.0" prefWidth="212.0" promptText="Producto" style="-fx-prompt-text-fill: #B4C292; -jfx-label-float: true;" unFocusColor="#0cd5f0">
+                           <styleClass>
+                              <String fx:value="combo-box" />
+                              <String fx:value="list-view" />
+                              <String fx:value="list-cell" />
+                           </styleClass></JFXComboBox>
+                        <JFXButton fx:id="btn_agregarVenta" layoutX="228.0" layoutY="120.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="167.0" style="-fx-background-color: #FF6565; -fx-cursor: hand;" text="Agregar a la Venta" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXButton>
                             </children></Pane>
                     </children></VBox>
-                <TableView prefHeight="309.0" prefWidth="429.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <HBox fx:id="HBoxPanel" prefHeight="40.0" prefWidth="1130.0" styleClass="HeaderTablaDetalleVenta" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="152.0" styleClass="TituloTablaDetalle" text="Detalle Venta" textFill="#4d4f5c" />
+                        <Label fx:id="MensajedeAlertaCampos" alignment="CENTER" prefHeight="43.0" prefWidth="277.0" text="Mensaje de Alerta" textAlignment="CENTER" textFill="#f80000" translateX="640.0" translateY="5.0">
+                           <font>
+                              <Font name="Serif Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXProgressBar fx:id="barradeProgresoAlerta" prefHeight="1.0" prefWidth="242.0" translateX="390.0" translateY="55.0" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tablaDetalle" editable="true" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="colNumero" editable="false" prefWidth="70.66666412353516" resizable="false" text="NO" />
+                      <TableColumn fx:id="colCantidad" editable="false" prefWidth="82.0" resizable="false" text="CANTIDAD" />
+                        <TableColumn fx:id="colCodigo" editable="false" prefWidth="97.33334350585938" resizable="false" text="CÓDIGO" />
+                        <TableColumn fx:id="colProducto" editable="false" prefWidth="353.66668701171875" resizable="false" text="PRODUCTO" />
+                        <TableColumn fx:id="colPrecio" editable="false" minWidth="0.0" prefWidth="124.0" resizable="false" sortable="false" text="PRECIO UNITARIO" />
+                        <TableColumn fx:id="colDescuento" editable="false" minWidth="0.0" prefWidth="149.0" resizable="false" sortable="false" text="DESCUENTO" />
+                        <TableColumn fx:id="colSubtotal" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="SUB TOTAL" />
+                        <TableColumn fx:id="colEditar" editable="false" prefWidth="83.0" resizable="false" sortable="false" text="EDITAR" />
+                        <TableColumn fx:id="colEliminar" editable="false" prefWidth="77.3333740234375" resizable="false" sortable="false" text="ELIMINAR" />
                     </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
-                    <GridPane.margin>
-                        <Insets left="5.0" right="5.0" top="20.0" />
-                    </GridPane.margin>
-                </TableView>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="table-cell" />
+                        <String fx:value="table-row-cell" />
+                     </styleClass>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <children>
+                  <JFXButton fx:id="btn_venderTodo" layoutX="171.0" layoutY="15.0" prefHeight="71.0" prefWidth="180.0" style="-fx-background-color: #1062E5;" text="Vender" textAlignment="CENTER" textFill="WHITE" translateX="490.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
             </children>
             <BorderPane.margin>
                 <Insets left="20.0" right="20.0" top="20.0" />

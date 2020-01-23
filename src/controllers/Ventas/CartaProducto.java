@@ -2,19 +2,12 @@ package controllers.Ventas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.Ventas_Compras.Ventas;
-
-import java.awt.*;
-import java.text.DecimalFormat;
 
 public class CartaProducto{
         @FXML private Pane PanelContTarjet;
@@ -30,6 +23,7 @@ public class CartaProducto{
         @FXML private ImageView imgCancel;
         @FXML private JFXTextField EtextSutTotal;
         public boolean hasEliminadounPanel;
+        ModalVentaController modalVentaController = new ModalVentaController();
         int numPanel;
         //GETERS
         public HBox getContenedor(){
@@ -110,7 +104,7 @@ public class CartaProducto{
                         EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText()));
                 }else{ EtextSutTotal.setText(ventas.calculoDeDescuentos(EtextPrecio.getText(),EtextCantidad.getText(),EtextDescuento.getText())); }
         }
-        public boolean getPanelEliminado(boolean siEliminado){return hasEliminadounPanel;}
+        public boolean getPanelEliminado(){return hasEliminadounPanel;}
         public int ElNumeroDelPanel(){return numPanel;}
         public void setElNumPanel(int elPanel){this.numPanel = elPanel;}
 
