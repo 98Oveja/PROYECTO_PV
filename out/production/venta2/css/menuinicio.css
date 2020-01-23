@@ -1,11 +1,7 @@
 .tipografia{-fx-font-family:"Source Sans Pro"}.empPanel{-fx-pref-width:1340px;-fx-pref-height:790px;-fx-background-color:#f0eef7}.emptarjeta{-fx-pref-width:281px;-fx-pref-height:273px;-fx-background-color:#3B86FF}.empbotonver{-fx-background-color:#295eb2;-fx-pref-width:160px;-fx-pref-height:50px;-fx-text-fill:#fff;-fx-border-radius:8px;-fx-font-size:14px;-fx-font-weight:bold;-fx-font-family:"Source Sans Pro"}.empbotonver:hover{-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.4),10,0.5,0.0,0.0);-fx-font-size:16px}
 
-.radiobuttonNewProd{
-    -fx-background-color: Tranparent;
-    -fx-border-color: none;
-
-    -fx-pref-width: 10px;
-    -fx-pref-height: 10px;
+.containerNewProd{
+   -fx-background-color: white;
 }
 
 .radiobuttonNewProd:hover{
@@ -25,7 +21,7 @@
     -fx-border-radius: 6px;
 }
 
-.empleadoscard:hover,.btn_CloseModal:hover{
+.empleadoscard:hover,.btn_CloseModal:hover, .containerNewProd{
     -fx-effect:dropshadow(gaussian, rgba(37, 37, 37, 0.3),10,0.5,0.0,0.0);-fx-font-size:16px
 }
 

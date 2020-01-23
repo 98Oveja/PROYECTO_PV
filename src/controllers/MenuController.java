@@ -15,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import utils.ConnectionUtil;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -34,7 +36,8 @@ public class MenuController implements Initializable, ControlledScreen {
     public StackPane ContenedorMenu;
 
     ScreensController myController;
-
+    public double heightMenu= Toolkit.getDefaultToolkit().getScreenSize().height;
+    public double widthMenu= Toolkit.getDefaultToolkit().getScreenSize().width;
     @FXML
     private ImageView NewImageProducts;
     @FXML
@@ -102,13 +105,6 @@ public class MenuController implements Initializable, ControlledScreen {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-            if(products.size() < 5){
-                produtosAnimation();
-            }
-
-    }
 
 
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
@@ -145,4 +141,14 @@ public class MenuController implements Initializable, ControlledScreen {
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        if(products.size() < 5){
+            produtosAnimation();
+        }
+        ContenedorMenu.setPrefWidth(widthMenu - 260);
+        ContenedorMenu.setPrefHeight(heightMenu - 110);
+    }
+
 }
