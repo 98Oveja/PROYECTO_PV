@@ -105,9 +105,42 @@ public class ModalVentas implements Initializable{
         }
         return cuantoCamposVacios;
     }
+    public void modeloAsignacionEnTabla(){
+        ventasObservableList = FXCollections.observableArrayList();
+        this.colNumero.setCellValueFactory(new PropertyValueFactory<>("Numero"));
+        this.colCantidad.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
+        this.colCodigo.setCellValueFactory(new PropertyValueFactory<>("CodigoProducto"));
+        this.colProducto.setCellValueFactory(new PropertyValueFactory<>("Producto"));
+        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("PrecioVenta"));
+        this.colDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
+        this.colSubtotal.setCellValueFactory(new PropertyValueFactory<>("SubTotal"));
+        this.colEditar.setCellValueFactory(new PropertyValueFactory<>("Editar"));
+        this.colEliminar.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+    }
+    public void activarNodos(){
+        MensajedeAlertaCampos.setVisible(true);
+        barradeProgresoAlerta.setVisible(true);
+        barradeProgresoAlerta.setStyle("-fx-pref-height:3px;");
+        MensajedeAlertaCampos.setText("Verifica los Campos");
+    }
+    public void desactivarNodos(){
+        MensajedeAlertaCampos.setVisible(false);
+        barradeProgresoAlerta.setVisible(false);
+        addNewCustomer.setDisable(true);
+        listadoClientes.setDisable(true);
+        telefono_text.setDisable(true);
+        direccion_text.setDisable(true);
+        nit_text.setDisable(true);
+        fecha_text.setDisable(true);
+    }
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
 
 //      ACCIONES DE LOS BOTONES Y OTROS COMPONENTES DENTRO DEL MODAL
+        tablaDetalle.setOnMousePressed(mouseEvent -> {
+            System.out.println("Tabla Refrescado");
+            ventasObservableList = ventas.getventasObservableListAux();
+            tablaDetalle.refresh();
+        });
         btnCerrarModal.setOnAction(actionEvent -> {
             System.out.println("Cerrado");
             ventas.cerrarModal(borderPVentas);
@@ -129,21 +162,9 @@ public class ModalVentas implements Initializable{
 
         });
         btn_agregarVenta.setOnAction(actionEvent -> {
-            if (todolosCamposVacios()<5){
-                MensajedeAlertaCampos.setVisible(true);
-                barradeProgresoAlerta.setVisible(true);
-                barradeProgresoAlerta.setStyle("-fx-pref-height:3px;");
-                MensajedeAlertaCampos.setText("Verifica los Campo o la fecha");
-            }
+            if (todolosCamposVacios()<5){activarNodos();}
             else {
-                MensajedeAlertaCampos.setVisible(false);
-                barradeProgresoAlerta.setVisible(false);
-                addNewCustomer.setDisable(true);
-                listadoClientes.setDisable(true);
-                telefono_text.setDisable(true);
-                direccion_text.setDisable(true);
-                nit_text.setDisable(true);
-                fecha_text.setDisable(true);
+                desactivarNodos();
                 urlEditar = getClass().getResource("/images/edit.png");
                 urlEliminar = getClass().getResource("/images/icons8_delete_50px_1.png");
                 imgEditar = new Image(urlEditar.toString(),16,16,false,true);
@@ -153,7 +174,6 @@ public class ModalVentas implements Initializable{
                 editJfxButton.setGraphic(new ImageView(imgEditar));
                 deletJfxButton.setGraphic(new ImageView(imgEliminar));
                 double subTotal = Double.parseDouble(ventas.calculoDeDescuentos(precio_text.getText(), cantidad_text.getText(), descuento_text.getText()));
-                ventas.setTableViewAux(tablaDetalle);
                 Ventas ventas1 = new Ventas(
                         numeros,
                         Integer.parseInt(cantidad_text.getText()),
@@ -164,7 +184,6 @@ public class ModalVentas implements Initializable{
                         subTotal,
                         editJfxButton,
                         deletJfxButton);
-                ventas.setVentasObservableListAux(ventasObservableList);
                 if(!ventasObservableList.contains(ventas1)){
                     if (!ventas.equals(ventas1)){
                     this.ventasObservableList.add(ventas1);
@@ -180,6 +199,7 @@ public class ModalVentas implements Initializable{
                 }
                 descuento_text.setText("0");
             }
+            ventas.setVentasObservableListAux(ventasObservableList);
         });
         listadoClientes.setOnAction(actionEvent -> {
          String Nombre_Apellido_Cliente = listadoClientes.getValue();
@@ -214,18 +234,18 @@ public class ModalVentas implements Initializable{
         precio_text.setEditable(false);
         disponibilidad_text.setEditable(false);
         descuento_text.setText("0");
-
 //      MODELO Y ASIGNACION DE LOS DATOS DE LA TABLA EN GENERAL
-        ventasObservableList = FXCollections.observableArrayList();
-        this.colNumero.setCellValueFactory(new PropertyValueFactory<>("Numero"));
-        this.colCantidad.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
-        this.colCodigo.setCellValueFactory(new PropertyValueFactory<>("CodigoProducto"));
-        this.colProducto.setCellValueFactory(new PropertyValueFactory<>("Producto"));
-        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("PrecioVenta"));
-        this.colDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
-        this.colSubtotal.setCellValueFactory(new PropertyValueFactory<>("SubTotal"));
-        this.colEditar.setCellValueFactory(new PropertyValueFactory<>("Editar"));
-        this.colEliminar.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+//        ventasObservableList = FXCollections.observableArrayList();
+//        this.colNumero.setCellValueFactory(new PropertyValueFactory<>("Numero"));
+//        this.colCantidad.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
+//        this.colCodigo.setCellValueFactory(new PropertyValueFactory<>("CodigoProducto"));
+//        this.colProducto.setCellValueFactory(new PropertyValueFactory<>("Producto"));
+//        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("PrecioVenta"));
+//        this.colDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
+//        this.colSubtotal.setCellValueFactory(new PropertyValueFactory<>("SubTotal"));
+//        this.colEditar.setCellValueFactory(new PropertyValueFactory<>("Editar"));
+//        this.colEliminar.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+
 //      VALIDACIONES EXTERNAS
         ventas.validarNumTelefono(telefono_text,8);
         ventas.validarNit(nit_text);
@@ -235,5 +255,6 @@ public class ModalVentas implements Initializable{
         mostrarFecha();
         cargarClientes();
         cargarProductos();
+        modeloAsignacionEnTabla();
     }
 }

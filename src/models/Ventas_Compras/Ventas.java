@@ -28,7 +28,7 @@ public class Ventas{
     public ArrayList<String> dataContainer = new ArrayList<>();
     public String resultQuery = "";
 //
-    public TableView tableViewAux;
+    public TableView tableViewAux = new TableView<>();
     public ObservableList<Ventas> ventasObservableListAux;
     private JFXButton Editar;
     private JFXButton Eliminar;
@@ -55,15 +55,19 @@ public class Ventas{
     SubTotal = subTotal;
     Editar = edit;
     Eliminar = del;
-//    Editar.setOnAction(actionEvent -> {
-//
-//    });
+    Editar.setOnAction(actionEvent -> {
+
+    });
     Eliminar.setOnAction(actionEvent -> {
-//     Ventas v = (Ventas) tableViewAux.getSelectionModel().getSelectedItem();
-//     ventasObservableListAux.remove(v);
-        for (Ventas v:ventasObservableListAux) {
-            System.out.println(v.getNumero());
+        try {
+            for (int i= 0;i<ventasObservableListAux.size();i++) {
+                System.out.println(ventasObservableListAux.toString());
+            }
+            System.out.println("Se ha Borrado la tabla");
+        }catch (Exception e){
+            System.out.println("No se puede Borrar por: "+e.getMessage());
         }
+
     });
 
     }
@@ -251,7 +255,7 @@ public void alertasPersonalizados(String TITULO, String Cuerpo,
             delEmployController.Okay.setText("Ok");}
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
