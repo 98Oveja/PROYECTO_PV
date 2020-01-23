@@ -44,3 +44,5 @@ Sera borrado out/production/appJavaFX/images/index.jpeg
 
 #workspace idea
 /.idea/
+.xml
+.idea
