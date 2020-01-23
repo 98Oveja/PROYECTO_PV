@@ -1,5 +1,7 @@
 package controllers.employees;
 
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +16,7 @@ import models.Employ.dataEmploy;
 
 import java.io.IOException;
 
-public class EmployeesController {
+public class EmployeesController implements ControlledScreen {
 
     public Button mini1;
     public Button mini2;
@@ -135,4 +137,9 @@ public class EmployeesController {
             mini4.setStyle(".PanelLateralOpciones");
         }
     }
-  }
+    ScreensController myController;
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
+}

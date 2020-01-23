@@ -1,5 +1,7 @@
 package controllers.Ventas;
 
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +11,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-public class VentasController {
+public class VentasController implements ControlledScreen {
+    ScreensController myController;
+
     public void OpenModal_InsertSale(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ventas/ModalRegistrarVenta.fxml"));
@@ -24,5 +28,10 @@ public class VentasController {
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

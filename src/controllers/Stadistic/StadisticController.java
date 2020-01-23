@@ -1,6 +1,8 @@
 package controllers.Stadistic;
 
 import com.jfoenix.controls.JFXComboBox;
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
@@ -18,7 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class StadisticController implements Initializable {
+public class StadisticController implements Initializable, ControlledScreen {
 
     public Label lblStatusWek;           public Label lblWStatus;
     public ImageView imgStatusWek;       public BarChart chartWek;
@@ -28,6 +30,8 @@ public class StadisticController implements Initializable {
     public BarChart chartMont;           public LineChart mainChart;
     public Label lblPane;                public JFXComboBox cbxTime;
     public ImageView imgStatusMont;
+
+    ScreensController myController;
 
     XYChart.Series series1 = new XYChart.Series();
     XYChart.Series series2 = new XYChart.Series();
@@ -207,5 +211,9 @@ public class StadisticController implements Initializable {
         //this.imgStatusMont;
         //this.lblMStatus;
         //this.lblStatusMont
+    }
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

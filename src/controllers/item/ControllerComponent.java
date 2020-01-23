@@ -7,9 +7,11 @@ import com.jfoenix.controls.JFXTextField;
 import controllers.LoginController;
 import controllers.ScreenController.ImplementsU.ControlledScreen;
 import controllers.ScreenController.ScreensController;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +27,7 @@ import navigator.ViewNavigator;
 import utils.CreateThread;
 import utils.ParseEmail;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -49,12 +52,38 @@ public class ControllerComponent implements Initializable, ControlledScreen {
     User user;
     String status = "";
     public static boolean admin = false;
+
+
     @FXML
     public void handleButtonAction(MouseEvent event){
         //if(event.getSource() == btnSignin){
          // logIn();
        //}
-       ViewNavigator.loadVista(ViewNavigator.HOME);
+
+       //Platform.runLater(() -> {
+            //an event with a button maybe
+         //   ViewNavigator.loadVista(ViewNavigator.HOME);
+        //});
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Runnable updater = new Runnable() {
+                    @Override
+                    public void run() {
+                        ViewNavigator.loadVista(ViewNavigator.HOME);
+                    }
+                };
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(updater);
+            }
+        });
+
+        thread.setDaemon(true);
+        thread.start();
     }
 
    // public void handleButtonActionKey(KeyEvent keyEvent) {
