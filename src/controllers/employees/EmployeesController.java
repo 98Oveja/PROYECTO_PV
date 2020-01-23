@@ -89,10 +89,10 @@ public class EmployeesController implements ControlledScreen {
             String traslate= res.img.replace("*","\\");
             controller.setImgUser("file:/"+traslate);
             
-            if(controller.btnUpdate()==1) {
-                editEmploy.updateEmploy(res.idper, res.idemp, res.name1, res.name2, res.lastname1, res.lastname2, res.dir, res.tel, res.correo, res.img, res.fechaInicio, res.cargo);
-                System.out.println("Actualizacion exitosa");
-            }
+            //if(controller.btnUpdate() ==1) {
+             //   editEmploy.updateEmploy(res.idper, res.idemp, res.name1, res.name2, res.lastname1, res.lastname2, res.dir, res.tel, res.correo, res.img, res.fechaInicio, res.cargo);
+              //  System.out.println("Actualizacion exitosa");
+           // }
 
             Scene dialogo = new Scene(root);
             //abrimos un nuevo escenario

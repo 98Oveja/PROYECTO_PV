@@ -29,7 +29,7 @@ public class EditEmploy {
                         xd.lastname1 = result.getString("PRIMER_APELLIDO");
                         xd.lastname2 = result.getString("SEGUNDO_APELLIDO");
                         xd.dir = result.getString("DIRECCION");
-                        xd.tel = result.getInt("TELEFONO");
+                        xd.tel = result.getString("TELEFONO");
                         xd.correo = result.getString("CORREO");
                         xd.img = result.getString("url_foto");
                         xd.estado = result.getBoolean("ESTADO");
@@ -45,7 +45,7 @@ public class EditEmploy {
             }
         }
 
-    public void updateEmploy(int id, int idemploy, String name1,String name2, String last1, String last2,String dir, int tel, String email, String url,String date,String place) throws SQLException {
+    public void updateEmploy(int id, int idemploy, String name1, String name2, String last1, String last2, String dir, String tel, String email, String url, String date, String place) throws SQLException {
         String urlimage= url.replace("\\","*");
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/

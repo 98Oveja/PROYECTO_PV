@@ -26,9 +26,21 @@ hs_err_pid*
 
 # idea ingore
 
-#.ideas
-#appJavaFX.iml
+
 # images
 *.png
 *.jpg
 *.ico
+Sera borrado out/production/appJavaFX/css/Proveedores/
+Sera borrado out/production/appJavaFX/css/Ventas/
+Sera borrado out/production/appJavaFX/fxml/Empleados/cardEmpoy.fxml
+Sera borrado out/production/appJavaFX/fxml/Proveedores/
+Sera borrado out/production/appJavaFX/fxml/Test/
+Sera borrado out/production/appJavaFX/fxml/Ventas/ModalVentas.fxml
+Sera borrado out/production/appJavaFX/fxml/Ventas/cardprod.fxml
+Sera borrado out/production/appJavaFX/images/index.jpeg
+#production
+/out/
+
+#workspace idea
+/.idea/
