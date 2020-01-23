@@ -27,32 +27,36 @@ public class HomeController implements Initializable {
     public StackPane paneSearch;
     static String item = null;
 
-    public static String screen0ID = "screen0";
-    public static String screen0File = "/fxml/Empleados/menu.fxml";
-    public static String screen1ID = "screen1";
-    public static String screen1File = "/fxml/Stadistic.fxml";
-    public static String screen2ID = "screen2";
-    public static String screen2File = "/fxml/Empleados/Employees.fxml";
-    public static String screen3ID = "screen3";
-    public static String screen3File = "/fxml/Productos/Productos.fxml";
-    public static String screen4ID = "screen4";
-    public static String screen4File = "/fxml/ForgotPass";
-    public static String screen5ID = "screen5";
-    public static String screen5File = "/fxml/ForgotPass";
-    public static String screen6ID = "screen6";
-    public static String screen6File = "/fxml/ForgotPass";
-    public static String screen7ID = "screen7";
-    public static String screen7File = "/fxml/Calendar/CalendarPane.fxml";
-    public static String screen8ID = "screen8";
-    public static String screen8File = "/fxml/Ventas/PanelVentas.fxml";
-    public static String screen9ID = "screen9";
-    public static String screen9File = "/fxml/ForgotPass";
+    private ScreensController mainContainer = new ScreensController();
 
+    String getStringValue(String value){
+        String aux = null;
+        switch (value){
+            case "Inicio": aux= "/fxml/Empleados/menu.fxml"; break;
+            case "Clientes": aux= "/fxml"; break;
+            case "Compras": aux= "/fxml"; break;
+            case "Reportes": aux= "/fxml"; break;
+            case "Ventas": aux= "/fxml/Ventas/PanelVentas.fxml"; break;
+            case "Calendario": aux= "/fxml/Calendar/CalendarPane.fxml"; break;
+            case "Estadisiticas": aux= "/fxml/Stadistic.fxml"; break;
+            case "Empleados": aux= "/fxml/Empleados/Employees.fxml"; break;
+            case "Productos": aux= "/fxml/Productos/Productos.fxml"; break;
+            case "Proveedores": aux= "/fxml/Proveedores/Proveedores.fxml"; break;
+
+        }
+        return aux;
+    }
+
+    String items = getItemForIsAdmin();
+    String[] itemsX = items.split(",");
+
+
+    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String items = getItemForIsAdmin();
-        String[] itemsX = items.split(",");
+
         try {
 
             for (String x: itemsX) {
@@ -87,11 +91,19 @@ public class HomeController implements Initializable {
                     }
                     button.setStyle("-fx-background-color:#3C3B54; ");
                     label.setVisible(true);
-                    System.out.println(button.getText());
+                    //System.out.println(button.getText());
+                    //setViewPane(button.getText());
+                    for (String itemAux : itemsX){
+                        if (itemAux.equals(button.getText())){
+                            System.out.println("id: "+button.getText());
+                            mainContainer.setScreen("screen"+button.getText());
+                        }
+                    }
                 });
             }
 
             loadSearchPane();
+
             pane.getChildren().addAll(setContainerScreen());
 
         } catch (IOException e) {
@@ -114,26 +126,19 @@ public class HomeController implements Initializable {
 
     private String getItemForIsAdmin (){
         if(ControllerComponent.admin) {
-            return "Inicio,Estadisiticas,Empleados,Productos,Proveedores,Clientes,Compras,Calendario,Ventas,Reportes";
+            return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
         }else {
-            return"Inicio,Clientes,Compras,Calendario,Ventas,Reportes";
+            //return"Inicio,Clientes,Compras,Reportes,Ventas,Calendario";
+            return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
         }
     }
 
     private ScreensController setContainerScreen() {
-        ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(HomeController.screen0ID, HomeController.screen0File);
-        mainContainer.loadScreen(HomeController.screen1ID, HomeController.screen1File);
-        mainContainer.loadScreen(HomeController.screen2ID, HomeController.screen2File);
-        mainContainer.loadScreen(HomeController.screen3ID, HomeController.screen3File);
-        mainContainer.loadScreen(HomeController.screen4ID, HomeController.screen4File);
-        mainContainer.loadScreen(HomeController.screen5ID, HomeController.screen5File);
-        mainContainer.loadScreen(HomeController.screen6ID, HomeController.screen6File);
-        mainContainer.loadScreen(HomeController.screen7ID, HomeController.screen7File);
-        mainContainer.loadScreen(HomeController.screen8ID, HomeController.screen8File);
-        mainContainer.loadScreen(HomeController.screen9ID, HomeController.screen9File);
 
-        mainContainer.setScreen(HomeController.screen0ID);
+        for (String aux: itemsX) {
+            mainContainer.loadScreen("screen"+aux, getStringValue(aux));
+        }
+        mainContainer.setScreen("screenInicio");
         return mainContainer;
     }
 }

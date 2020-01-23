@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.Principal">
+<StackPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.Principal">
    <children>
       <BorderPane stylesheets="@../../css/Proveedores/Style.css">
          <left>
@@ -28,89 +18,22 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="631.0">
                      <children>
-                        <Button ellipsisString="I" mnemonicParsing="false" onAction="#Activos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Inactivos">
+                        <Button fx:id="inactivo" ellipsisString="I" mnemonicParsing="false" onAction="#Inactivos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Inactivos">
                            <HBox.margin>
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Button>
-                        <Button ellipsisString="A" mnemonicParsing="false" onAction="#Activos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Activos">
+                        <Button fx:id="activo" ellipsisString="A" mnemonicParsing="false" onAction="#Activos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Activos">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="83.0" prefWidth="900.0">
-                     <children>
-                        <Button fx:id="mini1" ellipsisString="&lt;" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="&lt;">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="mini2" ellipsisString="1" graphicTextGap="1.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="1">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="mini3" ellipsisString="2" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="2">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="mini4" ellipsisString="3" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="3">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="mini5" ellipsisString="4" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="4">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="mini6" ellipsisString="&gt;" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="&gt;">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="50.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="83.0" prefWidth="900.0" />
                </children>
             </HBox>
          </bottom>
-         <center>
-            <GridPane gridLinesVisible="true" hgap="20.0" prefHeight="846.0" prefWidth="1016.0" vgap="10.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Pane prefHeight="226.0" prefWidth="584.0" />
-               </children>
-            </GridPane>
-         </center>
          <top>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -124,6 +47,11 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="1016.0">
                      <children>
+                        <Button mnemonicParsing="false" onAction="#Abrir" prefHeight="45.0" prefWidth="45.0" styleClass="boton-add">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </Button>
                         <TextField fx:id="labelSearch" prefHeight="40.0" prefWidth="433.0" styleClass="search">
                            <padding>
                               <Insets left="32.0" />
@@ -132,16 +60,28 @@
                               <Insets right="30.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#Abrir" prefHeight="45.0" prefWidth="45.0" styleClass="boton-add">
-                           <HBox.margin>
-                              <Insets right="50.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                   </HBox>
                </children>
             </HBox>
          </top>
+         <center>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane fx:id="Pane" hgap="20.0" prefHeight="405.0" prefWidth="817.0" vgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="570.0" prefWidth="570.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="570.0" prefWidth="570.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

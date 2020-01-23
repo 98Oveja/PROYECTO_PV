@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="408.0"  onKeyPressed="#handleButtonActionKey" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ForgotPassEmailController">
+   <children>
+               <JFXButton fx:id="btnForgot" layoutX="89.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1062e5;" stylesheets="@../css/main.css" text="Guardar" />
+               <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="374.0" layoutY="14.0" onMouseClicked="#handleActionClose" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../images/icon_circle-remove.png" />
+                   </image>
+               </ImageView>
+               <Label layoutX="22.0" layoutY="12.0" style="-fx-text-fill: #fff; -fx-font-size: 25;" styleClass="labelWelcome" stylesheets="@../css/main.css" text="Inicio de sesión" />
+               <Label layoutX="21.0" layoutY="47.0" style="-fx-text-fill: #FFF; -fx-font-size: 17;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Ingresa el codigo que se envío a su correo " />
+               <Label layoutX="21.0" layoutY="209.0" style="-fx-text-fill: #FFF; -fx-font-size: 17;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Verifica tu contraseña" />
+               <Label layoutX="21.0" layoutY="127.0" style="-fx-text-fill: #FFF; -fx-font-size: 17;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Ingresa una contaseña nueva" />
+      <Label fx:id="lblStatus" layoutX="21.0" layoutY="287.0" prefHeight="40.0" prefWidth="366.0" style="-fx-text-fill: white;" styleClass="labelWelcome" stylesheets="@../css/main.css" />
+      <JFXTextField fx:id="txtCode" layoutX="21.0" layoutY="75.0" prefHeight="40.0" prefWidth="366.0" promptText="Escribe el codigo aqui" stylesheets="@../css/main.css" />
+      <JFXPasswordField fx:id="txtPass" layoutX="21.0" layoutY="160.0" prefHeight="40.0" prefWidth="366.0" promptText="Ingresa tu contraseña" stylesheets="@../css/main.css" />
+      <JFXPasswordField fx:id="txtPassVerified" layoutX="21.0" layoutY="239.0" prefHeight="40.0" prefWidth="366.0" promptText="Vuelve a escribir tu contraseña" stylesheets="@../css/main.css" />
+
+
+   </children>
+</Pane>

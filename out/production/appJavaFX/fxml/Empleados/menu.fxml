@@ -16,7 +16,7 @@
          <children>
             <Pane fx:id="CardProveedor" layoutX="65.0" layoutY="113.0" prefHeight="200.0" prefWidth="281.0" styleClass="emptarjeta" stylesheets="@../../css/menuinicio.css">
                <children>
-                  <JFXButton fx:id="btnViewProd"  contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" >
+                  <JFXButton fx:id="btnViewProd" contentDisplay="CENTER" layoutX="59.0" layoutY="209.0" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" >
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

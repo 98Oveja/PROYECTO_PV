@@ -1,76 +1,47 @@
 package controllers.Productos;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.fxml.FXML;
+import javafx.scene.image.*;
+import models.products.marcas;
 import utils.ConnectionUtil;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 public class newproducto implements Initializable {
     public Pane PanelContenedor;                    @FXML private TextField Nombre;
-    @FXML private TextField Marca;                  @FXML private ComboBox<String> Categoria;
-    @FXML private ComboBox<String> Proveedores;     @FXML private TextField Cantidad;
+    @FXML private ComboBox<String> Categoria;
+    @FXML private ComboBox<String> Proveedores,Marca;     @FXML private TextField Cantidad;
     @FXML private TextField PVenta;                 @FXML private TextField Pcompra;
     @FXML private Label codigo;                     @FXML private ImageView imageview;
     @FXML private TextField Descripcion;
 
+
     ArrayList<String> NOMBRE = new ArrayList<String>();
-    ArrayList<String> ID = new ArrayList<String>();
+    List<String> PROVEEDOR= new ArrayList<String>();
+    List<String> CATEGORIA= new ArrayList<String>();
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
-    eventos event = new eventos();
-
-    public int consultasID(String name, String tabla) {
-        int id = 1;
-        String sql;
-        if (tabla=="PROVEEDORES"){
-            sql = "SELECT ID_PROVEEDORES FROM PROVEEDORES Where ORG = " + "\'" + name + "\' ;";
-        }
-        else{
-        sql = "SELECT ID_CATEGORIA FROM CATEGORIAS Where NOMBRE = " + "\'" + name + "\' ;";
-        }
-        try {
-            conexion= conn.getConnection();
-            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
-               // System.out.println("NO FUNCIONA");
-            } else {
-                if(tabla=="CATEGORIAS")
-                {
-                    id = resultSet.getInt("ID_CATEGORIA");
-                }
-                else{
-                    id = resultSet.getInt("ID_PROVEEDORES");
-                }
-            }
-
-        }catch (Exception e){
-           // e.printStackTrace();
-
-        }
-        return id;
-    }
+    eventos event = new eventos(); int cantidad;
 
     public void obtenernombres(){
         NOMBRE.clear();
@@ -96,7 +67,6 @@ public class newproducto implements Initializable {
     {
         ids();
         Nombre.clear();
-        Marca.clear();
         Cantidad.clear();
         PVenta.clear();
         Pcompra.clear();
@@ -113,32 +83,30 @@ public class newproducto implements Initializable {
     }
 
     public void agregarProducto(ActionEvent actionEvent) throws SQLException {
-        int idCateg, idProv;
         int estado=1;
         String query = null;
         String name = Nombre.getText();
-        String marca = Marca.getText();
+        String marca = Marca.getValue();
         String cantidad = Cantidad.getText();
         String venta = PVenta.getText();
         String compra = Pcompra.getText();
         String codig = codigo.getText();
         String categoria = Categoria.getValue();
-        String proveedores = Proveedores.getValue();
+        String proveedor = Proveedores.getValue();
         String desc= Descripcion.getText();
         //System.out.println(categoria + proveedores);
         if(direccion!=null){
             direccion=direccion.replace("\\","*");
         }
         if(!name.isEmpty()&&!marca.isEmpty()&&!cantidad.isEmpty()&&!venta.isEmpty()&&!compra.isEmpty()&&!codig.isEmpty()&&validar()!=true) {
-            idCateg =  consultasID(categoria, "CATEGORIAS");
-            idProv = consultasID(proveedores, "PROVEEDORES");
             if (cantidad.equals(0)){
                 estado=0;
             }
             query= "INSERT INTO PRODUCTOS (ID_CATEGORIA,ID_PROVEEDORES,ID_COMPRA,MARCA,NOMBRE," +
-                    "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO,DESCRIPCION,CODDIGO)" +
-                    "VALUES ("+idCateg +","+idProv +"," + 1 +"," +  "\'"+marca+"\'" + "," + "\'"+name+"\'" + "," + cantidad +","
-                    + compra +"," + venta +"," + "\'"+direccion+"\'" +"," + estado + "," + "\'"+desc +"\'" + "," +  "\'"+codig +"\'" +");";
+                    "CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,ESTADO,DESCRIPCION,CODIGO)" +
+                    "VALUES ((SELECT ID_CATEGORIA FROM CATEGORIAS WHERE NOMBRE=\'"+Categoria +"\'),"+
+                    "(SELECT ID_PROVEEDOR FROM PROVEEDORES WHERE ORG=\'"+proveedor+"\')," + 1 +",\'"+marca+"\',\'"+name+"\'," + cantidad +","
+                    + compra +"," + venta +",\'"+direccion+"\'," + estado + ",\'"+desc +"\',\'"+codig +"\');";
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);            //insert.execute(query);
             preparedStatement.execute();
@@ -160,45 +128,38 @@ public class newproducto implements Initializable {
         }
     }
 
-    public ArrayList Categorias()
+    public void Categorias()
     {
-        ArrayList<String> list = new ArrayList<String>();
-        try {
+     try {
             conexion = conn.getConnection();
-            String Query = "SELECT NOMBRE FROM CATEGORIAS;";
+            String Query = "SELECT NOMBRE FROM CATEGORIAS ORDER BY NOMBRE ASC;";
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
                     String nombre= resultado.getString("NOMBRE");
-                    list.add(nombre);
+                    CATEGORIA.add(nombre);
                 }
             }
         } catch (SQLException e) {
-            //System.out.println(e.getErrorCode());;
         }
-        return list;
     }
 
-    public ArrayList<String> Proveedores()
+    public void Proveedores()
     {
-        ArrayList<String> list = new ArrayList<String>();
         try {
             String Query = "SELECT ORG FROM PROVEEDORES;";
-
             conexion = conn.getConnection();
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
                     String nombre= resultado.getString("ORG");
-                    list.add(nombre);
+                    PROVEEDOR.add(nombre);
                 }
             }
         } catch (SQLException e) {
-           // System.out.println("ERRRRRRRRRRROOOOOOOOOOOOR!!!!!! :(");
         }
-        return list;
     }
 
     public void Search(ActionEvent actionEvent) throws IOException {
@@ -212,57 +173,52 @@ public class newproducto implements Initializable {
             image = new Image("file:/"+direccion);
             imageview.setImage(image);
         } else{
-                //System.out.println("file is not valid");
         }
     }
     void imit(){
-        ArrayList<String> lista = Categorias();
-        ObservableList<String> categ = FXCollections.observableArrayList();
-        categ.addAll(lista);
-        Categoria.setItems(categ);
-        ArrayList<String> lista1 = Proveedores();
-        ObservableList<String> provee = FXCollections.observableArrayList();
-        provee.addAll(lista1);
-        Proveedores.setItems(provee);
+        Categorias();Proveedores();
+        ObservableList<String> observableList = FXCollections.observableList(CATEGORIA);
+        ObservableList<String> observableList1 = FXCollections.observableList(PROVEEDOR);
+        Categoria.setItems(observableList);
+        Proveedores.setItems(observableList1);
         event.validarSoloNumeros(Cantidad);
         event.validarSoloNumeros(PVenta);
         event.validarSoloNumeros(Pcompra);
     }
     void ids(){
-        ID.clear();
         try {
-            String nombre;
             conexion = conn.getConnection();
-            String Query = "SELECT ID_PRODUCTO FROM PRODUCTOS;";
+            String Query = "SELECT COUNT(*) AS CANTIDAD FROM PRODUCTOS;";
             Statement instruccion= conexion.createStatement();
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while(resultado.next()) {
-                    nombre= resultado.getString("ID_PRODUCTO");
-                    ID.add(nombre);
+                    cantidad=resultado.getInt("CANTIDAD");
                 }
             }
         } catch (SQLException e) {
-            //System.out.println(e.getErrorCode());;
         }
     }
 
     void generarCodigo(){
-        int l=ID.size();
-        if (l==0){
-            codigo.setText("00"+l);
+        if (cantidad==0){
+            codigo.setText("001");
         }
         else{
-            l=l+1;
-            codigo.setText("00"+l);
+            cantidad=+1;
+            codigo.setText("00"+cantidad);
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    imit();
-    ids();
-    obtenernombres();
+        marcas marc = new marcas();
+        ObservableList<String> Marc = FXCollections.observableArrayList();
+        Marc.addAll(marc.Marcas());
+        Marca.setItems(Marc);
+        imit();
+        ids();
+        obtenernombres();
     }
 
     public void Cerrar(ActionEvent actionEvent) {

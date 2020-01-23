@@ -63,6 +63,11 @@
 
 .boton-close{
     -fx-background-image: url("../../images/cancel_32.png");
+    -fx-background-size: 25px;
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
+    -fx-background-color: tranparent;
+}
+.boton-close:hover , .boton-close:pressed{
+    -fx-background-size: 30px;
 }

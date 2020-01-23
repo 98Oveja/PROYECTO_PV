@@ -8,23 +8,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+import utils.closeView;
+
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class NewProvee implements Initializable {
-    @FXML private TextField Nombre;
-    @FXML private TextField Apellidos;
-    @FXML private TextField Direccion;
-    @FXML private TextField Telefono;
-    @FXML private TextField Correo;
-    @FXML private TextField Organizacion;
-    @FXML private TextField Cuenta;
+    @FXML private TextField Nombre,Apellidos,Direccion,Telefono,Correo,Organizacion,Cuenta;
     @FXML private ImageView Photo;
+    @FXML private Pane Container;
 
     eventos event = new eventos();String path;
     ConnectionUtil conn = new ConnectionUtil();
@@ -74,7 +72,8 @@ public class NewProvee implements Initializable {
                 a1=ape[0];a2=ape[1];
             }else{a1=apellido;a2="";}
             query= "INSERT INTO PERSONAS (PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,DIRECCION,TELEFONO,CORREO,url_foto)" +
-                    "VALUES('"+n1+"','"+n2+"','"+a1+"','"+a2+"','"+direccion+"',"+tel+",'"+correo+"','"+photo+"');";
+                    "VALUES('"+n1+"','"+n2+"','"+a1+"','"+a2+"','"+direccion+"','"+tel+"','"+correo+"','"+photo+"');";
+            System.out.println(query);
             conexion = conn.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(query);
             preparedStatement.execute();
@@ -99,7 +98,6 @@ public class NewProvee implements Initializable {
         }
     }
 
-
     private void limipiar() {
         Nombre.clear();
         Apellidos.clear();
@@ -109,5 +107,10 @@ public class NewProvee implements Initializable {
         Organizacion.clear();
         Cuenta.clear();
         Photo.setImage(null);
+    }
+
+    public void Close(ActionEvent actionEvent) {
+        closeView close= new closeView();
+        close.Cerrar(Container);
     }
 }

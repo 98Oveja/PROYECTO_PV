@@ -1,5 +1,5 @@
 .fondo{
-    -fx-background-color: #f0f0f7;;
+    -fx-background-color: #f0f0f7;
 }
 
 .panels{
@@ -15,6 +15,7 @@
     -fx-background-image: url("../../images/icons8_delete_50px_1.png");
     -fx-background-size: 25px;
     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 
 .boton-delete:hover{
@@ -27,6 +28,7 @@
     -fx-background-image: url("../../images/edit.png");
     -fx-background-size: 25px;
     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 
 .boton-edit:hover{
@@ -43,6 +45,12 @@
 .boton-mini:hover{
     -fx-font-size: 16px;
     -fx-background-color: #3B86FF;
+}
+
+.boton-mini:pressed{
+    -fx-font-size: 14px;
+    -fx-background-color: #BDBDBD;
+    -fx-text-fill: #3B86FF;
 }
 
 .search{
@@ -88,4 +96,8 @@
     -fx-background-color: rgba(0,0,0,.2);
     -fx-text-fill: white;
     -fx-background-radius: 20px, 20px, 0px, 0px;
+}
+
+.fondo-card{
+    -fx-background-color: white;
 }

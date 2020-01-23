@@ -1,0 +1,97 @@
+.fondo{
+    -fx-background-color: #f0f0f7;
+}
+
+.panels{
+    -fx-background-color: #fff;
+}
+
+.panels:hover{
+    -fx-effect:dropshadow(gaussian, rgba(37, 37, 37, 0.3),10,0.5,0.0,0.0);
+}
+
+.boton-delete{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/icons8_delete_50px_1.png");
+    -fx-background-size: 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.boton-delete:hover{
+    -fx-background-image: url("../../images/icondelete.png");
+    -fx-background-size: 25px;
+}
+
+.boton-edit{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/edit.png");
+    -fx-background-size: 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.boton-edit:hover{
+    -fx-background-image: url("../../images/edit1.png");
+    -fx-background-size: 25px;
+}
+
+.boton-mini{
+    -fx-font-size: 12px;
+    -fx-background-color: #BDBDBD;
+    -fx-text-fill: #fff;
+}
+
+.boton-mini:hover{
+    -fx-font-size: 16px;
+    -fx-background-color: #3B86FF;
+}
+
+.search{
+    -fx-border-width: 1px;
+    -fx-border-color: #BDBDBD;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-image: url("../../images/search.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 28px 28px;
+    -fx-background-position: 5px center;
+}
+
+.boton-add{
+    -fx-background-image: url("../../images/icons8_add_50px.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 40px 40px;
+    -fx-background-color: transparent;
+}
+
+.boton-add:hover{
+    -fx-background-size: 45px 45px;
+}
+
+.boton-add:pressed{
+    -fx-background-color: transparent;
+}
+
+.border{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/Border.png");
+    -fx-background-size: 90px;
+}
+
+.border:pressed, .border:hover{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/view.png");
+    -fx-background-size: 90px;
+}
+
+.window{
+    -fx-background-color: rgba(0,0,0,.2);
+    -fx-text-fill: white;
+    -fx-background-radius: 20px, 20px, 0px, 0px;
+}
+
+.fondo-card{
+    -fx-background-color: white;
+}
