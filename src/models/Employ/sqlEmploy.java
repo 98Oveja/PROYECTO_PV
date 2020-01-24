@@ -21,7 +21,9 @@ public class sqlEmploy {
         try {
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
-            String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ID_EMPLEADO = "+id_employ+"";
+            String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, " +
+                    "P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO " +
+                    "FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ID_EMPLEADO = "+id_employ+" order by ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet result = instruccion.executeQuery(Query);
             if (result != null) {
@@ -86,7 +88,8 @@ public class sqlEmploy {
 
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
-            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
+            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, " +
+                    "P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet resulte = instruccion.executeQuery(sle);
             if (resulte != null) {

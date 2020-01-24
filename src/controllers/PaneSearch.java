@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.employees.DelEmployController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import navigator.ViewNavigator;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -32,6 +34,7 @@ public class PaneSearch  implements Initializable {
     public MenuItem itemHelp;
     public MenuItem itemConfig;
     public MenuItem itemClose;
+    public MenuItem itemCloseStage;
     int status = 0;
 
     public void goToURL(String URL){
@@ -58,6 +61,9 @@ public class PaneSearch  implements Initializable {
         }
     }
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     public void handleActionConf(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == itemConfig){
             final Stage primaryStage = new Stage();
@@ -70,7 +76,16 @@ public class PaneSearch  implements Initializable {
             dialog.setY(300);
             Scene dialogScene = null;
             dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
+            dialogScene.setOnMousePressed(event -> {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            });
 
+
+            dialogScene.setOnMouseDragged(event -> {
+                primaryStage.setX(event.getScreenX() - xOffset);
+                primaryStage.setY(event.getScreenY() - yOffset);
+            });
             dialog.setScene(dialogScene);
             dialog.show();
         }
@@ -78,8 +93,9 @@ public class PaneSearch  implements Initializable {
 
     public void handleActionClose(ActionEvent actionEvent) {
         if (actionEvent.getSource() == itemClose) {
-            Stage stage = (Stage) paneSearch.getScene().getWindow();
-            stage.close();
+           // Stage stage = (Stage) paneSearch.getScene().getWindow();
+           // stage.close();
+            ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW);
         }
     }
 
@@ -94,5 +110,12 @@ public class PaneSearch  implements Initializable {
         Image image = new Image(url,false);
         circle.setFill(new ImagePattern(image));
         imgUser.setCenter(circle);
+    }
+
+    public void handleActionCloseStage(ActionEvent actionEvent) {
+        DelEmployController delEmployController = new DelEmployController();
+
+        Stage stage = (Stage) paneSearch.getScene().getWindow();
+        stage.close();
     }
 }

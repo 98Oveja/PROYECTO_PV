@@ -47,18 +47,13 @@ public class HomeController implements Initializable {
         return aux;
     }
 
-    String items = getItemForIsAdmin();
-    String[] itemsX = items.split(",");
-
-
-    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
-    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private String items = getItemForIsAdmin();
+    private String[] itemsX = items.split(",");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-
             for (String x: itemsX) {
                 item = x;
                 loadPane();
@@ -91,14 +86,8 @@ public class HomeController implements Initializable {
                     }
                     button.setStyle("-fx-background-color:#3C3B54; ");
                     label.setVisible(true);
-                    //System.out.println(button.getText());
-                    //setViewPane(button.getText());
-                    for (String itemAux : itemsX){
-                        if (itemAux.equals(button.getText())){
-                            System.out.println("id: "+button.getText());
-                            mainContainer.setScreen("screen"+button.getText());
-                        }
-                    }
+                    mainContainer.setScreen("screen"+button.getText());
+
                 });
             }
 

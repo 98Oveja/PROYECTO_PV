@@ -67,6 +67,7 @@ public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
     Image image = new Image("/images/info.png");
+//    images/info.png
     CloseModalMethod("Salir","Esta seguro que desea salir del Modal??",image,1);
 }
 @FXML
@@ -164,7 +165,9 @@ public void CloseModal(){
         }
         ConnectionUtil connectionClass= new ConnectionUtil();
         Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-        String sqlinsert= "INSERT INTO `PERSONAS` (`ID_PERSONA`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES (NULL, '"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
+        String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
+                "`SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, " +
+                "`DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES ('"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlinsert); //aca insertamos los dato
         //aca buscaremos el id de la persona ingresada--
@@ -174,7 +177,7 @@ public void CloseModal(){
             idpersona = result.getInt("ID_PERSONA");
         }
         //esteremos realizando el segundo insert para la tabla empleados
-        String sql2= "INSERT INTO `EMPLEADOS` (`ID_EMPLEADO`, `ID_PERSONA`, `ESTADO`, `FECHA_CONTRATACION`, `FECHA_RETIRO`, `CARGO`) VALUES (NULL,'"+idpersona+"', '1', '"+dia.toString()+"', NULL, '"+place+"')";
+        String sql2= "INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `ESTADO`,`FECHA_RETIRO`, `CARGO`) VALUES ('"+idpersona+"', '1', NULL, '"+place+"')";
         statement.executeUpdate(sql2);
         statement.close();
     }
@@ -247,8 +250,6 @@ public void CloseModal(){
         if (event.getCode() == KeyCode.ENTER) {
             EmployNameTwo.requestFocus();
             if (EmployNameOne.getLength() <= 1) {
-                EmployNameOne.setPromptText("Ingresa un nombre valido");
-                EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
                 warningOne.setVisible(true);
             } else {
                 warningOne.setVisible(false);
@@ -261,8 +262,6 @@ public void CloseModal(){
      if(event.getCode()==KeyCode.ENTER){
          EmployLasteNameOne.requestFocus();
          if (EmployNameOne.getLength() <=2){
-             EmployNameOne.setPromptText("Ingresa un apellido valido");
-             EmployNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
              warningOne.setVisible(true);
          }else{
              warningOne.setVisible(false);
@@ -274,8 +273,6 @@ public void CloseModal(){
     private void EventKeyEnterLastNameOne(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){ EmployLasteNameTwo.requestFocus();
          if (EmployLasteNameOne.getLength() < 3){
-             EmployLasteNameOne.setPromptText("Ingresa un apellido valido");
-             EmployLasteNameOne.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
              warningTwo.setVisible(true);
          }else{
              warningTwo.setVisible(false);
@@ -285,8 +282,6 @@ public void CloseModal(){
      @FXML
      private void validatorPlace(){
          if ( EmployPlace.getText() == null ){
-             EmployPlace.setPromptText("Elige un puesto");
-             EmployPlace.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
              warningFive.setVisible(true);
          }
      }
@@ -295,8 +290,6 @@ public void CloseModal(){
     private void EventKeyEnterLasteNameTwo(KeyEvent event){
         if(event.getCode()==KeyCode.ENTER) {EmployDir.requestFocus();
             if (EmployLasteNameTwo.getLength() < 3){
-                EmployLasteNameTwo.setPromptText("Ingresa un apellido valido");
-                EmployLasteNameTwo.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65)");
                 warningTwo.setVisible(true);
             }else{
                 warningTwo.setVisible(false);
@@ -308,8 +301,6 @@ public void CloseModal(){
     private void EventKeyEnteDir(KeyEvent event){
      if(event.getCode()==KeyCode.ENTER){ EmployPhone.requestFocus(); }
         if (EmployDir.getLength() <= 3){
-            EmployDir.setPromptText("Ingresa una direccion valida");
-            EmployDir.setStyle("-fx-prompt-text-fill:  rgba(255,180,13,0.65);");
             warningThree.setVisible(true);
         }else{warningThree.setVisible(false);}
      }
@@ -318,8 +309,6 @@ public void CloseModal(){
     private void EventKeyEnterPhone(KeyEvent event){
     if(event.getCode()==KeyCode.ENTER){ EmployEmail.requestFocus();}
             if (EmployPhone.getLength() <=6) {
-                EmployPhone.setPromptText("Ingresa un numero valido");
-                EmployPhone.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
                 warningFour.setVisible(true);
             }else{warningFour.setVisible(false);}
     }
@@ -328,8 +317,6 @@ public void CloseModal(){
     private void EventKeyEnterEmail(KeyEvent event){
         ParseEmail valEmali= new ParseEmail();
         if (!valEmali.isValid(EmployEmail.getText())){
-            EmployEmail.setPromptText("Ingresa un correo valido");
-            EmployEmail.setStyle("-fx-prompt-text-fill: rgba(255,180,13,0.65);");
             warningSix.setVisible(true);
         }else{  warningSix.setVisible(false);}
     }

@@ -54,19 +54,9 @@ public class CardEmployController {
             imgTemporal ="file:/" + employ.img.replace("*","\\");
             //employ.img =  employ.img.replace("*","\\");
         }else{
+            System.out.println("no cargo la imagen");
             imgTemporal = "images/male_user_.png";
         }
-    }
-
-    public int errorLoadImage( String dir){
-        Image image = new Image(dir,true);
-        AtomicInteger ex = new AtomicInteger();
-        image.errorProperty().addListener(o -> {
-            System.err.println("Error Loading Image " + image.getUrl());
-            ex.getAndIncrement();
-        } );
-
-        return ex.get();
     }
 
     public void setImgUser(String url) {

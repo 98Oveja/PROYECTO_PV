@@ -1,5 +1,7 @@
 package controllers.employees;
 
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,33 +11,42 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EmployeesController implements Initializable {
+public class EmployeesController implements Initializable, ControlledScreen {
     @FXML
     public Pane containerFather;
     @FXML
     public GridPane containercard;
-    public Button mini1;
-    public Button mini2;
-    public Button mini3;
-    public Button mini4;
-    public Button mini5;
-    public Button mini6;
+//    public Button mini1;
+//    public Button mini2;
+//    public Button mini3;
+//    public Button mini4;
+//    public Button mini5;
+//    public Button mini6;
     public int posx, posy;
     public int idcard,cantEmploy;
     public sqlEmploy dataEmp = new sqlEmploy();
     public List<dataEmploy> arrayEmploy= new ArrayList<>();
+    public StackPane containerEmploy;
+    public Button activo;
+    public Button Inactivos;
+    double widthMenu = Toolkit.getDefaultToolkit().getScreenSize().width;
+    double heightMenu = Toolkit.getDefaultToolkit().getScreenSize().height;
 
+    ScreensController myController;
     @FXML
     private void pressedAddModal() {
         try {
@@ -50,37 +61,37 @@ public class EmployeesController implements Initializable {
         }catch (Exception ex){ ex.printStackTrace();}
     }
 
-    public void cambio(ActionEvent actionEvent) {
-        if (actionEvent.getSource()==mini2){
-            mini2.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
-            mini3.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-            mini5.setStyle(".PanelLateralOpciones");
-        }
-        else if (actionEvent.getSource()==mini3){
-            mini3.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-            mini5.setStyle(".PanelLateralOpciones");
-        }
-        else if (actionEvent.getSource()==mini4){
-            mini4.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
-            mini5.setStyle(".PanelLateralOpciones");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini3.setStyle(".PanelLateralOpciones");
-        }
-        else if (actionEvent.getSource()==mini5){
-            mini5.setStyle("-fx-background-color: #3B86FF;" +
-                    "-fx-text-fill: #fff;");
-            mini2.setStyle(".PanelLateralOpciones");
-            mini3.setStyle(".PanelLateralOpciones");
-            mini4.setStyle(".PanelLateralOpciones");
-        }
-    }
+//    public void cambio(ActionEvent actionEvent) {
+//        if (actionEvent.getSource()==mini2){
+//            mini2.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
+//            mini3.setStyle(".PanelLateralOpciones");
+//            mini4.setStyle(".PanelLateralOpciones");
+//            mini5.setStyle(".PanelLateralOpciones");
+//        }
+//        else if (actionEvent.getSource()==mini3){
+//            mini3.setStyle("-fx-background-color: #3B86FF; -fx-text-fill: #fff;");
+//            mini2.setStyle(".PanelLateralOpciones");
+//            mini4.setStyle(".PanelLateralOpciones");
+//            mini5.setStyle(".PanelLateralOpciones");
+//        }
+//        else if (actionEvent.getSource()==mini4){
+//            mini4.setStyle("-fx-background-color: #3B86FF;" +
+//                    "-fx-text-fill: #fff;");
+//            mini5.setStyle(".PanelLateralOpciones");
+//            mini2.setStyle(".PanelLateralOpciones");
+//            mini3.setStyle(".PanelLateralOpciones");
+//        }
+//        else if (actionEvent.getSource()==mini5){
+//            mini5.setStyle("-fx-background-color: #3B86FF;" +
+//                    "-fx-text-fill: #fff;");
+//            mini2.setStyle(".PanelLateralOpciones");
+//            mini3.setStyle(".PanelLateralOpciones");
+//            mini4.setStyle(".PanelLateralOpciones");
+//        }
+//    }
 
     public void card() throws IOException {
-        FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/cardEmpoy.fxml"));
+        FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/fxml/Empleados/CardEmploy.fxml"));
         Parent parent= fxmlLoader.load();
         CardEmployController cn =fxmlLoader.getController();
         cn.addData(arrayEmploy.get(idcard));
@@ -116,7 +127,10 @@ public class EmployeesController implements Initializable {
             containercard.getChildren().addAll(parent);
         }
     }
-
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loaderArrayData();
@@ -125,6 +139,8 @@ public class EmployeesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        containerEmploy.setPrefWidth(widthMenu - 260);
+        containerEmploy.setPrefHeight(heightMenu - 110);
     }
   }
 

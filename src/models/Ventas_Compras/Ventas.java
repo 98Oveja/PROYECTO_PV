@@ -1,44 +1,87 @@
 package models.Ventas_Compras;
-
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
+import controllers.employees.DelEmployController;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
-
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-public class Ventas {
-    ConnectionUtil cone = new ConnectionUtil();
-    Connection connection = cone.getConnection();
-    CallableStatement callableStatement = null;
-    ResultSet resultSet = null;
-    Statement statement = null;
-    ArrayList<String> dataContainer = new ArrayList<>();
-    String resultQuery = "";
-//  Modelo de la Venta
-    String nombreCliente, nitCliente, telefonoCliente, direccionCliente, producoComprado,descripcionProducto,codigoProducto;
-    double cantidad, descuento, subtota, total,precioUnitario;
-//  Botones para colocarlo en la tabla para la columna Opciones
-    JFXButton btnEditar, btnCancelar;
+import java.util.Objects;
 
-public Ventas() {
+public class Ventas{
+    public ConnectionUtil cone = new ConnectionUtil();
+    public Connection connection = cone.getConnection();
+    public CallableStatement callableStatement = null;
+    public ResultSet resultSet = null;
+    public Statement statement = null;
+    public ArrayList<String> dataContainer = new ArrayList<>();
+    public String resultQuery = "";
+//
+    public TableView tableViewAux;
+    public ObservableList<Ventas> ventasObservableListAux;
+    private JFXButton Editar;
+    private JFXButton Eliminar;
+//
+    private int Numero;
+    private int Cantidad;
+    private String CodigoProducto;
+    private String Producto;
+    private double PrecioVenta;
+    private double Descuento;
+    private double SubTotal;
+//
+    public Ventas(){}
+    public Ventas(int numero, int cantidad,
+                  String codigoProducto, String producto,
+                  double precioVenta, double descuento,
+                  double subTotal, JFXButton edit, JFXButton del) {
+    Numero = numero;
+    Cantidad = cantidad;
+    CodigoProducto = codigoProducto;
+    Producto = producto;
+    PrecioVenta = precioVenta;
+    Descuento = descuento;
+    SubTotal = subTotal;
+    Editar = edit;
+    Eliminar = del;
+//    Editar.setOnAction(actionEvent -> {
+//
+//    });
+    Eliminar.setOnAction(actionEvent -> {
+//     Ventas v = (Ventas) tableViewAux.getSelectionModel().getSelectedItem();
+//     ventasObservableListAux.remove(v);
+        for (Ventas v:ventasObservableListAux) {
+            System.out.println(v.getNumero());
+        }
+    });
+
     }
-//METODOS PARA VALIDAR SOLO LETRAS
-public void validarSoloLetras(JFXTextField campoDeTexto,JFXTextField focus) {
+
+
+//METODOS PARA LAS VALIDADCIONES
+public void validarSoloLetras(TextField campoDeTexto) {
    campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
      char c = event.getCharacter().charAt(0);
       if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
           event.consume();
       }
-       if (event.getCode() == KeyCode.ENTER ){
-           focus.requestFocus();
-       }
+//       if (event.getCode() == KeyCode.ENTER ){
+//           focus.requestFocus();
+//       }
    });
 }
-public void validarSoloNumeros(JFXTextField campo, JFXTextField newFocus){
+public void validarSoloNumeros(TextField campo){
    campo.addEventFilter(KeyEvent.ANY, event ->{
      char c = event.getCharacter().charAt(0);
       if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
@@ -47,10 +90,34 @@ public void validarSoloNumeros(JFXTextField campo, JFXTextField newFocus){
       if (c == '.' && campo.getText().contains(".")){
           event.consume();
       }
-      if (event.getCode() == KeyCode.ENTER){
-          newFocus.requestFocus();
-      }
+//      if (event.getCode() == KeyCode.ENTER){
+//          newFocus.requestFocus();
+//      }
    });
+}
+public void validarNit(TextField campo){
+    campo.addEventFilter(KeyEvent.ANY, event ->{
+        char c = event.getCharacter().charAt(0);
+        if (!(Character.isDigit(c) || Character.isWhitespace(c)
+                || Character.isISOControl(c)) && c!='-'){
+            event.consume();
+        }
+        if (c == '-' && campo.getText().contains("-")){
+            event.consume();
+        }
+    });
+}
+public void validarNumTelefono(TextField campo, int tamanio){
+        campo.addEventFilter(KeyEvent.ANY, event ->{
+            char c = event.getCharacter().charAt(0);
+            int tamCampo = campo.getText().length();
+            if (Character.isDigit(c) || Character.isISOControl(c)) {
+                if (tamCampo >= tamanio && !(Character.isISOControl(c))) {event.consume();}
+            }else{event.consume();}
+        });
+    }
+public boolean camposVacios(TextField jfxTextField){
+    return jfxTextField.getLength()!=0?true:false;
 }
 //  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
 public String getIdCostumerInDB(String Nombre, String Apellido) {
@@ -127,7 +194,7 @@ public ArrayList getProductByName(String thisProduct){
         while (resultSet.next()) {
             dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
                     resultSet.getString("PRECIO_VENTA")+"#"+
-                    resultSet.getString("CODDIGO")+"#"+
+                    resultSet.getString("CODIGO")+"#"+
                     resultSet.getString("DESCRIPCION"));
 
         }
@@ -136,79 +203,135 @@ public ArrayList getProductByName(String thisProduct){
     }
     return dataContainer;
 }
+public String calculoDeDescuentos(String precioin, String cantidadin, String descuentoin){
+    double precioProd = Double.parseDouble(precioin);
+    double cantidad = Double.parseDouble(cantidadin);
+    double descuento = Double.parseDouble(descuentoin)/100;
+    double subTotalSinDescuento = (precioProd * cantidad);
+    double elDescuento = subTotalSinDescuento*descuento;
+    double subConDescuento = subTotalSinDescuento-elDescuento;
+    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+//    String sub = String.valueOf(Math.round(Float.parseFloat(decimalFormat.format(subTotal-subConDescuento))));
+    String sub = String.valueOf(decimalFormat.format(subConDescuento));
+    return sub;
+}
 //  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
 //  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
-public double calcularSubtotal_andUpdateCantidad(double cantidadProduct, double precioProducto, double stock){
-    if (stock <= cantidadProduct){
-        return total = 0;
+//Manera en que almacenamos los datos en la base de datos
+public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalVenta){
+    try {
+        String sql = "{call insertVentas(?,?,?)}";
+        callableStatement = connection.prepareCall(sql);
+        callableStatement.setInt(1,idClienteG);
+        callableStatement.setInt(2, idEmpleadoG);
+        callableStatement.setDouble(3, totalVenta);
+        callableStatement.execute();
+    } catch (SQLException e) {
+        return ("Error isert Ventas: " + e.getMessage());
     }
-        return this.total = cantidadProduct * precioProducto;
+    return "Venta Gurdada en la BD";
 }
-
-//Metodos GETERS y SETERS
-public void setNombreCliente(String nombre){
-this.nombreCliente = nombre;
+public void cerrarModal(BorderPane panel){
+    Image image = new Image("/images/info.png");
+    alertasPersonalizados("CANCELAR", "Esta seguro que desea salir y cancelar la Venta",image,1,panel);
 }
-public String getNombreCliente(){
-    return this.nombreCliente;
+public void alertasPersonalizados(String TITULO, String Cuerpo,
+                                  Image image,int opcion,
+                                  BorderPane borderPane){
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
+        Parent parent = fxmlLoader.load();
+        DelEmployController delEmployController = fxmlLoader.getController();
+        delEmployController.TitleModal.setText(TITULO);
+        delEmployController.contentAlert.setText(Cuerpo);
+        delEmployController.IconModal.setImage(image);
+        if(opcion == 0) {
+            delEmployController.Cancel.setVisible(false);
+            delEmployController.Okay.setStyle("-fx-translate-x: 65px; -fx-translate-y: -10px;");
+            delEmployController.Okay.setText("Ok");}
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        if(delEmployController.BtnOk==1 && opcion ==1){
+          stage = (Stage) borderPane.getScene().getWindow();
+          stage.close();
+        }
+    }catch (Exception e){ System.out.println(e.getMessage());}
 }
-public void setNitCliente(String nit){
-    this.nitCliente = nit;
+//    GETERS
+    public int getNumero() {
+    return Numero;
 }
-public String getNitCliente(){
-    return this.nitCliente;
-}
-public void setTelefonoClienteCliente(String telefono){
-    this.telefonoCliente = telefono;
-}
-public String getTelefonoClienteCliente(){
-    return this.telefonoCliente;
-}
-public void setDireccionClienteCliente(String direccion){
-    this.direccionCliente = direccion;
-}
-public String getDireccionClienteCliente(){
-    return this.direccionCliente;
-}
-public void setProducoComprado(String producto){ this.producoComprado = producto; }
-public String getProducoComprado(){
-        return this.producoComprado;
+    public String getCodigoProducto() {
+        return CodigoProducto;
     }
-public void setDescripcionProducto(String descipcion){
-    this.descripcionProducto = descipcion;
-}
-public String getDescripcionProducto(){return this.descripcionProducto;}
-public void setCantidad(double cantidad){this.cantidad = cantidad;}
-public double getCantidad(){return this.cantidad;}
-public void setDescuento(double descuento){this.descuento = descuento;}
-public double getDescuento(){return this.descuento;}
-public void setSubtota (double subtota){this.subtota = subtota;}
-public double getSubtota(){return this.subtota;}
-public void setTotal(double total){this.total = total;}
-public double getTotal(){return this.total;}
-public void setCodigoProducto(String codigoProducto){this.codigoProducto = codigoProducto;}
-public String getCodigoProducto(){return this.codigoProducto;}
-public void setPrecioUnitario(double precioUnitario){this.precioUnitario = precioUnitario;}
-public double getPrecioUnitario(){return this.precioUnitario;}
-public void  setButton1(JFXButton button){this.btnCancelar = button;
-btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
-    @Override
-    public void handle(ActionEvent actionEvent) {
-        System.out.println("Boton de OPcion1");
+    public int getCantidad() {
+        return Cantidad;
     }
-});
+    public String getProducto() {
+        return Producto;
+    }
+    public double getPrecioVenta() {
+        return PrecioVenta;
+    }
+    public double getDescuento() {
+        return Descuento;
+    }
+    public double getSubTotal() {
+        return SubTotal;
+    }
+    public JFXButton getEliminar() {
+        return Eliminar;
+    }
+    public JFXButton getEditar() {
+        return Editar;
+    }
+    public TableView getTableViewAux(){return tableViewAux;}
+    public ObservableList getventasObservableListAux(){return ventasObservableListAux;}
+//    SETERS
+    public void setNumero(int numero) {
+        Numero = numero;
+    }
+    public void setCodigoProducto(String codigoProducto) {
+        CodigoProducto = codigoProducto;
+    }
+    public void setCantidad(int cantidad) {
+        Cantidad = cantidad;
+    }
+    public void setProducto(String producto) {
+        Producto = producto;
+    }
+    public void setPrecioVenta(double precioVenta) {
+        PrecioVenta = precioVenta;
+    }
+    public void setDescuento(double descuento) {
+        Descuento = descuento;
+    }
+    public void setSubTotal(double subTotal) {
+        SubTotal = subTotal;
+    }
+    public void setEliminar(JFXButton eliminar) {
+        Eliminar = eliminar;
+    }
+    public void setEditar(JFXButton editar) {
+        Editar = editar;
+    }
+    public void setTableViewAux(TableView tableView){tableViewAux=tableView;}
+    public void setVentasObservableListAux(ObservableList observableList){ventasObservableListAux=observableList;}
+//  EQUALS
+@Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Ventas)) return false;
+    Ventas ventas = (Ventas) o;
+    return getCantidad() == ventas.getCantidad() &&
+            Double.compare(ventas.getPrecioVenta(), getPrecioVenta()) == 0 &&
+            Double.compare(ventas.getDescuento(), getDescuento()) == 0 &&
+            Double.compare(ventas.getSubTotal(), getSubTotal()) == 0 &&
+            getCodigoProducto().equals(ventas.getCodigoProducto()) &&
+            getProducto().equals(ventas.getProducto());
 }
-
-public JFXButton getOpcion1Button(){
-    return this.btnCancelar;
-}
-public void setButton2(JFXButton button1){this.btnEditar = button1;
-    btnEditar.setOnMouseClicked(mouseEvent -> {
-        System.out.println("Has precionado opcion 2");
-    });
-}
-public JFXButton getOpcion2Button(){
-    return this.btnEditar;
-}
-
+@Override public int hashCode() { return Objects.hash(getCantidad(), getCodigoProducto(), getProducto(), getPrecioVenta(), getDescuento(), getSubTotal()); }
 }
