@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="containerEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.EmployeesController">
+   <children>
+      <BorderPane prefHeight="693.0" prefWidth="1148.0">
+         <top>
+            <BorderPane prefHeight="43.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Label style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="25.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <center>
+                  <Pane maxWidth="500.0" prefHeight="129.0" prefWidth="622.0" style="-fx-background-color: white; -fx-background-radius: 8;" BorderPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField layoutX="40.0" layoutY="-4.0" maxWidth="450.0" minWidth="200.0" prefHeight="42.0" prefWidth="310.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="200.0" right="20.0" top="5.0" />
+                     </BorderPane.margin>
+                  </Pane>
+               </center>
+               <right>
+                  <Button mnemonicParsing="false" onMouseClicked="#pressedAddModal" prefHeight="42.0" prefWidth="42.0" styleClass="buttonAddEmploy" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="35.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </BorderPane>
+         </top>
+         <center>
+            <GridPane fx:id="containercard" alignment="CENTER" hgap="25.0" vgap="20.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="25.0" right="35.0" top="25.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="activo" contentDisplay="CENTER" ellipsisString="A" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Activos">
+                     <HBox.margin>
+                        <Insets bottom="40.0" left="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="Inactivos" contentDisplay="CENTER" ellipsisString="A" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Inactivos">
+                     <HBox.margin>
+                        <Insets bottom="40.0" left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>
