@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<StackPane prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Stadistic.StadisticController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/main.css">
+         <children>
+            <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../css/main.css" text="Estadisiticas" textFill="#43425d" />
+            <Pane layoutX="77.0" layoutY="259.0" prefHeight="439.0" prefWidth="1170.0" style="-fx-background-color: white;" styleClass="panelEst">
+               <children>
+                  <LineChart fx:id="mainChart" layoutX="33.0" layoutY="64.0" prefHeight="356.0" prefWidth="1110.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </LineChart>
+                  <Label fx:id="lblPane" layoutX="45.0" layoutY="24.0" style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../css/main.css" text="Diario" textFill="#43425d" />
+                  <JFXComboBox fx:id="cbxTime" layoutX="998.0" layoutY="26.0" prefHeight="32.0" prefWidth="130.0" promptText="Date" />
+               </children></Pane>
+            <Pane layoutX="477.0" layoutY="96.0" onMouseClicked="#handlePaneWeekAction" prefHeight="133.0" prefWidth="370.0" styleClass="panelEst">
+               <children>
+                  <Label layoutX="25.0" layoutY="16.0" style="-fx-font-size: 15px;" styleClass="tipografia" stylesheets="@../css/main.css" text="Semanal" textFill="#43425d" />
+                  <Label fx:id="lblStatusWek" layoutX="25.0" layoutY="51.0" prefHeight="30.0" prefWidth="174.0" style="-fx-font-size: 25px; -fx-font-weight: bold;" styleClass="tipografia" stylesheets="@../css/main.css" />
+                  <Label fx:id="lblWStatus" layoutX="40.0" layoutY="92.0" prefHeight="16.0" prefWidth="56.0" style="-fx-font-size: 13px;" styleClass="tipografia" stylesheets="@../css/main.css" textFill="#3cc480" />
+                  <ImageView fx:id="imgStatusWek" fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+                  <BarChart fx:id="chartWek" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="158.0" layoutY="14.0" prefHeight="40.0" prefWidth="112.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                     <xAxis>
+                        <CategoryAxis opacity="0.0" side="BOTTOM" style="-fx-background-color: white;" visible="false" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis animated="false" forceZeroInRange="false" minorTickVisible="false" opacity="0.0" side="LEFT" style="-fx-background-color: white;" tickLabelsVisible="false" tickMarkVisible="false" visible="false" />
+                     </yAxis>
+                  </BarChart>
+               </children></Pane>
+            <Pane layoutX="877.0" layoutY="96.0" onMouseClicked="#handlePaneMontAction" prefHeight="133.0" prefWidth="370.0" styleClass="panelEst">
+               <children>
+                  <Label layoutX="25.0" layoutY="16.0" style="-fx-font-size: 15px;" styleClass="tipografia" stylesheets="@../css/main.css" text="Mensual" textFill="#43425d" />
+                  <Label fx:id="lblStatusMont" layoutX="25.0" layoutY="51.0" prefHeight="30.0" prefWidth="97.0" style="-fx-font-size: 25px; -fx-font-weight: bold;" styleClass="tipografia" stylesheets="@../css/main.css" />
+                  <Label fx:id="lblMStatus" layoutX="40.0" layoutY="92.0" prefHeight="16.0" prefWidth="62.0" style="-fx-font-size: 13px;" styleClass="tipografia" stylesheets="@../css/main.css" textFill="#ff4141" />
+                  <ImageView fx:id="imgStatusMont" fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <BarChart fx:id="chartMont" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="158.0" layoutY="14.0" prefHeight="40.0" prefWidth="112.0" styleClass="chartM" stylesheets="@../css/main.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                     <xAxis>
+                        <CategoryAxis opacity="0.0" side="BOTTOM" style="-fx-background-color: white;" visible="false" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis animated="false" forceZeroInRange="false" minorTickVisible="false" opacity="0.0" side="LEFT" style="-fx-background-color: white;" tickLabelsVisible="false" tickMarkVisible="false" visible="false" />
+                     </yAxis>
+                  </BarChart>
+               </children></Pane>
+            <Pane layoutX="77.0" layoutY="96.0" onMouseClicked="#handlePaneDayAction" prefHeight="133.0" prefWidth="370.0" styleClass="panelEst" stylesheets="@../css/main.css">
+               <children>
+                  <Label layoutX="25.0" layoutY="16.0" style="-fx-font-size: 15px;" styleClass="tipografia" stylesheets="@../css/main.css" text="Diario" textFill="#43425d" />
+                  <Label fx:id="lblDStatus" layoutX="40.0" layoutY="92.0" style="-fx-font-size: 13px;" stylesheets="@../css/main.css" textFill="#ff4141" />
+                  <ImageView fx:id="imgStatusDay" fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+                  <BarChart fx:id="chartDay" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="158.0" layoutY="14.0" prefHeight="40.0" prefWidth="112.0" styleClass="chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                    <xAxis>
+                      <CategoryAxis opacity="0.0" side="BOTTOM" style="-fx-background-color: white;" visible="false" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis animated="false" forceZeroInRange="false" minorTickVisible="false" opacity="0.0" side="LEFT" style="-fx-background-color: white;" tickLabelsVisible="false" tickMarkVisible="false" visible="false" />
+                    </yAxis>
+                  </BarChart>
+                  <Label fx:id="lblStatusDay" layoutX="25.0" layoutY="51.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-size: 25px; -fx-font-weight: bold;" styleClass="tipografia" stylesheets="@../css/main.css" />
+               </children></Pane>
+         </children></Pane>
+   </children>
+</StackPane>

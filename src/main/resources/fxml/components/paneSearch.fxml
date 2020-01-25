@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane fx:id="paneSearch" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PaneSearch">
+         <children>
+      <HBox alignment="CENTER">
+         <children>
+                       <TextField fx:id="txtSearch" prefHeight="42.0" prefWidth="946.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" styleClass="label-search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="35.0" right="10.0" />
+               </padding></TextField>
+            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="657.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" styleClass="boton-notificaciones" />
+                        <Line endX="100.0" fill="#ebebf2" startX="100.0" startY="36.0" stroke="#ebebf2" strokeDashOffset="1.0" strokeWidth="1.3">
+                     <HBox.margin>
+                        <Insets left="3.0" right="7.0" />
+                     </HBox.margin>
+                  </Line>
+                             <MenuButton ellipsisString="" mnemonicParsing="false" prefHeight="29.0" prefWidth="87.0" styleClass="tipografia" text="Usuario" textFill="#bdb7ca">
+                                 <items>
+                                     <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
+                                     <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />
+                                     <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#handleActionClose" text="Cerrar Sesion" />
+                                     <MenuItem fx:id="itemCloseStage" mnemonicParsing="false" onAction="#handleActionCloseStage" text="Salir" />
+                                 </items>
+                                 <cursor>
+                                     <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <effect>
+                                     <Glow />
+                                 </effect>
+                             </MenuButton>
+                           <BorderPane fx:id="imgUser" prefHeight="38.0" prefWidth="38.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </BorderPane>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+         </children>
+      </StackPane>

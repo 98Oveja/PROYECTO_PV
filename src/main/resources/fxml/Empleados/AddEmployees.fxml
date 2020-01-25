@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.employees.AddEmployController">
+   <children>
+      <Label fx:id="TitleModal" layoutX="26.0" layoutY="34.0" prefHeight="38.0" prefWidth="286.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Agregar Empleado" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="109.0" prefHeight="21.0" prefWidth="88.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Nombres:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="173.0" prefHeight="21.0" prefWidth="88.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Apellido:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="236.0" prefHeight="21.0" prefWidth="88.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Dirección:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="304.0" prefHeight="21.0" prefWidth="82.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Teléfono:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="EmployNameOne" layoutX="109.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameOne" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer nombre." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <ImageView fx:id="warningOne" fitHeight="20.0" fitWidth="30.0" layoutX="507.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" layoutX="510.0" layoutY="19.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#CloseModal" prefHeight="30.0" prefWidth="30.0" styleClass="btn_CloseModal" />
+
+      <TextField fx:id="EmployLasteNameOne" layoutX="111.0" layoutY="166.0" onKeyPressed="#EventKeyEnterLastNameOne" prefHeight="35.0" prefWidth="191.0" promptText="Escribe el primer apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <ImageView fx:id="warningTwo" fitHeight="27.0" fitWidth="20.0" layoutX="514.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="EmployDir" layoutX="130.0" layoutY="231.0" onKeyPressed="#EventKeyEnteDir" prefHeight="35.0" prefWidth="369.0" promptText="Escribe la dirección aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <ImageView fx:id="warningThree" fitHeight="27.0" fitWidth="20.0" layoutX="511.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="EmployPhone" layoutX="130.0" layoutY="299.0" onKeyPressed="#EventKeyEnterPhone" prefHeight="35.0" prefWidth="369.0" promptText="Escribe el número de teléfono aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <ImageView fx:id="warningFour" fitHeight="27.0" fitWidth="20.0" layoutX="511.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="25.0" layoutY="372.0" prefHeight="21.0" prefWidth="137.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Fecha de Inicio:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="436.0" prefHeight="21.0" prefWidth="175.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Puesto en la empresa:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="EmployDate" disable="true" editable="false" layoutX="210.0" layoutY="365.0" prefHeight="35.0" prefWidth="289.0" promptText="Se agregara la fecha de hoy." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <TextField fx:id="EmployPlace" editable="false" focusTraversable="false" layoutX="213.0" layoutY="431.0" prefHeight="35.0" prefWidth="286.0" promptText="Elige el puesto del empleado     " styleClass="boxOfText" stylesheets="@../../css/menuinicio.css">
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor></TextField>
+      <Label layoutX="25.0" layoutY="498.0" prefHeight="21.0" prefWidth="82.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Correo:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="EmployEmail" layoutX="140.0" layoutY="493.0" onKeyReleased="#EventKeyEnterEmail" prefHeight="35.0" prefWidth="361.0" promptText="Escribe el correo aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <JFXButton fx:id="BtnSaveEmploy" layoutX="197.0" layoutY="658.0" onAction="#AddEmploy" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Guardar Empleado" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane layoutX="525.0" layoutY="106.0" prefHeight="0.0" prefWidth="40.0" style="-fx-background-color: black;" />
+      <ImageView fx:id="warningFive" fitHeight="27.0" fitWidth="20.0" layoutX="511.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="warningSix" fitHeight="27.0" fitWidth="20.0" layoutX="511.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/icons8_box_important_50px.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="220.0" layoutY="436.0" onAction="#selectItem" opacity="0.0" prefHeight="25.0" prefWidth="273.0" unFocusColor="#43425d">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXComboBox>
+      <TextField fx:id="EmployNameTwo" layoutX="304.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo nombre" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <TextField fx:id="EmployLasteNameTwo" layoutX="306.0" layoutY="166.0" onKeyPressed="#EventKeyEnterLasteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
+      <Label layoutX="256.0" layoutY="623.0" text="Foto de perfil" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <BorderPane fx:id="imgUser" layoutX="252.0" layoutY="536.0" prefHeight="86.0" prefWidth="86.0" />
+      <Button fx:id="btnAddEmploy" layoutX="307.0" layoutY="590.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchEmploy" prefHeight="30.0" prefWidth="32.0" styleClass="buttonAddPhoto" stylesheets="@../../css/main.css">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/icons8_camera_50px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <JFXButton fx:id="BtnUpdateEmploy" layoutX="197.0" layoutY="658.0" onAction="#btnUpdate" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Actualizar Empleado" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Button layoutX="461.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" />
+   </children>
+</AnchorPane>

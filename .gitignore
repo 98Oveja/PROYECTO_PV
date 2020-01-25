@@ -43,6 +43,30 @@ Sera borrado out/production/appJavaFX/images/index.jpeg
 /out/
 
 #workspace idea
-/.idea/
-.xml
+
+*.xml
 .idea
+!/pom.xml
+Sera borrado src/main/java/controllers/
+Sera borrado src/main/java/css/
+Sera borrado src/main/java/fxml/
+Sera borrado src/main/java/home/
+Sera borrado src/main/java/images/index.jpeg
+Sera borrado src/main/java/models/
+Sera borrado src/main/java/navigator/
+Sera borrado src/main/java/utils/
+Sera borrado src/main/resources/
+Sera borrado src/test/
+
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/$PRODUCT_WORKSPACE_FILE$
+
+Sera borrado appJavaFx.iml
+Sera borrado target/classes/META-INF/
+Sera borrado target/classes/css/
+Sera borrado target/classes/fxml/
+Sera borrado target/classes/images/index.jpeg
+Sera borrado target/generated-sources/
+Sera borrado target/maven-status/
