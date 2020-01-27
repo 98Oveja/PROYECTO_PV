@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
+import models.Employ.validatorImage;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -61,22 +62,22 @@ public class CardEmployController {
 
     public void setImgUser(String url) {
         Circle circle = new Circle(80,80,40);
-        Image image;
-        Image ima = new Image("images/male_user_.png", false);
-
-        try{
-            URL url1= new URL(url);
-            URLConnection connection = url1.openConnection();
-            InputStream inputStreamReader = connection.getInputStream();
-            image = new Image(inputStreamReader);
-            circle.setFill(new ImagePattern(image));
-            System.out.println("logro cargar la imagen buena");
-        }catch (Exception ex){
-            System.err.println("Linea 90 " + ex);
-           imgTemporal = "images/male_user_.png";
-            circle.setFill( new ImagePattern(ima));
-        }
-
+        validatorImage n = new validatorImage();
+       String urlImage= n.loadImage(url,"images/male_user_.png");
+        Image image = new Image(urlImage);
+//        try{
+//            URL url1= new URL(url);
+//            URLConnection connection = url1.openConnection();
+//            InputStream inputStreamReader = connection.getInputStream();
+//            image = new Image(inputStreamReader);
+//            circle.setFill(new ImagePattern(image));
+//            System.out.println("logro cargar la imagen buena");
+//        }catch (Exception ex){
+//            System.err.println("Linea 90 " + ex);
+//           imgTemporal = "images/male_user_.png";
+//            circle.setFill( new ImagePattern(ima));
+//        }
+        circle.setFill( new ImagePattern(image));
         photoEmploy.setCenter(circle);
     }
 
