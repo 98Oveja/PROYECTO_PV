@@ -1,54 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="containerNewProd" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
-   <children>
-      <BorderPane fx:id="photoEmploy" layoutX="27.0" layoutY="13.0" maxHeight="98.0" maxWidth="103.0" minHeight="86.0" minWidth="86.0" prefHeight="98.0" prefWidth="103.0" />
-      <Label fx:id="name" layoutX="150.0" layoutY="22.0" prefHeight="32.0" prefWidth="279.0" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <styleClass>
-            <String fx:value="tipografia" />
-            <String fx:value="titleEmploy" />
-         </styleClass>
-      </Label>
-      <Label fx:id="city" layoutX="150.0" layoutY="60.0" prefHeight="27.0" prefWidth="269.0" text="Estados Unidos" textFill="#43425c9c">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <styleClass>
-            <String fx:value="tipografia" />
-            <String fx:value="subTitleEmploy" />
-         </styleClass>
-      </Label>
-      <Label fx:id="phone" layoutX="149.0" layoutY="87.0" prefHeight="28.0" prefWidth="280.0" text="Movil: 48009871" textFill="#43425ca6">
-         <styleClass>
-            <String fx:value="tipografia" />
-            <String fx:value="subTitleEmploy" />
-         </styleClass>
-      </Label>
-      <Button fx:id="edit" layoutX="471.0" layoutY="17.0" minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#pressedEditModal" prefHeight="28.0" prefWidth="28.0" styleClass="buttonEditEmploy" stylesheets="@../../css/menuinicio.css">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="delet" layoutX="510.0" layoutY="21.0" minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#DeleteEmploy" prefHeight="28.0" prefWidth="28.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label fx:id="Organitation" alignment="CENTER" contentDisplay="CENTER" layoutY="120.0" maxWidth="725.0" prefHeight="54.0" prefWidth="579.0" stylesheets="@../../css/menuinicio.css" text="Label" textAlignment="CENTER" textFill="#43425ca6">
-         <styleClass>
-            <String fx:value="subTitleCard" />
-            <String fx:value="tipografia" />
-         </styleClass>
-      </Label>
-      <Separator layoutY="103.0" maxWidth="598.0" prefHeight="46.0" prefWidth="570.0" />
-   </children>
-</Pane>
+<BorderPane fx:id="container" prefHeight="138.0" prefWidth="453.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
+   <center>
+      <VBox prefHeight="108.0" prefWidth="654.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="name" prefHeight="32.0" prefWidth="351.0" stylesheets="@../../css/menuinicio.css" text="David James" textFill="#9e9ca4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="tipografia" />
+                  <String fx:value="titleEmploy" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="city" prefHeight="27.0" prefWidth="374.0" text="Estados Unidos" textFill="#43425c9c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="tipografia" />
+                  <String fx:value="subTitleEmploy" />
+               </styleClass>
+            </Label>
+            <Label fx:id="phone" prefHeight="28.0" prefWidth="422.0" text="Movil: 48009871" textFill="#43425ca6">
+               <styleClass>
+                  <String fx:value="tipografia" />
+                  <String fx:value="subTitleEmploy" />
+               </styleClass>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <right>
+      <HBox alignment="TOP_RIGHT" prefHeight="121.0" prefWidth="100.0" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <Button fx:id="edit" minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#pressedEditModal" prefHeight="28.0" prefWidth="28.0" styleClass="buttonEditEmploy" stylesheets="@../../css/menuinicio.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="delet" minHeight="28.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#DeleteEmploy" prefHeight="28.0" prefWidth="28.0" styleClass="buttonDeleteEmploy" stylesheets="@../../css/menuinicio.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="5.0" right="15.0" top="15.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </right>
+   <bottom>
+      <VBox prefHeight="42.0" prefWidth="453.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator maxWidth="643.0" prefHeight="11.0" prefWidth="822.0" />
+            <Label fx:id="Organitation" alignment="CENTER" contentDisplay="CENTER" maxWidth="810.0" prefHeight="30.0" prefWidth="810.0" stylesheets="@../../css/menuinicio.css" text="Label" textAlignment="CENTER" textFill="#43425ca6">
+               <styleClass>
+                  <String fx:value="subTitleCard" />
+                  <String fx:value="tipografia" />
+               </styleClass>
+            </Label>
+         </children>
+      </VBox>
+   </bottom>
+   <left>
+      <Pane maxWidth="-Infinity" minHeight="98.0" minWidth="98.0" prefHeight="103.0" prefWidth="103.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="15.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <BorderPane fx:id="photoEmploy" layoutX="-3.0" layoutY="-3.0" prefHeight="102.0" prefWidth="106.0" />
+            <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="93.0" prefWidth="96.0" styleClass="viewEmploy" />
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

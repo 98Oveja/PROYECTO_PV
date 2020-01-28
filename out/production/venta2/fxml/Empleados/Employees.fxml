@@ -9,7 +9,7 @@
    <children>
       <BorderPane prefHeight="693.0" prefWidth="1148.0">
          <top>
-            <BorderPane prefHeight="43.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="53.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <left>
                   <Label style="-fx-font-size: 28px;" styleClass="tipografia" stylesheets="@../../css/main.css" text="Empleados" textFill="#43425d" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
@@ -20,12 +20,12 @@
                <center>
                   <Pane maxWidth="500.0" prefHeight="129.0" prefWidth="622.0" style="-fx-background-color: white; -fx-background-radius: 8;" BorderPane.alignment="CENTER_RIGHT">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="16.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/search.png" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="40.0" layoutY="-4.0" maxWidth="450.0" minWidth="200.0" prefHeight="42.0" prefWidth="310.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
+                        <TextField layoutX="40.0" layoutY="-2.0" maxWidth="450.0" minWidth="200.0" prefHeight="42.0" prefWidth="391.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" />
                      </children>
                      <BorderPane.margin>
                         <Insets bottom="5.0" left="200.0" right="20.0" top="5.0" />
@@ -45,7 +45,7 @@
             </BorderPane>
          </top>
          <center>
-            <GridPane fx:id="containercard" alignment="CENTER" gridLinesVisible="true" hgap="25.0" vgap="20.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="containercard" alignment="CENTER" hgap="25.0" vgap="20.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -63,12 +63,12 @@
          <bottom>
             <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="activo" contentDisplay="CENTER" ellipsisString="A" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Activos">
+                  <Button fx:id="activo" contentDisplay="CENTER" ellipsisString="A" mnemonicParsing="false" onAction="#loadActivos" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Activos">
                      <HBox.margin>
                         <Insets bottom="40.0" left="25.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="Inactivos" contentDisplay="CENTER" ellipsisString="A" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Inactivos">
+                  <Button fx:id="Inactivos" contentDisplay="CENTER" ellipsisString="A" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#loadInactivos" prefHeight="35.0" prefWidth="100.0" styleClass="empbotonver" text="Inactivos">
                      <HBox.margin>
                         <Insets bottom="40.0" left="20.0" />
                      </HBox.margin>

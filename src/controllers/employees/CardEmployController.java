@@ -2,14 +2,17 @@ package controllers.employees;
 
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.value.ObservableBooleanValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
@@ -19,15 +22,17 @@ import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
 import models.Employ.validatorImage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
+import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CardEmployController {
+public class CardEmployController implements Initializable {
     @FXML
     public Button delet,edit;
     @FXML
@@ -35,7 +40,14 @@ public class CardEmployController {
     @FXML
     public BorderPane photoEmploy;
     public dataEmploy employ;
+    public BorderPane container;
     String imgTemporal;
+    double x, y;
+    Double whiteMenu = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    Double HeightMenu = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    validatorImage valImage = new validatorImage();
+    static double whidtgrid=EmployeesController.widthGrid;
+    static double heightgrid=EmployeesController.heightGrid;
 
     public void addData(dataEmploy empData){
         employ = empData;
@@ -53,30 +65,16 @@ public class CardEmployController {
     public void imaConverter(){
         if(employ.img.contains("*")){
             imgTemporal ="file:/" + employ.img.replace("*","\\");
-            //employ.img =  employ.img.replace("*","\\");
         }else{
-            System.out.println("no cargo la imagen");
+            System.out.println("No contenia imagen");
             imgTemporal = "images/male_user_.png";
         }
     }
 
     public void setImgUser(String url) {
         Circle circle = new Circle(80,80,40);
-        validatorImage n = new validatorImage();
-       String urlImage= n.loadImage(url,"images/male_user_.png");
+        String urlImage= valImage.loadImage(url,"images/male_user_.png");
         Image image = new Image(urlImage);
-//        try{
-//            URL url1= new URL(url);
-//            URLConnection connection = url1.openConnection();
-//            InputStream inputStreamReader = connection.getInputStream();
-//            image = new Image(inputStreamReader);
-//            circle.setFill(new ImagePattern(image));
-//            System.out.println("logro cargar la imagen buena");
-//        }catch (Exception ex){
-//            System.err.println("Linea 90 " + ex);
-//           imgTemporal = "images/male_user_.png";
-//            circle.setFill( new ImagePattern(ima));
-//        }
         circle.setFill( new ImagePattern(image));
         photoEmploy.setCenter(circle);
     }
@@ -106,9 +104,6 @@ public class CardEmployController {
     private void pressedEditModal() {
 
         try {
-//            dataEmploy res;
-//            sqlEmploy editEmploy = new sqlEmploy();
-//            res = editEmploy.searchData(employ.idemp);
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
             Parent root = Loader.load();
             AddEmployController controller = Loader.getController();
@@ -130,7 +125,8 @@ public class CardEmployController {
             controller.BtnSaveEmploy.setVisible(false);
             controller.BtnUpdateEmploy.setVisible(true);
             controller.initDatos(controller.EmployPlace.getText());
-            controller.setImgUser(imgTemporal);
+            String imaAux = valImage.loadImage(imgTemporal , "images/male_user_.png");
+            controller.setImgUser(imaAux);
 
             Scene dialogo = new Scene(root);
             Stage stagedialog = new Stage();
@@ -149,5 +145,31 @@ public class CardEmployController {
 
         }catch (Exception ex){
             System.out.println("linea 146 ------- "+ex);}
+    }
+
+    public void viewAction(ActionEvent event) throws IOException {
+            String imaAux = valImage.loadImage(imgTemporal , "images/male_user_.png");
+            Image im =new Image(imaAux);
+            loadView(im);
+    }
+
+    public void loadView(Image ima) throws IOException {
+        FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/viewEmloy.fxml"));
+        Parent root = Loader.load();
+        viewEmployController viewEm = Loader.getController();
+        viewEm.initData(employ.name1+" "+employ.name2,employ.lastname1+" "+employ.lastname2,employ.dir,employ.tel,employ.cargo,employ.correo,ima);
+        Scene dialogo = new Scene(root);
+        Stage stagedialog = new Stage();
+              stagedialog.initStyle(StageStyle.UNDECORATED);
+        stagedialog.initModality(Modality.APPLICATION_MODAL);
+        stagedialog.setScene(dialogo);
+        stagedialog.showAndWait();
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        container.setPrefWidth(whidtgrid);
+        container.setPrefHeight(heightgrid);
     }
 }

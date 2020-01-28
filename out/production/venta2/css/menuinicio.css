@@ -50,7 +50,7 @@
 /*Aca estaran los estilos de los modales para agregar a un empleado.*/
 .paneAddEmploy{
     -fx-pref-width: 570px;
-    -fx-pref-height: 750px;
+    -fx-pref-height: 720px;
     -fx-background-color: #43425D;
 }
 
@@ -130,4 +130,14 @@
     -fx-background-color:Transparent;
     -fx-cursor:hand;
     -fx-background-image: url("../images/cancel_32.png");
+}
+
+.viewEmploy{
+    -fx-background-color: transparent;
+}
+
+.viewEmploy:pressed, .viewEmploy:hover{
+    -fx-background-color: transparent;
+    -fx-background-image: url("/images/view.png");
+    -fx-background-size: 90px;
 }

@@ -18,7 +18,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="631.0">
                      <children>
-                        <Button fx:id="inactivo" ellipsisString="I" mnemonicParsing="false" onAction="#Inactivos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Inactivos">
+                        <Button fx:id="inactivo" ellipsisString="I" mnemonicParsing="false" onAction="#Inacn tivos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Inactivos">
                            <HBox.margin>
                               <Insets left="50.0" />
                            </HBox.margin>

@@ -82,14 +82,14 @@ public class sqlEmploy {
 
     }
 
-    public List<dataEmploy> employDB(){
+    public List<dataEmploy> employDB(int estado){
         try {
             data.clear();
 
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
             String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, " +
-                    "P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= 1 ORDER BY ID_EMPLEADO desc";
+                    "P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= "+ estado +" ORDER BY ID_EMPLEADO desc";
             Statement instruccion = connection.createStatement();
             ResultSet resulte = instruccion.executeQuery(sle);
             if (resulte != null) {
@@ -119,5 +119,34 @@ public class sqlEmploy {
             System.out.println("linea 117 ******************************************" + ex);
             return null;
         }
+    }
+
+    public void insertEmploy(int idpersona, String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email, String imEmploy){
+        String Nueva = null;
+        if(imEmploy.equals(null)){
+            Nueva=imEmploy.replace("\\","*");
+        }
+        try{
+            ConnectionUtil connectionClass= new ConnectionUtil();
+            Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+            String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
+                    "`SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, " +
+                    "`DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES ('"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
+            Statement statement= connection.createStatement();
+            statement.executeUpdate(sqlinsert); //aca insertamos los dato
+            //aca buscaremos el id de la persona ingresada--
+            String searchId = "SELECT `ID_PERSONA` FROM `PERSONAS` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"' AND `CORREO` = '"+email+"' ORDER BY ID_PERSONA DESC";
+            ResultSet result = statement.executeQuery(searchId);
+            if (result.first()){
+                idpersona = result.getInt("ID_PERSONA");
+            }
+            //esteremos realizando el segundo insert para la tabla empleados
+            String sql2= "INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `ESTADO`,`FECHA_RETIRO`, `CARGO`) VALUES ('"+idpersona+"', '1', NULL, '"+place+"')";
+            statement.executeUpdate(sql2);
+            statement.close();
+        }catch (Exception ex){
+            System.err.println("130 insertando emplaedo" + ex);
+        }
+
     }
 }

@@ -27,6 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
+import models.Employ.sqlEmploy;
 import utils.ConnectionUtil;
 import utils.ParseEmail;
 
@@ -56,6 +57,7 @@ public class AddEmployController implements Initializable {
     public JFXComboBox<String> placeList;
 @FXML
     public Label TitleModal;
+    sqlEmploy sqlGeneralEmploy = new sqlEmploy();
 
     Date date =new Date();//varaiables para obtener la fecha actual del system
     long milsec = date.getTime();
@@ -67,7 +69,6 @@ public dataEmploy emDb=new dataEmploy();
 @FXML
 public void CloseModal(){
     Image image = new Image("/images/info.png");
-//    images/info.png
     CloseModalMethod("Salir","Esta seguro que desea salir del Modal??",image,1);
 }
 @FXML
@@ -109,17 +110,16 @@ public void CloseModal(){
  }
 
     @FXML
-    public void AddEmploy(ActionEvent event) throws SQLException, IOException {
+    public void AddEmploy(ActionEvent event) throws IOException {
         initDatos(placeList.getValue());
-
         validatorPlace();
           int vl = validatorWarnings();
             if(vl == 0) {
                 loaderModalInfo();
                 if (infoStatus == 1) {
-                    querySql(emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo);//metodo insertar
+                    sqlGeneralEmploy.insertEmploy(idpersona ,emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo,emDb.img);
                     ClearTextField();//limipiar los textfield
-                    System.out.println("Insertado...");
+                    System.out.println("Insertado... AddEmployController line 123");
                 } else {
                     System.out.println("Cancelo el ingreso");
                 }
@@ -155,31 +155,6 @@ public void CloseModal(){
         stagedialog.setScene(dialogo);
         stagedialog.showAndWait();
         infoStatus = controller.status;
-    }
-
-    //METODO PARA REALIZAR EL INGRESO DE UN CLIENTE
-    public void querySql(String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email) throws SQLException {
-        String Nueva = null;
-        if(emDb.img.equals(null)){
-         Nueva=emDb.img.replace("\\","*");
-        }
-        ConnectionUtil connectionClass= new ConnectionUtil();
-        Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-        String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
-                "`SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, " +
-                "`DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES ('"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
-        Statement statement= connection.createStatement();
-        statement.executeUpdate(sqlinsert); //aca insertamos los dato
-        //aca buscaremos el id de la persona ingresada--
-        String searchId = "SELECT `ID_PERSONA` FROM `PERSONAS` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"' AND `CORREO` = '"+email+"' ORDER BY ID_PERSONA DESC";
-        ResultSet result = statement.executeQuery(searchId);
-        if (result.first()){
-            idpersona = result.getInt("ID_PERSONA");
-        }
-        //esteremos realizando el segundo insert para la tabla empleados
-        String sql2= "INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `ESTADO`,`FECHA_RETIRO`, `CARGO`) VALUES ('"+idpersona+"', '1', NULL, '"+place+"')";
-        statement.executeUpdate(sql2);
-        statement.close();
     }
 
     //metodo para limpiar las variales

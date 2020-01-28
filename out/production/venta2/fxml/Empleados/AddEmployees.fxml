@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.AddEmployController">
+<AnchorPane fx:id="PanelAddEmploy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="600.0" styleClass="paneAddEmploy" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.AddEmployController">
    <children>
       <Label fx:id="TitleModal" layoutX="26.0" layoutY="34.0" prefHeight="38.0" prefWidth="286.0" styleClass="tipografia" stylesheets="@../../css/menuinicio.css" text="Agregar Empleado" textFill="WHITE">
          <font>
@@ -78,7 +78,7 @@
          </font>
       </Label>
       <TextField fx:id="EmployEmail" layoutX="140.0" layoutY="493.0" onKeyReleased="#EventKeyEnterEmail" prefHeight="35.0" prefWidth="361.0" promptText="Escribe el correo aquí." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <JFXButton fx:id="BtnSaveEmploy" layoutX="197.0" layoutY="658.0" onAction="#AddEmploy" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Guardar Empleado" textFill="WHITE">
+      <JFXButton fx:id="BtnSaveEmploy" layoutX="197.0" layoutY="655.0" onAction="#AddEmploy" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #1062E5;" text="Guardar Empleado" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -104,12 +104,12 @@
       </JFXComboBox>
       <TextField fx:id="EmployNameTwo" layoutX="304.0" layoutY="102.0" onKeyPressed="#EventKeyEnteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo nombre" styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
       <TextField fx:id="EmployLasteNameTwo" layoutX="306.0" layoutY="166.0" onKeyPressed="#EventKeyEnterLasteNameTwo" prefHeight="35.0" prefWidth="200.0" promptText="Escribe el segundo apellido ." styleClass="boxOfText" stylesheets="@../../css/menuinicio.css" />
-      <Label layoutX="256.0" layoutY="623.0" text="Foto de perfil" textFill="WHITE">
+      <Label layoutX="248.0" layoutY="625.0" text="Foto de perfil" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <BorderPane fx:id="imgUser" layoutX="252.0" layoutY="536.0" prefHeight="86.0" prefWidth="86.0" />
+      <BorderPane fx:id="imgUser" layoutX="229.0" layoutY="538.0" prefHeight="88.0" prefWidth="109.0" />
       <Button fx:id="btnAddEmploy" layoutX="307.0" layoutY="590.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchEmploy" prefHeight="30.0" prefWidth="32.0" styleClass="buttonAddPhoto" stylesheets="@../../css/main.css">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
