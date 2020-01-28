@@ -11,9 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import Utils.ConnectionUtil;
 
+import java.awt.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +32,7 @@ public class StadisticController implements Initializable, ControlledScreen {
     public BarChart chartMont;           public LineChart mainChart;
     public Label lblPane;                public JFXComboBox cbxTime;
     public ImageView imgStatusMont;
+    public StackPane viewStadistics;
 
     ScreensController myController;
 
@@ -83,13 +86,19 @@ public class StadisticController implements Initializable, ControlledScreen {
         }
     }
 
+    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //initChart();
-        setstatusPaneDay();
-        setstatusPaneWeek();
-        setstatusPaneMont();
-        setdata();
+        //setstatusPaneDay();
+        //setstatusPaneWeek();
+        //setstatusPaneMont();
+        //setdata();
+        viewStadistics.setPrefHeight(height-110);
+        viewStadistics.setPrefWidth(width-260);
+
     }
 
     private void initChart() {

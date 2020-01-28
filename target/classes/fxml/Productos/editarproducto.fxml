@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<Pane fx:id="PanelContenedor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="575.0" styleClass="fondo" stylesheets="@../../css/Productos/Editar.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Productos.EditProduct">
+   <children>
+      <Label layoutX="39.0" layoutY="17.0" text="Editar producto" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="94.0" text="Nombre" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="167.0" text="Marca" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      
+      <TextField fx:id="Marca" layoutX="131.0" layoutY="154.0" prefHeight="40.0" prefWidth="350.0" styleClass="labels" />
+      <Label layoutX="126.0" layoutY="212.0" text="Cantidad" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="250.0" layoutY="214.0" text="P/Venta" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="389.0" layoutY="214.0" text="P/Compra" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="221.0" layoutY="297.0" text="Codigo del producto" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Cantidad" layoutX="103.0" layoutY="241.0" prefHeight="40.0" prefWidth="100.0" styleClass="labels" />
+      <TextField fx:id="PVenta" layoutX="235.0" layoutY="241.0" prefHeight="40.0" prefWidth="100.0" styleClass="labels" />
+      <TextField fx:id="Pcompra" layoutX="373.0" layoutY="241.0" prefHeight="40.0" prefWidth="100.0" styleClass="labels" />
+      <Label fx:id="imagelabe" layoutX="200.0" layoutY="511.0" prefHeight="160.0" prefWidth="300.0" styleClass="labels" />
+      <Label layoutX="318.0" layoutY="480.0" text="Imagen" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="46.0" layoutY="560.0" mnemonicParsing="false" onAction="#Search" prefHeight="30.0" prefWidth="140.0" styleClass="botones" text="Agregar Imagen" textFill="WHITE" />
+      <Button layoutX="196.0" layoutY="678.0" mnemonicParsing="false" onAction="#Update" prefHeight="50.0" prefWidth="185.0" styleClass="botones" text="Actualizar Producto" textFill="WHITE" />
+      
+      <Button fx:id="close" alignment="CENTER" contentDisplay="CENTER" layoutX="526.0" layoutY="15.0" mnemonicParsing="false" onAction="#Cerrar" prefHeight="30.0" prefWidth="35.0" styleClass="cerrar" />
+      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="284.0" layoutX="208.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="codigo" alignment="CENTER" layoutX="221.0" layoutY="325.0" prefHeight="40.0" prefWidth="185.0" styleClass="labels" text="CODIGO" textFill="#7c7979">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="404.0" text="Descripcion" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="codigo1" alignment="CENTER" layoutX="131.0" layoutY="82.0" prefHeight="40.0" prefWidth="350.0" styleClass="labels" textFill="#7c7979">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="Descripcion" layoutX="126.0" layoutY="376.0" prefHeight="91.0" prefWidth="360.0" wrapText="true" />
+   </children>
+</Pane>

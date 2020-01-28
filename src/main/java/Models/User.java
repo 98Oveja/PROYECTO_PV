@@ -8,13 +8,15 @@ String email;
 String name;
 String last_name;
 String pass;
-int status;
-String Admin;
+int    status;
+String admin;
+String urlPhoto;
 
-    public User(String name, int status, String admin) {
+    public User(String name, int status, String admin, String urlPhoto) {
         this.name = name;
         this.status = status;
-        Admin = admin;
+        this.admin = admin;
+        this.urlPhoto = urlPhoto;
     }
 
     public User(int id_ususer, String email, String name, String last_name, String pass, int status, String admin) {
@@ -24,7 +26,15 @@ String Admin;
         this.last_name = last_name;
         this.pass = pass;
         this.status = status;
-        Admin = admin;
+        this.admin = admin;
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
+
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
 
     public int getId_ususer() {
@@ -76,11 +86,18 @@ String Admin;
     }
 
     public String getAdmin() {
-        return Admin;
+        return admin;
     }
 
     public void setAdmin(String admin) {
-        Admin = admin;
+        this.admin = admin;
+    }
+
+    public boolean isEmpty(){
+        if(urlPhoto == null)
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -92,7 +109,8 @@ String Admin;
                 ", last_name='" + last_name + '\'' +
                 ", pass='" + pass + '\'' +
                 ", status='" + status + '\'' +
-                ", Admin='" + Admin + '\'' +
+                ", Admin='" + admin + '\'' +
                 '}';
     }
+
 }

@@ -1,5 +1,7 @@
 package Controllers.item;
 
+import Controllers.MainController;
+import Navigator.ViewNavigator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXProgressBar;
@@ -8,20 +10,28 @@ import Controllers.LoginController;
 import Controllers.ScreenController.ImplementsU.ControlledScreen;
 import Controllers.ScreenController.ScreensController;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import Models.User;
-import Navigator.ViewNavigator;
 import Utils.CreateThread;
 import Utils.ParseEmail;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ControllerComponent implements Initializable, ControlledScreen {
@@ -39,6 +49,9 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     ScreensController myController;
 
+     public static String screen1ID = "screen1";
+     public static String screen1File = "/fxml/Home.fxml";
+
     @FXML
     void nextPane(ActionEvent event)  {
         if(event.getSource() == btnForgot) {
@@ -46,46 +59,68 @@ public class ControllerComponent implements Initializable, ControlledScreen {
         }
     }
 
+    Thread thread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            Runnable updater = new Runnable() {
+                @Override
+                public void run() {
+                    ViewNavigator.loadVista(ViewNavigator.HOME);
+                }
+            };
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(updater);
+        }
+    });
+
     @FXML
     public void handleButtonAction(MouseEvent event){
-        //if(event.getSource() == btnSignin){
-         // logIn();
-       //}
 
-       //Platform.runLater(() -> {
-            //an event with a button maybe
-         //   ViewNavigator.loadVista(ViewNavigator.HOME);
-        //});
-        Thread thread = new Thread(new Runnable() {
+        if(event.getSource() == btnSignin){
+          logIn();
+        }
+        /*
+ Task t = new Task() {
             @Override
-            public void run() {
-                Runnable updater = new Runnable() {
-                    @Override
-                    public void run() {
-                        ViewNavigator.loadVista(ViewNavigator.HOME);
-                    }
-                };
+            protected Object call() throws Exception {
+
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (InterruptedException interrupted) {
+                    if (isCancelled()) {
+                        updateMessage("Cancelled");
+                    }
                 }
-                Platform.runLater(updater);
+                return null;
             }
+        };
+        new Thread(t).start();
+        t.setOnRunning(workerStateEvent -> {
+            System.out.println("run ---------------------------> fxml ");
+        });
+        t.setOnSucceeded(workerStateEvent -> {
+            System.out.println("success  ---------------------> fxml ");
         });
 
+
+--------------------------------------
         thread.setDaemon(true);
         thread.start();
+
+         */
     }
 
-   // public void handleButtonActionKey(KeyEvent keyEvent) {
-     //   if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            //if(logIn().equals("Success")) {
-            //  ViewNavigator.loadVista(ViewNavigator.HOME);
-            //code = 1;
-            //}
-       // }
-    //}
+    public void handleButtonActionKey(KeyEvent keyEvent) {
+       if(keyEvent.getCode().equals(KeyCode.ENTER)){
+            logIn();
+        }
+    }
 
     private void logIn() {
 
@@ -124,12 +159,16 @@ public class ControllerComponent implements Initializable, ControlledScreen {
                 }else if(user!= null){
                     status="Success";
                     setLblError(Color.GREEN,"Login success...");
-                    if (user.getAdmin().equals("admin")){
+
+                    if (user.getAdmin().equals("Admin")){
                         admin = true;
                     }
-                    ViewNavigator.loadVista(ViewNavigator.HOME);
+                    //ViewNavigator.loadVista(ViewNavigator.HOME);
+                    thread.setDaemon(true);
+                    thread.start();
                 }
             });
+
         }
 
     }
@@ -146,11 +185,6 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TasKT taskTime = new TasKT(btnSignin);
-        //Timer temporizador = new Timer();
-        //Integer segundos = 2;
-        // temporizador.scheduleAtFixedRate(taskTime, 0, 1000*segundos);
-
     }
 
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="211.0" prefWidth="770.0" style="-fx-background-color: white;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="141.0" prefWidth="400.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="431.0" prefWidth="512.0">
+               <children>
+                  <StackPane prefHeight="99.0" prefWidth="112.0">
+                     <children>
+                        <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/Proveedor.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="imgUser" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER" prefHeight="101.0" prefWidth="237.0">
+                     <children>
+                        <Label fx:id="Nombre1" prefHeight="27.0" prefWidth="306.0" text="Hola">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="Descripcion1" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="Movil1" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="101.0" prefWidth="246.0">
+               <children>
+                  <Button fx:id="delete1" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Label fx:id="Org1" alignment="CENTER" prefHeight="65.0" prefWidth="400.0" text="Soy de Toto XD" textFill="#43425cb0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

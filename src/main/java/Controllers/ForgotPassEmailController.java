@@ -63,7 +63,6 @@ public class ForgotPassEmailController implements Initializable {
         if(!txtCode.getText().isEmpty()) {
             if (status.equals("susses")) {
                 if (txtPassVerified.getText().equals(txtPass.getText())) {
-                    //Accion del boton
                     try {
                         Connection con = null;
                         ConnectionUtil connectionUtil = new ConnectionUtil();
@@ -78,7 +77,6 @@ public class ForgotPassEmailController implements Initializable {
                         con.close();
                         Stage stage = (Stage) closeButton.getScene().getWindow();
                         System.out.println("susses update");
-                        //paso a la ventana principal
 
                         stage.close();
 
@@ -101,7 +99,6 @@ public class ForgotPassEmailController implements Initializable {
         txtCode.textProperty().addListener((Observable, oldValue, newValue) -> {
             code  = getCode();
             System.out.println(code);
-            //System.out.println(newValue);
             if (newValue.equals(code)) {
                 System.out.println("son iguales");
                 lblStatus.setText("Verificacion aceptada :)");
@@ -120,8 +117,6 @@ public class ForgotPassEmailController implements Initializable {
                         status = "error";
                     }
                 });
-
-
             }else{
                 status = "error";
                 lblStatus.setText("Verifique el codigo enviado");

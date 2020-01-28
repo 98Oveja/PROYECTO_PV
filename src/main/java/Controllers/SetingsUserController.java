@@ -15,4 +15,5 @@ public class SetingsUserController {
             stage.close();
         }
     }
+
 }

@@ -56,6 +56,7 @@ public class ModalVentaController implements Initializable {
     ArrayList<Double> totalCalculadoDoubles = new ArrayList<>();
     ArrayList<Ventas> ventasPanels = new ArrayList<>();
     CartaProducto cartaProducto = new CartaProducto();
+
     public void CloseModal(ActionEvent actionEvent) {
         //MANERA EN CERRA EL MODAL
         Stage stage = (Stage) panelContenedor.getScene().getWindow();

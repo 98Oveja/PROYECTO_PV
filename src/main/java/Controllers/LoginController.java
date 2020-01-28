@@ -2,7 +2,9 @@ package Controllers;
 
 
 import Controllers.ScreenController.ScreensController;
+import Controllers.item.ControllerComponent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -14,7 +16,6 @@ public class LoginController implements Initializable{
 
     public StackPane vista1;
     public VBox VboxD;
-
 
     double height = Toolkit.getDefaultToolkit().getScreenSize().height;
     double width = Toolkit.getDefaultToolkit().getScreenSize().width;

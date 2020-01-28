@@ -1,7 +1,11 @@
 package Controllers;
 
 import Controllers.employees.DelEmployController;
+import Controllers.item.ControllerComponent;
+import Models.User;
+import Models.Ventas_Compras.Ventas;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -34,6 +38,10 @@ public class PaneSearch  implements Initializable {
     public MenuItem itemCloseStage;
     int status = 0;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+
     public void goToURL(String URL){
         if (java.awt.Desktop.isDesktopSupported()) {
             java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -52,14 +60,12 @@ public class PaneSearch  implements Initializable {
     public void handleActionHelp(ActionEvent actionEvent) {
         if (actionEvent.getSource() == itemHelp){
             if(status == 0) {
-                goToURL("https://www.facebook.com/mmm.n.plo");
+                goToURL("https://www.escodgt.com/");
                 status = 1;
             }
         }
     }
 
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     public void handleActionConf(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == itemConfig){
@@ -71,48 +77,51 @@ public class PaneSearch  implements Initializable {
             dialog.initOwner(primaryStage);
             dialog.setX(600);
             dialog.setY(300);
-            Scene dialogScene = null;
-            dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
+
+            Scene dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
             dialogScene.setOnMousePressed(event -> {
+                System.out.println("presseed");
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
             });
-
 
             dialogScene.setOnMouseDragged(event -> {
                 primaryStage.setX(event.getScreenX() - xOffset);
                 primaryStage.setY(event.getScreenY() - yOffset);
             });
+
             dialog.setScene(dialogScene);
-            dialog.show();
+            dialog.showAndWait();
         }
     }
 
     public void handleActionClose(ActionEvent actionEvent) {
         if (actionEvent.getSource() == itemClose) {
-           // Stage stage = (Stage) paneSearch.getScene().getWindow();
-           // stage.close();
+            ControllerComponent.admin = false;
             ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW);
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setImgUser("/images/index.jpeg");
+        setImgUser();
+        if(ControllerComponent.admin) itemConfig.setDisable(false);
     }
 
-    private void setImgUser(String url) {
+    private void setImgUser() {
         Circle circle = new Circle(32,32,16);
-        Image image = new Image(url,false);
+        Image image = new Image("/images/index.jpeg",false);
         circle.setFill(new ImagePattern(image));
         imgUser.setCenter(circle);
     }
 
     public void handleActionCloseStage(ActionEvent actionEvent) {
-        DelEmployController delEmployController = new DelEmployController();
-
-        Stage stage = (Stage) paneSearch.getScene().getWindow();
-        stage.close();
+        Ventas ventas = new Ventas();
+        Image image = new Image("/images/info.png");
+        ventas.alertasPersonalizados("Salir",
+                "Esta seguro que desea salir...",
+                image,1,
+                paneSearch
+        );
     }
 }

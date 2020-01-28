@@ -1,5 +1,6 @@
 package Controllers;
 
+import Controllers.ScreenController.ImplementsU.ControlledScreen;
 import Controllers.item.ControllerComponent;
 import Controllers.ScreenController.ScreensController;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +20,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeController implements Initializable, ControlledScreen {
 
     public StackPane pane;
     public VBox paneItemRoot;
     public StackPane paneSearch;
     static String item = null;
-
+    ScreensController myController;
     private ScreensController mainContainer = new ScreensController();
 
     String getStringValue(String value){
@@ -116,8 +117,8 @@ public class HomeController implements Initializable {
         if(ControllerComponent.admin) {
             return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
         }else {
-            //return"Inicio,Clientes,Compras,Reportes,Ventas,Calendario";
-            return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
+            return"Inicio,Clientes,Compras,Reportes,Ventas,Calendario";
+            //return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
         }
     }
 
@@ -128,6 +129,11 @@ public class HomeController implements Initializable {
         }
         mainContainer.setScreen("screenInicio");
         return mainContainer;
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }
 

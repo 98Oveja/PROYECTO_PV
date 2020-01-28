@@ -65,10 +65,13 @@ public class Principal implements Initializable, ControlledScreen {
     public void rellenar(int row,int column){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Proveedores/Card.fxml"));
         Parent parent = null;
+
         try {
             parent = fxmlLoader.load();
-        } catch (IOException e) {
-        }Pane.add(parent, column, row);
+
+        } catch (IOException e) {}
+
+        Pane.add(parent, column, row);
     }
 
     public void Agregar() {

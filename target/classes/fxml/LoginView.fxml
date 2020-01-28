@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="vista1" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+   <children>
+      <BorderPane>
+         <center>
+            <HBox prefHeight="493.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane alignment="CENTER_LEFT" prefHeight="596.0" prefWidth="1178.0" styleClass="xd" stylesheets="@../css/main.css" />
+                  <VBox fx:id="VboxD" alignment="CENTER" prefHeight="596.0" prefWidth="1192.0" style="-fx-background-color: white;" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -47,7 +47,8 @@ public class UserImplem implements userImpl {
                         userAux = new User(
                                 resultSet.getString("NOMBRE"),
                                 resultSet.getInt("ESTADO"),
-                                resultSet.getString("CARGO")
+                                resultSet.getString("CARGO"),
+                                resultSet.getString("URL_PHOTO")
                         );
                         //System.out.println(userAux);
                     }

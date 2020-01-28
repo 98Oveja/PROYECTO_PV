@@ -3,6 +3,7 @@ import com.jfoenix.controls.JFXButton;
 import Controllers.employees.DelEmployController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
@@ -231,13 +232,19 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
     }
     return "Venta Gurdada en la BD";
 }
-public void cerrarModal(BorderPane panel){
+
+public void cerrarModal(Node panel){
     Image image = new Image("/images/info.png");
-    alertasPersonalizados("CANCELAR", "Esta seguro que desea salir y cancelar la Venta",image,1,panel);
+    alertasPersonalizados("CANCELAR",
+            "Esta seguro que desea salir y cancelar la Venta",
+            image,1,
+             panel
+    );
 }
+
 public void alertasPersonalizados(String TITULO, String Cuerpo,
                                   Image image,int opcion,
-                                  BorderPane borderPane){
+                                  Node paneA){
     try {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
         Parent parent = fxmlLoader.load();
@@ -256,7 +263,7 @@ public void alertasPersonalizados(String TITULO, String Cuerpo,
         stage.setScene(scene);
         stage.showAndWait();
         if(delEmployController.BtnOk==1 && opcion ==1){
-          stage = (Stage) borderPane.getScene().getWindow();
+          stage = (Stage) paneA.getScene().getWindow();
           stage.close();
         }
     }catch (Exception e){ System.out.println(e.getMessage());}
