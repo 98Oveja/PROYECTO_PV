@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane fx:id="Container" prefHeight="192.0" prefWidth="852.0" styleClass="fondo-card" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.Card">
+   <left>
+      <StackPane prefHeight="142.0" prefWidth="142.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="25.0" />
+         </BorderPane.margin>
+         <children>
+            <Label fx:id="Img" prefHeight="170.0" prefWidth="165.0" />
+            <Button mnemonicParsing="false" prefHeight="179.0" prefWidth="173.0" styleClass="border" />
+         </children>
+      </StackPane>
+   </left>
+   <bottom>
+      <Separator prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Separator prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <HBox alignment="CENTER_LEFT" prefHeight="142.0" prefWidth="712.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="Nombre" prefHeight="42.0" prefWidth="544.0" styleClass="titles" text="Nombre">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#Edit" prefHeight="48.0" prefWidth="129.0" styleClass="boton-edit" />
+            <Button layoutX="362.0" layoutY="57.0" mnemonicParsing="false" onAction="#Estatus" prefHeight="48.0" prefWidth="127.0" styleClass="boton-delete" />
+            <Label fx:id="Disponibilidad" alignment="CENTER" ellipsisString="Dsiponibilidad" prefHeight="34.0" prefWidth="209.0" styleClass="label-disponibilidad" text="Disponibilidad">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="Precio" alignment="CENTER" prefHeight="30.0" prefWidth="166.0" text="Precio" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

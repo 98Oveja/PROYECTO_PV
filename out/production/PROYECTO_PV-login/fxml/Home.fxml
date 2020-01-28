@@ -39,7 +39,7 @@
                               <Image url="@../images/arrows.png" />
                            </image>
                         </ImageView>
-                        <MenuButton mnemonicParsing="false" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#bdb7ca">
+                        <MenuButton mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" styleClass="tipografia" stylesheets="@../css/main.css" text="Usuario" textFill="#bdb7ca">
                           <items>
                             <MenuItem fx:id="itemHelp" mnemonicParsing="false" onAction="#handleActionHelp" text="Ayuda" />
                             <MenuItem fx:id="itemConfig" mnemonicParsing="false" onAction="#handleActionConf" text="Configuracion" />

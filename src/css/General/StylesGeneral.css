@@ -1,0 +1,10 @@
+.botones-minis{
+    -fx-background-color: #BDBDBD;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.botones-minis:hover{
+    -fx-background-color: #3B86FF;
+    -fx-font-size: 16px;
+}

@@ -3,6 +3,7 @@ package home;
 import controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -15,12 +16,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        stage.setScene(
+        /*stage.setScene(
             createScene(
                 loadMainPane()
             )
-        );
+        ); */
         //stage.initStyle(StageStyle.UNDECORATED);
+        //stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/ProductosV2/Products.fxml"));
+        stage.setTitle("Products V-2.0");
+        stage.setScene(new Scene(root, 300, 275));
         stage.show();
     }
 

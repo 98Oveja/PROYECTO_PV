@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.ProductController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label prefHeight="53.0" prefWidth="1900.0" styleClass="titles" text="Productos" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Label>
+         </top>
+         <center>
+            <StackPane alignment="TOP_CENTER" prefHeight="444.0" prefWidth="611.0" styleClass="fondo-card" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="50.0" top="25.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox prefHeight="448.0" prefWidth="606.0">
+                     <children>
+                        <StackPane prefHeight="55.0" prefWidth="606.0">
+                           <children>
+                              <VBox prefHeight="49.0" prefWidth="606.0">
+                                 <children>
+                                    <HBox prefHeight="10.0" prefWidth="888.0">
+                                       <children>
+                                          <Label ellipsisString="Lista de Productos" prefHeight="37.0" prefWidth="435.0" styleClass="titles-2" text="Lista de Productos" />
+                                          <Separator opacity="0.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="647.0" />
+                                          <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="330.0" styleClass="boton-actualizar">
+                                             <HBox.margin>
+                                                <Insets right="15.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="45.0" prefWidth="888.0" styleClass="fondo">
+                                       <VBox.margin>
+                                          <Insets left="15.0" right="15.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label ellipsisString="Producto" prefHeight="45.0" prefWidth="712.0" styleClass="label-description" text="Producto" />
+                                          <Label ellipsisString="Opciones" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Opciones" />
+                                          <Label ellipsisString="Dsiponibilidad" layoutX="314.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Disponibilidad" />
+                                          <Label ellipsisString="Precio" layoutX="582.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Precio Venta" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <VBox fx:id="Container" prefHeight="900.0" prefWidth="606.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </center>
+         <right>
+            <VBox prefHeight="480.0" prefWidth="232.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="25.0" right="25.0" top="25.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label alignment="CENTER" ellipsisString="Lista de Productos" prefHeight="37.0" prefWidth="435.0" styleClass="titles-2" text="Opciones" />
+                  <Separator prefWidth="200.0" />
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-add-product" text="Agregar Productos" />
+                  <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-categ" text="Categorias" />
+                  <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-marca" text=" Marcas" />
+                  <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Activos" />
+                  <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Inactivos" />
+                  <TextField styleClass="search">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</StackPane>
