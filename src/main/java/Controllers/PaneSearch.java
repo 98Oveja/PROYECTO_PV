@@ -71,6 +71,7 @@ public class PaneSearch  implements Initializable {
         if (actionEvent.getSource() == itemConfig){
             final Stage primaryStage = new Stage();
             final Stage dialog = new Stage();
+            Scene dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
 
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initStyle(StageStyle.UNDECORATED);
@@ -78,7 +79,6 @@ public class PaneSearch  implements Initializable {
             dialog.setX(600);
             dialog.setY(300);
 
-            Scene dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
             dialogScene.setOnMousePressed(event -> {
                 System.out.println("presseed");
                 xOffset = event.getSceneX();

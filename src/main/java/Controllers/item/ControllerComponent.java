@@ -81,11 +81,11 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @FXML
     public void handleButtonAction(MouseEvent event){
-
+ /*
         if(event.getSource() == btnSignin){
           logIn();
         }
-        /*
+
  Task t = new Task() {
             @Override
             protected Object call() throws Exception {
@@ -110,10 +110,10 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
 
 --------------------------------------
+*/
         thread.setDaemon(true);
         thread.start();
-
-         */
+        admin = true;
     }
 
     public void handleButtonActionKey(KeyEvent keyEvent) {
