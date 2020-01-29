@@ -7,7 +7,7 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="punto_de_venta@localhost" uuid="ecec204d-e2be-45f6-8f42-e156e233724f">
+    <data-source source="LOCAL" name="punto_de_venta@localhost [2]" uuid="3ab41126-9dad-409a-be1d-ba9d6ba0c79c">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>

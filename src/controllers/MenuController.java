@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import models.Employ.validatorImage;
 import utils.ConnectionUtil;
 
 import java.awt.*;
@@ -58,7 +59,10 @@ public class MenuController implements Initializable, ControlledScreen {
                 Image imgDefault = new Image("images/herramientas.png");
                 imageList.add(imgDefault);
             }else{
-                Image img = new Image("file:/" +products.get(pos).img.replace("*","\\"));
+                String urlImg= "file:/" + products.get(pos).img.replace("*","\\");
+                validatorImage valIma= new validatorImage();
+                String trueValimg =  valIma.loadImage(urlImg,"images/male_user_.png");
+                Image img = new Image(trueValimg);
                 imageList.add(img);
             }
             int finalPos = pos;

@@ -13,11 +13,10 @@ public class validatorImage {
             URLConnection connection = url1.openConnection();
             InputStream inputStreamReader = connection.getInputStream();
             image = new Image(inputStreamReader);
-            System.out.println("logro cargar la imagen buena");
-            return UrlImage;
+           return UrlImage;
 
         }catch (Exception ex){
-            System.out.println("No se encontro la imagen en el sistema.. Usando imagen default");
+//            System.out.println("No se encontro la imagen en el sistema.. Usando imagen default ");
             return imaDefault;
         }
     }

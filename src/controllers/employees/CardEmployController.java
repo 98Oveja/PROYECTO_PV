@@ -42,13 +42,10 @@ public class CardEmployController implements Initializable {
     public dataEmploy employ;
     public BorderPane container;
     String imgTemporal;
-    double x, y;
-    Double whiteMenu = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-    Double HeightMenu = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     validatorImage valImage = new validatorImage();
     static double whidtgrid=EmployeesController.widthGrid;
     static double heightgrid=EmployeesController.heightGrid;
-
+    int valueStatus;
     public void addData(dataEmploy empData){
         employ = empData;
     }
@@ -60,13 +57,19 @@ public class CardEmployController implements Initializable {
         Organitation.setText(employ.cargo.toUpperCase());
         imaConverter();
         setImgUser(imgTemporal);
+        if(employ.estado){
+            valueStatus = 0;
+        }else{
+            valueStatus = 1;
+            edit.setVisible(false);
+        }
+
     }
 
     public void imaConverter(){
         if(employ.img.contains("*")){
             imgTemporal ="file:/" + employ.img.replace("*","\\");
         }else{
-            System.out.println("No contenia imagen");
             imgTemporal = "images/male_user_.png";
         }
     }
@@ -85,7 +88,12 @@ public class CardEmployController implements Initializable {
             FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
             Parent root = Loader.load();
             DelEmployController controller = Loader.getController();
-            controller.contentAlert.setText("Esta seguro que desea eliminar al Empleado: "+employ.name1+" "+ employ.lastname1);
+            if(employ.estado){
+                controller.contentAlert.setText("Esta seguro que desea eliminar al Empleado: "+employ.name1+" "+ employ.lastname1);
+            }else {
+                Image info = new Image("images/info.png");
+                controller.loadDataClose(info,"Confirmar","Esta seguro que desea habilitar el empleado: "+employ.name1+" "+ employ.lastname1,1);
+            }
             Scene dialogo = new Scene(root);
             Stage stagedialog = new Stage();
             stagedialog.initStyle(StageStyle.UNDECORATED);
@@ -94,7 +102,7 @@ public class CardEmployController implements Initializable {
             stagedialog.showAndWait();
             if(controller.BtnOk==1){
                 sqlEmploy del = new sqlEmploy();
-                del.deleteEmploy(employ.idemp);
+                del.deleteEmploy(employ.idemp,valueStatus);
                 controller.pressedExit();
             }
         }catch (Exception ex){ ex.printStackTrace();}
@@ -140,7 +148,6 @@ public class CardEmployController implements Initializable {
                 if(controller.infoStatus==1) {
                     sqlEmploy editEmploy = new sqlEmploy();
                     editEmploy.updateEmploy(employ.idper, employ.idemp, controller.EmployPhone.getText(), employ.img, controller.EmployPlace.getText());
-                    System.out.println("Actualizacion exitosa");
                 }
 
         }catch (Exception ex){

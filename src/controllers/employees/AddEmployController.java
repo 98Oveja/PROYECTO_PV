@@ -77,21 +77,14 @@ public void CloseModal(){
          FXMLLoader Loader= new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
          Parent root = Loader.load();
          DelEmployController controller = Loader.getController();
-         controller.TitleModal.setText(title);
-         controller.contentAlert.setText(contenido);
-         controller.IconModal.setImage(image);
-         if(op==0){
-             controller.Cancel.setVisible(false);
-             controller.Okay.setStyle("-fx-translate-x: 65px; -fx-translate-y: -10px;");
-             controller.Okay.setText("Ok");
-         }
+         controller.loadDataClose(image,title,contenido,op);
          Scene dialogo = new Scene(root);
          Stage stagedialog = new Stage();
          stagedialog.initStyle(StageStyle.UNDECORATED);
          stagedialog.initModality(Modality.APPLICATION_MODAL);
          stagedialog.setScene(dialogo);
          stagedialog.showAndWait();
-         if(controller.BtnOk==1 && op==1){
+         if(controller.BtnOk==1){
              exitAddEmployModal();
          }
      }catch (Exception ex){ System.out.println(ex);}

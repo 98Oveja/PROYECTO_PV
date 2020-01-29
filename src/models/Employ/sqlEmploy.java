@@ -16,18 +16,19 @@ public class sqlEmploy {
     java.sql.Date dia = new java.sql.Date(milsec);
     List<dataEmploy> data = new ArrayList<>();
 
-    public dataEmploy searchData(int id_employ) {
-    dataEmploy xd = new dataEmploy();
+    public List<dataEmploy> searchData(String name) {
+        data.clear();
         try {
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
             String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, " +
                     "P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO " +
-                    "FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ID_EMPLEADO = "+id_employ+" order by ID_EMPLEADO desc";
+                    "FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND PRIMER_NOMBRE like "+"'%"+name+"%'";
             Statement instruccion = connection.createStatement();
             ResultSet result = instruccion.executeQuery(Query);
             if (result != null) {
                 while (result.next()) {
+                    dataEmploy xd = new dataEmploy();
                     xd.idemp = result.getInt("ID_EMPLEADO");
                     xd.idper = result.getInt("ID_PERSONA");
                     xd.name1 = result.getString("PRIMER_NOMBRE");
@@ -37,14 +38,16 @@ public class sqlEmploy {
                     xd.dir = result.getString("DIRECCION");
                     xd.correo = result.getString("CORREO");
                     xd.tel = result.getString("TELEFONO");
-                    xd.img = result.getString("url_foto").replace("*","\\");
+                    xd.img = result.getString("url_foto");
                     xd.estado = result.getBoolean("ESTADO");
                     xd.fechaInicio = result.getString("FECHA_CONTRATACION");
                     xd.cargo = result.getString("CARGO");
+                    data.add(xd);
                 }
             }
             instruccion.close();
-            return xd;
+            System.out.println("Line 49 sqlEmploy: " + data.size());
+            return data;
         } catch (Exception ex) {
             System.out.println(ex +"error aqui");
             return null;
@@ -68,11 +71,11 @@ public class sqlEmploy {
         statement.close();
     }
 
-    public void deleteEmploy(int idemp){
+    public void deleteEmploy(int idemp, int status){
             try{
                 ConnectionUtil connectionClass= new ConnectionUtil();
                 Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
-                String sqlDelete= "UPDATE EMPLEADOS SET ESTADO = 0, FECHA_RETIRO = '"+dia+"' WHERE ID_EMPLEADO="+idemp+"";
+                String sqlDelete= "UPDATE EMPLEADOS SET ESTADO = "+status+", FECHA_RETIRO = '"+dia+"' WHERE ID_EMPLEADO="+idemp+"";
                 Statement statement= connection.createStatement();
                 statement.executeUpdate(sqlDelete); //aca insertamos los dato
                 statement.close();
@@ -85,7 +88,6 @@ public class sqlEmploy {
     public List<dataEmploy> employDB(int estado){
         try {
             data.clear();
-
             ConnectionUtil connectionClass = new ConnectionUtil();
             Connection connection = connectionClass.getConnection();
             String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, " +
@@ -123,7 +125,7 @@ public class sqlEmploy {
 
     public void insertEmploy(int idpersona, String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email, String imEmploy){
         String Nueva = null;
-        if(imEmploy.equals(null)){
+        if(imEmploy.contains("\\")){
             Nueva=imEmploy.replace("\\","*");
         }
         try{
@@ -147,6 +149,5 @@ public class sqlEmploy {
         }catch (Exception ex){
             System.err.println("130 insertando emplaedo" + ex);
         }
-
     }
 }
