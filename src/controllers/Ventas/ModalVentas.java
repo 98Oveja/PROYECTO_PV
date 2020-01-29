@@ -3,6 +3,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXProgressBar;
+import controllers.AlertaController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,8 +20,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Ventas_Compras.Ventas;
+import utils.LoadModalesMovibles;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -57,8 +60,8 @@ public class ModalVentas implements Initializable{
     @FXML public TableColumn colSubtotal;
     @FXML public TableColumn colEditar;
     @FXML public TableColumn colEliminar;
-
     Ventas ventas = new Ventas();
+    Ventas ventas1,ventasAuxiliar;
     private ObservableList<Ventas> ventasObservableList;
     public URL urlEditar, urlEliminar;
     public Image imgEditar, imgEliminar;
@@ -67,7 +70,7 @@ public class ModalVentas implements Initializable{
     public ArrayList result_querys;
     public String Datos_de_las_Querys;
     public String CODIGOPRODUCTO ="";
-    public int numeros = 1;
+    public int numeros = 0;
     public void cargarClientes(){
         ArrayList<String> arrayList = ventas.listadoClientes();
         ObservableList<String> items = FXCollections.observableArrayList();
@@ -134,16 +137,27 @@ public class ModalVentas implements Initializable{
         fecha_text.setDisable(true);
     }
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-
 //      ACCIONES DE LOS BOTONES Y OTROS COMPONENTES DENTRO DEL MODAL
-        tablaDetalle.setOnMousePressed(mouseEvent -> {
-            System.out.println("Tabla Refrescado");
-            ventasObservableList = ventas.getventasObservableListAux();
-            tablaDetalle.refresh();
+        tablaDetalle.setOnMouseClicked(mouseEvent -> {
+            Ventas vp = tablaDetalle.getSelectionModel().getSelectedItem();
+            if (vp != null){
+                System.out.println("Producto "+vp.getProducto());
+                System.out.println("Precio "+vp.getPrecioVenta());
+                System.out.println("Cantidad "+vp.getCantidad());
+                System.out.println("Codigo "+vp.getCodigoProducto());
+                System.out.println("SubTotal "+vp.getSubTotal());
+                System.out.println("Descuento "+vp.getDescuento());
+            }
         });
         btnCerrarModal.setOnAction(actionEvent -> {
-            System.out.println("Cerrado");
-            ventas.cerrarModal(borderPVentas);
+            Image imageModal = new Image("/images/info.png");
+            Image imageClose = new Image("/images/icon_close.png");
+            LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
+                    "Cerra el Panel",
+                    "¿Estas seguro de cerra el Panel?",
+                    imageModal,
+                    imageClose,
+                    borderPVentas);
         });
         addNewCustomer.setOnAction(actionEvent -> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
@@ -159,7 +173,6 @@ public class ModalVentas implements Initializable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         });
         btn_agregarVenta.setOnAction(actionEvent -> {
             if (todolosCamposVacios()<5){activarNodos();}
@@ -174,8 +187,8 @@ public class ModalVentas implements Initializable{
                 editJfxButton.setGraphic(new ImageView(imgEditar));
                 deletJfxButton.setGraphic(new ImageView(imgEliminar));
                 double subTotal = Double.parseDouble(ventas.calculoDeDescuentos(precio_text.getText(), cantidad_text.getText(), descuento_text.getText()));
-                Ventas ventas1 = new Ventas(
-                        numeros,
+                ventas1 = new Ventas(
+                        (numeros+1),
                         Integer.parseInt(cantidad_text.getText()),
                         CODIGOPRODUCTO,
                         listadoProductos.getValue()+" "+descripcion_text.getText(),
@@ -184,22 +197,31 @@ public class ModalVentas implements Initializable{
                         subTotal,
                         editJfxButton,
                         deletJfxButton);
+                    ventas1.setNOMBREPRODUCTO(listadoProductos.getValue());
                 if(!ventasObservableList.contains(ventas1)){
-                    if (!ventas.equals(ventas1)){
                     this.ventasObservableList.add(ventas1);
                     this.tablaDetalle.setItems(ventasObservableList);
-                    numeros++;
-                }}
-                else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setTitle("ERORR");
-                    alert.setContentText("El producto ya esta incluido");
-                    alert.showAndWait();
+                    ventas1.setVentasObservableListAux(ventasObservableList);
+                    ventas1.setTableViewAux(this.tablaDetalle);
+                    numeros++;  ventasAuxiliar = ventas1;
+                } else{
+                    Ventas aux2 = ventas1;
+                    System.out.print("CANTIDAD Y DESCUETO DEL PRODUCTO QUE ESTA EN LA TABLA"+
+                            "\nCantidad "+ventasAuxiliar.getCantidad());
+                    System.out.print(" Descuento "+ventasAuxiliar.getDescuento()+"\n");
+                    System.out.print("CANTIDAD Y DESCUENTO DEL PRODUCTO QUE ESTAN EN LOS LABELS"+
+                            "\nCantidad "+aux2.getCantidad());
+                    System.out.println(" Descuento "+aux2.getDescuento());
+                    ventas1.setCantidad(aux2.getCantidad());
+                    ventas1.setDescuento(aux2.getDescuento());
+                    tablaDetalle.refresh();
                 }
                 descuento_text.setText("0");
             }
-            ventas.setVentasObservableListAux(ventasObservableList);
+            if(ventasObservableList.size() == 0){
+                System.out.println("Aun no se envia nadad a la tabla y al Modelo");
+            }
+
         });
         listadoClientes.setOnAction(actionEvent -> {
          String Nombre_Apellido_Cliente = listadoClientes.getValue();
@@ -215,8 +237,6 @@ public class ModalVentas implements Initializable{
             nit_text.setText(getAllDataCustomer[2]);
         });
         listadoProductos.setOnAction(actionEvent -> {
-            Datos_de_las_Querys = "";
-            result_querys.clear();
             Datos_de_las_Querys = listadoProductos.getValue();
             result_querys= ventas.getProductByName(Datos_de_las_Querys);
             String consultaCompleta = result_querys.get(0).toString();
@@ -225,6 +245,7 @@ public class ModalVentas implements Initializable{
             precio_text.setText(contenedorConsultaProducto[1]);
             CODIGOPRODUCTO = contenedorConsultaProducto[2];
             descripcion_text.setText(contenedorConsultaProducto[3]);
+            cantidad_text.requestFocus();
         });
 //      ASIGNACION DE VALORES INICIALES
         MensajedeAlertaCampos.setText("");
@@ -234,18 +255,6 @@ public class ModalVentas implements Initializable{
         precio_text.setEditable(false);
         disponibilidad_text.setEditable(false);
         descuento_text.setText("0");
-//      MODELO Y ASIGNACION DE LOS DATOS DE LA TABLA EN GENERAL
-//        ventasObservableList = FXCollections.observableArrayList();
-//        this.colNumero.setCellValueFactory(new PropertyValueFactory<>("Numero"));
-//        this.colCantidad.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
-//        this.colCodigo.setCellValueFactory(new PropertyValueFactory<>("CodigoProducto"));
-//        this.colProducto.setCellValueFactory(new PropertyValueFactory<>("Producto"));
-//        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("PrecioVenta"));
-//        this.colDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
-//        this.colSubtotal.setCellValueFactory(new PropertyValueFactory<>("SubTotal"));
-//        this.colEditar.setCellValueFactory(new PropertyValueFactory<>("Editar"));
-//        this.colEliminar.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
-
 //      VALIDACIONES EXTERNAS
         ventas.validarNumTelefono(telefono_text,8);
         ventas.validarNit(nit_text);

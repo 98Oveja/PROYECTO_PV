@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="ContenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="246.0" prefWidth="319.0"
+           xmlns="http://javafx.com/javafx/11.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertaController">
+   <children>
+      <AnchorPane fx:id="ContenedorSecundario" prefHeight="247.0" prefWidth="320.0">
+         <children>
+            <HBox layoutX="60.0" prefHeight="50.0" prefWidth="202.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="imagenModal" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="tituloModal" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="240.0" text="Label" textAlignment="CENTER" textFill="#515151">
+                     <font>
+                        <Font name="Serif Regular" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin></Label>
+                  <Button fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="15.0" prefWidth="26.0" style="-fx-background-color: transparent;" textFill="#616161">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="imgBotonClose" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox fx:id="VboxConenedor3" alignment="CENTER" layoutX="110.0" layoutY="61.0" prefHeight="80.0" prefWidth="100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <Label fx:id="CuerpoModal" alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="245.0" text="Cuerpo del Mensaje" textAlignment="CENTER" textFill="#5e5e5e">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children></VBox>
+            <HBox fx:id="HboxConenedor4" alignment="CENTER" layoutX="5.0" layoutY="197.0" prefHeight="50.0" prefWidth="202.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="197.0">
+               <children>
+                  <JFXButton fx:id="btnConfirmar" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" ripplerFill="#2f2e50" style="-fx-background-color: #43425D;" text="Confirmar" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Serif Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" ripplerFill="#1062e5" style="-fx-background-color: #3B86FF;" text="Cancelar" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Serif Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children></HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -109,7 +109,8 @@ public class ModalVentaController implements Initializable {
         cartaProducto.setEtextPrecio(PRECIOVENTA);
         cartaProducto.setEtextProductos(producto_text.getText());
         cartaProducto.setEtextDescuento(descuento_text.getText());
-        cartaProducto.setEtextSubTotal(ventas.calculoDeDescuentos(PRECIOVENTA, cantidad_text.getText(), descuento_text.getText()));
+        cartaProducto.setEtextSubTotal(ventas.calculoDeDescuentos(PRECIOVENTA, cantidad_text.getText(),
+                descuento_text.getText()));
         cartaProducto.setElNumPanel(contadorDePaneles);
         contadorDePaneles++;
 //        ventasPanelesVentas.setPanelProducto((Pane) parent);
