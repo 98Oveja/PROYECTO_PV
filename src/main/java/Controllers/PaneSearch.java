@@ -69,29 +69,7 @@ public class PaneSearch  implements Initializable {
 
     public void handleActionConf(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == itemConfig){
-            final Stage primaryStage = new Stage();
-            final Stage dialog = new Stage();
-            Scene dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ConfigUser.fxml")));
-
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initStyle(StageStyle.UNDECORATED);
-            dialog.initOwner(primaryStage);
-            dialog.setX(600);
-            dialog.setY(300);
-
-            dialogScene.setOnMousePressed(event -> {
-                System.out.println("presseed");
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            });
-
-            dialogScene.setOnMouseDragged(event -> {
-                primaryStage.setX(event.getScreenX() - xOffset);
-                primaryStage.setY(event.getScreenY() - yOffset);
-            });
-
-            dialog.setScene(dialogScene);
-            dialog.showAndWait();
+            utils.LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/ConfigUser.fxml"), null);
         }
     }
 
@@ -116,12 +94,19 @@ public class PaneSearch  implements Initializable {
     }
 
     public void handleActionCloseStage(ActionEvent actionEvent) {
+       /*
         Ventas ventas = new Ventas();
-        Image image = new Image("/images/info.png");
+
         ventas.alertasPersonalizados("Salir",
                 "Esta seguro que desea salir...",
                 image,1,
                 paneSearch
-        );
+        )
+        ;
+        */
+        Image image = new Image("/images/info.png");
+        Image imageClose = new Image("/images/icon_close.png");
+        //utils.LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/"));
+
     }
 }
