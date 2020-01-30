@@ -1,4 +1,4 @@
-package Models.Employ;
+package models.Employ;
 
 public class dataEmploy {
     public String name1, name2, lastname1, lastname2, dir, correo,img,fechaInicio,cargo,tel;
