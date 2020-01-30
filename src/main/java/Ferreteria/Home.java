@@ -1,7 +1,7 @@
 package Ferreteria;
 
 import Controllers.MainController;
-import Models.Ventas_Compras.Ventas;
+import Utils.LoadModalesMovibles;
 import javafx.application.Application;
 
 import javafx.event.EventHandler;
@@ -32,15 +32,16 @@ public class Home extends Application {
     }
 
     private void stageCloseAction(Stage stage) {
-        Ventas ventas = new Ventas();
+
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
                 windowEvent.consume();
                 Image image = new Image("/images/info.png");
-                ventas.alertasPersonalizados("Salir",
-                        "Esta seguro que desea salir...",
-                        image,1,
+                LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
+                        "INFORMACION",
+                        "Esta seguro que desea salir?",
+                        image,
                         mainPane
                 );
             }

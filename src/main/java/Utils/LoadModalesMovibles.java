@@ -1,5 +1,6 @@
-package utils;
-import controllers.AlertaController;
+package Utils;
+
+import Controllers.AlertaController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -46,7 +47,7 @@ public class LoadModalesMovibles {
     public static void CerrarModal (Node node){Stage stage = (Stage) node.getScene().getWindow();stage.close();}
 //CARGAR MODAL DE ALERTA
     public static void LoadAlert(URL fxmlAlerta, String TituloModal, String CuerpoModal,
-                                 Image imgModal, Image imgClose, Node PanelaCerrar){
+                                 Image imgModal, Node PanelaCerrar){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlAlerta);
             Parent parent = fxmlLoader.load();
@@ -64,7 +65,7 @@ public class LoadModalesMovibles {
                 finalStage.setX(mouseEvent.getScreenX() - posicionX);
                 finalStage.setY(mouseEvent.getScreenY()- posicionY);
             });
-            alert.setTitleBody(TituloModal,CuerpoModal,imgModal,imgClose);
+            alert.setTitleBody(TituloModal,CuerpoModal,imgModal);
             alert.setContainerBack(PanelaCerrar);
             stage.setScene(scene);
             stage.showAndWait();

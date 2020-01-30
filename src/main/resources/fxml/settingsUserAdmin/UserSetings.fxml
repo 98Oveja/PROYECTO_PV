@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" prefWidth="800.0" spacing="50.0" style="-fx-background-color: #3C3B54;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserSetting.SettingsUser">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <BorderPane fx:id="imgUser" prefHeight="120.0" prefWidth="120.0" />
+            <VBox alignment="CENTER">
+               <children>
+                  <Label fx:id="nameUser" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
+                  <Label fx:id="userC" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="513.0">
+               <children>
+                  <JFXButton fx:id="btnViewUser" mnemonicParsing="false" text="Ver cuenta">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox layoutX="10.0" layoutY="180.0" prefHeight="100.0" prefWidth="200.0" />
+   </children>
+
+</VBox>

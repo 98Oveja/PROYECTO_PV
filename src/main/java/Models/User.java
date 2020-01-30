@@ -29,6 +29,15 @@ String urlPhoto;
         this.admin = admin;
     }
 
+    public User(String name, int status, String admin, String url_photo, String apellidos_) {
+
+        this.name = name;
+        this.last_name = apellidos_;
+        this.status = status;
+        this.admin = admin;
+        this.urlPhoto = url_photo;
+    }
+
     public String getUrlPhoto() {
         return urlPhoto;
     }
@@ -108,9 +117,9 @@ String urlPhoto;
                 ", name='" + name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", pass='" + pass + '\'' +
-                ", status='" + status + '\'' +
-                ", Admin='" + admin + '\'' +
+                ", status=" + status +
+                ", admin='" + admin + '\'' +
+                ", urlPhoto='" + urlPhoto + '\'' +
                 '}';
     }
-
 }

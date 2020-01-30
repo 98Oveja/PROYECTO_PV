@@ -43,14 +43,12 @@ public class ControllerComponent implements Initializable, ControlledScreen {
     public Label lblErrors;
     public JFXButton btnSignin;
     public VBox VboxD;
-    User user;
+     public static User user;
     String status = "";
     public static boolean admin = false;
 
     ScreensController myController;
 
-     public static String screen1ID = "screen1";
-     public static String screen1File = "/fxml/Home.fxml";
 
     @FXML
     void nextPane(ActionEvent event)  {
@@ -81,11 +79,14 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
     @FXML
     public void handleButtonAction(MouseEvent event){
- /*
-        if(event.getSource() == btnSignin){
-          logIn();
-        }
 
+        //if(event.getSource() == btnSignin){
+        //  logIn();
+        //}
+        thread.setDaemon(true);
+        thread.start();
+        admin = true;
+ /*
  Task t = new Task() {
             @Override
             protected Object call() throws Exception {
@@ -111,9 +112,9 @@ public class ControllerComponent implements Initializable, ControlledScreen {
 
 --------------------------------------
 */
-        thread.setDaemon(true);
-        thread.start();
-        admin = true;
+
+
+
     }
 
     public void handleButtonActionKey(KeyEvent keyEvent) {

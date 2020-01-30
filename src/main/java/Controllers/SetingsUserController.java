@@ -1,30 +1,37 @@
 package Controllers;
 
-import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SetingsUserController implements Initializable {
     public Button btnCerrarModal;
     public BorderPane pane;
+    public VBox container;
 
 
-    public void CloseModal(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == btnCerrarModal){
+    public void CloseModal() {
             Stage stage = (Stage) this.pane.getScene().getWindow();
             stage.close();
-        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        pane.setPrefWidth(800);
+        pane.setPrefHeight(600);
 
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/fxml/settingsUserAdmin/UserSetings.fxml"));
+        } catch (IOException e) {  e.printStackTrace(); }
+
+        container.getChildren().addAll(root);
     }
 }

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="pane" style="-fx-background-color: #3C3B54;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SetingsUserController">
+<BorderPane fx:id="pane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3C3B54;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SetingsUserController">
    <top>
-      <HBox alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="388.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="388.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-                  <Button fx:id="btnCerrarModal" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#CloseModal" prefHeight="20.0" prefWidth="20.0" styleClass="btn_CloseModal" stylesheets="@../css/main.css">
-                      <graphic>
-                          <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                  <Image url="@../images/cancel_32.png" />
-                              </image>
-                          </ImageView>
-                      </graphic>
+            <Label prefHeight="16.0" prefWidth="134.0" style="-fx-text-fill: white; -fx-font-size: 18px;" styleClass="tipografia" text="Configuracion">
                <HBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </HBox.margin>
-                  </Button>
+                  <Insets right="600.0" />
+               </HBox.margin></Label>
+             <Button fx:id="btnCerrarModal" mnemonicParsing="false" onAction="#CloseModal" prefHeight="30.0" prefWidth="30.0" styleClass="boton-close" stylesheets="@../css/Proveedores/StyleNewProvee.css" />
          </children>
       </HBox>
    </top>
    <center>
-      <ScrollPane BorderPane.alignment="CENTER" />
+      <ScrollPane hbarPolicy="NEVER" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="container" />
+         </content>
+         <styleClass>
+            <String fx:value="scroll-pane-config" />
+            <String fx:value="scroll-bar-config" />
+         </styleClass></ScrollPane>
    </center>
 </BorderPane>

@@ -48,7 +48,8 @@ public class UserImplem implements userImpl {
                                 resultSet.getString("NOMBRE"),
                                 resultSet.getInt("ESTADO"),
                                 resultSet.getString("CARGO"),
-                                resultSet.getString("URL_PHOTO")
+                                resultSet.getString("URL_PHOTO"),
+                                resultSet.getString("APELLIDOS")
                         );
                         //System.out.println(userAux);
                     }
