@@ -97,7 +97,7 @@
             <Image url="@../../images/icons8_box_important_50px.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="272.0" layoutY="431.0" onAction="#selectItem" opacity="0.0" prefHeight="35.0" prefWidth="221.0" unFocusColor="#43425d">
+      <JFXComboBox fx:id="placeList" focusColor="#43425c" focusTraversable="false" layoutX="214.0" layoutY="431.0" onAction="#selectItem" opacity="0.0" prefHeight="35.0" prefWidth="286.0" unFocusColor="#43425d">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

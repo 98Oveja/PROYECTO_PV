@@ -112,9 +112,6 @@ public void CloseModal(){
                 if (infoStatus == 1) {
                     sqlGeneralEmploy.insertEmploy(idpersona ,emDb.name1, emDb.name2, emDb.lastname1, emDb.lastname2, emDb.dir, emDb.tel, placeList.getValue(), emDb.correo,emDb.img);
                     ClearTextField();//limipiar los textfield
-                    System.out.println("Insertado... AddEmployController line 123");
-                } else {
-                    System.out.println("Cancelo el ingreso");
                 }
             }
     }
@@ -160,12 +157,13 @@ public void CloseModal(){
         EmployPhone.setText("");
         EmployPlace.setText("");
         EmployEmail.setText("");
+        placeList.setItems(list);
         setImgUser("/images/male_user_.png");
         emDb.img="NULL";
     }
 
     @FXML
-    public String searchEmploy(MouseEvent event) throws IOException {
+    public String searchEmploy() {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 

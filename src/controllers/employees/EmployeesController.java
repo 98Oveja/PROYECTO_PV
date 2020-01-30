@@ -14,14 +14,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Employ.dataEmploy;
 import models.Employ.sqlEmploy;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +32,7 @@ public class EmployeesController implements Initializable, ControlledScreen {
     public StackPane containerEmploy;
     @FXML
     public GridPane containercard;
-    public int posx, posy,idcard,cantEmploy,tamanio,posicion;
+    public int posx, posy,idcard,cantEmploy,tamanio,posicion,estadoShow;
     public sqlEmploy dataEmp = new sqlEmploy();
     public List<dataEmploy> arrayEmploy= new ArrayList<>();
     public Button activo;
@@ -47,6 +45,7 @@ public class EmployeesController implements Initializable, ControlledScreen {
     static double  widthGrid, heightGrid;
     ScreensController myController;
     List<dataEmploy> auxEmploy= new ArrayList<>();
+
 
     @FXML
     private void pressedAddModal() {
@@ -77,6 +76,7 @@ public class EmployeesController implements Initializable, ControlledScreen {
             posy+=1;
         }
      idcard =idcard+1;
+
     }
     public void loaderAuxData(){
         posx = 0;
@@ -85,6 +85,7 @@ public class EmployeesController implements Initializable, ControlledScreen {
     }
 
     public void loadActivos() throws IOException {
+        estadoShow= 1;
         btnpressedEfect(activo,Inactivos);
         arrayEmploy.clear();
         arrayEmploy = dataEmp.employDB(1);
@@ -99,11 +100,22 @@ public class EmployeesController implements Initializable, ControlledScreen {
     }
 
     public void loadInactivos() throws IOException {
+        estadoShow=2;
         btnpressedEfect(Inactivos,activo);
         arrayEmploy.clear();
         arrayEmploy = dataEmp.employDB(0);
         cantEmploy =arrayEmploy.size();
         auxAddCard();
+    }
+
+    public void refreshGrid() throws IOException {
+        if(estadoShow == 1){
+            loadActivos();
+        }
+        if(estadoShow == 2){
+            loadInactivos();
+        }
+
     }
     public void btnpressedEfect(Button Active,Button Inactive){
         Active.setStyle("-fx-background-color: #3B86FF;");
@@ -232,7 +244,6 @@ public class EmployeesController implements Initializable, ControlledScreen {
     }
 
     void Cambiar(int a) throws IOException {
-        System.out.println(a);
         loaderAuxData();
         containercard.getChildren().clear();
         auxEmploy.clear();
@@ -283,5 +294,7 @@ public class EmployeesController implements Initializable, ControlledScreen {
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
+
 }
 

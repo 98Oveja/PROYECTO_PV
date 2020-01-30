@@ -16,7 +16,6 @@ public class validatorImage {
            return UrlImage;
 
         }catch (Exception ex){
-//            System.out.println("No se encontro la imagen en el sistema.. Usando imagen default ");
             return imaDefault;
         }
     }

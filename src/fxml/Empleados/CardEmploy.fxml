@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="container" prefHeight="138.0" prefWidth="453.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.CardEmployController">
+<BorderPane fx:id="container" prefHeight="138.0" prefWidth="453.0" styleClass="empleadoscard" stylesheets="@../../css/menuinicio.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.employees.CardEmployController">
    <center>
       <VBox prefHeight="108.0" prefWidth="654.0" BorderPane.alignment="CENTER">
          <children>

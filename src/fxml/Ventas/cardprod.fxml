@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="PanelContTarjet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1049.0" style="-fx-border-color: red blue green yellow; -fx-border-width: 2px 3px;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.CartaProducto">
+<Pane fx:id="PanelContTarjet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1049.0" style="-fx-border-color: red blue green yellow; -fx-border-width: 2px 3px;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Ventas.CartaProducto">
    <children>
       <HBox fx:id="containCard" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="42.0" prefWidth="1048.0" styleClass="CardPanel" stylesheets="@../../css/Ventas/Ventas_Compras.css">
          <children>

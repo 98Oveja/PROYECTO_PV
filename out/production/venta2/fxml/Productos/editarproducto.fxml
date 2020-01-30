@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-<Pane fx:id="PanelContenedor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="575.0" styleClass="fondo" stylesheets="@../../css/Productos/Editar.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Productos.EditProduct">
+<Pane fx:id="PanelContenedor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="575.0" styleClass="fondo" stylesheets="@../../css/Productos/Editar.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Productos.EditProduct">
    <children>
       <Label layoutX="39.0" layoutY="17.0" text="Editar producto" textFill="WHITE">
          <font>

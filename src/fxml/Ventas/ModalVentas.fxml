@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderPVentas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentas">
+<BorderPane fx:id="borderPVentas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Ventas.ModalVentas">
     <top>
         <TextFlow nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1200.0" styleClass="headerGridFerreteria" BorderPane.alignment="CENTER">
             <children>

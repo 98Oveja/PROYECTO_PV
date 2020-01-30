@@ -11,7 +11,7 @@
 <!--fx:controller="fxml.Ventas.ModalRegistrarVenta"-->
 
 <AnchorPane fx:id="panelContenedor" prefHeight="400.0" prefWidth="600.0" styleClass="ModalInsertarVenta" stylesheets="@../../css/Ventas/Ventas_Compras.css"
-            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentaController">
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Ventas.ModalVentaController">
    <children>
       <Pane id="HeaderModal" prefHeight="200.0" prefWidth="200.0" styleClass="PanelHeaderModal_insert">
          <children>

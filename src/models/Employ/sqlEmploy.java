@@ -46,7 +46,6 @@ public class sqlEmploy {
                 }
             }
             instruccion.close();
-            System.out.println("Line 49 sqlEmploy: " + data.size());
             return data;
         } catch (Exception ex) {
             System.out.println(ex +"error aqui");
@@ -63,11 +62,9 @@ public class sqlEmploy {
         String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
         Statement statement= connection.createStatement();
         statement.executeUpdate(sqlUpdate); //aca insertamos los dato
-        System.out.println(sqlUpdate);
         //esteremos realizando el segundo update para la tabla empleados
         String sql2= "UPDATE EMPLEADOS SET CARGO='"+place+"' WHERE ID_EMPLEADO="+idemploy+"";
         statement.executeUpdate(sql2);
-        System.out.println(sql2);
         statement.close();
     }
 
@@ -115,7 +112,6 @@ public class sqlEmploy {
 
             }
             instruccion.close();
-            System.out.println(data.size()+" recividos");
             return data;
         } catch (Exception ex) {
             System.out.println("linea 117 ******************************************" + ex);
@@ -125,10 +121,12 @@ public class sqlEmploy {
 
     public void insertEmploy(int idpersona, String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email, String imEmploy){
         String Nueva = null;
-        if(imEmploy.contains("\\")){
-            Nueva=imEmploy.replace("\\","*");
-        }
         try{
+            if(imEmploy.contains("\\") && imEmploy!=null){
+                Nueva=imEmploy.replace("\\","*");
+            }else if (imEmploy == null){
+                Nueva="NULL";
+            }
             ConnectionUtil connectionClass= new ConnectionUtil();
             Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
             String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
@@ -147,7 +145,7 @@ public class sqlEmploy {
             statement.executeUpdate(sql2);
             statement.close();
         }catch (Exception ex){
-            System.err.println("130 insertando emplaedo" + ex);
+            System.err.println("148 error insertando emplaedo" + ex);
         }
     }
 }

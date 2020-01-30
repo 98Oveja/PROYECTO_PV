@@ -3,6 +3,7 @@ package controllers;
 import com.jfoenix.controls.JFXButton;
 import controllers.ScreenController.ImplementsU.ControlledScreen;
 import controllers.ScreenController.ScreensController;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import models.Employ.newProducts;
 import javafx.animation.KeyFrame;
@@ -35,6 +36,7 @@ public class MenuController implements Initializable, ControlledScreen {
     public JFXButton btnViewVen;
     public JFXButton btnViewEst;
     public StackPane ContenedorMenu;
+    public GridPane gridContainer;
 
     ScreensController myController;
     public double heightMenu= Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -48,6 +50,8 @@ public class MenuController implements Initializable, ControlledScreen {
 
     public void produtosAnimation() {
         newProducts();
+        NewImageProducts.setFitWidth((widthMenu/4)-71);
+        NewImageProducts.setFitHeight(heightMenu*0.33);
         List<Image> imageList = new ArrayList<Image>();
         List<KeyFrame>  keyFrames =  new ArrayList<KeyFrame>();
         int timeSeparation=3;
@@ -61,12 +65,14 @@ public class MenuController implements Initializable, ControlledScreen {
             }else{
                 String urlImg= "file:/" + products.get(pos).img.replace("*","\\");
                 validatorImage valIma= new validatorImage();
-                String trueValimg =  valIma.loadImage(urlImg,"images/male_user_.png");
+                String trueValimg =  valIma.loadImage(urlImg,"images/herramientas.png");
                 Image img = new Image(trueValimg);
                 imageList.add(img);
             }
             int finalPos = pos;
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(timeSeparation), (event) -> {
+                NewImageProducts.setFitWidth((widthMenu/4)-71);
+                NewImageProducts.setFitHeight(heightMenu*0.33);
                 NewImageProducts.setImage(imageList.get(finalPos));
                 titleProduct.setText(products.get(finalPos).name);
                 brandProduct.setText(products.get(finalPos).mark);
@@ -114,7 +120,7 @@ public class MenuController implements Initializable, ControlledScreen {
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
         if(actionEvent.getSource() == btnViewProd){
            HomeController hm= new HomeController();
-//           hm.handleActionSetViewSelect("Estadisticas");
+
         }
     }
 
@@ -154,5 +160,4 @@ public class MenuController implements Initializable, ControlledScreen {
         ContenedorMenu.setPrefWidth(widthMenu - 260);
         ContenedorMenu.setPrefHeight(heightMenu - 110);
     }
-
 }

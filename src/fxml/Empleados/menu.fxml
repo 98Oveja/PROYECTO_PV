@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="ContenedorMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<StackPane fx:id="ContenedorMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MenuController">
    <children>
       <VBox prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -21,7 +21,7 @@
             </Label>
             <VBox prefHeight="521.0" prefWidth="800.0">
                <children>
-                  <GridPane prefHeight="853.0" prefWidth="560.0">
+                  <GridPane fx:id="gridContainer" prefHeight="853.0" prefWidth="560.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -168,9 +168,9 @@
                               </JFXButton>
                            </bottom>
                         </BorderPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="containerNewProd" stylesheets="@../../css/menuinicio.css" GridPane.columnIndex="1">
+                        <AnchorPane fx:id="gridProductos" prefHeight="200.0" prefWidth="200.0" styleClass="containerNewProd" stylesheets="@../../css/menuinicio.css" GridPane.columnIndex="1">
                            <children>
-                              <ImageView fx:id="NewImageProducts" fitHeight="215.0" fitWidth="192.0" layoutX="14.0" pickOnBounds="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
+                              <ImageView fx:id="NewImageProducts" fitHeight="222.0" fitWidth="215.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <image>
                                     <Image url="@../../images/herramientas.png" />
                                  </image>

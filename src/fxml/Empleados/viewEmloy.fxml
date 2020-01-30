@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="containerView" prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.employees.viewEmployController">
+<StackPane fx:id="containerView" prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.employees.viewEmployController">
    <children>
       <ImageView fx:id="PhotoEmploy" fitHeight="337.0" fitWidth="423.0" pickOnBounds="true" preserveRatio="true" />
       <BorderPane prefHeight="337.0" prefWidth="811.0">
