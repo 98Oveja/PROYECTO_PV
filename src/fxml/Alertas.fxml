@@ -13,7 +13,7 @@
 
 <StackPane fx:id="ContenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
            prefHeight="246.0" prefWidth="319.0"
-           xmlns="http://javafx.com/javafx/11.0.1"
+           xmlns="http://javafx.com/javafx/10.0.2-internal"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertaController">
    <children>
       <AnchorPane fx:id="ContenedorSecundario" prefHeight="247.0" prefWidth="320.0">

@@ -40,7 +40,7 @@ public class Ventas{
     public CallableStatement callableStatement = null;
     public ResultSet resultSet = null;
     public Statement statement = null;
-    public int tamanioObservable =0;
+//    public int tamanioObservable =0;
     public ArrayList<String> dataContainer = new ArrayList<>();
     public String resultQuery = "";
 //
@@ -75,18 +75,38 @@ public class Ventas{
         EditProductoController editProductoController = (EditProductoController) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/EditProducto.fxml"),null);
         editProductoController.setNuevaCantidad(String.valueOf(getCantidad()));
         editProductoController.setNuevoDescuento(String.valueOf(getDescuento()));
+        editProductoController.setPRECIOPROD(getPrecioVenta());
         editProductoController.setNombreProducto(getNOMBREPRODUCTO());
+
+//        creacion de un producto auxiliar para que se el envie al Modal de Editar producto
+        Ventas productoSeleccionado =
+                new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
+                        getProducto(), getPrecioVenta(), getDescuento(),
+                        getSubTotal(), getEditar(), getEliminar());
+//        this.ventasObservableListAux.add(productoSeleccionado);
+        editProductoController.setProductoSeleccionado(productoSeleccionado);
+        editProductoController.setVentasListaAuxUpdate(this.ventasObservableListAux);
+        editProductoController.setTablaAuxiliarUpdate(this.tableViewAux);
+        System.out.println("EL tamanio del Array desde el BTN Editar\n" +
+                "Tabla: "+ getTableViewAux().getItems()+"\n"+
+                "Array List "+getventasObservableListAux().size());
+
     });
     Eliminar.setOnAction(actionEvent -> {
+        System.out.println("Bonton de Eliminacion de datos");
+        System.out.println("El numero del Producto es: "+getNumero());
         try {
             int nuevoContador = 1;
             Ventas prodseleccionado = new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
                     getProducto(), getPrecioVenta(), getDescuento(),
                     getSubTotal(), getEditar(), getEliminar());
             ventasObservableListAux.remove(prodseleccionado);
-            for (Ventas actualizar:ventasObservableListAux) {actualizar.setNumero(nuevoContador);tableViewAux.refresh();nuevoContador++;}
+            for (Ventas actualizar:ventasObservableListAux) {
+                actualizar.setNumero(nuevoContador);
+                tableViewAux.refresh();nuevoContador++;}
         }catch (Exception e){
-            System.out.println("No se puede Borrar por: "+e.getMessage());
+            System.out.println("No se puede Borrar por: "+e.getMessage()+" Causado por "+
+                    e.getCause());
         }
     });
     }
@@ -115,7 +135,7 @@ public void validarSoloNumeros(TextField campo){
       }
    });
 }
-    public void validarSoloNumerosJfoenix(JFXTextField campo){
+public void validarSoloNumerosJfoenix(JFXTextField campo){
         campo.addEventFilter(KeyEvent.ANY, event ->{
             char c = event.getCharacter().charAt(0);
             if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
@@ -126,7 +146,6 @@ public void validarSoloNumeros(TextField campo){
             }
         });
     }
-
 public void validarNit(TextField campo){
     campo.addEventFilter(KeyEvent.ANY, event ->{
         char c = event.getCharacter().charAt(0);
@@ -262,36 +281,6 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
         return ("Error isert Ventas: " + e.getMessage());
     }
     return "Venta Gurdada en la BD";
-}
-public void cerrarModal(BorderPane panel){
-    Image image = new Image("/images/info.png");
-    alertasPersonalizados("CANCELAR", "Esta seguro que desea salir y cancelar la Venta",image,1,panel);
-}
-public void alertasPersonalizados(String TITULO, String Cuerpo,
-                                  Image image,int opcion,
-                                  BorderPane borderPane){
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
-        Parent parent = fxmlLoader.load();
-        DelEmployController delEmployController = fxmlLoader.getController();
-        delEmployController.TitleModal.setText(TITULO);
-        delEmployController.contentAlert.setText(Cuerpo);
-        delEmployController.IconModal.setImage(image);
-        if(opcion == 0) {
-            delEmployController.Cancel.setVisible(false);
-            delEmployController.Okay.setStyle("-fx-translate-x: 65px; -fx-translate-y: -10px;");
-            delEmployController.Okay.setText("Ok");}
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-        if(delEmployController.BtnOk==1 && opcion ==1){
-          stage = (Stage) borderPane.getScene().getWindow();
-          stage.close();
-        }
-    }catch (Exception e){ System.out.println(e.getMessage());}
 }
 //    GETERS
     public int getNumero() {return Numero;}
