@@ -7,19 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="Container" prefHeight="192.0" prefWidth="852.0" styleClass="fondo-card" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.Card">
-   <left>
-      <StackPane prefHeight="142.0" prefWidth="142.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="25.0" />
-         </BorderPane.margin>
-         <children>
-            <Label fx:id="Img" prefHeight="170.0" prefWidth="165.0" />
-            <Button mnemonicParsing="false" prefHeight="179.0" prefWidth="173.0" styleClass="border" />
-         </children>
-      </StackPane>
-   </left>
    <bottom>
       <Separator prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
@@ -29,19 +19,39 @@
    <center>
       <HBox alignment="CENTER_LEFT" prefHeight="142.0" prefWidth="712.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="Nombre" prefHeight="42.0" prefWidth="544.0" styleClass="titles" text="Nombre">
+            <HBox prefHeight="100.0" prefWidth="712.0">
+               <children>
+                  <StackPane prefHeight="142.0" prefWidth="143.0">
+                     <children>
+                        <Label fx:id="Img" prefHeight="170.0" prefWidth="165.0" />
+                        <Button mnemonicParsing="false" prefHeight="142.0" prefWidth="112.0" styleClass="border" />
+                     </children>
+                  </StackPane>
+                  <Label fx:id="Nombre" prefHeight="142.0" prefWidth="350.0" text="Nombre">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+               </children>
                <padding>
-                  <Insets left="10.0" />
+                  <Insets left="20.0" />
                </padding>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#Edit" prefHeight="48.0" prefWidth="129.0" styleClass="boton-edit" />
-            <Button layoutX="362.0" layoutY="57.0" mnemonicParsing="false" onAction="#Estatus" prefHeight="48.0" prefWidth="127.0" styleClass="boton-delete" />
-            <Label fx:id="Disponibilidad" alignment="CENTER" ellipsisString="Dsiponibilidad" prefHeight="34.0" prefWidth="209.0" styleClass="label-disponibilidad" text="Disponibilidad">
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="304.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Edit" prefHeight="48.0" prefWidth="33.0" styleClass="boton-edit" />
+                  <Button mnemonicParsing="false" onAction="#Estatus" prefHeight="48.0" prefWidth="35.0" styleClass="boton-delete" />
+               </children>
+            </HBox>
+            <Label fx:id="Disponibilidad" alignment="CENTER" ellipsisString="Dsiponibilidad" prefHeight="34.0" prefWidth="304.0" styleClass="label-disponibilidad" text="Disponibilidad">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Precio" alignment="CENTER" prefHeight="30.0" prefWidth="166.0" text="Precio" />
+            <Label fx:id="Precio" alignment="CENTER" prefHeight="30.0" prefWidth="304.0" text="Precio" />
          </children>
       </HBox>
    </center>

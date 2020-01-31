@@ -38,7 +38,7 @@ public class newproducto implements Initializable {
 
     ArrayList<String> NOMBRE = new ArrayList<String>();
     List<String> PROVEEDOR= new ArrayList<String>();
-    List<String> CATEGORIA= new ArrayList<String>();
+    List<String>    CATEGORIA= new ArrayList<String>();
     Connection conexion = null;
     ConnectionUtil conn = new ConnectionUtil();
     eventos event = new eventos(); int cantidad;
@@ -179,7 +179,7 @@ public class newproducto implements Initializable {
         Categorias();Proveedores();
         ObservableList<String> observableList = FXCollections.observableList(CATEGORIA);
         ObservableList<String> observableList1 = FXCollections.observableList(PROVEEDOR);
-        Categoria.setItems(observableList);
+        //Categoria.setItems(observab leList);
         Proveedores.setItems(observableList1);
         event.validarSoloNumeros(Cantidad);
         event.validarSoloNumeros(PVenta);

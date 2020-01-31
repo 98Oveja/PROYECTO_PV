@@ -1,9 +1,14 @@
 package controllers.ProductosV2;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
 
 import java.io.IOException;
@@ -74,4 +79,39 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { estado=1;consulta(Query1);position=1;}
+
+    public void AbrirCategoria(ActionEvent actionEvent){
+        String fxml="/fxml/ProductosV2/ScrollPaneCateg.fxml";
+        try {
+            Abrirmodal(fxml,772.00,515.00);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void Abrirmodal(String fxml,Double x,Double y) throws IOException {
+        Double height = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        Double width = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        final Stage primaryStage = new Stage();
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.initOwner(primaryStage);
+        dialog.setX((width/2)-(x/2));
+        dialog.setY((height/2)-(y/2));
+        Scene dialogScene = null;
+        dialogScene = new Scene(FXMLLoader.load(getClass().getResource(fxml)));
+        dialog.setScene(dialogScene);
+        dialog.show();
+    }
+
+    public void AgregarProdcuto(ActionEvent actionEvent) {
+        try {
+            Abrirmodal("/fxml/ProductosV2/NewProduct.fxml",800.00,600.00);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

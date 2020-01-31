@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="348.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.CardCategorias">
+   <children>
+      <ImageView fx:id="Photo" fitHeight="238.0" fitWidth="348.0" opacity="0.87" pickOnBounds="true" smooth="false">
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Label fx:id="Nombre" layoutY="14.0" prefHeight="46.0" prefWidth="306.0" style="-fx-background-color: rgba(0,0,0,.4);" text="Nombre" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="Descripcion" layoutY="124.0" prefHeight="114.0" prefWidth="348.0" style="-fx-background-color: rgba(0,0,0,.4);" text="Descripcion" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+   </children>
+</Pane>

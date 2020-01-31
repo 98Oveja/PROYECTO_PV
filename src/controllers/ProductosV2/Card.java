@@ -42,4 +42,6 @@ public class Card implements Initializable {
         }BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Img.setBackground(new Background(backgroundImage));
     }
+
+
 }

@@ -88,7 +88,7 @@ public class NewProvee implements Initializable {
             preparedStatement = conexion.prepareStatement(query);
             preparedStatement.execute();
             limipiar();
-        }
+            }
         else{
             Alert dialogo= new Alert(Alert.AlertType.INFORMATION);
             dialogo.setHeaderText(null);

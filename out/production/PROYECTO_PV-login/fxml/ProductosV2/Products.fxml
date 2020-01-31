@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.ProductController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.ProductController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -51,10 +45,10 @@
                                           <Insets left="15.0" right="15.0" />
                                        </VBox.margin>
                                        <children>
-                                          <Label ellipsisString="Producto" prefHeight="45.0" prefWidth="712.0" styleClass="label-description" text="Producto" />
-                                          <Label ellipsisString="Opciones" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Opciones" />
-                                          <Label ellipsisString="Dsiponibilidad" layoutX="314.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Disponibilidad" />
-                                          <Label ellipsisString="Precio" layoutX="582.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Precio Venta" />
+                                          <Label alignment="CENTER" ellipsisString="Producto" prefHeight="45.0" prefWidth="712.0" styleClass="label-description" text="Producto" />
+                                          <Label alignment="CENTER" ellipsisString="Opciones" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Opciones" />
+                                          <Label alignment="CENTER" ellipsisString="Dsiponibilidad" layoutX="314.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Disponibilidad" />
+                                          <Label contentDisplay="CENTER" ellipsisString="Precio" layoutX="582.0" layoutY="10.0" prefHeight="45.0" prefWidth="304.0" styleClass="label-description" text="Precio Venta" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -75,8 +69,8 @@
                <children>
                   <Label alignment="CENTER" ellipsisString="Lista de Productos" prefHeight="37.0" prefWidth="435.0" styleClass="titles-2" text="Opciones" />
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-add-product" text="Agregar Productos" />
-                  <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-categ" text="Categorias" />
+                  <Button mnemonicParsing="false" onAction="#AgregarProdcuto" prefHeight="43.0" prefWidth="232.0" styleClass="boton-add-product" text="Agregar Productos" />
+                  <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#AbrirCategoria" prefHeight="43.0" prefWidth="232.0" styleClass="boton-categ" text="Categorias" />
                   <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-marca" text=" Marcas" />
                   <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Activos" />
                   <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Inactivos" />
