@@ -1,10 +1,14 @@
 package models.Ventas_Compras;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import controllers.Ventas.EditProductoController;
 import controllers.employees.DelEmployController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,22 +17,34 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Element;
 import utils.ConnectionUtil;
+import utils.LoadModalesMovibles;
+
+import javax.swing.*;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Ventas{
+    private String NOMBREPRODUCTO;
+    public void setNOMBREPRODUCTO(String elProducto){this.NOMBREPRODUCTO = elProducto;}
+    public String getNOMBREPRODUCTO(){return this.NOMBREPRODUCTO;}
     public ConnectionUtil cone = new ConnectionUtil();
     public Connection connection = cone.getConnection();
     public CallableStatement callableStatement = null;
     public ResultSet resultSet = null;
     public Statement statement = null;
+//    public int tamanioObservable =0;
     public ArrayList<String> dataContainer = new ArrayList<>();
     public String resultQuery = "";
 //
-    public TableView tableViewAux;
+    public TableView tableViewAux = new TableView<>();
     public ObservableList<Ventas> ventasObservableListAux;
     private JFXButton Editar;
     private JFXButton Eliminar;
@@ -38,38 +54,65 @@ public class Ventas{
     private String CodigoProducto;
     private String Producto;
     private double PrecioVenta;
-    private double Descuento;
+//    private double Descuento;
     private double SubTotal;
 //
     public Ventas(){}
     public Ventas(int numero, int cantidad,
                   String codigoProducto, String producto,
-                  double precioVenta, double descuento,
+                  double precioVenta,
                   double subTotal, JFXButton edit, JFXButton del) {
     Numero = numero;
     Cantidad = cantidad;
     CodigoProducto = codigoProducto;
     Producto = producto;
     PrecioVenta = precioVenta;
-    Descuento = descuento;
+//    Descuento = descuento;
     SubTotal = subTotal;
     Editar = edit;
     Eliminar = del;
-//    Editar.setOnAction(actionEvent -> {
-//
-//    });
+    Editar.setOnAction(actionEvent -> {
+        EditProductoController editProductoController = (EditProductoController) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/EditProducto.fxml"),null);
+        editProductoController.setNuevaCantidad(String.valueOf(getCantidad()));
+//        editProductoController.setNuevoDescuento(String.valueOf(getDescuento()));
+        editProductoController.setPRECIOPROD(getPrecioVenta());
+        editProductoController.setNombreProducto(getNOMBREPRODUCTO());
+
+//        creacion de un producto auxiliar para que se el envie al Modal de Editar producto
+        Ventas productoSeleccionado =
+                new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
+                        getProducto(), getPrecioVenta(),
+                        getSubTotal(), getEditar(), getEliminar());
+//        this.ventasObservableListAux.add(productoSeleccionado);
+        editProductoController.setProductoSeleccionado(productoSeleccionado);
+        editProductoController.setVentasListaAuxUpdate(this.ventasObservableListAux);
+        editProductoController.setTablaAuxiliarUpdate(this.tableViewAux);
+        System.out.println("EL tamanio del Array desde el BTN Editar\n" +
+                "Tabla: "+ getTableViewAux().getItems()+"\n"+
+                "Array List "+getventasObservableListAux().size());
+
+    });
     Eliminar.setOnAction(actionEvent -> {
-//     Ventas v = (Ventas) tableViewAux.getSelectionModel().getSelectedItem();
-//     ventasObservableListAux.remove(v);
-        for (Ventas v:ventasObservableListAux) {
-            System.out.println(v.getNumero());
+        System.out.println("Bonton de Eliminacion de datos");
+        System.out.println("El numero del Producto es: "+getNumero());
+        try {
+            int nuevoContador = 1;
+            Ventas prodseleccionado = new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
+                    getProducto(), getPrecioVenta(),
+                    getSubTotal(), getEditar(), getEliminar());
+            ventasObservableListAux.remove(prodseleccionado);
+            for (Ventas actualizar:ventasObservableListAux) {
+                actualizar.setNumero(nuevoContador);
+                tableViewAux.refresh();nuevoContador++;}
+        }catch (Exception e){
+            System.out.println("No se puede Borrar por: "+e.getMessage()+" Causado por "+
+                    e.getCause());
         }
     });
-
     }
 
 
-//METODOS PARA LAS VALIDADCIONES
+    //METODOS PARA LAS VALIDADCIONES
 public void validarSoloLetras(TextField campoDeTexto) {
    campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
      char c = event.getCharacter().charAt(0);
@@ -90,11 +133,19 @@ public void validarSoloNumeros(TextField campo){
       if (c == '.' && campo.getText().contains(".")){
           event.consume();
       }
-//      if (event.getCode() == KeyCode.ENTER){
-//          newFocus.requestFocus();
-//      }
    });
 }
+public void validarSoloNumerosJfoenix(JFXTextField campo){
+        campo.addEventFilter(KeyEvent.ANY, event ->{
+            char c = event.getCharacter().charAt(0);
+            if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+                event.consume();
+            }
+            if (c == '.' && campo.getText().contains(".")){
+                event.consume();
+            }
+        });
+    }
 public void validarNit(TextField campo){
     campo.addEventFilter(KeyEvent.ANY, event ->{
         char c = event.getCharacter().charAt(0);
@@ -192,7 +243,7 @@ public ArrayList getProductByName(String thisProduct){
         callableStatement.setString(1, thisProduct);
         resultSet = callableStatement.executeQuery();
         while (resultSet.next()) {
-            dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
+            dataContainer.add(resultSet.getString("DISPONIBILIDAD")+"#"+
                     resultSet.getString("PRECIO_VENTA")+"#"+
                     resultSet.getString("CODIGO")+"#"+
                     resultSet.getString("DESCRIPCION"));
@@ -203,18 +254,29 @@ public ArrayList getProductByName(String thisProduct){
     }
     return dataContainer;
 }
-public String calculoDeDescuentos(String precioin, String cantidadin, String descuentoin){
+    public String calculoDeSubtotal(String precioin, String cantidadin){
     double precioProd = Double.parseDouble(precioin);
     double cantidad = Double.parseDouble(cantidadin);
-    double descuento = Double.parseDouble(descuentoin)/100;
     double subTotalSinDescuento = (precioProd * cantidad);
-    double elDescuento = subTotalSinDescuento*descuento;
-    double subConDescuento = subTotalSinDescuento-elDescuento;
     DecimalFormat decimalFormat = new DecimalFormat("#.00");
-//    String sub = String.valueOf(Math.round(Float.parseFloat(decimalFormat.format(subTotal-subConDescuento))));
-    String sub = String.valueOf(decimalFormat.format(subConDescuento));
+    String sub = String.valueOf(decimalFormat.format(subTotalSinDescuento));
     return sub;
-}
+    }
+
+//SUBTOTAL PARA LOS PRODUCTOS
+    public String CalculoTotalConDescuento(String Totales, String descuentoin){
+    double TotalSum = Double.parseDouble(Totales);
+    double descuento = Double.parseDouble(descuentoin)/100;
+    double elDescuento = TotalSum*descuento;
+    double TotalConDescuento = TotalSum-elDescuento;
+    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+    String sub = String.valueOf(decimalFormat.format(TotalConDescuento));
+    return sub;
+    }
+
+
+
+
 //  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
 //  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
 //Manera en que almacenamos los datos en la base de datos
@@ -231,94 +293,28 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
     }
     return "Venta Gurdada en la BD";
 }
-public void cerrarModal(BorderPane panel){
-    Image image = new Image("/images/info.png");
-    alertasPersonalizados("CANCELAR", "Esta seguro que desea salir y cancelar la Venta",image,1,panel);
-}
-public void alertasPersonalizados(String TITULO, String Cuerpo,
-                                  Image image,int opcion,
-                                  BorderPane borderPane){
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/DeleteEmploy.fxml"));
-        Parent parent = fxmlLoader.load();
-        DelEmployController delEmployController = fxmlLoader.getController();
-        delEmployController.TitleModal.setText(TITULO);
-        delEmployController.contentAlert.setText(Cuerpo);
-        delEmployController.IconModal.setImage(image);
-        if(opcion == 0) {
-            delEmployController.Cancel.setVisible(false);
-            delEmployController.Okay.setStyle("-fx-translate-x: 65px; -fx-translate-y: -10px;");
-            delEmployController.Okay.setText("Ok");}
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-        if(delEmployController.BtnOk==1 && opcion ==1){
-          stage = (Stage) borderPane.getScene().getWindow();
-          stage.close();
-        }
-    }catch (Exception e){ System.out.println(e.getMessage());}
-}
 //    GETERS
-    public int getNumero() {
-    return Numero;
-}
-    public String getCodigoProducto() {
-        return CodigoProducto;
-    }
-    public int getCantidad() {
-        return Cantidad;
-    }
-    public String getProducto() {
-        return Producto;
-    }
-    public double getPrecioVenta() {
-        return PrecioVenta;
-    }
-    public double getDescuento() {
-        return Descuento;
-    }
-    public double getSubTotal() {
-        return SubTotal;
-    }
-    public JFXButton getEliminar() {
-        return Eliminar;
-    }
-    public JFXButton getEditar() {
-        return Editar;
-    }
+    public int getNumero() {return Numero;}
+    public String getCodigoProducto(){return CodigoProducto;}
+    public int getCantidad(){return Cantidad; }
+    public String getProducto() {return Producto;}
+    public double getPrecioVenta(){return PrecioVenta;}
+//    public double getDescuento(){return Descuento; }
+    public double getSubTotal() {return SubTotal; }
+    public JFXButton getEliminar() { return Eliminar; }
+    public JFXButton getEditar() { return Editar; }
     public TableView getTableViewAux(){return tableViewAux;}
     public ObservableList getventasObservableListAux(){return ventasObservableListAux;}
 //    SETERS
-    public void setNumero(int numero) {
-        Numero = numero;
-    }
-    public void setCodigoProducto(String codigoProducto) {
-        CodigoProducto = codigoProducto;
-    }
-    public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
-    }
-    public void setProducto(String producto) {
-        Producto = producto;
-    }
-    public void setPrecioVenta(double precioVenta) {
-        PrecioVenta = precioVenta;
-    }
-    public void setDescuento(double descuento) {
-        Descuento = descuento;
-    }
-    public void setSubTotal(double subTotal) {
-        SubTotal = subTotal;
-    }
-    public void setEliminar(JFXButton eliminar) {
-        Eliminar = eliminar;
-    }
-    public void setEditar(JFXButton editar) {
-        Editar = editar;
-    }
+    public void setNumero(int numero) {Numero = numero;}
+    public void setCodigoProducto(String codigoProducto){CodigoProducto = codigoProducto;}
+    public void setCantidad(int cantidad) {Cantidad = cantidad;}
+    public void setProducto(String producto) {Producto = producto;}
+    public void setPrecioVenta(double precioVenta){PrecioVenta = precioVenta;}
+//    public void setDescuento(double descuento){Descuento = descuento;}
+    public void setSubTotal(double subTotal){SubTotal = subTotal;}
+    public void setEliminar(JFXButton eliminar){Eliminar = eliminar;}
+    public void setEditar(JFXButton editar){Editar = editar;}
     public void setTableViewAux(TableView tableView){tableViewAux=tableView;}
     public void setVentasObservableListAux(ObservableList observableList){ventasObservableListAux=observableList;}
 //  EQUALS
@@ -326,12 +322,12 @@ public void alertasPersonalizados(String TITULO, String Cuerpo,
     if (this == o) return true;
     if (!(o instanceof Ventas)) return false;
     Ventas ventas = (Ventas) o;
-    return getCantidad() == ventas.getCantidad() &&
-            Double.compare(ventas.getPrecioVenta(), getPrecioVenta()) == 0 &&
-            Double.compare(ventas.getDescuento(), getDescuento()) == 0 &&
-            Double.compare(ventas.getSubTotal(), getSubTotal()) == 0 &&
+    return  Double.compare(ventas.getPrecioVenta(), getPrecioVenta()) == 0 &&
             getCodigoProducto().equals(ventas.getCodigoProducto()) &&
             getProducto().equals(ventas.getProducto());
 }
-@Override public int hashCode() { return Objects.hash(getCantidad(), getCodigoProducto(), getProducto(), getPrecioVenta(), getDescuento(), getSubTotal()); }
+@Override public int hashCode() { return Objects.hash(getCodigoProducto(), getProducto(), getPrecioVenta()); }
+
+
+
 }

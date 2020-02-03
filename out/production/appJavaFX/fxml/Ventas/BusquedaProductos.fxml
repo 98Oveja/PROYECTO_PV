@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="ContenedorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.BusquedaProductoControllers">
+   <children>
+      <AnchorPane prefHeight="383.0" prefWidth="502.0">
+         <children>
+            <AnchorPane prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #3C3B54;">
+               <children>
+                  <ImageView fx:id="btn_CloseModal" fitHeight="16.0" fitWidth="16.0" layoutX="332.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <image>
+                        <Image url="@../../images/cancel_32.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutY="30.0" prefHeight="571.0" prefWidth="350.0" style="-fx-background-color: #43425D;">
+               <children>
+                  <AnchorPane prefHeight="140.0" prefWidth="350.0">
+                     <children>
+                        <ImageView fx:id="btn_Search" fitHeight="16.0" fitWidth="16.0" layoutX="21.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="20.0">
+                           <image>
+                              <Image url="@../../images/search.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <JFXTextField fx:id="inputText" focusColor="#3b86ff" labelFloat="true" layoutX="50.0" layoutY="15.0" prefHeight="25.0" prefWidth="186.0" promptText="Busacar ..." styleClass="text-field" stylesheets="@../../css/Ventas/Ventas_Compras.css" unFocusColor="WHITE" />
+                        <JFXToggleButton fx:id="searchByCode" alignment="CENTER_LEFT" layoutX="239.0" layoutY="1.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" size="5.0" text="Código" textFill="#a1a1a1" toggleColor="#3b86ff" toggleLineColor="#c3daff" unToggleColor="#a3a0fb" unToggleLineColor="#5f5e90">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </JFXToggleButton>
+                        <JFXToggleButton fx:id="searchByMarc" alignment="CENTER_LEFT" layoutX="239.0" layoutY="23.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" size="5.0" text="Marca" textFill="#a1a1a1" toggleColor="#3b86ff" toggleLineColor="#c3daff" unToggleColor="#a3a0fb" unToggleLineColor="#5f5e90">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </JFXToggleButton>
+                        <JFXToggleButton fx:id="searchByCategory" alignment="CENTER_LEFT" layoutX="239.0" layoutY="45.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" size="5.0" text="Categoria" textFill="#a1a1a1" toggleColor="#3b86ff" toggleLineColor="#c3daff" unToggleColor="#a3a0fb" unToggleLineColor="#5f5e90">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </JFXToggleButton>
+                        <JFXComboBox fx:id="comBoxSeleccion" focusColor="#3b86ff" labelFloat="true" layoutX="50.0" layoutY="68.0" prefHeight="25.0" prefWidth="186.0" promptText="Selecciona" stylesheets="@../../css/Ventas/Ventas_Compras.css" unFocusColor="WHITE" />
+                     </children>
+                  </AnchorPane>
+                  <JFXListView fx:id="Resultados" layoutX="14.0" layoutY="146.0" prefHeight="279.0" prefWidth="322.0" showTooltip="true" stylesheets="@../../css/Ventas/Ventas_Compras.css">
+                     <styleClass>
+                        <String fx:value="list-cell" />
+                        <String fx:value="listado" />
+                     </styleClass></JFXListView>
+                  <AnchorPane layoutY="429.0" prefHeight="128.0" prefWidth="350.0">
+                     <children>
+                        <TextField fx:id="Name_Product" layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8;" />
+                        <TextField fx:id="Description_Product" layoutX="25.0" layoutY="52.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8;" />
+                        <JFXButton fx:id="btn_SelectProduct" contentDisplay="CENTER" layoutX="110.0" layoutY="84.0" mnemonicParsing="false" ripplerFill="#1062e5" style="-fx-background-color: #3B86FF; -fx-border-radius: 10px;" text="Agregar Producto" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children></AnchorPane>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
