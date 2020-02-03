@@ -43,7 +43,7 @@ public class testControllerProvidor  implements Initializable {
         idcard =idcard+1;
     }
     public void loaderArrayData(){
-        arrayEmploy = dataEmp.employDB();
+//        arrayEmploy = dataEmp.employDB();
     }
 
     public void calcularDatashow(){
