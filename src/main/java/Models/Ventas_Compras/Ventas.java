@@ -1,6 +1,6 @@
 package Models.Ventas_Compras;
-import com.jfoenix.controls.JFXButton;
 import Controllers.employees.DelEmployController;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,7 +10,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

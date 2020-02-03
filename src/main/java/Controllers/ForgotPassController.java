@@ -1,27 +1,20 @@
 package Controllers;
 
+import Utils.ThreadReadUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import Controllers.ScreenController.ImplementsU.ControlledScreen;
 import Controllers.ScreenController.ScreensController;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import Utils.CodeUtil;
 import Utils.ParseEmail;
-import Utils.SendEmail;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class ForgotPassController implements ControlledScreen {
 
@@ -29,23 +22,15 @@ public class ForgotPassController implements ControlledScreen {
     public Button btnReturn;
 
     ScreensController myController;
-
-    Connection con = null;
-    PreparedStatement preparedStatement;
-    ResultSet resultSet;
+    ParseEmail email = new ParseEmail();
 
     String Remitente,Password, Asunto, Mensaje;
-
-    ParseEmail email = new ParseEmail();
 
     @FXML
     public JFXTextField txtUsername;
     public JFXButton btnForgot;
     public Label lblErrors;
-    //public ForgotPassController(){
-//        con = ConnectionUtil.conDB();
-      //  ConnectionUtil con4 = new ConnectionUtil();
-    //}
+
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
@@ -53,44 +38,7 @@ public class ForgotPassController implements ControlledScreen {
 
     private void forgotFunction() throws IOException {
         if (email.isValid(txtUsername.getText())) {
-            if (existEmail(txtUsername.getText())) {
-
-                final Stage primaryStage = new Stage();
-                final Stage dialog = new Stage();
-
-
-                Remitente = "carls10vasquez@gmail.com";
-                Password = "qnujurorzribvqln";
-                Destino = txtUsername.getText();
-
-                Asunto = "RECUPERCION DE CONTRASEÑA.";
-
-                code = CodeUtil.generateCode();
-
-                Mensaje = " Codigo de recuperacion:" + code;
-                if(SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje)) {
-                    lblErrors.setText("Codigo enviado");
-                    lblErrors.setTextFill(Color.GREEN);
-
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.initStyle(StageStyle.UNDECORATED);
-                    dialog.initOwner(primaryStage);
-                    dialog.setX(1000);
-                    dialog.setY(330);
-
-                    Scene dialogScene = null;
-                    dialogScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/ForgotPassEmail.fxml")));
-
-                    dialog.setScene(dialogScene);
-                    dialog.show();
-
-                    txtUsername.clear();
-                }
-            } else {
-                txtUsername.clear();
-                lblErrors.setText("No existe el correo ingresado");
-                lblErrors.setTextFill(Color.TOMATO);
-            }
+            existEmail(txtUsername.getText());
         } else {
             txtUsername.clear();
             lblErrors.setText("Correo invalido");
@@ -98,25 +46,47 @@ public class ForgotPassController implements ControlledScreen {
         }
     }
 
-    private boolean existEmail(String email){
-        boolean status;
-        String sql = "SELECT NOMBRE FROM USUARIOS Where EMAIL = ? ";
-        try {
+    private boolean statusExistUser;
 
-            preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, email);
-            resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
-                status = false;
-            } else {
-                status = true;
+    private void existEmail(String text) {
+        ThreadReadUser threadReadUser = new ThreadReadUser(text);
+        new Thread(threadReadUser).start();
+
+        threadReadUser.setOnRunning(workerStateEvent -> {
+            btnForgot.setDisable(true);
+        });
+
+        threadReadUser.setOnSucceeded(workerStateEvent -> {
+            btnForgot.setDisable(false);
+            try {
+                statusExistUser = threadReadUser.call();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            if(statusExistUser){
+                Remitente = "carls10vasquez@gmail.com";
+                Password = "qnujurorzribvqln";
+                Destino = txtUsername.getText();
+                Asunto = "RECUPERCION DE CONTRASEÑA.";
+                Mensaje = " Codigo de recuperacion:" + code;
 
-        }catch (Exception e){
-            e.printStackTrace();
-            status = false;
-        }
-        return status;
+                code = CodeUtil.generateCode();
+                //SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje);
+                //if() {
+                Utils.LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/ForgotPassEmail.fxml"), null);
+                txtUsername.clear();
+                //}else{
+                txtUsername.clear();
+                lblErrors.setText("Error al enviar el correo.");
+                lblErrors.setTextFill(Color.TOMATO);
+                //}
+
+            }else {
+                txtUsername.clear();
+                lblErrors.setText("No existe el correo ingresado");
+                lblErrors.setTextFill(Color.TOMATO);
+            }
+        });
     }
 
     public void actionReturnPane(ActionEvent actionEvent) {
@@ -130,5 +100,4 @@ public class ForgotPassController implements ControlledScreen {
             forgotFunction();
         }
     }
-
 }

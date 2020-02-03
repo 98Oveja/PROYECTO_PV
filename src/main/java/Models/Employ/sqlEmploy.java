@@ -1,7 +1,7 @@
-package models.Employ;
+package Models.Employ;
 
-import utils.ConnectionUtil;
-
+import Utils.ConnectionUtil;
+import  Models.Employ.dataEmploy;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

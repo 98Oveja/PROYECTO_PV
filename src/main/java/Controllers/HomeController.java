@@ -54,11 +54,12 @@ public class HomeController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
+            loadSearchPane();
+
             for (String x: itemsX) {
                 item = x;
                 loadPane();
             }
-
             ArrayList<HBox> arrayListAuxBoxItem = new ArrayList<>();
             for (int i = 0; i < paneItemRoot.getChildren().size() ; i++) {
                 HBox hBox = (HBox) paneItemRoot.getChildren().get(i);
@@ -91,7 +92,7 @@ public class HomeController implements Initializable, ControlledScreen {
                 });
             }
 
-            loadSearchPane();
+
 
             pane.getChildren().addAll(setContainerScreen());
 
@@ -115,7 +116,7 @@ public class HomeController implements Initializable, ControlledScreen {
 
     private String getItemForIsAdmin (){
         if(ControllerComponent.admin) {
-            return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
+            return "Inicio,Clientes,Compras,Reportes,Ventas,Productos,Proveedores";
         }else {
             return"Inicio,Clientes,Compras,Reportes,Ventas,Calendario";
             //return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";

@@ -1,7 +1,9 @@
-package controllers.employees;
+package Controllers.employees;
 
-import controllers.ScreenController.ImplementsU.ControlledScreen;
-import controllers.ScreenController.ScreensController;
+import Controllers.ScreenController.ImplementsU.ControlledScreen;
+import Models.Employ.sqlEmploy;
+
+import Controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +16,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employ.dataEmploy;
-import models.Employ.sqlEmploy;
+import Models.Employ.dataEmploy;
 
 import java.awt.*;
 import java.io.IOException;

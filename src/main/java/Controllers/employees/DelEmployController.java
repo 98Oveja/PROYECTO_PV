@@ -1,4 +1,4 @@
-package controllers.employees;
+package Controllers.employees;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;

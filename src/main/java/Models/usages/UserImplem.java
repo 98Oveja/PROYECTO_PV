@@ -31,6 +31,42 @@ public class UserImplem implements userImpl {
 
     Connection connection = null;
     User userAux = null;
+    
+    @Override
+    public boolean existEmail(String email){
+        boolean status;
+        try {
+            ConnectionUtil connectionUtil = new ConnectionUtil();
+            connection = connectionUtil.getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select * from USUARIOS where  EMAIL = ?")) {
+
+                preparedStatement.setString(1, email);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                       status = true;
+                    }
+                    else {
+                        status = false;
+                    }
+                }
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return status;
+    }
     @Override
     public User read(String user, String pass) {
         try {

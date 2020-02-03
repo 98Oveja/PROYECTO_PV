@@ -1,6 +1,8 @@
 package Controllers;
 
 import Controllers.item.ControllerComponent;
+
+import Models.Employ.validatorImage;
 import Models.User;
 import Utils.LoadModalesMovibles;
 import javafx.event.ActionEvent;
@@ -10,9 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import Navigator.ViewNavigator;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import Navigator.ViewNavigator;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -27,6 +29,7 @@ public class PaneSearch  implements Initializable {
     public MenuItem itemConfig;
     public MenuItem itemClose;
     public MenuItem itemCloseStage;
+    User user =  ControllerComponent.user;
     int status = 0;
 
     public void goToURL(String URL){
@@ -78,10 +81,23 @@ public class PaneSearch  implements Initializable {
         if(ControllerComponent.admin) itemConfig.setDisable(false);
     }
 
+
+
     private void setImgUser() {
         Circle circle = new Circle(32,32,16);
-        Image image = new Image("/images/index.jpeg",false);
-        circle.setFill(new ImagePattern(image));
+        validatorImage valIma= new validatorImage();
+        String auxUser = user.getUrlPhoto();
+
+        if(!auxUser.isEmpty() &&  auxUser.contains("*")){
+            auxUser = "file:/" + user.getUrlPhoto().replace("*","\\");
+        }else {
+           auxUser = "file:/ssc/jsajd/a.png";
+        }
+
+        String trueValimg =  valIma.loadImage(auxUser,"images/index.jpeg");
+        Image img = new Image(trueValimg);
+
+        circle.setFill(new ImagePattern(img));
         imgUser.setCenter(circle);
     }
 

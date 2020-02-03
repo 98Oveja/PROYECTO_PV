@@ -1,7 +1,6 @@
 
 package Models;
 
-
 public class User {
 int    id_ususer;
 String email;

@@ -1,10 +1,10 @@
-package controllers;
+package Controllers;
 
 import com.jfoenix.controls.JFXButton;
-import controllers.ScreenController.ImplementsU.ControlledScreen;
-import controllers.ScreenController.ScreensController;
+import Controllers.ScreenController.ImplementsU.ControlledScreen;
+import Controllers.ScreenController.ScreensController;
 import javafx.scene.layout.StackPane;
-import models.Employ.newProducts;
+import Models.Employ.newProducts;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -14,8 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import models.Employ.validatorImage;
-import utils.ConnectionUtil;
+import Models.Employ.validatorImage;
+import Utils.ConnectionUtil;
 
 import java.awt.*;
 import java.io.IOException;
@@ -105,7 +105,7 @@ public class MenuController implements Initializable, ControlledScreen {
                 }
             }
         }catch (Exception ex){
-            System.out.println(ex + " mi mensaje de error");
+            //System.out.println(ex + " mi mensaje de error");
         }
     }
 

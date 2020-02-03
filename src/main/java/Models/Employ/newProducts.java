@@ -1,4 +1,4 @@
-package models.Employ;
+package Models.Employ;
 
 public class newProducts {
     public String name, mark, description, img;

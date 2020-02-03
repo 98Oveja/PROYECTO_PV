@@ -1,4 +1,6 @@
-package models.Employ;
+package Models.Employ;
+
+
 import javafx.scene.image.Image;
 
 import java.io.InputStream;
@@ -7,16 +9,15 @@ import java.net.URLConnection;
 
 public class validatorImage {
     public String loadImage(String UrlImage, String imaDefault){
-        Image image;
         try{
             URL url1= new URL(UrlImage);
             URLConnection connection = url1.openConnection();
             InputStream inputStreamReader = connection.getInputStream();
-            image = new Image(inputStreamReader);
+             Image img = new Image(inputStreamReader);
+
            return UrlImage;
 
         }catch (Exception ex){
-//            System.out.println("No se encontro la imagen en el sistema.. Usando imagen default ");
             return imaDefault;
         }
     }

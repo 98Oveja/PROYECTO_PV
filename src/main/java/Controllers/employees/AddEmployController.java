@@ -1,6 +1,7 @@
-package controllers.employees;
+package Controllers.employees;
 
 import com.jfoenix.controls.JFXButton;
+import Controllers.employees.InfoEmployController;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,18 +27,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employ.dataEmploy;
-import models.Employ.sqlEmploy;
-import utils.ConnectionUtil;
-import utils.ParseEmail;
+import Models.Employ.dataEmploy;
+import Models.Employ.sqlEmploy;
+import Controllers.employees.DelEmployController;
+import Utils.ParseEmail;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.Date;
 import java.util.ResourceBundle;
 

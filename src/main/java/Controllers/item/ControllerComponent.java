@@ -29,9 +29,7 @@ import Models.User;
 import Utils.CreateThread;
 import Utils.ParseEmail;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ControllerComponent implements Initializable, ControlledScreen {
@@ -80,12 +78,12 @@ public class ControllerComponent implements Initializable, ControlledScreen {
     @FXML
     public void handleButtonAction(MouseEvent event){
 
-        //if(event.getSource() == btnSignin){
-        //  logIn();
-        //}
-        thread.setDaemon(true);
-        thread.start();
-        admin = true;
+        if(event.getSource() == btnSignin){
+          logIn();
+        }
+        //thread.setDaemon(true);
+        //thread.start();
+        //admin = true;
  /*
  Task t = new Task() {
             @Override
@@ -161,7 +159,7 @@ public class ControllerComponent implements Initializable, ControlledScreen {
                     status="Success";
                     setLblError(Color.GREEN,"Login success...");
 
-                    if (user.getAdmin().equals("Admin")){
+                    if (user.getAdmin().equals("Admin")||user.getAdmin().equals("admin")){
                         admin = true;
                     }
                     //ViewNavigator.loadVista(ViewNavigator.HOME);

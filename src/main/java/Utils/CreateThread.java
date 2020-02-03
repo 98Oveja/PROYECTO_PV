@@ -26,8 +26,10 @@ public class CreateThread extends Task<User>{
     @Override
     protected User call() {
         updateMessage("Processing...");
+
         userImpl user = new UserImplem();
         userAux = user.read(email,pass);
+
         updateMessage("Success.");
         try {
             Thread.sleep(1000);
