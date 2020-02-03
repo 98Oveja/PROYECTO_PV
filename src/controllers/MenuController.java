@@ -1,6 +1,10 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import models.Employ.newProducts;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -10,76 +14,76 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.util.Duration;
+import models.Employ.validatorImage;
 import utils.ConnectionUtil;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class MenuController implements Initializable {
+public class MenuController implements Initializable, ControlledScreen {
     public JFXButton btnViewProd;
     public JFXButton btnViewCli;
     public JFXButton btnViewRep;
     public JFXButton btnViewVen;
     public JFXButton btnViewEst;
+    public StackPane ContenedorMenu;
+    public GridPane gridContainer;
+
+    ScreensController myController;
+    public double heightMenu= Toolkit.getDefaultToolkit().getScreenSize().height;
+    public double widthMenu= Toolkit.getDefaultToolkit().getScreenSize().width;
     @FXML
     private ImageView NewImageProducts;
     @FXML
     private Label titleProduct, brandProduct, desProduct;
     @FXML
     public ArrayList<newProducts> products= new ArrayList<>();
-    HomeController homeC = new HomeController();
 
     public void produtosAnimation() {
         newProducts();
-        Image images = new Image("file:/" +products.get(0).img.replace("*","\\"));
-        Image images1 = new Image("file:/"+products.get(1).img.replace("*","\\"));
-        Image images2 = new Image("file:/"+products.get(2).img.replace("*","\\"));
-        Image images3 = new Image("file:/"+products.get(3).img.replace("*","\\"));
-        Image images4 = new Image("file:/"+products.get(4).img.replace("*","\\"));
+        NewImageProducts.setFitWidth((widthMenu/4)-71);
+        NewImageProducts.setFitHeight(heightMenu*0.33);
+        List<Image> imageList = new ArrayList<Image>();
+        List<KeyFrame>  keyFrames =  new ArrayList<KeyFrame>();
+        int timeSeparation=3;
         Timeline timeline = new Timeline();
 
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0), (event) -> {
-            NewImageProducts.setImage(images);
-            titleProduct.setText(products.get(0).name);
-            brandProduct.setText(products.get(0).mark);
-            desProduct.setText(products.get(0).description);
-        });
-
-        KeyFrame keyFrame2=new KeyFrame(Duration.seconds(3), (event)-> {
-            NewImageProducts.setImage(images1);
-            titleProduct.setText(products.get(1).name);
-            brandProduct.setText(products.get(1).mark);
-            desProduct.setText(products.get(1).description);
-        });
-        KeyFrame keyFrame3=new KeyFrame(Duration.seconds(6), (event)->{NewImageProducts.setImage(images2);
-            titleProduct.setText(products.get(2).name);
-            brandProduct.setText(products.get(2).mark);
-            desProduct.setText(products.get(2).description);
-        });
-        KeyFrame keyFrame4=new KeyFrame(Duration.seconds(9), (event)->{NewImageProducts.setImage(images3);
-            titleProduct.setText(products.get(3).name);
-            brandProduct.setText(products.get(3).mark);
-            desProduct.setText(products.get(3).description);
-        });
-        KeyFrame keyFrame5=new KeyFrame(Duration.seconds(12), (event)->{NewImageProducts.setImage(images4);
-            titleProduct.setText(products.get(4).name);
-            brandProduct.setText(products.get(4).mark);
-            desProduct.setText(products.get(4).description);
-        });
-
+        int pos=0;
+        for(int x=0; x < products.size() && x < 5; x++ ){
+            if(products.get(pos).img.equals(null) || products.get(pos).img.contains("null")){
+                Image imgDefault = new Image("images/herramientas.png");
+                imageList.add(imgDefault);
+            }else{
+                String urlImg= "file:/" + products.get(pos).img.replace("*","\\");
+                validatorImage valIma= new validatorImage();
+                String trueValimg =  valIma.loadImage(urlImg,"images/herramientas.png");
+                Image img = new Image(trueValimg);
+                imageList.add(img);
+            }
+            int finalPos = pos;
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(timeSeparation), (event) -> {
+                NewImageProducts.setFitWidth((widthMenu/4)-71);
+                NewImageProducts.setFitHeight(heightMenu*0.33);
+                NewImageProducts.setImage(imageList.get(finalPos));
+                titleProduct.setText(products.get(finalPos).name);
+                brandProduct.setText(products.get(finalPos).mark);
+                desProduct.setText(products.get(finalPos).description);
+            });
+            keyFrames.add(keyFrame);
+            timeline.getKeyFrames().add(keyFrame);
+            timeSeparation = timeSeparation + 3;
+            pos++;
+        }
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.getKeyFrames().add(keyFrame2);
-        timeline.getKeyFrames().add(keyFrame3);
-        timeline.getKeyFrames().add(keyFrame4);
-        timeline.getKeyFrames().add(keyFrame5);
         timeline.play();
     }
 
@@ -111,17 +115,12 @@ public class MenuController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-            produtosAnimation();
-
-    }
 
 
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
         if(actionEvent.getSource() == btnViewProd){
            HomeController hm= new HomeController();
-           hm.handleActionSetViewSelect("Estadisticas");
+
         }
     }
 
@@ -146,5 +145,19 @@ public class MenuController implements Initializable {
     public void handleActionViewEst(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewEst){
         }
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        if(products.size() < 5){
+            produtosAnimation();
+        }
+        ContenedorMenu.setPrefWidth(widthMenu - 260);
+        ContenedorMenu.setPrefHeight(heightMenu - 110);
     }
 }

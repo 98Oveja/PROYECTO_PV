@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane id="ContenedorMenu" prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Calendar.CalendarController" >
+    <children>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1340.0" scaleZ="6.0" styleClass="empPanel" stylesheets="@../../css/menuinicio.css">
+
+        </Pane>
+    </children>
+</StackPane>
+

@@ -1,137 +1,51 @@
 package controllers;
 
 
+import controllers.ScreenController.ScreensController;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
+import java.awt.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+public class LoginController implements Initializable{
 
-import javafx.fxml.Initializable;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+    public StackPane vista1;
+    public VBox VboxD;
 
 
-import navigator.ViewNavigator;
-import utils.ConnectionUtil;
-import utils.ParseEmail;
-import utils.ViewUtil;
+    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
 
-public class LoginController implements Initializable {
-
-
-    public static int code;
-    @FXML
-    private Label lblErrors;
-
-    @FXML
-    private JFXTextField txtUsername;
-
-    @FXML
-    public JFXPasswordField txtPassword;
-
-    @FXML
-    private Button btnSignin;
-
-    Connection con = null;
-    PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
-    ConnectionUtil connectionUtil = new ConnectionUtil();
-    public LoginController() {
-       // con.conDB();
-       con = connectionUtil.getConnection();
-    }
-
-    @FXML
-    public void handleButtonAction(MouseEvent event) {
-
-        if (event.getSource() == btnSignin) {
-            //if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.HOME);
-                code = 1;
-            //}
-        }
-    }
-
-    public void handleButtonActionKey(KeyEvent keyEvent) {
-
-        if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            if(logIn().equals("Success")) {
-                ViewNavigator.loadVista(ViewNavigator.HOME);
-                code = 1;
-            }
-        }
-    }
+    public static String screen1ID = "screen1";
+    public static String screen1File = "/fxml/loginComponent/ComponentLogin.fxml";
+    public static String screen2ID = "screen2";
+    public static String screen2File = "/fxml/ForgotPass.fxml";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        if (con == null) {
-           lblErrors.setTextFill(Color.TOMATO);
-           lblErrors.setText("Server Error : Check.");
-        }
+        try {
+            initViewLogin();
+        }catch (Exception e ){}
+
+        vista1.setPrefHeight(height);
+        vista1.setPrefWidth(width);
     }
 
-    private String logIn() {
-        String status = "Success";
-        String email = txtUsername.getText();
-        String password = txtPassword.getText();
-        ParseEmail validate = new ParseEmail();
-
-        if(!validate.isValid(email)&&!password.isEmpty()){
-            setLblError(Color.TOMATO, "Usuario no valido");
-            return status = "Error";
-        }
-        if( password.isEmpty() && !email.isEmpty() ){
-            setLblError(Color.TOMATO, "Ingrese una contraseña valida");
-            status = "Error";
-        }
-        if(email.isEmpty() && password.isEmpty() ){
-            setLblError(Color.GREEN, "Campos vacios");
-            status = "Error";
-        }if(!email.isEmpty() && !password.isEmpty()) {
-            String sql = "SELECT * FROM USUARIOS Where EMAIL = ? and CONTRASENA = ?";
-            try {
-                preparedStatement = con.prepareStatement(sql);
-                preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
-                resultSet = preparedStatement.executeQuery();
-                if (!resultSet.next()) {
-                    status = "Error";
-                    setLblError(Color.TOMATO,"Usuario invalido");
-                    txtPassword.setText(null);
-                } else {
-
-                    setLblError(Color.GREEN, "Login Successful...");
-                }
-            } catch (SQLException ex) {
-                status = "Exception";
-            }
-        }
-        
-        return status;
-    }
-    
-    private void setLblError(Color color, String text) {
-        lblErrors.setTextFill(color);
-        lblErrors.setText(text);
-        System.out.println(text);
+    void initViewLogin() {
+        VboxD.getChildren().addAll(setContainerScreen());
     }
 
+    private ScreensController setContainerScreen() {
+        ScreensController mainContainer = new ScreensController();
 
-    @FXML
-    void nextPane(ActionEvent event) {
-        ViewNavigator.loadVista(ViewNavigator.LOGIN_VIEW_PASS);
+        mainContainer.loadScreen(LoginController.screen1ID, LoginController.screen1File);
+        mainContainer.loadScreen(LoginController.screen2ID, LoginController.screen2File);
+
+        mainContainer.setScreen(LoginController.screen1ID);
+        return mainContainer;
     }
 }
