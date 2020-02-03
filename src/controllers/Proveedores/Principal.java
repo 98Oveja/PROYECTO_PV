@@ -63,13 +63,12 @@ public class Principal implements Initializable, ControlledScreen {
         mainContainer.setPrefWidth(width-260);
         mainContainer.setPrefHeight(height-110);
     }
-
     String getNombre(){return nombre;}
     String getDescripcion(){return descripcion;}
     String getMovil(){return movil;}
     String getOrg(){return org;}
-    String getPath(){return path; }
-
+    String getPath(){return path;
+    }
 
     public void rellenar(int row,int column){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Proveedores/Card.fxml"));

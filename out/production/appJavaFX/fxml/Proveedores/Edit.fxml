@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="Container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="570.0" styleClass="fondo" stylesheets="@../../css/Proveedores/StyleNewProvee.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.Edit">
+   <children>
+      <Label layoutX="36.0" layoutY="14.0" prefHeight="38.0" prefWidth="232.0" styleClass="title" text="Editar Proveedor" />
+      <Label layoutX="36.0" layoutY="81.0" prefHeight="21.0" prefWidth="135.0" styleClass="labels" text="Nombre Completo" />
+      <Label layoutX="36.0" layoutY="131.0" prefHeight="21.0" prefWidth="75.0" styleClass="labels" text="Dirección" />
+      <Label layoutX="36.0" layoutY="195.0" prefHeight="21.0" prefWidth="75.0" styleClass="labels" text="Telefono" />
+      <Label layoutX="37.0" layoutY="259.0" prefHeight="21.0" prefWidth="75.0" styleClass="labels" text="Correo" />
+      <Label layoutX="37.0" layoutY="324.0" prefHeight="21.0" prefWidth="92.0" styleClass="labels" text="Organización" />
+      <Label layoutX="37.0" layoutY="388.0" prefHeight="21.0" prefWidth="100.0" styleClass="labels" text="No. de Cuenta" />
+      <Label layoutX="277.0" layoutY="430.0" prefHeight="21.0" prefWidth="37.0" styleClass="labels" text="Foto" />
+      <TextField fx:id="Direccion" layoutX="176.0" layoutY="126.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+      <TextField fx:id="Telefono" layoutX="176.0" layoutY="190.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+      <TextField fx:id="Correo" layoutX="176.0" layoutY="253.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+      <TextField fx:id="Organizacion" layoutX="176.0" layoutY="319.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+      <TextField fx:id="Cuenta" layoutX="176.0" layoutY="383.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+      <Button layoutX="425.0" layoutY="519.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="30.0" prefWidth="30.0" styleClass="add-photo" />
+      <ImageView fx:id="Photo" fitHeight="150.0" fitWidth="200.0" layoutX="195.0" layoutY="451.0" pickOnBounds="true" />
+      <Button layoutX="195.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="150.0" prefWidth="200.0" styleClass="boton-photo" />
+      <Button layoutX="195.0" layoutY="610.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="47.0" prefWidth="219.0" styleClass="boton-save" text="Guardar" />
+      <Button layoutX="526.0" layoutY="14.0" mnemonicParsing="false" onAction="#Close" prefHeight="30.0" prefWidth="30.0" styleClass="boton-close" />
+      <Label fx:id="NombreC" layoutX="176.0" layoutY="76.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
+   </children>
+</Pane>
