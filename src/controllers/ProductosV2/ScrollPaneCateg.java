@@ -49,18 +49,16 @@ public class ScrollPaneCateg implements Initializable {
     }
 
     private void rellenar() {
-        int x=0;int size;
-        if (Categorias.size()==1){
-            size=1;
-        }else{size=(Categorias.size()/2);}
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j <2 ; j++) {
-                if(x < size ){
-                    String[] texto =Categorias.get(x).split("#");
+        int contador = 0;
+        for (int i = 0; i <=Categorias.size()/2; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (contador<Categorias.size()) {
+                    String[] texto =Categorias.get(contador).split("#");
                     nombre=texto[0];    descripcion=texto[1];   image=texto[2];
-                    card(j,i);
-                    x++;
+                    System.out.println(i+" "+j);
+                    card(i,j);
                 }
+                contador+=1;
             }
         }
     }

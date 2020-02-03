@@ -5,12 +5,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CardCategorias implements Initializable {
 
+
+    @FXML private Pane Contenedor;
     @FXML private ImageView Photo;
     @FXML private Label Nombre,Descripcion;
 

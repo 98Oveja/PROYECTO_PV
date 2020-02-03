@@ -10,7 +10,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -29,8 +28,8 @@ public class ProductController implements Initializable {
 
     static String nombre,cantidad,descripcion,precioCompra,precioVenta,photo;
     static int estado,position;static double width;
-    String Query1 = "SELECT NOMBRE,CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=1;";
-    String Query0 = "SELECT NOMBRE,CANTIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=0;";
+    String Query1 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=1;";
+    String Query0 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=0;";
 
     public void consulta(String Query){
         Productos.clear();String dato;
@@ -40,11 +39,13 @@ public class ProductController implements Initializable {
             ResultSet resultado = instruccion.executeQuery(Query);
             if (resultado != null) {
                 while (resultado.next()) {
-                    dato= resultado.getString("NOMBRE")+"#"+resultado.getString("CANTIDAD")+"#"+resultado.getString("PRECIO_VENTA")
+                    dato= resultado.getString("NOMBRE")+"#"+resultado.getString("DISPONIBILIDAD")+"#"+resultado.getString("PRECIO_VENTA")
                             +"#"+resultado.getString("IMG")+"#"+resultado.getString("PRECIO_COMPRA")+"#"+resultado.getString("DESCRIPCION");
                     Productos.add(dato); }
             rellenar(position);}
-        }catch (Exception e){}
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     public String getNombre(){return nombre;}
@@ -57,8 +58,9 @@ public class ProductController implements Initializable {
     public double getwidthpane(){return width;}
 
     public void rellenar(int posicion){
-        int size=Productos.size();int pos=posicion*5;int max=pos+5;
-        for (int i = pos; i < max; i++) {
+        int size=Productos.size();int pos=posicion*5;
+        System.out.println(size);
+        for (int i = pos; i < pos+5; i++) {
             if (i<size){
                 String[] texto=Productos.get(i).split("#");
                 nombre=texto[0];            cantidad=texto[1];
@@ -78,7 +80,7 @@ public class ProductController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) { estado=1;consulta(Query1);position=1;}
+    public void initialize(URL url, ResourceBundle resourceBundle) { estado=1;consulta(Query1);}
 
     public void AbrirCategoria(ActionEvent actionEvent){
         String fxml="/fxml/ProductosV2/ScrollPaneCateg.fxml";
@@ -88,8 +90,6 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 
     public void Abrirmodal(String fxml,Double x,Double y) throws IOException {
         Double height = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
