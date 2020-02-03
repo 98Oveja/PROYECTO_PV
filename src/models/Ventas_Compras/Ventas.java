@@ -54,34 +54,34 @@ public class Ventas{
     private String CodigoProducto;
     private String Producto;
     private double PrecioVenta;
-    private double Descuento;
+//    private double Descuento;
     private double SubTotal;
 //
     public Ventas(){}
     public Ventas(int numero, int cantidad,
                   String codigoProducto, String producto,
-                  double precioVenta, double descuento,
+                  double precioVenta,
                   double subTotal, JFXButton edit, JFXButton del) {
     Numero = numero;
     Cantidad = cantidad;
     CodigoProducto = codigoProducto;
     Producto = producto;
     PrecioVenta = precioVenta;
-    Descuento = descuento;
+//    Descuento = descuento;
     SubTotal = subTotal;
     Editar = edit;
     Eliminar = del;
     Editar.setOnAction(actionEvent -> {
         EditProductoController editProductoController = (EditProductoController) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/EditProducto.fxml"),null);
         editProductoController.setNuevaCantidad(String.valueOf(getCantidad()));
-        editProductoController.setNuevoDescuento(String.valueOf(getDescuento()));
+//        editProductoController.setNuevoDescuento(String.valueOf(getDescuento()));
         editProductoController.setPRECIOPROD(getPrecioVenta());
         editProductoController.setNombreProducto(getNOMBREPRODUCTO());
 
 //        creacion de un producto auxiliar para que se el envie al Modal de Editar producto
         Ventas productoSeleccionado =
                 new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
-                        getProducto(), getPrecioVenta(), getDescuento(),
+                        getProducto(), getPrecioVenta(),
                         getSubTotal(), getEditar(), getEliminar());
 //        this.ventasObservableListAux.add(productoSeleccionado);
         editProductoController.setProductoSeleccionado(productoSeleccionado);
@@ -98,7 +98,7 @@ public class Ventas{
         try {
             int nuevoContador = 1;
             Ventas prodseleccionado = new Ventas(getNumero(), getCantidad(), getCodigoProducto(),
-                    getProducto(), getPrecioVenta(), getDescuento(),
+                    getProducto(), getPrecioVenta(),
                     getSubTotal(), getEditar(), getEliminar());
             ventasObservableListAux.remove(prodseleccionado);
             for (Ventas actualizar:ventasObservableListAux) {
@@ -243,7 +243,7 @@ public ArrayList getProductByName(String thisProduct){
         callableStatement.setString(1, thisProduct);
         resultSet = callableStatement.executeQuery();
         while (resultSet.next()) {
-            dataContainer.add(resultSet.getString("CANTIDAD")+"#"+
+            dataContainer.add(resultSet.getString("DISPONIBILIDAD")+"#"+
                     resultSet.getString("PRECIO_VENTA")+"#"+
                     resultSet.getString("CODIGO")+"#"+
                     resultSet.getString("DESCRIPCION"));
@@ -254,18 +254,29 @@ public ArrayList getProductByName(String thisProduct){
     }
     return dataContainer;
 }
-public String calculoDeDescuentos(String precioin, String cantidadin, String descuentoin){
+    public String calculoDeSubtotal(String precioin, String cantidadin){
     double precioProd = Double.parseDouble(precioin);
     double cantidad = Double.parseDouble(cantidadin);
-    double descuento = Double.parseDouble(descuentoin)/100;
     double subTotalSinDescuento = (precioProd * cantidad);
-    double elDescuento = subTotalSinDescuento*descuento;
-    double subConDescuento = subTotalSinDescuento-elDescuento;
     DecimalFormat decimalFormat = new DecimalFormat("#.00");
-//    String sub = String.valueOf(Math.round(Float.parseFloat(decimalFormat.format(subTotal-subConDescuento))));
-    String sub = String.valueOf(decimalFormat.format(subConDescuento));
+    String sub = String.valueOf(decimalFormat.format(subTotalSinDescuento));
     return sub;
-}
+    }
+
+//SUBTOTAL PARA LOS PRODUCTOS
+    public String CalculoTotalConDescuento(String Totales, String descuentoin){
+    double TotalSum = Double.parseDouble(Totales);
+    double descuento = Double.parseDouble(descuentoin)/100;
+    double elDescuento = TotalSum*descuento;
+    double TotalConDescuento = TotalSum-elDescuento;
+    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+    String sub = String.valueOf(decimalFormat.format(TotalConDescuento));
+    return sub;
+    }
+
+
+
+
 //  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
 //  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
 //Manera en que almacenamos los datos en la base de datos
@@ -288,7 +299,7 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
     public int getCantidad(){return Cantidad; }
     public String getProducto() {return Producto;}
     public double getPrecioVenta(){return PrecioVenta;}
-    public double getDescuento(){return Descuento; }
+//    public double getDescuento(){return Descuento; }
     public double getSubTotal() {return SubTotal; }
     public JFXButton getEliminar() { return Eliminar; }
     public JFXButton getEditar() { return Editar; }
@@ -300,7 +311,7 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
     public void setCantidad(int cantidad) {Cantidad = cantidad;}
     public void setProducto(String producto) {Producto = producto;}
     public void setPrecioVenta(double precioVenta){PrecioVenta = precioVenta;}
-    public void setDescuento(double descuento){Descuento = descuento;}
+//    public void setDescuento(double descuento){Descuento = descuento;}
     public void setSubTotal(double subTotal){SubTotal = subTotal;}
     public void setEliminar(JFXButton eliminar){Eliminar = eliminar;}
     public void setEditar(JFXButton editar){Editar = editar;}

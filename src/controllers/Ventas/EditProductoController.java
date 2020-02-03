@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import models.Ventas_Compras.Ventas;
-import utils.ConsultasVentasCompras;
 import utils.LoadModalesMovibles;
 
 import java.net.URL;
@@ -56,11 +55,10 @@ public class EditProductoController implements Initializable {
 //
 //            }
             Ventas VentasAux = (Ventas) getProductoSeleccionado();
-            String subTotalNuevo = ventas.calculoDeDescuentos(getPRECIOPROD(),getNuevaCantidad(),getNuevoDescuento());
-            VentasAux.setDescuento(Double.parseDouble(getNuevoDescuento()));
+//            String subTotalNuevo = ventas.calculoDeDescuentos(getPRECIOPROD(),getNuevaCantidad(),getNuevoDescuento());
+//            VentasAux.setDescuento(Double.parseDouble(getNuevoDescuento()));
             VentasAux.setCantidad(Integer.parseInt(getNuevaCantidad()));
-            VentasAux.setSubTotal(Double.parseDouble(subTotalNuevo));
-//            this.VentasListaAuxUpdate.set(VentasAux.getNumero()-1,VentasAux);
+            VentasAux.setSubTotal(Double.parseDouble("21"));
             getVentasListaAuxUpdate().set((VentasAux.getNumero()-1),VentasAux);
             System.out.println("El tamanio del Array es de "+getVentasListaAuxUpdate().size());
             getTablaAuxiliarUpdate().refresh();

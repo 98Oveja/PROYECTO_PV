@@ -42,7 +42,9 @@ public class LoadModalesMovibles {
         return controller;
     }
 //CIERRA CUALQUIER MODAL
-    public static void CerrarModal (Node node){Stage stage = (Stage) node.getScene().getWindow();stage.close();}
+    public static void CerrarModal (Node node){
+        if (node != null){Stage stage = (Stage) node.getScene().getWindow();stage.close();}
+    }
 //CARGAR MODAL DE ALERTA
     public static void LoadAlert(URL fxmlAlerta, String TituloModal, String CuerpoModal,
                                  Image imgModal, Image imgClose, Node PanelaCerrar){
@@ -64,7 +66,7 @@ public class LoadModalesMovibles {
                 finalStage.setY(mouseEvent.getScreenY()- posicionY);
             });
             alert.setTitleBody(TituloModal,CuerpoModal,imgModal,imgClose);
-            alert.setContainerBack(PanelaCerrar);
+            if (PanelaCerrar != null){alert.setContainerBack(PanelaCerrar);}
             stage.setScene(scene);
             stage.showAndWait();
         } catch (IOException e) {
