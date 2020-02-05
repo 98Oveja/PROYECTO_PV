@@ -45,17 +45,14 @@ public class HomeController implements Initializable, ControlledScreen {
             case "Compras": aux= "/fxml"; break;
             case "Reportes": aux= "/fxml/Reports/PaneReports.fxml"; break;
             case "Ventas": aux= "/fxml/Ventas/PanelVentas.fxml"; break;
-            case "Calendario": aux= "/fxml/Calendar/CalendarPane.fxml"; break;
-            case "Estadisiticas": aux= "/fxml/Stadistic.fxml"; break;
-            case "Empleados": aux= "/fxml/Empleados/Employees.fxml"; break;
             case "Productos": aux= "/fxml/Productos/Productos.fxml"; break;
             case "Proveedores": aux= "/fxml/Proveedores/Proveedores.fxml"; break;
         }
         return aux;
     }
 
-    private String items = getItemForIsAdmin();
-    private String[] itemsX = items.split(",");
+    private static String items = getItemForIsAdmin();
+    public static String[] itemsX = items.split(",");
     static ArrayList<HBox> arrayListAuxBoxItem = new ArrayList<>();
 
     @Override
@@ -131,7 +128,7 @@ public class HomeController implements Initializable, ControlledScreen {
 
     }
 
-    private String getItemForIsAdmin (){
+    private static String getItemForIsAdmin(){
         if(ControllerComponent.admin) {
             return "Inicio,Clientes,Compras,Reportes,Ventas,Productos,Proveedores";
         }else {

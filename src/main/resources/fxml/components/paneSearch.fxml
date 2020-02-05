@@ -11,7 +11,7 @@
          <children>
       <HBox alignment="CENTER">
          <children>
-             <TextField fx:id="txtSearch" prefHeight="42.0" prefWidth="946.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" styleClass="label-search">
+             <TextField fx:id="textField" prefHeight="42.0" prefWidth="946.0" promptText="Busca aqui.." style="-fx-background-color: transparent;" styleClass="label-search">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

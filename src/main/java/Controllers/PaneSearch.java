@@ -5,6 +5,7 @@ import Controllers.item.ControllerComponent;
 import Models.Employ.validatorImage;
 import Models.User;
 import Utils.LoadModalesMovibles;
+import com.jfoenix.controls.JFXAutoCompletePopup;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
@@ -24,11 +25,12 @@ import java.util.ResourceBundle;
 public class PaneSearch  implements Initializable {
     public StackPane paneSearch;
     public BorderPane imgUser;
-    public TextField txtSearch;
+
     public MenuItem itemHelp;
     public MenuItem itemConfig;
     public MenuItem itemClose;
     public MenuItem itemCloseStage;
+    public TextField textField;
     User user =  ControllerComponent.user;
     int status = 0;
 
@@ -81,8 +83,42 @@ public class PaneSearch  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setImgUser();
         if(ControllerComponent.admin) itemConfig.setDisable(false);
+        JFXAutoCompletePopup<String> autoCompletePopup = new JFXAutoCompletePopup<>();
+
+        autoCompletePopup.getSuggestions().addAll(HomeController.itemsX);
+
+        autoCompletePopup.setSelectionHandler(event -> {
+            textField.setText(event.getObject());
+            HomeController.mainContainer.setScreen("screen"+event.getObject());
+            int a = getNum(event.getObject());
+            HomeController.setItemSelected(a);
+        });
+
+        textField.textProperty().addListener(observable -> {
+            autoCompletePopup.filter(string -> string.toLowerCase().contains(textField.getText().toLowerCase()));
+            if (autoCompletePopup.getFilteredSuggestions().isEmpty() || textField.getText().isEmpty()) {
+                autoCompletePopup.hide();
+            } else {
+                autoCompletePopup.show(textField);
+            }
+        });
     }
 
+
+    private int getNum(String object) {
+        int aux = 0;
+
+        switch (object){
+            case "Inicio":          aux =  0;      break;
+            case "Clientes":        aux =  1;      break;
+            case "Compras":         aux =  2;      break;
+            case "Reportes":        aux =  3;      break;
+            case "Ventas":          aux =  4;      break;
+            case "Productos":       aux =  5;      break;
+            case "Proveedores":     aux =  6;      break;
+        }
+        return aux;
+    }
 
 
     private void setImgUser() {

@@ -30,7 +30,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-swing:linux:11.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:11.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:linux:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.8" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.13" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.jfree:jfreechart:1.5.0" level="project" />
