@@ -1,15 +1,22 @@
 package Controllers;
 
+import Controllers.item.ControllerComponent;
+import Models.User;
+import Models.interfaces.userImpl;
+import Models.usages.UserImplem;
+import Utils.closeView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import Utils.ConnectionUtil;
@@ -20,7 +27,7 @@ import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class ForgotPassEmailController implements Initializable {
-    public ImageView closeButton;
+    public Button closeButton;
 
     @FXML
     public JFXButton btnForgot;
@@ -31,6 +38,7 @@ public class ForgotPassEmailController implements Initializable {
     public JFXTextField txtCode;
     public JFXPasswordField txtPass;
     public JFXPasswordField txtPassVerified;
+    public Pane pane;
 
     String email = null;
     String status = null;
@@ -52,11 +60,9 @@ public class ForgotPassEmailController implements Initializable {
         }
     }
 
-    public void handleActionClose(MouseEvent mouseEvent) {
-        if(mouseEvent.getSource()== closeButton) {
-            Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.close();
-        }
+    public void handleActionClose() {
+        closeView closeView  = new closeView();
+        closeView.Cerrar(this.pane);
     }
 
     private void update(){
@@ -64,20 +70,25 @@ public class ForgotPassEmailController implements Initializable {
             if (status.equals("susses")) {
                 if (txtPassVerified.getText().equals(txtPass.getText())) {
                     try {
-                        Connection con = null;
-                        ConnectionUtil connectionUtil = new ConnectionUtil();
-                        con = connectionUtil.getConnection();
-                        String sql = "UPDATE USUARIOS SET CONTRASENA=? WHERE EMAIL=?;";
-                        email = getEmail();
-                        PreparedStatement preparedStatement = con.prepareStatement(sql);
-                        preparedStatement.setString(1, txtPass.getText());
-                        preparedStatement.setString(2, email);
-                        preparedStatement.executeUpdate();
-
-                        con.close();
+                        Runnable updaterUser = () -> {
+                            User user =  ControllerComponent.user;
+                            userImpl userI = new UserImplem();
+                            User ux = null;
+                            ux.setId_ususer(user.getId_ususer());
+                            ux.setName(user.getName());
+                            ux.setEmail(user.getEmail());
+                            ux.setLast_name(user.getLast_name());
+                            ux.setDataSetting(user.getDataSetting());
+                            ux.setUrlPhoto(user.getUrlPhoto());
+                            ux.setPass(txtPassVerified.getText());
+                            ux.setAdmin(user.getAdmin());
+                            ux.setStatus(user.getStatus());
+                            userI.update(ux);
+                        };
+                        Thread taskUpdateUser = new Thread(updaterUser, "UPDATE-USER");
+                        taskUpdateUser.start();
                         Stage stage = (Stage) closeButton.getScene().getWindow();
                         System.out.println("susses update");
-
                         stage.close();
 
                     } catch (Exception e) {
@@ -100,27 +111,36 @@ public class ForgotPassEmailController implements Initializable {
             code  = getCode();
             System.out.println(code);
             if (newValue.equals(code)) {
-                System.out.println("son iguales");
-                lblStatus.setText("Verificacion aceptada :)");
-                lblStatus.setTextFill(Color.GREEN);
-                txtPass.setEditable(true);
-                txtPassVerified.setEditable(true);
-                txtPassVerified.textProperty().addListener((observable,oldf,newd )-> {
-                    if (newd.equals(txtPass.getText())){
-                        System.out.println("las contraseñas son igualess");
-                        lblStatus.setText("las contraseñas son igualess");
-                        lblStatus.setTextFill(Color.GREEN);
-                        status = "susses";
-                    }else{
-                        lblStatus.setText("la contraseña no coincide :(");
-                        lblStatus.setTextFill(Color.TOMATO);
-                        status = "error";
-                    }
-                });
+                Runnable runnable = () -> {
+                    System.out.println("son iguales");
+                    lblStatus.setText("Verificacion aceptada :)");
+                    lblStatus.setTextFill(Color.GREEN);
+                    txtPass.setEditable(true);
+                    txtPassVerified.setEditable(true);
+                    txtPassVerified.textProperty().addListener((observable,oldf,newd )-> {
+                        if (newd.equals(txtPass.getText())){
+                            System.out.println("las contraseñas son igualess");
+                            lblStatus.setText("las contraseñas son igualess");
+                            lblStatus.setTextFill(Color.GREEN);
+                            status = "susses";
+                        }else{
+                            lblStatus.setText("la contraseña no coincide :(");
+                            lblStatus.setTextFill(Color.TOMATO);
+                            status = "error";
+                        }
+                    });
+                };
+                Thread thread = new Thread(runnable, "UPDATE-UI");
+                thread.start();
             }else{
-                status = "error";
-                lblStatus.setText("Verifique el codigo enviado");
-                lblStatus.setTextFill(Color.TOMATO);
+                Runnable runnable = () -> {
+                    status = "error";
+                    lblStatus.setText("Verifique el codigo enviado");
+                    lblStatus.setTextFill(Color.TOMATO);
+                };
+                Thread thread = new Thread(runnable, "UPDATE-USER");
+                thread.start();
+
             }
         });
     }
@@ -132,6 +152,5 @@ public class ForgotPassEmailController implements Initializable {
     public static String getEmail() {
         return ForgotPassController.Destino;
     }
-
 
 }

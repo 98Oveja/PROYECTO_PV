@@ -1,5 +1,6 @@
 package Controllers;
 
+import Utils.SendEmail;
 import Utils.ThreadReadUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import Utils.CodeUtil;
 import Utils.ParseEmail;
@@ -37,13 +39,19 @@ public class ForgotPassController implements ControlledScreen {
     }
 
     private void forgotFunction() throws IOException {
-        if (email.isValid(txtUsername.getText())) {
-            existEmail(txtUsername.getText());
-        } else {
-            txtUsername.clear();
-            lblErrors.setText("Correo invalido");
-            lblErrors.setTextFill(Color.TOMATO);
-        }
+        Runnable runnable = () -> {
+
+            if (email.isValid(txtUsername.getText())) {
+                existEmail(txtUsername.getText());
+            } else {
+                txtUsername.clear();
+                lblErrors.setText("Correo invalido");
+                lblErrors.setTextFill(Color.TOMATO);
+            }
+        };
+        Thread thread = new Thread(runnable, "UPDATE-USER");
+        thread.start();
+
     }
 
     private boolean statusExistUser;
@@ -64,22 +72,24 @@ public class ForgotPassController implements ControlledScreen {
                 e.printStackTrace();
             }
             if(statusExistUser){
-                Remitente = "carls10vasquez@gmail.com";
-                Password = "qnujurorzribvqln";
                 Destino = txtUsername.getText();
                 Asunto = "RECUPERCION DE CONTRASEÑA.";
+                code = CodeUtil.generateCode();
                 Mensaje = " Codigo de recuperacion:" + code;
 
-                code = CodeUtil.generateCode();
-                //SendEmail.SendGMail(Remitente,Password,Destino,Asunto,Mensaje);
-                //if() {
-                Utils.LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/ForgotPassEmail.fxml"), null);
-                txtUsername.clear();
-                //}else{
+                if(SendEmail.SendGMail(Destino,Asunto,Mensaje)) {
+                    Runnable runnable = () -> {
+                        Utils.LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/ForgotPassEmail.fxml"), null);
+                        txtUsername.clear();
+                    };
+                    Thread thread = new Thread(runnable, "UPDATE-USER");
+                    thread.start();
+
+                }else{
                 txtUsername.clear();
                 lblErrors.setText("Error al enviar el correo.");
                 lblErrors.setTextFill(Color.TOMATO);
-                //}
+                }
 
             }else {
                 txtUsername.clear();

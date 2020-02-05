@@ -1,10 +1,11 @@
 package Controllers;
 
-import com.jfoenix.controls.JFXButton;
 import Controllers.ScreenController.ImplementsU.ControlledScreen;
 import Controllers.ScreenController.ScreensController;
-import javafx.scene.layout.StackPane;
 import Models.Employ.newProducts;
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -35,6 +36,8 @@ public class MenuController implements Initializable, ControlledScreen {
     public JFXButton btnViewVen;
     public JFXButton btnViewEst;
     public StackPane ContenedorMenu;
+    public GridPane gridContainer;
+    public JFXButton btnViewProvee;
 
     ScreensController myController;
     public double heightMenu= Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -48,6 +51,8 @@ public class MenuController implements Initializable, ControlledScreen {
 
     public void produtosAnimation() {
         newProducts();
+        NewImageProducts.setFitWidth((widthMenu/4)-71);
+        NewImageProducts.setFitHeight(heightMenu*0.33);
         List<Image> imageList = new ArrayList<Image>();
         List<KeyFrame>  keyFrames =  new ArrayList<KeyFrame>();
         int timeSeparation=3;
@@ -61,12 +66,14 @@ public class MenuController implements Initializable, ControlledScreen {
             }else{
                 String urlImg= "file:/" + products.get(pos).img.replace("*","\\");
                 validatorImage valIma= new validatorImage();
-                String trueValimg =  valIma.loadImage(urlImg,"images/male_user_.png");
+                String trueValimg =  valIma.loadImage(urlImg,"images/herramientas.png");
                 Image img = new Image(trueValimg);
                 imageList.add(img);
             }
             int finalPos = pos;
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(timeSeparation), (event) -> {
+                NewImageProducts.setFitWidth((widthMenu/4)-71);
+                NewImageProducts.setFitHeight(heightMenu*0.33);
                 NewImageProducts.setImage(imageList.get(finalPos));
                 titleProduct.setText(products.get(finalPos).name);
                 brandProduct.setText(products.get(finalPos).mark);
@@ -105,39 +112,42 @@ public class MenuController implements Initializable, ControlledScreen {
                 }
             }
         }catch (Exception ex){
-            //System.out.println(ex + " mi mensaje de error");
+            System.out.println(ex + " mi mensaje de error");
         }
     }
 
-
-
     public void handleActionViewProd(ActionEvent actionEvent) throws IOException {
         if(actionEvent.getSource() == btnViewProd){
-           HomeController hm= new HomeController();
-//           hm.handleActionSetViewSelect("Estadisticas");
+            HomeController.mainContainer.setScreen("screen"+"Productos");
+            HomeController.setItemSelected(5);
         }
     }
 
     public void handleActionViewCli(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewCli){
-
+            HomeController.mainContainer.setScreen("screen"+"Clientes");
+            HomeController.setItemSelected(1);
         }
     }
 
     public void handleActionViewRep(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewRep){
-
+            HomeController.mainContainer.setScreen("screen"+"Reportes");
+            HomeController.setItemSelected(3);
         }
     }
 
     public void handleActionViewVent(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewVen){
-
+            HomeController.mainContainer.setScreen("screen"+"Ventas");
+            HomeController.setItemSelected(4);
         }
     }
 
     public void handleActionViewEst(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnViewEst){
+            HomeController.mainContainer.setScreen("screen"+"Compras");
+            HomeController.setItemSelected(2);
         }
     }
 
@@ -155,4 +165,13 @@ public class MenuController implements Initializable, ControlledScreen {
         ContenedorMenu.setPrefHeight(heightMenu - 110);
     }
 
+    public void handleActionViewProv(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnViewProvee) {
+            HomeController.mainContainer.setScreen("screen" + "Proveedores");
+            HomeController.setItemSelected(6);
+        }
+    }
+
+    public void handleActionViewEpm(ActionEvent actionEvent) {
+    }
 }

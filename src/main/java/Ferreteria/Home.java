@@ -47,7 +47,6 @@ public class Home extends Application {
             }
         });
     }
-
     @Override
     public void init(){
             //Todo

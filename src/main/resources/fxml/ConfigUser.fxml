@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="pane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3C3B54;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.SetingsUserController">
+<BorderPane fx:id="pane" style="-fx-background-color: #3C3B54;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SetingsUserController">
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="388.0" BorderPane.alignment="CENTER_RIGHT">
          <children>

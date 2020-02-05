@@ -4,10 +4,11 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefWidth="800.0" style="-fx-background-color: #3C3B54;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserSetting.SettingsUser">
+<VBox alignment="TOP_CENTER" style="-fx-background-color: #3C3B54;" stylesheets="@/css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserSetting.SettingsUser">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -24,13 +25,17 @@
                      </font></Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="513.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="513.0">
                <children>
-                  <JFXButton fx:id="btnViewUser" mnemonicParsing="false" onAction="#viewUser" text="Ver cuenta">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </JFXButton>
+                  <VBox alignment="CENTER_RIGHT">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
+                           <children>
+                              <JFXButton fx:id="btnViewUser" onAction="#viewUser" prefHeight="100.0" prefWidth="100.0" styleClass="button-sett" text="cuenta" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
@@ -52,35 +57,31 @@
          <children>
             <VBox prefHeight="326.0" prefWidth="450.0">
                <children>
-                  <JFXTextField fx:id="serverName" labelFloat="true" promptText="SMTP Server Name">
+                  <JFXTextField fx:id="serverName" focusColor="WHITE" labelFloat="true" promptText="SMTP Server Name" styleClass="text-field-tab-pane" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="25.0" />
                      </VBox.margin>
                   </JFXTextField>
-                  <JFXTextField fx:id="smtpPort" labelFloat="true" promptText="SMTP Port">
+                  <JFXTextField fx:id="smtpPort" focusColor="WHITE" labelFloat="true" promptText="SMTP Port" styleClass="text-field-tab-pane" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </JFXTextField>
-                  <JFXTextField fx:id="emailAddress" labelFloat="true" promptText="Email Address">
+                  <JFXTextField fx:id="emailAddress" focusColor="WHITE" labelFloat="true" promptText="Email Address" styleClass="text-field-tab-pane" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="emailPassword" labelFloat="true" promptText="Email Password">
+                  <JFXPasswordField fx:id="emailPassword" focusColor="WHITE" labelFloat="true" promptText="Email Password" styleClass="text-field-tab-pane" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </JFXPasswordField>
-                  <JFXCheckBox fx:id="sslCheckbox" prefHeight="17.0" prefWidth="239.0" selected="true" styleClass="checkbox-main" text="Enable TLS" />
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="418.0" spacing="25.0">
+                  <JFXCheckBox fx:id="sslCheckbox" prefHeight="17.0" prefWidth="239.0" selected="true" styleClass="checkbox-main" text="Enable TLS" textFill="WHITE" />
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
                      <children>
-                        <JFXButton onAction="#handleTestMailAction" prefHeight="43.0" prefWidth="183.0" text="Send Test Mail" />
-                        <JFXButton onAction="#saveMailServerConfuration" prefHeight="100.0" prefWidth="100.0" text="Save" />
+                        <JFXButton fx:id="btnSaveConf" onAction="#saveMailServerConfuration" prefHeight="100.0" prefWidth="100.0" styleClass="button-sett" text="Save" />
                      </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
                   </HBox>
                </children>
                <padding>
@@ -88,6 +89,108 @@
                </padding>
             </VBox>
          </children></HBox>
+      <Label layoutX="36.0" layoutY="133.0" text="Usuarios" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets right="665.0" top="3.0" />
+         </VBox.margin>
+      </Label>
+      <Separator layoutX="10.0" layoutY="153.0" maxHeight="1.0" minHeight="1.0" opacity="0.33">
+         <effect>
+            <Glow />
+         </effect>
+      </Separator>
+      <HBox layoutX="10.0" layoutY="154.0">
+         <children>
+            <TabPane nodeOrientation="LEFT_TO_RIGHT">
+               <tabs>
+                  <Tab closable="false" styleClass="settings-tab" text="Agregar">
+                     <content>
+                        <AnchorPane id="AnchorPane" styleClass="custom-pane">
+                           <children>
+                              <VBox spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <JFXTextField fx:id="txtName" focusColor="WHITE" labelFloat="true" promptText="Nombre" styleClass="text-field-tab-pane" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="25.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="txtLastName" focusColor="WHITE" labelFloat="true" promptText="Apellido" styleClass="text-field-tab-pane" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="txtAdmin" focusColor="WHITE" labelFloat="true" promptText="Cargo" styleClass="text-field-tab-pane" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" promptText="Username" styleClass="text-field-tab-pane" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXPasswordField fx:id="txtPass" focusColor="WHITE" labelFloat="true" promptText="Password" styleClass="text-field-tab-pane" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXPasswordField>
+                                    <StackPane>
+                                       <children>
+                                          <ImageView fx:id="imgNewUser" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#Addphoto" prefHeight="33.0" prefWidth="36.0" styleClass="add-photo" stylesheets="@/css/Proveedores/StyleNewProvee.css" />
+                                       </children>
+                                    </StackPane>
+                                    <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
+                                       <children>
+                                          <JFXButton fx:id="btnSaveUser" onAction="#handleActionSaveUser" prefHeight="100.0" prefWidth="100.0" styleClass="button-sett" text="Save" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" styleClass="settings-tab" text="Editar">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="custom-pane">
+                           <children>
+                              <VBox prefHeight="385.0" prefWidth="585.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </HBox>
+      <Label layoutX="53.0" layoutY="483.0" text="Otros" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets right="665.0" top="3.0" />
+         </VBox.margin>
+      </Label>
+      <Separator layoutX="10.0" layoutY="503.0" maxHeight="1.0" minHeight="1.0" opacity="0.33">
+         <effect>
+            <Glow />
+         </effect>
+      </Separator>
+      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0" />
 
 
    </children>

@@ -22,16 +22,16 @@ public class SetingsUserController implements Initializable {
             stage.close();
     }
 
+    Parent root = null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pane.setPrefWidth(800);
+
         pane.setPrefHeight(600);
 
-        Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/fxml/settingsUserAdmin/UserSetings.fxml"));
-        } catch (IOException e) {  e.printStackTrace(); }
-
+        } catch (IOException ignored) {
+        }
         container.getChildren().addAll(root);
     }
 }

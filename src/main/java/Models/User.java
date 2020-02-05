@@ -2,14 +2,37 @@
 package Models;
 
 public class User {
-int    id_ususer;
-String email;
-String name;
-String last_name;
-String pass;
-int    status;
-String admin;
-String urlPhoto;
+    int    id_ususer;
+    String email;
+    String name;
+    String last_name;
+    String pass;
+    int    status;
+    String admin;
+    String urlPhoto;
+    String dataSetting;
+
+    public User(int id_usuario, String email, String nombre, String apellidos, String contrasena, int estado, String cargo, String url_photo, String dataSetting) {
+        this.id_ususer = id_usuario;
+        this.email = email;
+        this.name = nombre;
+        this.last_name = apellidos;
+        this.pass = contrasena;
+        this.status = estado;
+        this.admin = cargo;
+        this.urlPhoto = url_photo;
+        this.dataSetting = dataSetting;
+    }
+
+    public String getDataSetting() {
+        return dataSetting;
+    }
+
+    public void setDataSetting(String dataSetting) {
+        this.dataSetting = dataSetting;
+    }
+
+
 
     public User(String name, int status, String admin, String urlPhoto) {
         this.name = name;
@@ -28,13 +51,29 @@ String urlPhoto;
         this.admin = admin;
     }
 
-    public User(String name, int status, String admin, String url_photo, String apellidos_) {
+    @Override
+    public String toString() {
+        return "User{" +
+                "id_ususer=" + id_ususer +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", pass='" + pass + '\'' +
+                ", status=" + status +
+                ", admin='" + admin + '\'' +
+                ", urlPhoto='" + urlPhoto + '\'' +
+                ", DataSetting='" + dataSetting + '\'' +
+                '}';
+    }
+
+    public User(String name, int status, String admin, String url_photo, String apellidos_ , String dataSetting) {
 
         this.name = name;
         this.last_name = apellidos_;
         this.status = status;
         this.admin = admin;
         this.urlPhoto = url_photo;
+        this.dataSetting = dataSetting;
     }
 
     public String getUrlPhoto() {
@@ -108,17 +147,4 @@ String urlPhoto;
             return false;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id_ususer=" + id_ususer +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", pass='" + pass + '\'' +
-                ", status=" + status +
-                ", admin='" + admin + '\'' +
-                ", urlPhoto='" + urlPhoto + '\'' +
-                '}';
-    }
 }

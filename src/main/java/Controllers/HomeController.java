@@ -26,11 +26,13 @@ public class HomeController implements Initializable, ControlledScreen {
     public VBox paneItemRoot;
     public StackPane paneSearch;
     static String item = null;
+    String aux = null;
+
     ScreensController myController;
-    private ScreensController mainContainer = new ScreensController();
+
+    public static ScreensController mainContainer = new ScreensController();
 
     String getStringValue(String value){
-        String aux = null;
         switch (value){
             case "Inicio": aux= "/fxml/Empleados/menu.fxml"; break;
             case "Clientes": aux= "/fxml"; break;
@@ -42,76 +44,85 @@ public class HomeController implements Initializable, ControlledScreen {
             case "Empleados": aux= "/fxml/Empleados/Employees.fxml"; break;
             case "Productos": aux= "/fxml/Productos/Productos.fxml"; break;
             case "Proveedores": aux= "/fxml/Proveedores/Proveedores.fxml"; break;
-
         }
         return aux;
     }
 
     private String items = getItemForIsAdmin();
     private String[] itemsX = items.split(",");
+    static ArrayList<HBox> arrayListAuxBoxItem = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
             loadSearchPane();
-
             for (String x: itemsX) {
                 item = x;
                 loadPane();
             }
-            ArrayList<HBox> arrayListAuxBoxItem = new ArrayList<>();
-            for (int i = 0; i < paneItemRoot.getChildren().size() ; i++) {
-                HBox hBox = (HBox) paneItemRoot.getChildren().get(i);
-                arrayListAuxBoxItem.add(hBox);
-            }
+        }catch (Exception e){}
 
-            arrayListAuxBoxItem.get(0).getChildren().get(0).setVisible(true);
-            Pane paneInit = (Pane) arrayListAuxBoxItem.get(0).getChildren().get(1);
-            paneInit.getChildren().get(0).setStyle("-fx-background-color:#3C3B54; ");
-
-            for (HBox hBox : arrayListAuxBoxItem) {
-
-                Pane paneAux = (Pane) hBox.getChildren().get(1);
-                Label label = (Label) hBox.getChildren().get(0);
-                Button button = (Button) paneAux.getChildren().get(0);
-
-                button.setOnMouseClicked(mouseEvent ->{
-                    for (HBox hBoxD : arrayListAuxBoxItem) {
-
-                        Pane paneAuxD = (Pane) hBoxD.getChildren().get(1);
-                        Label labelD = (Label) hBoxD.getChildren().get(0);
-                        Button buttonD = (Button) paneAuxD.getChildren().get(0);
-                        labelD.setVisible(false);
-                        buttonD.setStyle(null);
-                    }
-                    button.setStyle("-fx-background-color:#3C3B54; ");
-                    label.setVisible(true);
-                    mainContainer.setScreen("screen"+button.getText());
-
-                });
-            }
-
-
-
-            pane.getChildren().addAll(setContainerScreen());
-
-        } catch (IOException e) {
-            System.out.println("Error in HomeController: "+e);
+        for (int i = 0; i < paneItemRoot.getChildren().size() ; i++) {
+            HBox hBox = (HBox) paneItemRoot.getChildren().get(i);
+            arrayListAuxBoxItem.add(hBox);
         }
+
+        setItemSelected(0);
+
+        for (HBox hBox : arrayListAuxBoxItem) {
+
+            Pane paneAux = (Pane) hBox.getChildren().get(1);
+            Label label = (Label) hBox.getChildren().get(0);
+            Button button = (Button) paneAux.getChildren().get(0);
+
+            button.setOnMouseClicked(mouseEvent ->{
+                for (HBox hBoxD : arrayListAuxBoxItem) {
+                    Pane paneAuxD = (Pane) hBoxD.getChildren().get(1);
+                    Label labelD = (Label) hBoxD.getChildren().get(0);
+                    Button buttonD = (Button) paneAuxD.getChildren().get(0);
+                    labelD.setVisible(false);
+                    buttonD.setStyle(null);
+                }
+                button.setStyle("-fx-background-color:#3C3B54; ");
+                label.setVisible(true);
+                mainContainer.setScreen("screen"+button.getText());
+            });
+        }
+        pane.getChildren().addAll(setContainerScreen());
 
     }
 
-    private void loadPane() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/components/itemDashboard.fxml"));
+    public static void setItemSelected(int posLabel) {
+
+        for (int i = 0; i <arrayListAuxBoxItem.size() ; i++) {
+            arrayListAuxBoxItem.get(i).getChildren().get(0).setVisible(false);
+            Pane pane = (Pane) arrayListAuxBoxItem.get(i).getChildren().get(1);
+            pane.getChildren().get(0).setStyle(null);
+        }
+
+        arrayListAuxBoxItem.get(posLabel).getChildren().get(0).setVisible(true);
+        Pane paneInit = (Pane) arrayListAuxBoxItem.get(posLabel).getChildren().get(1);
+        paneInit.getChildren().get(0).setStyle("-fx-background-color:#3C3B54;");
+    }
+
+    private void loadPane()  {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/fxml/components/itemDashboard.fxml"));
+        } catch (IOException ignored) {}
         paneItemRoot.getChildren().addAll(root);
     }
 
-    private void loadSearchPane() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/components/paneSearch.fxml"));
+    private void loadSearchPane() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/fxml/components/paneSearch.fxml"));
+        } catch (IOException ignored) { }
         paneSearch.getChildren().addAll(root);
         double width= Toolkit.getDefaultToolkit().getScreenSize().width;
         paneSearch.setPrefWidth(width-260);
+
     }
 
     private String getItemForIsAdmin (){
@@ -119,7 +130,6 @@ public class HomeController implements Initializable, ControlledScreen {
             return "Inicio,Clientes,Compras,Reportes,Ventas,Productos,Proveedores";
         }else {
             return"Inicio,Clientes,Compras,Reportes,Ventas,Calendario";
-            //return "Inicio,Clientes,Compras,Reportes,Ventas,Calendario,Estadisiticas,Empleados,Productos,Proveedores";
         }
     }
 

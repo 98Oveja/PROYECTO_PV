@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.HomeController">
+<StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeController">
     <children>
       <BorderPane>
          <top>
@@ -18,7 +16,27 @@
             </HBox>
          </top>
          <left>
-            <VBox fx:id="paneItemRoot" prefHeight="790.0" prefWidth="260.0" spacing="2.0" styleClass="menulateral" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="790.0" prefWidth="260.0" spacing="2.0" styleClass="menulateral" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="paneItemRoot" prefHeight="897.0" prefWidth="260.0" />
+                  <VBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="167.0" prefWidth="260.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="250.0" spacing="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-facebook" stylesheets="@../css/main.css" />
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-whatsapp" stylesheets="@../css/main.css" />
+                              <Button layoutX="72.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-twiter" stylesheets="@../css/main.css">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="25.0" right="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></VBox>
          </left>
          <center>
             <StackPane fx:id="pane" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #f0eef7;" BorderPane.alignment="CENTER" />

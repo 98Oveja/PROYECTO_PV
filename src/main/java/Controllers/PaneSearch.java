@@ -88,9 +88,9 @@ public class PaneSearch  implements Initializable {
         validatorImage valIma= new validatorImage();
         String auxUser = user.getUrlPhoto();
 
-        if(!auxUser.isEmpty() &&  auxUser.contains("*")){
+        if(!auxUser.isEmpty() &&  auxUser.contains("*") ){
             auxUser = "file:/" + user.getUrlPhoto().replace("*","\\");
-        }else {
+        }else if(auxUser == null){
            auxUser = "file:/ssc/jsajd/a.png";
         }
 

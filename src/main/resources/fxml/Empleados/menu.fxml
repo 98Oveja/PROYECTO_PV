@@ -52,7 +52,7 @@
                               </Label>
                            </top>
                            <bottom>
-                              <JFXButton fx:id="btnViewProd" contentDisplay="CENTER" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" BorderPane.alignment="CENTER">
+                              <JFXButton fx:id="btnViewProvee"  onAction="#handleActionViewProv" contentDisplay="CENTER" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" BorderPane.alignment="CENTER">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -85,7 +85,7 @@
                               </Label>
                            </center>
                            <top>
-                              <Label prefHeight="41.0" prefWidth="107.0" stylesheets="@../../css/menuinicio.css" text="Clientes" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="160.0" stylesheets="@../../css/menuinicio.css" text="Clientes" BorderPane.alignment="CENTER">
                                  <styleClass>
                                     <String fx:value="titleCard" />
                                     <String fx:value="tipografia" />
@@ -97,7 +97,7 @@
                               </Label>
                            </top>
                            <bottom>
-                              <JFXButton fx:id="btnViewCli" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleActionViewCli" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver " BorderPane.alignment="CENTER">
+                              <JFXButton fx:id="btnViewCli" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleActionViewCli" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver" BorderPane.alignment="CENTER">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -155,7 +155,7 @@
                               </Label>
                            </top>
                            <bottom>
-                              <JFXButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver " textAlignment="CENTER" BorderPane.alignment="CENTER">
+                              <JFXButton fx:id="btnViewProd" onAction="#handleActionViewProd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="empbotonver" stylesheets="@../../css/menuinicio.css" text="Ver " textAlignment="CENTER" BorderPane.alignment="CENTER">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -170,7 +170,7 @@
                         </BorderPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="containerNewProd" stylesheets="@../../css/menuinicio.css" GridPane.columnIndex="1">
                            <children>
-                              <ImageView fx:id="NewImageProducts" fitHeight="215.0" fitWidth="192.0" layoutX="14.0" pickOnBounds="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
+                              <ImageView fx:id="NewImageProducts" fitHeight="222.0" fitWidth="215.0"  pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <image>
                                     <Image url="@../../images/herramientas.png" />
                                  </image>
@@ -211,7 +211,7 @@
                               </JFXButton>
                            </bottom>
                            <center>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="135.0" stylesheets="@../../css/menuinicio.css" text="Mira las Graficas" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="160.0" stylesheets="@../../css/menuinicio.css" text="Mira las Compras" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
                                  <styleClass>
                                     <String fx:value="subTitleCard" />
                                     <String fx:value="tipografia" />
@@ -220,7 +220,7 @@
                               </Label>
                            </center>
                            <top>
-                              <Label stylesheets="@../../css/menuinicio.css" text="Estadisticas" BorderPane.alignment="CENTER">
+                              <Label stylesheets="@../../css/menuinicio.css" text="Compras" BorderPane.alignment="CENTER">
                                  <styleClass>
                                     <String fx:value="tipografia" />
                                     <String fx:value="titleCard" />
@@ -298,7 +298,7 @@
                               </Label>
                            </top>
                            <center>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="112.0" stylesheets="@../../css/main.css" text="Ve los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="160.0" stylesheets="@../../css/main.css" text="Ver los reportes" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
                                  <styleClass>
                                     <String fx:value="subTitleCard" />
                                     <String fx:value="tipografia" />

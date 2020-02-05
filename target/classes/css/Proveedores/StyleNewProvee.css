@@ -23,9 +23,9 @@
     -fx-background-image: url("../../images/edit.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 18px;
-    -fx-background-position: 310px center;
-    -fx-background-color: #fff;
-    -fx-text-fill: #000;
+    -fx-background-position: right +10px center;
+    -fx-border-color: #3B86FF;
+    -fx-padding: 0px 30px 0px 10px;
 }
 
 .add-photo{
@@ -33,6 +33,7 @@
     -fx-background-color: transparent;
     -fx-background-size: 30px;
     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 
 .add-photo:hover{
@@ -58,7 +59,7 @@
 }
 
 .boton-save:hover{
-    -fx-font-size: 16px;
+    -fx-font-size: 120%;
 }
 
 .boton-close{
@@ -70,4 +71,60 @@
 }
 .boton-close:hover , .boton-close:pressed{
     -fx-background-size: 30px;
+}
+
+.boton-add-version-mini{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/Add_32.png");
+    -fx-background-size: 30px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.boton-delete-version-mini{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../images/icondelete.png");
+    -fx-background-size: 30px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.combo-box{
+    -fx-background-color: #4D4F5C;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+}
+
+.combo-box>.cell{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell{
+    -fx-text-fill: white;
+    -fx-background-color: #4D4F5C;
+}
+
+.combo-box.label{
+    -fx-background-color: #4D4F5C;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view:hover .list-cell:filled:selected:row-selection:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #3B86FF;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #3B86FF;
+    -fx-background-insets: 1, 0, 0;
+    -fx-background-radius: 15px;
+}
+
+.scroll-pane>.viewport{
+    -fx-background-color: #43425D;
+}
+
+.scroll-bar:vertical .track-background {
+    -fx-background-color: #43425DE6;
+    -fx-background-insets:  .1, 1;
 }

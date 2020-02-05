@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="408.0" onKeyPressed="#handleButtonActionKey" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.ForgotPassEmailController">
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleButtonActionKey" prefHeight="400.0" prefWidth="408.0" style="-fx-background-color: #43425D;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ForgotPassEmailController">
    <children>
                <JFXButton fx:id="btnForgot" layoutX="89.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #1062e5;" stylesheets="@../css/main.css" text="Guardar" />
-               <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="374.0" layoutY="14.0" onMouseClicked="#handleActionClose" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../images/icon_circle-remove.png" />
-                   </image>
-               </ImageView>
+
+                <Button fx:id="btnCerrarModal" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleActionClose" prefHeight="30.0" prefWidth="30.0" styleClass="boton-close" stylesheets="@../css/Proveedores/StyleNewProvee.css" />
                <Label layoutX="22.0" layoutY="12.0" style="-fx-text-fill: #fff; -fx-font-size: 25;" styleClass="labelWelcome" stylesheets="@../css/main.css" text="Inicio de sesión" />
                <Label layoutX="21.0" layoutY="47.0" style="-fx-text-fill: #FFF; -fx-font-size: 17;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Ingresa el codigo que se envío a su correo " />
                <Label layoutX="21.0" layoutY="209.0" style="-fx-text-fill: #FFF; -fx-font-size: 17;" styleClass="labelForgot" stylesheets="@../css/main.css" text="Verifica tu contraseña" />

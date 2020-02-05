@@ -29,8 +29,13 @@ public class ControllerItem implements Initializable {
     String aux = homeController.item;
 
     private void setPropertiesItem(){
-        img.setImage( new Image(view.getImageItem(aux)));
-        btn.setText(aux);
+        Runnable runnable = () -> {
+            img.setImage( new Image(view.getImageItem(aux)));
+            btn.setText(aux);
+        };
+        Thread thread = new Thread(runnable, "UPDATE-USER");
+        thread.start();
+
     }
 
     @Override

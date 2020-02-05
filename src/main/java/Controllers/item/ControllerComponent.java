@@ -159,9 +159,10 @@ public class ControllerComponent implements Initializable, ControlledScreen {
                     status="Success";
                     setLblError(Color.GREEN,"Login success...");
 
-                    if (user.getAdmin().equals("Admin")||user.getAdmin().equals("admin")){
+                    if (user.getAdmin().equals("Admin") || user.getAdmin().equals("admin")){
                         admin = true;
                     }
+
                     //ViewNavigator.loadVista(ViewNavigator.HOME);
                     thread.setDaemon(true);
                     thread.start();

@@ -20,7 +20,14 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+
+        <dependency>
+            <groupId>com.github.albfernandez</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.18.ayg01</version>
+        </dependency>
+
+
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
@@ -28,13 +35,17 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
             <version>11.0.1</version>
         </dependency>
-        <!-- Thanks for using https://jar-download.com -->
-
-
 
         <dependency>
             <groupId>com.jfoenix</groupId>
