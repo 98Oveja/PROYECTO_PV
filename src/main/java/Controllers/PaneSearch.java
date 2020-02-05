@@ -33,26 +33,28 @@ public class PaneSearch  implements Initializable {
     int status = 0;
 
     public void goToURL(String URL){
-        if (java.awt.Desktop.isDesktopSupported()) {
-            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+        Runnable runnable = () -> {
+            if (java.awt.Desktop.isDesktopSupported()) {
+                java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 
-            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
-                try {
-                    java.net.URI uri = new java.net.URI(URL);
-                    desktop.browse(uri);
-                } catch (URISyntaxException | IOException ex) {
-                // Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                    try {
+                        java.net.URI uri = new java.net.URI(URL);
+                        desktop.browse(uri);
+                    } catch (URISyntaxException | IOException ex) {
+
+                    }
                 }
             }
-        }
+        };
+        Thread thread = new Thread(runnable, "UPDATE-USER");
+        thread.start();
+
     }
 
     public void handleActionHelp(ActionEvent actionEvent) {
         if (actionEvent.getSource() == itemHelp){
-            if(status == 0) {
-                goToURL("https://www.escodgt.com/");
-                status = 1;
-            }
+                goToURL("https://www.escodgt.com/products/help");
         }
     }
 

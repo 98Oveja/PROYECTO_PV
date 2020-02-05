@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <StackPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeController">
     <children>
@@ -18,23 +19,37 @@
          <left>
             <VBox prefHeight="790.0" prefWidth="260.0" spacing="2.0" styleClass="menulateral" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="paneItemRoot" prefHeight="897.0" prefWidth="260.0" />
-                  <VBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="167.0" prefWidth="260.0">
+                  <VBox fx:id="paneItemRoot" prefHeight="1120.0" prefWidth="260.0" />
+                  <VBox alignment="BASELINE_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="257.0" prefWidth="260.0">
                      <children>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="250.0" spacing="10.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="4.0" prefWidth="250.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-facebook" stylesheets="@../css/main.css" />
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-whatsapp" stylesheets="@../css/main.css" />
-                              <Button layoutX="72.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="button-twiter" stylesheets="@../css/main.css">
+                              <Button fx:id="btnFacebook" mnemonicParsing="false" onAction="#openUrlFacebook" prefHeight="18.0" prefWidth="18.0" styleClass="button-facebook,url" stylesheets="@../css/main.css" />
+                              <Button fx:id="btnWhatsapp" mnemonicParsing="false" onAction="#openUrlWhatsapp" prefHeight="18.0" prefWidth="18.0" styleClass="button-whatsapp,url" stylesheets="@../css/main.css" />
+                              <Button fx:id="btnTwiter" layoutX="72.0" layoutY="10.0" mnemonicParsing="false" onAction="#openUrlTwiter" prefHeight="18.0" prefWidth="18.0" styleClass="button-twiter,url" stylesheets="@../css/main.css">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin></Button>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="25.0" right="10.0" />
+                              <Insets right="10.0" />
                            </VBox.margin>
                         </HBox>
+                        <Label fx:id="lblUrl" ellipsisString="ESC" onMouseClicked="#openUrlESC" styleClass="label-url" text="ESCodGt.com">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
                   </VBox>
                </children></VBox>
          </left>

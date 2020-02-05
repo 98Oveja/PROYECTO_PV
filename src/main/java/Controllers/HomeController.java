@@ -3,12 +3,14 @@ package Controllers;
 import Controllers.ScreenController.ImplementsU.ControlledScreen;
 import Controllers.item.ControllerComponent;
 import Controllers.ScreenController.ScreensController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -26,8 +28,12 @@ public class HomeController implements Initializable, ControlledScreen {
     public VBox paneItemRoot;
     public StackPane paneSearch;
     static String item = null;
+    public Button btnFacebook;
+    public Button btnWhatsapp;
+    public Button btnTwiter;
     String aux = null;
 
+    PaneSearch search = new PaneSearch();
     ScreensController myController;
 
     public static ScreensController mainContainer = new ScreensController();
@@ -146,5 +152,29 @@ public class HomeController implements Initializable, ControlledScreen {
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
+    public void openUrlFacebook(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnFacebook){
+            search.goToURL("https://bit.ly/2twUnCl");
+        }
+    }
+
+    public void openUrlWhatsapp(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnWhatsapp){
+            search.goToURL("https://bit.ly/2GZ4Aue");
+        }
+    }
+
+    public void openUrlTwiter(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnTwiter){
+            search.goToURL("https://bit.ly/3bgnA5i");
+        }
+    }
+
+    public void openUrlESC(MouseEvent mouseEvent) {
+        search.goToURL("https://bit.ly/2SmkXpX");
+    }
+    // escodgt.com
+
 }
 

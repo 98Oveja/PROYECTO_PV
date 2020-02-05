@@ -188,26 +188,29 @@
     -fx-opacity:.5;
     -fx-background-color: #fff,#fff;;
 }
-
+.url{
+    -fx-background-color: transparent;
+    -fx-background-size: 18px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-cursor: hand;
+}
 .button-facebook{
     -fx-background-image: url(../images/facebook.png);
-    -fx-background-color: transparent;
-    -fx-background-size: 25px;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
+
 }
 .button-whatsapp{
-
     -fx-background-image: url(../images/whatsapp.png);
-    -fx-background-color: transparent;
-    -fx-background-size: 25px;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
 }
+
 .button-twiter{
     -fx-background-image: url(../images/twiter.png);
-    -fx-background-color: transparent;
-    -fx-background-size: 25px;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
+}
+
+.label-url{
+    -fx-text-fill: #a3a0fb;
+}
+.label-url:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
 }
