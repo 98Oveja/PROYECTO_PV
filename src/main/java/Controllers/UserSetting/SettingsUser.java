@@ -70,7 +70,7 @@ public class SettingsUser implements Initializable {
 
         String auxUser = user.getUrlPhoto();
 
-        System.out.println(auxUser);
+
 
         if(!auxUser.isEmpty() &&  auxUser.contains("*")){
             auxUser = "file:/" + user.getUrlPhoto().replace("*","\\");
@@ -118,8 +118,7 @@ public class SettingsUser implements Initializable {
                 throw new InvalidParameterException();
             }
             return mailServerInfo;
-        } catch (Exception e) {
-            System.out.println("error"+e);
+        } catch (Exception ignored) {
         }
         return null;
     }
