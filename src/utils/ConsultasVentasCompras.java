@@ -1,5 +1,4 @@
 package utils;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,6 +14,7 @@ public class ConsultasVentasCompras {
 //    GETERS AND SETERS
     public static String getName_and_lastname(){return name_and_lastname;}
     public void setName_and_lastname(String name_and_lastname){this.name_and_lastname = name_and_lastname;}
+
     //  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
     public static String getIdCostumerInDB(String Nombre, String Apellido) {
         try {
@@ -101,7 +101,7 @@ public class ConsultasVentasCompras {
         return dataContainer;
     }
 //
-    public static ArrayList listadoProveedores(){
+    public static ArrayList listaProveedores(){
         try {
             dataContainer.clear();
             resultQuery = "";
@@ -109,13 +109,30 @@ public class ConsultasVentasCompras {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                resultQuery = resultSet.getString("PRIMER_NOMBRE") + "#"
-                        +resultSet.getString("PRIMER_APELLIDO")+"#"+
-                resultSet.getString("DIRECCION")+"#"+resultSet.getString("TELEFONO")+"#"+
-                resultSet.getString("NO_CUENTA")+"#"+resultSet.getString("ORG");
+                resultQuery = resultSet.getString("PRIMER_NOMBRE")+" "
+                        +resultSet.getString("PRIMER_APELLIDO");
                 dataContainer.add(resultQuery);}
         } catch (SQLException e) {
-            System.out.println("Error loading all Customers: " + e.getMessage());
+            System.out.println("Error loading all Proveedores: " + e.getMessage());
+        }
+        return dataContainer;
+    }
+    public static ArrayList getDataProveedoreByName(String Nombre, String Apellido) {
+        try {
+            dataContainer.clear();
+            resultQuery = "";
+            callableStatement = connection.prepareCall("{call getDataProveedorbyNameAndLasname(?,?)}");
+            callableStatement.setString(1, Nombre);
+            callableStatement.setString(2, Apellido);
+            resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                dataContainer.add(resultSet.getString("DIRECCION")+"#"+
+                        resultSet.getString("TELEFONO")+"#"+
+                        resultSet.getString("NO_CUENTA")+"#"+
+                        resultSet.getString("ORG"));
+            }
+        } catch (SQLException e) {
+            System.out.println("I can't get the customer's ID: " + e.getMessage());
         }
         return dataContainer;
     }
@@ -165,34 +182,11 @@ public class ConsultasVentasCompras {
         }
         return dataContainer;
     }
-    public static ArrayList ListadeProductosPorNombreMarca(String nombreMarca){
-        try{
-            dataContainer.clear();
-            resultQuery = "";
-            callableStatement = connection.prepareCall("{call GETDATAPRODUCTObyNAMEMARCA (?)}");
-            callableStatement.setString(1, nombreMarca);
-            resultSet = callableStatement.executeQuery();
-            while (resultSet.next()) {
-                dataContainer.add(resultSet.getString("PRODUCTOS.NOMBRE")+"#"+
-                        resultSet.getString("PRODUCTOS.DESCRIPCION")+"#"+
-                        resultSet.getString("PRODUCTOS.DISPONIBILIDAD")+"#"+
-                        resultSet.getString("PRODUCTOS.PRECIO_VENTA")+"#"+
-                        resultSet.getString("PRODUCTOS.CODIGO_PRODUCTO")+"#"+
-                        resultSet.getString("PRODUCTOS.ID_MARCA")+"#"+
-                        resultSet.getString("PRODUCTOS.UNIDAD_DE_MEDICION")
-                );
-            }
-        } catch (SQLException e) {
-            System.out.println("I can't get the Customer's Data : "+e.getMessage());
-        }
-        return dataContainer;
-
-    }
     public static ArrayList NombresProductoporNombreMarca(String nombreMarca){
         try{
             dataContainer.clear();
             resultQuery = "";
-            callableStatement = connection.prepareCall("{call GETDATAPRODUCTObyNAMEMARCA (?)}");
+            callableStatement = connection.prepareCall("{call getProductNameByMarcName (?)}");
             callableStatement.setString(1, nombreMarca);
             resultSet = callableStatement.executeQuery();
             while (resultSet.next()) {
@@ -205,30 +199,6 @@ public class ConsultasVentasCompras {
         return dataContainer;
 
     }
-    public static ArrayList ListadeProductosPorNombreCategoria(String nombreCategoria){
-        try{
-            dataContainer.clear();
-            resultQuery = "";
-            callableStatement = connection.prepareCall("{call getProductsByCategoryName(?)}");
-            callableStatement.setString(1, nombreCategoria);
-            resultSet = callableStatement.executeQuery();
-            while (resultSet.next()) {
-                dataContainer.add(resultSet.getString("PRODUCTOS.NOMBRE")+"#"+
-                        resultSet.getString("PRODUCTOS.DESCRIPCION")+"#"+
-                        resultSet.getString("PRODUCTOS.DISPONIBILIDAD")+"#"+
-                        resultSet.getString("PRODUCTOS.PRECIO_VENTA")+"#"+
-                        resultSet.getString("PRODUCTOS.CODIGO_PRODUCTO")+"#"+
-                        resultSet.getString("PRODUCTOS.ID_MARCA")+"#"+
-                        resultSet.getString("PRODUCTOS.UNIDAD_DE_MEDICION")
-                );
-            }
-
-        } catch (SQLException e) {
-            System.out.println("I can't get the Customer's Data : "+e.getMessage());
-        }
-        return dataContainer;
-    }
-
     public static ArrayList returnNameandDescriptionByCategory(String nombreCategoria){
         try{
             dataContainer.clear();
@@ -247,4 +217,64 @@ public class ConsultasVentasCompras {
         }
         return dataContainer;
     }
+    public static ArrayList selectProductoByCodeinLikeQuery(String codigo) {
+        try{
+            dataContainer.clear();
+            resultQuery = "";
+            callableStatement = connection.prepareCall("{CALL getProductsByLikeCode(?)}");
+            callableStatement.setString(1, codigo);
+            resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                dataContainer.add(resultSet.getString("PRODUCTOS.NOMBRE")+": "+
+                        resultSet.getString("PRODUCTOS.DESCRIPCION")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("I can't get the product data by code : "+e.getMessage());
+        }
+        return dataContainer;
+    }
+    public static ArrayList selectProductoByNameinLikeQuery(String nombre) {
+        try{
+            dataContainer.clear();
+            resultQuery = "";
+            callableStatement = connection.prepareCall("{call getProductbyLikeName(?)}");
+            callableStatement.setString(1, nombre);
+            resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                dataContainer.add(resultSet.getString("PRODUCTOS.NOMBRE")+": "+
+                        resultSet.getString("PRODUCTOS.DESCRIPCION")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("I can't get the product data by code : "+e.getMessage());
+        }
+        return dataContainer;
+    }
+//
+    public static ArrayList seleccionarProductoParaComprar(String nombre) {
+    try{
+        dataContainer.clear();
+        resultQuery = "";
+        callableStatement = connection.prepareCall("{call getProducByNameforBuy(?)}");
+        callableStatement.setString(1, nombre);
+        resultSet = callableStatement.executeQuery();
+        while (resultSet.next()) {
+            dataContainer.add(
+                    resultSet.getString("ID_MARCA")+"#"+
+                    resultSet.getString("DESCRIPCION")+"#"+
+                    resultSet.getString("CODIGO_PRODUCTO")+"#"+
+                    resultSet.getString("DISPONIBILIDAD")+"#"+
+                    resultSet.getString("UNIDAD_DE_MEDICION")+"#"+
+                    resultSet.getString("PRECIO_VENTA")+"#"+
+                    resultSet.getString("PRECIO_COMPRA")
+            );
+        }
+    } catch (SQLException e) {
+        System.out.println("I can't get the product data by code : "+e.getMessage());
+    }
+    return dataContainer;
+}
 }

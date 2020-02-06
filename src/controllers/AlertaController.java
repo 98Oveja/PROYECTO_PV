@@ -53,11 +53,10 @@ public class AlertaController implements Initializable{
     public AlertaController() {}
     public Node setContainerBack (Node contenedor){return this.contenedorTracero = contenedor;}
     public Node getContainerBack (){return this.contenedorTracero;}
-    public void setTitleBody(String a, String c,Image modal, Image close){
+    public void setTitleBody(String a, String c,Image modal){
         this.tituloModal.setText(a);
         this.CuerpoModal.setText(c);
         this.imagenModal.setImage(modal);
-        this.imgBotonClose.setImage(close);
     }
     public void CerrarModalContenedor(){
         LoadModalesMovibles.CerrarModal(getContainerBack());

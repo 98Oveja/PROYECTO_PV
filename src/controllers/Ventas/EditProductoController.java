@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import models.Ventas_Compras.Ventas;
 import utils.LoadModalesMovibles;
+import utils.ValidacionesGenerales;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,8 +43,8 @@ public class EditProductoController implements Initializable {
 
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        ventas.validarSoloNumerosJfoenix(newCantidad);
-        ventas.validarSoloNumerosJfoenix(newDescuento);
+        ValidacionesGenerales.validarSoloNumerosJfoenix(newCantidad);
+        ValidacionesGenerales.validarSoloNumerosJfoenix(newDescuento);
 //      ACCIONES DE LOS BOTONES DENTRO DEL MODAL
         cancelButton.setOnAction(actionEvent -> {LoadModalesMovibles.CerrarModal(ContendorEdit);});
         btnCerraModal.setOnAction(actionEvent -> {LoadModalesMovibles.CerrarModal(ContendorEdit);});

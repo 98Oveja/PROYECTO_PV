@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="PanelContendorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Compras.PanelCompras">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Compras.ModalAddCompras">
     <top>
         <TextFlow nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1200.0" styleClass="headerGridFerreteria" BorderPane.alignment="CENTER">
             <children>
@@ -19,14 +19,8 @@
                             <image>
                                 <Image url="@../../images/cancel_32.png" />
                             </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                         </ImageView>
                     </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
                 </Button>
                 <Label text="Ferreteria" textAlignment="CENTER" textFill="WHITE" translateX="525.0">
                     <font>
@@ -63,28 +57,17 @@
                         </Label>
                   <AnchorPane prefHeight="241.0" prefWidth="565.0">
                      <children>
-                        <JFXTextField fx:id="proveedorField" labelFloat="true" layoutX="14.0" layoutY="57.0" prefHeight="37.0" prefWidth="416.0" promptText="Proveedor" />
-                        <JFXComboBox fx:id="comboboxProveedor" labelFloat="true" layoutX="14.0" layoutY="9.0" prefHeight="30.0" prefWidth="305.0" promptText="Proveedor" />
-                        <JFXTextField fx:id="telefonoField" labelFloat="true" layoutX="406.0" layoutY="121.0" prefHeight="37.0" prefWidth="154.0" promptText="Teléfono" />
-                        <JFXTextField fx:id="noCuentaField" labelFloat="true" layoutX="14.0" layoutY="174.0" prefHeight="37.0" prefWidth="223.0" promptText="No. De Cuenta" />
-                        <JFXTextField fx:id="orgField" labelFloat="true" layoutX="266.0" layoutY="174.0" prefHeight="37.0" prefWidth="282.0" promptText="Org" />
-                        <JFXDatePicker fx:id="fechaChoser" layoutX="385.0" layoutY="10.0" prefHeight="28.0" prefWidth="170.0" promptText="Fecha" />
-                        <JFXButton fx:id="brnAddproveedor" layoutX="327.0" layoutY="1.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="WHITE" text="+" textFill="#1aff00">
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="59.0" prefHeight="37.0" prefWidth="304.0" promptText="Dirección" />
+                        <JFXComboBox labelFloat="true" layoutX="14.0" layoutY="9.0" prefHeight="30.0" prefWidth="305.0" promptText="Proveedor" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="114.0" promptText="Teléfono" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="174.0" promptText="No. De Cuenta" />
+                        <JFXTextField labelFloat="true" layoutX="334.0" layoutY="59.0" prefHeight="37.0" prefWidth="223.0" promptText="Org" />
+                        <JFXDatePicker layoutX="385.0" layoutY="10.0" prefHeight="28.0" prefWidth="170.0" promptText="Fecha" />
+                        <JFXButton layoutX="327.0" layoutY="1.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="WHITE" text="+" textFill="#1aff00">
                            <font>
                               <Font size="18.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </JFXButton>
-                        <JFXTextField fx:id="direccionField" labelFloat="true" layoutX="14.0" layoutY="121.0" prefHeight="37.0" prefWidth="372.0" promptText="Dirección" />
-                        <JFXCheckBox fx:id="autoRellenarCheck" checkedColor="#06e12e" layoutX="443.0" layoutY="66.0" mnemonicParsing="false" text="Auto rrellenar" textFill="#ff9900" unCheckedColor="#5c4990">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></JFXCheckBox>
                      </children>
                   </AnchorPane>
                     </children>
@@ -104,38 +87,24 @@
                         </Label>
                   <AnchorPane prefHeight="249.0" prefWidth="555.0">
                      <children>
-                        <JFXTextField fx:id="descripcionField" labelFloat="true" layoutX="14.0" layoutY="48.0" prefHeight="37.0" prefWidth="532.0" promptText="Descripción" />
-                        <JFXComboBox fx:id="comboboxProductos" labelFloat="true" layoutX="14.0" layoutY="-1.0" prefHeight="30.0" prefWidth="316.0" promptText="Producto" />
-                        <JFXButton fx:id="btnAddproducto" layoutX="331.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="#202c72" text="+" textFill="#1aff00">
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="48.0" prefHeight="37.0" prefWidth="532.0" promptText="Descripción" />
+                        <JFXComboBox labelFloat="true" layoutX="14.0" layoutY="-1.0" prefHeight="30.0" prefWidth="330.0" promptText="Producto" />
+                        <JFXButton layoutX="344.0" layoutY="-10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="#202c72" text="+" textFill="#1aff00">
                            <font>
                               <Font size="18.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </JFXButton>
-                        <JFXTextField fx:id="precioCompraField" labelFloat="true" layoutX="14.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Compra" />
-                        <JFXTextField fx:id="precioVentaField" labelFloat="true" layoutX="145.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Venta" />
-                        <JFXTextField fx:id="disponibilidadField" labelFloat="true" layoutX="406.0" layoutY="-4.0" prefHeight="37.0" prefWidth="141.0" promptText="Disponibilidad" />
-                        <JFXTextField fx:id="cantidadField" labelFloat="true" layoutX="285.0" layoutY="103.0" prefHeight="37.0" prefWidth="92.0" promptText="Cantidad" />
-                        <JFXTextField fx:id="codigoField" labelFloat="true" layoutX="189.0" layoutY="155.0" prefHeight="37.0" prefWidth="118.0" promptText="Código" />
-                        <JFXTextField fx:id="marcaField" labelFloat="true" layoutX="14.0" layoutY="154.0" prefHeight="37.0" prefWidth="251.0" promptText="Marca" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Compra" />
+                        <JFXTextField labelFloat="true" layoutX="145.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Venta" />
+                        <JFXTextField labelFloat="true" layoutX="396.0" layoutY="-4.0" prefHeight="37.0" prefWidth="146.0" promptText="Disponibilidad" />
+                        <JFXTextField labelFloat="true" layoutX="285.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Cantidad" />
+                        <JFXTextField labelFloat="true" layoutX="423.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Código" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="154.0" prefHeight="37.0" prefWidth="251.0" promptText="Marca" />
                         <JFXButton layoutX="365.0" layoutY="173.0" mnemonicParsing="false" ripplerFill="#ff4f4f" style="-fx-background-color: #FF6565;" text="Agregar a la Compra" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </JFXButton>
-                        <ImageView fx:id="buscar" fitHeight="16.0" fitWidth="16.0" layoutX="369.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../images/search.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
                      </children></AnchorPane>
                     </children></VBox>
                 <AnchorPane prefHeight="457.0" prefWidth="1150.0" style="-fx-background-color: #ffffff;" GridPane.columnSpan="2" GridPane.rowIndex="1">
@@ -146,6 +115,12 @@
                         <HBox fx:id="HBoxPanel" prefHeight="40.0" prefWidth="1130.0" styleClass="HeaderTablaDetalleVenta" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Label prefHeight="67.0" prefWidth="179.0" styleClass="TituloTablaDetalle" text="Detalle Compra" textFill="#4d4f5c" />
+                                <Label fx:id="MensajedeAlertaCampos" alignment="CENTER" prefHeight="43.0" prefWidth="277.0" text="Mensaje de Alerta" textAlignment="CENTER" textFill="#f80000" translateX="640.0" translateY="5.0">
+                                    <font>
+                                        <Font name="Serif Bold Italic" size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXProgressBar fx:id="barradeProgresoAlerta" prefHeight="1.0" prefWidth="242.0" translateX="390.0" translateY="55.0" />
                             </children>
                         </HBox>
                         <TableView fx:id="tablaDetalle" editable="true" layoutX="4.0" layoutY="68.0" prefHeight="322.0" prefWidth="1145.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">

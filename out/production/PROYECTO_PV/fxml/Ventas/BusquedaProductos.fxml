@@ -27,15 +27,15 @@
                <children>
                   <AnchorPane prefHeight="140.0" prefWidth="350.0">
                      <children>
-                        <ImageView fx:id="btn_Search" fitHeight="16.0" fitWidth="16.0" layoutX="21.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="20.0">
+                        <ImageView fx:id="btn_Search" fitHeight="16.0" fitWidth="16.0" layoutX="29.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="29.0">
                            <image>
                               <Image url="@../../images/search.png" />
                            </image>
                            <cursor>
-                              <Cursor fx:constant="HAND" />
+                              <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </ImageView>
-                        <JFXTextField fx:id="inputText" focusColor="#3b86ff" labelFloat="true" layoutX="50.0" layoutY="15.0" prefHeight="25.0" prefWidth="186.0" promptText="Busacar ..." styleClass="text-field" stylesheets="@../../css/Ventas/Ventas_Compras.css" unFocusColor="WHITE" />
+                        <JFXTextField fx:id="inputText" focusColor="#3b86ff" labelFloat="true" layoutX="50.0" layoutY="15.0" prefHeight="25.0" prefWidth="186.0" promptText="Busacar por Nombre" styleClass="text-field" stylesheets="@../../css/Ventas/Ventas_Compras.css" unFocusColor="WHITE" />
                         <JFXToggleButton fx:id="searchByCode" alignment="CENTER_LEFT" layoutX="239.0" layoutY="1.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" size="5.0" text="Código" textFill="#a1a1a1" toggleColor="#3b86ff" toggleLineColor="#c3daff" unToggleColor="#a3a0fb" unToggleLineColor="#5f5e90">
                            <font>
                               <Font size="13.0" />
@@ -70,9 +70,15 @@
                      </styleClass></JFXListView>
                   <AnchorPane layoutY="429.0" prefHeight="128.0" prefWidth="350.0">
                      <children>
-                        <TextField fx:id="Name_Product" layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8;" />
-                        <TextField fx:id="Description_Product" layoutX="25.0" layoutY="52.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8;" />
-                        <JFXButton fx:id="btn_SelectProduct" contentDisplay="CENTER" layoutX="110.0" layoutY="84.0" mnemonicParsing="false" ripplerFill="#1062e5" style="-fx-background-color: #3B86FF; -fx-border-radius: 10px;" text="Agregar Producto" textFill="WHITE">
+                        <TextField fx:id="Name_Product" layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                           <font>
+                              <Font size="13.0" />
+                           </font></TextField>
+                        <TextField fx:id="Description_Product" layoutX="25.0" layoutY="52.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                           <font>
+                              <Font size="13.0" />
+                           </font></TextField>
+                        <JFXButton fx:id="btn_SelectProduct" contentDisplay="CENTER" layoutX="110.0" layoutY="91.0" mnemonicParsing="false" ripplerFill="#1062e5" style="-fx-background-color: #3B86FF; -fx-border-radius: 10px;" text="Agregar Producto" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<StackPane id="ContenedorPrincipal" prefHeight="1339.0" prefWidth="790.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
+<StackPane id="ContenedorPrincipal"
+           prefHeight="1339.0" prefWidth="790.0"
+           styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
 
 
     <children>

@@ -1,13 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="PanelPricipalContenedor" maxHeight="-Infinity" maxWidth="-Infinity"
+           minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Compras.ModalAddCompras">
    <children>
-      <Button layoutX="102.0" layoutY="147.0" mnemonicParsing="false" text="Button" />
+      <AnchorPane fx:id="SegundoPanelContenedorAnchor">
+         <children>
+            <AnchorPane layoutX="943.0" layoutY="143.0" prefHeight="479.0" prefWidth="370.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <HBox prefHeight="65.0" prefWidth="370.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Label prefHeight="65.0" prefWidth="142.0" text="Opciones">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children></HBox>
+                  <VBox prefHeight="414.0" prefWidth="370.0" style="-fx-background-color: #fff;" AnchorPane.topAnchor="65.0">
+                     <children>
+                        <Line endX="355.0294494628906" endY="-4.071065902709961" opacity="0.2" startX="8.736543655395508" startY="-4.071066856384277">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Line>
+                        <JFXButton fx:id="btnNuevaComprra" prefHeight="40.0" prefWidth="329.0" ripplerFill="#05d016" text="Nueva Compra">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/Add_32.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children></VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="496.0" prefWidth="808.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="475.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <HBox layoutX="150.0" layoutY="2.0" prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Compras" wrappingWidth="156.13671875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children></HBox>
+                  <AnchorPane layoutX="5.0" layoutY="70.0" prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+                     <children>
+                        <AnchorPane prefHeight="40.0" style="-fx-background-color: #F5F6FA;" AnchorPane.bottomAnchor="391.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
+               </children></AnchorPane>
+         </children></AnchorPane>
+
+
    </children>
-</AnchorPane>
+</StackPane>

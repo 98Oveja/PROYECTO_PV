@@ -1,6 +1,5 @@
 package controllers.Ventas;
 import com.jfoenix.controls.*;
-import controllers.AlertaController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,9 +19,7 @@ import models.Ventas_Compras.Ventas;
 import utils.ConsultasVentasCompras;
 import utils.LoadModalesMovibles;
 import utils.ValidacionesGenerales;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -40,10 +37,8 @@ public class ModalVentas implements Initializable{
     @FXML public JFXTextField precio_text;
     @FXML public JFXTextField cantidad_text;
     @FXML public JFXTextField disponibilidad_text;
+    @FXML public JFXTextField ClienteText;
 
-
-    @FXML public Label MensajedeAlertaCampos;
-    @FXML public JFXProgressBar barradeProgresoAlerta;
     @FXML public JFXDatePicker fecha_text;
     @FXML public BorderPane borderPVentas;
     @FXML public JFXComboBox<String> listadoClientes;
@@ -58,8 +53,9 @@ public class ModalVentas implements Initializable{
     @FXML public TableColumn colSubtotal;
     @FXML public TableColumn colEditar;
     @FXML public TableColumn colEliminar;
-    @FXML public JFXTextField ClienteText;
     @FXML public ImageView buscar;
+    @FXML public JFXCheckBox autoRellenar;
+
     Ventas ventas = new Ventas();
     Ventas ventas1,ventasAuxiliar;
     private ObservableList<Ventas> ventasObservableList;
@@ -118,7 +114,6 @@ public class ModalVentas implements Initializable{
     }
     public void activarNodos(){
         Image imagemodal = new Image("images/info.png");
-        Image imageClose = new Image("images/cancel_32.png");
         LoadModalesMovibles.LoadAlert(
                 getClass().getResource("/fxml/Alertas.fxml"),
                 "Verificación",
@@ -126,26 +121,49 @@ public class ModalVentas implements Initializable{
                         "esten llenos.\n"+
                         "Para poder continuar preciona"+"\nsobre cualquier Boton",
                 imagemodal,
-                imageClose,
                 null
         );
     }
     public void desactivarNodos(){
-        MensajedeAlertaCampos.setVisible(false);
-        barradeProgresoAlerta.setVisible(false);
         addNewCustomer.setDisable(true);
         listadoClientes.setDisable(true);
         telefono_text.setDisable(true);
         direccion_text.setDisable(true);
         nit_text.setDisable(true);
         fecha_text.setDisable(true);
+        ClienteText.setDisable(true);
+        autoRellenar.setDisable(true);
     }
-//    ConsultasVentasCompras consultasVentasCompras = new ConsultasVentasCompras();
+    public void autoRellenarCampos(){
+        this.ClienteText.setText("Consumidor Final");
+        this.direccion_text.setText("Ciudad");
+        this.telefono_text.setText("00000000");
+        this.nit_text.setText("C/F");
+    }
+    public void vaciarautoRellenarCampos(){
+        this.ClienteText.setText("");
+        this.direccion_text.setText("");
+        this.telefono_text.setText("");
+        this.nit_text.setText("");
+    }
+
+//    geters and seters
+    public void setdisponibilidad_text(String diponibilidad){this.disponibilidad_text.setText(diponibilidad);}
+    public void setprecio_text(String precio){this.precio_text.setText(precio);}
+    public void setCodigoProducto(String codigo){this.CODIGOPRODUCTO = codigo;}
+    public void setdescripcion_text(String descipcion){this.descripcion_text.setText(descipcion);}
+//    public String getDisponibilidad(){return this.disponibilidad_text.getText();}
+//    public String getPrecio(){return this.precio_text.getText();}
+//    public String getCodigoProducto(){return CODIGOPRODUCTO;}
+    public String getDescripcion(){return descripcion_text.getText();}
+    public void setProductoinComboBox(String producto){this.listadoProductos.setValue(producto);}
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
 //      ACCIONES DE LOS BOTONES Y OTROS COMPONENTES DENTRO DEL MODAL
         buscar.setOnMouseClicked(mouseEvent -> {
-            LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/BusquedaProductos.fxml"),
+            BusquedaProductoControllers busquedas =
+                    (BusquedaProductoControllers) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/BusquedaProductos.fxml"),
                     null);
+            busquedas.setControllerModalVenta(this);
         });
         tablaDetalle.setOnMouseClicked(mouseEvent -> {
             Ventas vp = tablaDetalle.getSelectionModel().getSelectedItem();
@@ -159,12 +177,11 @@ public class ModalVentas implements Initializable{
         });
         btnCerrarModal.setOnAction(actionEvent -> {
             Image imageModal = new Image("/images/info.png");
-            Image imageClose = new Image("/images/icon_close.png");
+
             LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
                     "Cerra el Panel",
                     "¿Estas seguro de cerra el Panel?",
                     imageModal,
-                    imageClose,
                     borderPVentas);
         });
         addNewCustomer.setOnAction(actionEvent -> {
@@ -227,9 +244,9 @@ public class ModalVentas implements Initializable{
             String[] SeparadaCadena = Nombre_Apellido_Cliente.split(" ");
             String nombreCliente = SeparadaCadena[0];
             String apelliCliente = SeparadaCadena[1];
-            ClienteText.setText(nombreCliente + apelliCliente);
+            ClienteText.setText(nombreCliente +" "+ apelliCliente);
             search_id = ConsultasVentasCompras.getIdCostumerInDB(nombreCliente,apelliCliente);
-            result_querys = ventas.getCustomerDatabyId(search_id);
+            result_querys = ConsultasVentasCompras.getCustomerDatabyId(search_id);
             Datos_de_las_Querys = result_querys.get(0).toString();
             String[] getAllDataCustomer = Datos_de_las_Querys.split("#");
             telefono_text.setText(getAllDataCustomer[0]);
@@ -249,19 +266,21 @@ public class ModalVentas implements Initializable{
             System.out.println("El nombre de la marca es el: "+ConsultasVentasCompras.getNameMarcabyID(contenedorConsultaProducto[4]));
             cantidad_text.requestFocus();
         });
+        autoRellenar.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if(autoRellenar.isSelected()){
+                autoRellenarCampos();
+            } else{
+                vaciarautoRellenarCampos();
+            }
+        });
 //      ASIGNACION DE VALORES INICIALES
-        MensajedeAlertaCampos.setText("");
-        MensajedeAlertaCampos.setVisible(false);
-        barradeProgresoAlerta.setVisible(false);
         descripcion_text.setEditable(false);
         precio_text.setEditable(false);
         disponibilidad_text.setEditable(false);
-//        descuento_text.setText("0");
 //      VALIDACIONES EXTERNAS
         ValidacionesGenerales.validarNumTelefono(telefono_text,8);
         ValidacionesGenerales.validarNit(nit_text);
         ValidacionesGenerales.validarSoloNumerosJfoenix(cantidad_text);
-//        ventas.validarSoloNumeros(descuento_text);
 //      CARGANDO LOS METODOS PROPIOS
         mostrarFecha();
         cargarClientes();

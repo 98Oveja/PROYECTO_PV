@@ -47,7 +47,7 @@ public class LoadModalesMovibles {
     }
 //CARGAR MODAL DE ALERTA
     public static void LoadAlert(URL fxmlAlerta, String TituloModal, String CuerpoModal,
-                                 Image imgModal, Image imgClose, Node PanelaCerrar){
+                                 Image imgModal, Node PanelaCerrar){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlAlerta);
             Parent parent = fxmlLoader.load();
@@ -65,7 +65,7 @@ public class LoadModalesMovibles {
                 finalStage.setX(mouseEvent.getScreenX() - posicionX);
                 finalStage.setY(mouseEvent.getScreenY()- posicionY);
             });
-            alert.setTitleBody(TituloModal,CuerpoModal,imgModal,imgClose);
+            alert.setTitleBody(TituloModal,CuerpoModal,imgModal);
             if (PanelaCerrar != null){alert.setContainerBack(PanelaCerrar);}
             stage.setScene(scene);
             stage.showAndWait();

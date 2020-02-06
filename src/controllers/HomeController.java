@@ -149,6 +149,7 @@ return;
                 avalibleButton(5);
                 break;
             case "Compras":
+                setVista("/fxml/Compras/ModalAddCompras.fxml");
                 avalibleLabel(6);
                 avalibleButton(6);
                 break;

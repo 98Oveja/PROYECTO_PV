@@ -111,188 +111,188 @@ public class Ventas{
     });
     }
 
-
-    //METODOS PARA LAS VALIDADCIONES
-public void validarSoloLetras(TextField campoDeTexto) {
-   campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
-     char c = event.getCharacter().charAt(0);
-      if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
-          event.consume();
-      }
-//       if (event.getCode() == KeyCode.ENTER ){
-//           focus.requestFocus();
+//
+//    //METODOS PARA LAS VALIDADCIONES
+//public void validarSoloLetras(TextField campoDeTexto) {
+//   campoDeTexto.addEventFilter(KeyEvent.ANY, event -> {
+//     char c = event.getCharacter().charAt(0);
+//      if (!(Character.isLetter(c)|| Character.isWhitespace(c) || Character.isISOControl(c))){
+//          event.consume();
+//      }
+////       if (event.getCode() == KeyCode.ENTER ){
+////           focus.requestFocus();
+////       }
+//   });
+//}
+//public void validarSoloNumeros(TextField campo){
+//   campo.addEventFilter(KeyEvent.ANY, event ->{
+//     char c = event.getCharacter().charAt(0);
+//      if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+//          event.consume();
+//      }
+//      if (c == '.' && campo.getText().contains(".")){
+//          event.consume();
+//      }
+//   });
+//}
+//public void validarSoloNumerosJfoenix(JFXTextField campo){
+//        campo.addEventFilter(KeyEvent.ANY, event ->{
+//            char c = event.getCharacter().charAt(0);
+//            if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
+//                event.consume();
+//            }
+//            if (c == '.' && campo.getText().contains(".")){
+//                event.consume();
+//            }
+//        });
+//    }
+//public void validarNit(TextField campo){
+//    campo.addEventFilter(KeyEvent.ANY, event ->{
+//        char c = event.getCharacter().charAt(0);
+//        if (!(Character.isDigit(c) || Character.isWhitespace(c)
+//                || Character.isISOControl(c)) && c!='-'){
+//            event.consume();
+//        }
+//        if (c == '-' && campo.getText().contains("-")){
+//            event.consume();
+//        }
+//    });
+//}
+//public void validarNumTelefono(TextField campo, int tamanio){
+//        campo.addEventFilter(KeyEvent.ANY, event ->{
+//            char c = event.getCharacter().charAt(0);
+//            int tamCampo = campo.getText().length();
+//            if (Character.isDigit(c) || Character.isISOControl(c)) {
+//                if (tamCampo >= tamanio && !(Character.isISOControl(c))) {event.consume();}
+//            }else{event.consume();}
+//        });
+//    }
+//public boolean camposVacios(TextField jfxTextField){
+//    return jfxTextField.getLength()!=0?true:false;
+//}
+////  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
+//public String getIdCostumerInDB(String Nombre, String Apellido) {
+//    try {
+//        resultQuery = "";
+//        String sql = "{?= call getIdCostumerbyName(?,?)}";
+//        callableStatement = connection.prepareCall(sql);
+//        callableStatement.registerOutParameter(1, Types.INTEGER);
+//        callableStatement.setString(2, Nombre);
+//        callableStatement.setString(3, Apellido);
+//        callableStatement.execute();
+//        resultQuery = callableStatement.getString(1);
+//    } catch (SQLException e) {
+//        System.out.println("I can't get the customer's ID: " + e.getMessage());
+//    }
+//    return resultQuery;
+//}
+//public ArrayList listadoClientes() {
+//        try {
+//            dataContainer.clear();
+//            resultQuery = "";
+//            String sql = "{call selectAllCostumers()}";
+//             statement = connection.createStatement();
+//             resultSet = statement.executeQuery(sql);
+//            while (resultSet.next()) {
+//                resultQuery = resultSet.getString("PRIMER_NOMBRE") + " " + resultSet.getString("PRIMER_APELLIDO");
+//                dataContainer.add(resultQuery);
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Error loading all Customers: " + e.getMessage());
+//        }
+//    return dataContainer;
+//}
+//public ArrayList listaProductos() {
+//   try {
+//       dataContainer.clear();
+//       resultQuery = "";
+//       String sql = "{call selectAllProducts()}";
+//       statement = connection.createStatement();
+//       resultSet = statement.executeQuery(sql);
+//       while (resultSet.next()) {
+//           resultQuery = resultSet.getString("NOMBRE");
+//           dataContainer.add(resultQuery);
 //       }
-   });
-}
-public void validarSoloNumeros(TextField campo){
-   campo.addEventFilter(KeyEvent.ANY, event ->{
-     char c = event.getCharacter().charAt(0);
-      if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
-          event.consume();
-      }
-      if (c == '.' && campo.getText().contains(".")){
-          event.consume();
-      }
-   });
-}
-public void validarSoloNumerosJfoenix(JFXTextField campo){
-        campo.addEventFilter(KeyEvent.ANY, event ->{
-            char c = event.getCharacter().charAt(0);
-            if (!(Character.isDigit(c) || Character.isWhitespace(c) || Character.isISOControl(c)) && c!='.'){
-                event.consume();
-            }
-            if (c == '.' && campo.getText().contains(".")){
-                event.consume();
-            }
-        });
-    }
-public void validarNit(TextField campo){
-    campo.addEventFilter(KeyEvent.ANY, event ->{
-        char c = event.getCharacter().charAt(0);
-        if (!(Character.isDigit(c) || Character.isWhitespace(c)
-                || Character.isISOControl(c)) && c!='-'){
-            event.consume();
-        }
-        if (c == '-' && campo.getText().contains("-")){
-            event.consume();
-        }
-    });
-}
-public void validarNumTelefono(TextField campo, int tamanio){
-        campo.addEventFilter(KeyEvent.ANY, event ->{
-            char c = event.getCharacter().charAt(0);
-            int tamCampo = campo.getText().length();
-            if (Character.isDigit(c) || Character.isISOControl(c)) {
-                if (tamCampo >= tamanio && !(Character.isISOControl(c))) {event.consume();}
-            }else{event.consume();}
-        });
-    }
-public boolean camposVacios(TextField jfxTextField){
-    return jfxTextField.getLength()!=0?true:false;
-}
-//  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
-public String getIdCostumerInDB(String Nombre, String Apellido) {
-    try {
-        resultQuery = "";
-        String sql = "{?= call getIdCostumerbyName(?,?)}";
-        callableStatement = connection.prepareCall(sql);
-        callableStatement.registerOutParameter(1, Types.INTEGER);
-        callableStatement.setString(2, Nombre);
-        callableStatement.setString(3, Apellido);
-        callableStatement.execute();
-        resultQuery = callableStatement.getString(1);
-    } catch (SQLException e) {
-        System.out.println("I can't get the customer's ID: " + e.getMessage());
-    }
-    return resultQuery;
-}
-public ArrayList listadoClientes() {
-        try {
-            dataContainer.clear();
-            resultQuery = "";
-            String sql = "{call selectAllCostumers()}";
-             statement = connection.createStatement();
-             resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                resultQuery = resultSet.getString("PRIMER_NOMBRE") + " " + resultSet.getString("PRIMER_APELLIDO");
-                dataContainer.add(resultQuery);
-            }
-        } catch (SQLException e) {
-            System.out.println("Error loading all Customers: " + e.getMessage());
-        }
-    return dataContainer;
-}
-public ArrayList listaProductos() {
-   try {
-       dataContainer.clear();
-       resultQuery = "";
-       String sql = "{call selectAllProducts()}";
-       statement = connection.createStatement();
-       resultSet = statement.executeQuery(sql);
-       while (resultSet.next()) {
-           resultQuery = resultSet.getString("NOMBRE");
-           dataContainer.add(resultQuery);
-       }
-   } catch (SQLException e) {
-       System.out.println("Error loading all Products: " + e.getMessage());
-   }
-   return dataContainer;
-}
-public ArrayList getCustomerDatabyId(String idCliente) {
-   try{
-       dataContainer.clear();
-       resultQuery = "";
-       callableStatement = connection.prepareCall("{call consutaNitDirTelCliente (?)}");
-       callableStatement.setInt(1, Integer.parseInt(idCliente));
-       resultSet = callableStatement.executeQuery();
-       while (resultSet.next()) {
-           dataContainer.add(resultSet.getString("TELEFONO")+"#"+
-                             resultSet.getString("DIRECCION")+"#"+
-                             resultSet.getString("NIT"));
-       }
-   } catch (SQLException e) {
-       System.out.println("I can't get the Customer's Data : "+e.getMessage());
-   }
-   return dataContainer;
-}
-public ArrayList getProductByName(String thisProduct){
-    try{
-        dataContainer.clear();
-        resultQuery = "";
-        callableStatement = connection.prepareCall("{call getDataProductsByNameProd(?)}");
-        callableStatement.setString(1, thisProduct);
-        resultSet = callableStatement.executeQuery();
-        while (resultSet.next()) {
-            dataContainer.add(resultSet.getString("DISPONIBILIDAD")+"#"+
-                    resultSet.getString("PRECIO_VENTA")+"#"+
-                    resultSet.getString("CODIGO")+"#"+
-                    resultSet.getString("DESCRIPCION"));
-
-        }
-    } catch (SQLException e) {
-        System.out.println("I can't get the Product's Data : "+e.getMessage());
-    }
-    return dataContainer;
-}
-    public String calculoDeSubtotal(String precioin, String cantidadin){
-    double precioProd = Double.parseDouble(precioin);
-    double cantidad = Double.parseDouble(cantidadin);
-    double subTotalSinDescuento = (precioProd * cantidad);
-    DecimalFormat decimalFormat = new DecimalFormat("#.00");
-    String sub = String.valueOf(decimalFormat.format(subTotalSinDescuento));
-    return sub;
-    }
-
-//SUBTOTAL PARA LOS PRODUCTOS
-    public String CalculoTotalConDescuento(String Totales, String descuentoin){
-    double TotalSum = Double.parseDouble(Totales);
-    double descuento = Double.parseDouble(descuentoin)/100;
-    double elDescuento = TotalSum*descuento;
-    double TotalConDescuento = TotalSum-elDescuento;
-    DecimalFormat decimalFormat = new DecimalFormat("#.00");
-    String sub = String.valueOf(decimalFormat.format(TotalConDescuento));
-    return sub;
-    }
-
-
-
-
-//  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
-//  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
-//Manera en que almacenamos los datos en la base de datos
-public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalVenta){
-    try {
-        String sql = "{call insertVentas(?,?,?)}";
-        callableStatement = connection.prepareCall(sql);
-        callableStatement.setInt(1,idClienteG);
-        callableStatement.setInt(2, idEmpleadoG);
-        callableStatement.setDouble(3, totalVenta);
-        callableStatement.execute();
-    } catch (SQLException e) {
-        return ("Error isert Ventas: " + e.getMessage());
-    }
-    return "Venta Gurdada en la BD";
-}
+//   } catch (SQLException e) {
+//       System.out.println("Error loading all Products: " + e.getMessage());
+//   }
+//   return dataContainer;
+//}
+//public ArrayList getCustomerDatabyId(String idCliente) {
+//   try{
+//       dataContainer.clear();
+//       resultQuery = "";
+//       callableStatement = connection.prepareCall("{call consutaNitDirTelCliente (?)}");
+//       callableStatement.setInt(1, Integer.parseInt(idCliente));
+//       resultSet = callableStatement.executeQuery();
+//       while (resultSet.next()) {
+//           dataContainer.add(resultSet.getString("TELEFONO")+"#"+
+//                             resultSet.getString("DIRECCION")+"#"+
+//                             resultSet.getString("NIT"));
+//       }
+//   } catch (SQLException e) {
+//       System.out.println("I can't get the Customer's Data : "+e.getMessage());
+//   }
+//   return dataContainer;
+//}
+//public ArrayList getProductByName(String thisProduct){
+//    try{
+//        dataContainer.clear();
+//        resultQuery = "";
+//        callableStatement = connection.prepareCall("{call getDataProductsByNameProd(?)}");
+//        callableStatement.setString(1, thisProduct);
+//        resultSet = callableStatement.executeQuery();
+//        while (resultSet.next()) {
+//            dataContainer.add(resultSet.getString("DISPONIBILIDAD")+"#"+
+//                    resultSet.getString("PRECIO_VENTA")+"#"+
+//                    resultSet.getString("CODIGO")+"#"+
+//                    resultSet.getString("DESCRIPCION"));
+//
+//        }
+//    } catch (SQLException e) {
+//        System.out.println("I can't get the Product's Data : "+e.getMessage());
+//    }
+//    return dataContainer;
+//}
+//    public String calculoDeSubtotal(String precioin, String cantidadin){
+//    double precioProd = Double.parseDouble(precioin);
+//    double cantidad = Double.parseDouble(cantidadin);
+//    double subTotalSinDescuento = (precioProd * cantidad);
+//    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+//    String sub = String.valueOf(decimalFormat.format(subTotalSinDescuento));
+//    return sub;
+//    }
+//
+////SUBTOTAL PARA LOS PRODUCTOS
+//    public String CalculoTotalConDescuento(String Totales, String descuentoin){
+//    double TotalSum = Double.parseDouble(Totales);
+//    double descuento = Double.parseDouble(descuentoin)/100;
+//    double elDescuento = TotalSum*descuento;
+//    double TotalConDescuento = TotalSum-elDescuento;
+//    DecimalFormat decimalFormat = new DecimalFormat("#.00");
+//    String sub = String.valueOf(decimalFormat.format(TotalConDescuento));
+//    return sub;
+//    }
+//
+//
+//
+//
+////  CALULANDO EL SUB TOTAL PARA LOS PRODUCTOS DE ACUERDO AL PRECIO DE VETA Y LA CANTIDAD QUE SE VA A VENDER
+////  TAMBIEN HARA LA ACTUALIZACION A LA CANTIDAD DE PRODUCTO EN LA BASE DE DATOS
+////Manera en que almacenamos los datos en la base de datos
+//public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalVenta){
+//    try {
+//        String sql = "{call insertVentas(?,?,?)}";
+//        callableStatement = connection.prepareCall(sql);
+//        callableStatement.setInt(1,idClienteG);
+//        callableStatement.setInt(2, idEmpleadoG);
+//        callableStatement.setDouble(3, totalVenta);
+//        callableStatement.execute();
+//    } catch (SQLException e) {
+//        return ("Error isert Ventas: " + e.getMessage());
+//    }
+//    return "Venta Gurdada en la BD";
+//}
 //    GETERS
     public int getNumero() {return Numero;}
     public String getCodigoProducto(){return CodigoProducto;}
