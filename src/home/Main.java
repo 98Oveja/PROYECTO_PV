@@ -3,11 +3,9 @@ package home;
 import controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import navigator.ViewNavigator;
 
 import java.io.IOException;
@@ -16,33 +14,23 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        /*stage.setScene(
+        stage.setScene(
             createScene(
                 loadMainPane()
             )
-        ); */
+        );
+        //stage.setResizable(false);
         //stage.initStyle(StageStyle.UNDECORATED);
-        //stage.show();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/ProductosV2/Products.fxml"));
-        stage.setTitle("Products V-2.0");
-        stage.setScene(new Scene(root, 300, 275));
         stage.show();
     }
 
-    /**
-     * Loads the main fxml layout.
-     * Sets up the vista switching navigator.VistaNavigator.
-     * Loads the first vista into the fxml layout.
-     *
-     * @return the loaded pane.
-     * @throws IOException if the pane could not be loaded.
-     */
     private Pane loadMainPane() throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
         Pane mainPane = (Pane) loader.load(
             getClass().getResourceAsStream(
-                ViewNavigator.MAIN_LOGIN
+
+                    ViewNavigator.MAIN_LOGIN
             )
         );
 
@@ -54,13 +42,6 @@ public class Main extends Application {
         return mainPane;
     }
 
-    /**
-     * Creates the main application scene.
-     *
-     * @param mainPane the main application layout.
-     *
-     * @return the created scene.
-     */
     private Scene createScene(Pane mainPane) {
         Scene scene = new Scene(
             mainPane
@@ -69,7 +50,6 @@ public class Main extends Application {
         scene.getStylesheets().setAll(
             getClass().getResource("/css/main.css").toExternalForm()
         );
-
         return scene;
     }
 

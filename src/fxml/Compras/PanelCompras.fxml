@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Compras.ModalAddCompras">
+    <top>
+        <TextFlow nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1200.0" styleClass="headerGridFerreteria" BorderPane.alignment="CENTER">
+            <children>
+                <Button id="Btn_CloseModal" fx:id="btnCerrarModal" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="btn_CloseModal" translateX="1160.0" translateY="-10.0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/cancel_32.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Label text="Ferreteria" textAlignment="CENTER" textFill="WHITE" translateX="525.0">
+                    <font>
+                        <Font size="33.0" />
+                    </font>
+                </Label>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </TextFlow>
+    </top>
+    <center>
+        <GridPane alignment="CENTER" hgap="40.0" prefHeight="800.0" prefWidth="1160.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="695.0" minWidth="10.0" prefWidth="565.6666870117188" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.3333129882812" minWidth="10.0" prefWidth="554.3333129882812" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="297.6666564941406" minHeight="10.0" prefHeight="252.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="540.0" minHeight="10.0" prefHeight="447.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="360.6666564941406" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <VBox prefHeight="197.0" prefWidth="600.0" styleClass="headerGridFerreteria">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="182.0" text="Datos del Proveedor" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                  <AnchorPane prefHeight="241.0" prefWidth="565.0">
+                     <children>
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="59.0" prefHeight="37.0" prefWidth="304.0" promptText="Dirección" />
+                        <JFXComboBox labelFloat="true" layoutX="14.0" layoutY="9.0" prefHeight="30.0" prefWidth="305.0" promptText="Proveedor" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="114.0" promptText="Teléfono" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="174.0" promptText="No. De Cuenta" />
+                        <JFXTextField labelFloat="true" layoutX="334.0" layoutY="59.0" prefHeight="37.0" prefWidth="223.0" promptText="Org" />
+                        <JFXDatePicker layoutX="385.0" layoutY="10.0" prefHeight="28.0" prefWidth="170.0" promptText="Fecha" />
+                        <JFXButton layoutX="327.0" layoutY="1.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="WHITE" text="+" textFill="#1aff00">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                    </children>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </VBox>
+                <VBox prefHeight="214.0" prefWidth="554.0" styleClass="headerGridFerreteria" GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Datos Productos" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="5.0" />
+                            </VBox.margin>
+                        </Label>
+                  <AnchorPane prefHeight="249.0" prefWidth="555.0">
+                     <children>
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="48.0" prefHeight="37.0" prefWidth="532.0" promptText="Descripción" />
+                        <JFXComboBox labelFloat="true" layoutX="14.0" layoutY="-1.0" prefHeight="30.0" prefWidth="330.0" promptText="Producto" />
+                        <JFXButton layoutX="344.0" layoutY="-10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="41.0" ripplerFill="#202c72" text="+" textFill="#1aff00">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Compra" />
+                        <JFXTextField labelFloat="true" layoutX="145.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Precio Venta" />
+                        <JFXTextField labelFloat="true" layoutX="396.0" layoutY="-4.0" prefHeight="37.0" prefWidth="146.0" promptText="Disponibilidad" />
+                        <JFXTextField labelFloat="true" layoutX="285.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Cantidad" />
+                        <JFXTextField labelFloat="true" layoutX="423.0" layoutY="103.0" prefHeight="37.0" prefWidth="118.0" promptText="Código" />
+                        <JFXTextField labelFloat="true" layoutX="14.0" layoutY="154.0" prefHeight="37.0" prefWidth="251.0" promptText="Marca" />
+                        <JFXButton layoutX="365.0" layoutY="173.0" mnemonicParsing="false" ripplerFill="#ff4f4f" style="-fx-background-color: #FF6565;" text="Agregar a la Compra" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children></AnchorPane>
+                    </children></VBox>
+                <AnchorPane prefHeight="457.0" prefWidth="1150.0" style="-fx-background-color: #ffffff;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                    </GridPane.margin>
+                    <children>
+                        <HBox fx:id="HBoxPanel" prefHeight="40.0" prefWidth="1130.0" styleClass="HeaderTablaDetalleVenta" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label prefHeight="67.0" prefWidth="179.0" styleClass="TituloTablaDetalle" text="Detalle Compra" textFill="#4d4f5c" />
+                                <Label fx:id="MensajedeAlertaCampos" alignment="CENTER" prefHeight="43.0" prefWidth="277.0" text="Mensaje de Alerta" textAlignment="CENTER" textFill="#f80000" translateX="640.0" translateY="5.0">
+                                    <font>
+                                        <Font name="Serif Bold Italic" size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXProgressBar fx:id="barradeProgresoAlerta" prefHeight="1.0" prefWidth="242.0" translateX="390.0" translateY="55.0" />
+                            </children>
+                        </HBox>
+                        <TableView fx:id="tablaDetalle" editable="true" layoutX="4.0" layoutY="68.0" prefHeight="322.0" prefWidth="1145.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
+                            <columns>
+                                <TableColumn fx:id="colNumero" editable="false" prefWidth="45.0" resizable="false" text="NO" />
+                                <TableColumn fx:id="colCantidad" editable="false" prefWidth="82.0" resizable="false" text="CANTIDAD" />
+                                <TableColumn fx:id="colCodigo" editable="false" prefWidth="75.0" resizable="false" text="CÓDIGO" />
+                                <TableColumn fx:id="colProducto" editable="false" prefWidth="539.0" resizable="false" text="PRODUCTO" />
+                                <TableColumn fx:id="colPrecio" editable="false" minWidth="0.0" prefWidth="129.0" resizable="false" sortable="false" text="PRECIO UNITARIO" />
+                                <TableColumn fx:id="colSubtotal" editable="false" prefWidth="89.0" resizable="false" sortable="false" text="SUB TOTAL" />
+                                <TableColumn fx:id="colEditar" editable="false" resizable="false" sortable="false" text="EDITAR" />
+                                <TableColumn fx:id="colEliminar" editable="false" prefWidth="86.0" resizable="false" sortable="false" text="ELIMINAR" />
+                            </columns>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                            <styleClass>
+                                <String fx:value="table-cell" />
+                                <String fx:value="table-row-cell" />
+                            </styleClass>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                    <children>
+                        <JFXButton fx:id="btn_venderTodo" layoutX="171.0" layoutY="15.0" prefHeight="71.0" prefWidth="180.0" style="-fx-background-color: #1062E5;" text="Vender" textAlignment="CENTER" textFill="WHITE" translateX="490.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
+            </children>
+            <BorderPane.margin>
+                <Insets left="20.0" right="20.0" top="5.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </center>
+</BorderPane>

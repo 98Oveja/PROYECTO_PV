@@ -37,7 +37,7 @@ public class NewProduct implements Initializable {
 
     public void AgregarImagen(ActionEvent actionEvent) {
         ImageChooser imageChooser = new ImageChooser();
-        imagenphoto=imageChooser.getImage();
+        imagenphoto = imageChooser.getImage();
         Image image = new Image("file:/"+imagenphoto);
         Photo.setImage(image);
     }
@@ -50,8 +50,11 @@ public class NewProduct implements Initializable {
     }
 
     public void insertproducto(){
-        String Query= "INSERT INTO PRODUCTOS(ID_MARCA, NOMBRE, DESCRIPCION, CODIGO, DISPONIBILIDAD, UNIDAD_DE_MEDICION, PRECIO_COMPRA, PRECIO_VENTA, IMG)\n" +
-                "VALUES ((SELECT ID_MARCA FROM MARCAS WHERE MARCA='"+Marca.getValue()+"'),'"+Nombre.getText()+"','"+Descripcion.getText()+"','"+CodigoProducto.getText()+"',"+Disponibilidad.getText()
+        if(imagenphoto.contains("\\") && imagenphoto != null){
+            imagenphoto = imagenphoto.replace("\\","*");
+        }
+        String Query= "INSERT INTO PRODUCTOS(ID_MARCA, NOMBRE, DESCRIPCION, CODIGO_PRODUCTO, DISPONIBILIDAD, UNIDAD_DE_MEDICION, PRECIO_COMPRA, PRECIO_VENTA, IMG)\n" +
+                "VALUES ((SELECT ID_MARCA FROM MARCAS WHERE NOMBRE='"+Marca.getValue()+"'),'"+Nombre.getText()+"','"+Descripcion.getText()+"','"+CodigoProducto.getText()+"',"+Disponibilidad.getText()
                 +" ,'"+UnidadMedida.getValue()+"',"+PrecioCompra.getText()+","+PrecioVenta.getText()+",'"+imagenphoto+"');";
         try {
             conexion = conn.getConnection();
@@ -109,6 +112,7 @@ public class NewProduct implements Initializable {
             if (aux==1){
                 insertproducto();
                 insertCategoria();
+                cleartextFiel();
             }
         } else if (nombresProductos.contains(Nombre.getText().toUpperCase())) {
             Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
@@ -138,10 +142,10 @@ public class NewProduct implements Initializable {
     public void Marcas() {
         List<String> listmarcas = new ArrayList<String>();
         try {
-            ResultSet resultados = consultas("SELECT MARCA FROM MARCAS ORDER BY MARCA DESC;");
+            ResultSet resultados = consultas("SELECT NOMBRE FROM MARCAS ORDER BY NOMBRE DESC");
             if (resultados != null) {
                 while (resultados.next()) {
-                    listmarcas.add(resultados.getString("MARCA"));
+                    listmarcas.add(resultados.getString("NOMBRE"));
                 }
                 ObservableList<String> observableList = FXCollections.observableList(listmarcas);
                 Marca.setItems(observableList);
@@ -194,4 +198,20 @@ public class NewProduct implements Initializable {
             }
         }catch(SQLException e){}
     }
+
+    public void cleartextFiel(){
+    Nombre.clear();
+    Descripcion.clear();
+    Disponibilidad.clear();
+    PrecioCompra.clear();
+    PrecioVenta.clear();
+    CodigoProducto.clear();
+    Marca.setValue(null);
+    UnidadMedida.setValue(null);
+    UnidadMedida.setPromptText("Seleccione la uniadad de medida");
+    Photo.setImage(null);
+        for (int i = 0; i < arrayListCategoria.size(); i++) {
+            arrayListCategoria.get(i).setSelected(false);
+        }
     }
+}

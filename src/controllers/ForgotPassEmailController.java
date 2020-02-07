@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import utils.ConnectionUtil;
 
 import java.net.URL;
@@ -102,7 +101,7 @@ public class ForgotPassEmailController implements Initializable {
         txtCode.textProperty().addListener((Observable, oldValue, newValue) -> {
             code  = getCode();
             System.out.println(code);
-            System.out.println(newValue);
+            //System.out.println(newValue);
             if (newValue.equals(code)) {
                 System.out.println("son iguales");
                 lblStatus.setText("Verificacion aceptada :)");

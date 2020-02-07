@@ -1,5 +1,7 @@
 package controllers.Proveedores;
 
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +9,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+import utils.Consultas;
+import utils.Views;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,11 +34,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
-public class Principal implements Initializable{
+public class Principal implements Initializable, ControlledScreen {
+
+    public StackPane mainContainer;
     ArrayList<String> Proveedores = new ArrayList<String>();
-        ConnectionUtil conn = new ConnectionUtil();
-        Connection conexion = null;
+    ConnectionUtil conn = new ConnectionUtil();
+    Connection conexion = null;
+
+    ScreensController myController;
+
     @FXML private TextField labelSearch;
     @FXML private GridPane Pane;
     @FXML private Button activo, inactivo;
@@ -35,9 +54,14 @@ public class Principal implements Initializable{
     String Query2 = "SELECT PRIMER_NOMBRE, PRIMER_APELLIDO, DIRECCION, TELEFONO, url_foto, ORG, NO_CUENTA FROM PERSONAS INNER JOIN PROVEEDORES " +
             "WHERE PERSONAS.ID_PERSONA=PROVEEDORES.ID_PERSONA AND PROVEEDORES.ESTADO=0;";
 
+    double height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    double width = Toolkit.getDefaultToolkit().getScreenSize().width;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datos(Query1);
+        mainContainer.setPrefWidth(width-260);
+        mainContainer.setPrefHeight(height-110);
     }
     String getNombre(){return nombre;}
     String getDescripcion(){return descripcion;}
@@ -129,5 +153,10 @@ public class Principal implements Initializable{
         datos(Query1);
         activo.setStyle("-fx-font-size: 16px;    -fx-background-color: #3B86FF;");
         inactivo.setStyle(".boton-mini");
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

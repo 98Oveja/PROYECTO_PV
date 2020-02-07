@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.validation.*?>
+<?import com.jfoenix.validation.IntegerValidator?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-
-<StackPane id="ContenedorPrincipal" prefHeight="1339.0" prefWidth="790.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.VentasController">
+<?import javafx.scene.shape.Line?>
+<StackPane id="ContenedorPrincipal" prefHeight="1339.0" prefWidth="790.0" styleClass="panelPrincipal" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Ventas.VentasController">
 
 
     <children>

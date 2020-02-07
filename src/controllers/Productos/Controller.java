@@ -1,4 +1,7 @@
 package controllers.Productos;
+
+import controllers.ScreenController.ImplementsU.ControlledScreen;
+import controllers.ScreenController.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,19 +11,21 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.ConnectionUtil;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller implements Initializable, ControlledScreen {
     @FXML    private Button mini2,mini3,mini4,mini5,mini6,mini1,Activos;
     @FXML    private Pane P1,P2,P3,P4,P5;
     @FXML    private Button Inactivos;
@@ -49,7 +54,7 @@ public class Controller implements Initializable {
     @FXML    private Label DescripcionProducto;
     @FXML    private Button Edit1;          @FXML    private Button Edit2;      @FXML    private Button Edit3;
     @FXML    private Button Edit4;          @FXML    private Button Edit5;
-
+    ScreensController myController;
     int act = 1;
     ConnectionUtil conn = new ConnectionUtil();
     Connection conexion = null;
@@ -603,5 +608,9 @@ public class Controller implements Initializable {
         campo.addEventFilter(KeyEvent.ANY, event ->{
             searching();
         });
+    }
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

@@ -1,0 +1,151 @@
+package models.Employ;
+
+import utils.ConnectionUtil;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class sqlEmploy {
+    Date date =new Date();//varaiables para obtener la fecha actual del system
+    long milsec = date.getTime();
+    java.sql.Date dia = new java.sql.Date(milsec);
+    List<dataEmploy> data = new ArrayList<>();
+
+    public List<dataEmploy> searchData(String name) {
+        data.clear();
+        try {
+            ConnectionUtil connectionClass = new ConnectionUtil();
+            Connection connection = connectionClass.getConnection();
+            String Query = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, P.PRIMER_APELLIDO, " +
+                    "P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO " +
+                    "FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND PRIMER_NOMBRE like "+"'%"+name+"%'";
+            Statement instruccion = connection.createStatement();
+            ResultSet result = instruccion.executeQuery(Query);
+            if (result != null) {
+                while (result.next()) {
+                    dataEmploy xd = new dataEmploy();
+                    xd.idemp = result.getInt("ID_EMPLEADO");
+                    xd.idper = result.getInt("ID_PERSONA");
+                    xd.name1 = result.getString("PRIMER_NOMBRE");
+                    xd.name2 = result.getString("SEGUNDO_NOMBRE");
+                    xd.lastname1 = result.getString("PRIMER_APELLIDO");
+                    xd.lastname2 = result.getString("SEGUNDO_APELLIDO");
+                    xd.dir = result.getString("DIRECCION");
+                    xd.correo = result.getString("CORREO");
+                    xd.tel = result.getString("TELEFONO");
+                    xd.img = result.getString("url_foto");
+                    xd.estado = result.getBoolean("ESTADO");
+                    xd.fechaInicio = result.getString("FECHA_CONTRATACION");
+                    xd.cargo = result.getString("CARGO");
+                    data.add(xd);
+                }
+            }
+            instruccion.close();
+            return data;
+        } catch (Exception ex) {
+            System.out.println(ex +"error aqui");
+            return null;
+        }
+
+    }
+
+    public void updateEmploy(int id, int idemploy, String tel, String url,String place) throws SQLException {
+        url.replace("file:/","");
+        String urlimage= url.replace("\\","*");
+        ConnectionUtil connectionClass= new ConnectionUtil();
+        Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+        String sqlUpdate= "UPDATE PERSONAS SET TELEFONO ='"+tel+"', url_foto='"+urlimage+"'  WHERE PERSONAS.ID_PERSONA= "+id+";";
+        Statement statement= connection.createStatement();
+        statement.executeUpdate(sqlUpdate); //aca insertamos los dato
+        //esteremos realizando el segundo update para la tabla empleados
+        String sql2= "UPDATE EMPLEADOS SET CARGO='"+place+"' WHERE ID_EMPLEADO="+idemploy+"";
+        statement.executeUpdate(sql2);
+        statement.close();
+    }
+
+    public void deleteEmploy(int idemp, int status){
+            try{
+                ConnectionUtil connectionClass= new ConnectionUtil();
+                Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+                String sqlDelete= "UPDATE EMPLEADOS SET ESTADO = "+status+", FECHA_RETIRO = '"+dia+"' WHERE ID_EMPLEADO="+idemp+"";
+                Statement statement= connection.createStatement();
+                statement.executeUpdate(sqlDelete); //aca insertamos los dato
+                statement.close();
+            }catch (Exception ex){
+                System.out.println("ERROR EN DELETEeMPLOY "+ex);
+            }
+
+    }
+
+    public List<dataEmploy> employDB(int estado){
+        try {
+            data.clear();
+            ConnectionUtil connectionClass = new ConnectionUtil();
+            Connection connection = connectionClass.getConnection();
+            String sle = "SELECT E.ID_EMPLEADO, P.ID_PERSONA, P.PRIMER_NOMBRE, P.SEGUNDO_NOMBRE, " +
+                    "P.PRIMER_APELLIDO, P.SEGUNDO_APELLIDO, P.DIRECCION, P.CORREO, P.TELEFONO, P.url_foto, E.ESTADO, E.FECHA_CONTRATACION, E.CARGO FROM PERSONAS P , EMPLEADOS E WHERE E.ID_PERSONA = P.ID_PERSONA AND E.ESTADO= "+ estado +" ORDER BY ID_EMPLEADO desc";
+            Statement instruccion = connection.createStatement();
+            ResultSet resulte = instruccion.executeQuery(sle);
+            if (resulte != null) {
+                while (resulte.next()) {
+                    dataEmploy empl = new dataEmploy();
+                    empl.idemp = resulte.getInt("ID_EMPLEADO");
+                    empl.idper = resulte.getInt("ID_PERSONA");
+                    empl.name1 = resulte.getString("PRIMER_NOMBRE");
+                    empl.name2 = resulte.getString("SEGUNDO_NOMBRE");
+                    empl.lastname1 = resulte.getString("PRIMER_APELLIDO");
+                    empl.lastname2 = resulte.getString("SEGUNDO_APELLIDO");
+                    empl.dir = resulte.getString("DIRECCION");
+                    empl.correo = resulte.getString("CORREO");
+                    empl.tel = resulte.getString("TELEFONO");
+                    empl.img =  resulte.getString("url_foto");
+                    empl.estado = resulte.getBoolean("ESTADO");
+                    empl.fechaInicio = resulte.getString("FECHA_CONTRATACION");
+                    empl.cargo = resulte.getString("CARGO");
+                    data.add(empl);
+                }
+
+            }
+            instruccion.close();
+            return data;
+        } catch (Exception ex) {
+            System.out.println("linea 117 ******************************************" + ex);
+            return null;
+        }
+    }
+
+    public void insertEmploy(int idpersona, String firstName,String secondName,String firstLastName,String secondLastName,String direction, String numberPhone,String place, String email, String imEmploy){
+        String Nueva = null;
+        try{
+            if(imEmploy.contains("\\") && imEmploy!=null){
+                Nueva=imEmploy.replace("\\","*");
+            }else if (imEmploy == null){
+                Nueva="NULL";
+            }
+            ConnectionUtil connectionClass= new ConnectionUtil();
+            Connection connection= connectionClass.getConnection();  /*coneccion establecida*/
+            String sqlinsert= "INSERT INTO `PERSONAS` (`PRIMER_NOMBRE`, " +
+                    "`SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, " +
+                    "`DIRECCION`, `TELEFONO`, `CORREO`, `url_foto`) VALUES ('"+firstName+"', '"+secondName+"', '"+firstLastName+"', '"+secondLastName+"', '"+direction+"', '"+numberPhone+"', '"+email+"','"+Nueva+"')";
+            Statement statement= connection.createStatement();
+            statement.executeUpdate(sqlinsert); //aca insertamos los dato
+            //aca buscaremos el id de la persona ingresada--
+            String searchId = "SELECT `ID_PERSONA` FROM `PERSONAS` WHERE `PRIMER_NOMBRE` = '"+firstName+"' AND `SEGUNDO_NOMBRE` = '"+secondName+"' AND `PRIMER_APELLIDO` = '"+firstLastName+"' AND `CORREO` = '"+email+"' ORDER BY ID_PERSONA DESC";
+            ResultSet result = statement.executeQuery(searchId);
+            if (result.first()){
+                idpersona = result.getInt("ID_PERSONA");
+            }
+            //esteremos realizando el segundo insert para la tabla empleados
+            String sql2= "INSERT INTO `EMPLEADOS` (`ID_PERSONA`, `ESTADO`,`FECHA_RETIRO`, `CARGO`) VALUES ('"+idpersona+"', '1', NULL, '"+place+"')";
+            statement.executeUpdate(sql2);
+            statement.close();
+        }catch (Exception ex){
+            System.err.println("148 error insertando emplaedo" + ex);
+        }
+    }
+}
