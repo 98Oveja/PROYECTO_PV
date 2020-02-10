@@ -1,209 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.Principal">
+<StackPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Proveedores.Principal">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css">
-         <children>
-            <Label layoutX="77.0" layoutY="34.0" style="-fx-font-size: 28px;" text="Proveedores" textFill="#43425d" />
-            <Pane fx:id="Pane1" layoutX="73.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
+      <BorderPane stylesheets="@../../css/Proveedores/Style.css">
+         <left>
+            <Separator orientation="VERTICAL" prefHeight="423.0" prefWidth="50.0" scaleY="0.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="410.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <HBox alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="938.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="Nombre1" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion1" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil1" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete1" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org1" layoutX="218.0" layoutY="121.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo1" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="631.0">
+                     <children>
+                        <Button fx:id="inactivo" ellipsisString="I" mnemonicParsing="false" onAction="#Inactivos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Inactivos">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="activo" ellipsisString="A" mnemonicParsing="false" onAction="#Activos" prefHeight="35.0" prefWidth="100.0" styleClass="boton-mini" text="Activos">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="83.0" prefWidth="900.0" />
                </children>
-            </Pane>
-            <Pane fx:id="Pane3" layoutX="73.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
+            </HBox>
+         </bottom>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="Nombre3" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion3" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil3" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete3" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org3" layoutX="216.0" layoutY="121.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo3" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser3" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="744.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" ellipsisString="Prov" style="-fx-font-size: 28px;" text="Proveedores" textFill="#43425d" />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="1016.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#Abrir" prefHeight="45.0" prefWidth="45.0" styleClass="boton-add">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </Button>
+                        <TextField fx:id="labelSearch" prefHeight="40.0" prefWidth="433.0" styleClass="search">
+                           <padding>
+                              <Insets left="32.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
                </children>
-            </Pane>
-            <Pane fx:id="Pane5" layoutX="73.0" layoutY="496.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
-               <children>
-                  <Label fx:id="Nombre5" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion5" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil5" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete5" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org5" layoutX="216.0" layoutY="121.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo5" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser5" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
-               </children>
-            </Pane>
-            <Pane fx:id="Pane2" layoutX="699.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
-               <children>
-                  <Label fx:id="Nombre2" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion2" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil2" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete2" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org2" layoutX="216.0" layoutY="121.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo2" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser2" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
-               </children>
-            </Pane>
-            <Pane fx:id="Pane4" layoutX="699.0" layoutY="308.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
-               <children>
-                  <Label fx:id="Nombre4" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion4" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil4" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete4" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org4" layoutX="216.0" layoutY="121.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo4" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser4" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
-               </children>
-            </Pane>
-            <Pane fx:id="Pane6" layoutX="699.0" layoutY="494.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="570.0" styleClass="panels" stylesheets="@../../css/Proveedores/Style.css">
-               <children>
-                  <Label fx:id="Nombre6" layoutX="148.0" layoutY="21.0" prefHeight="27.0" prefWidth="306.0" text="Hola">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="118.0" prefHeight="0.0" prefWidth="570.0" />
-                  <Label fx:id="Descripcion6" layoutX="148.0" layoutY="59.0" prefHeight="27.0" prefWidth="306.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Movil6" layoutX="148.0" layoutY="85.0" prefHeight="27.0" prefWidth="306.0" text="Movil: 1234578" textFill="#43425cb0" />
-                  <Button fx:id="delete6" layoutX="529.0" layoutY="14.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="25.0" styleClass="boton-delete" />
-                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="boton-edit" />
-                  <Label fx:id="Org6" layoutX="223.0" layoutY="120.0" prefHeight="27.0" prefWidth="135.0" text="Soy de Toto XD" textFill="#43425cb0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="Photo6" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" />
-                  <Button fx:id="imgUser6" layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#Ver" prefHeight="90.0" prefWidth="90.0" styleClass="border" />
-               </children>
-            </Pane>
-            <Button fx:id="mini1" ellipsisString="&lt;" layoutX="942.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="&lt;">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="mini2" ellipsisString="1" graphicTextGap="1.0" layoutX="988.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="1">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="mini3" ellipsisString="2" layoutX="1034.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="2">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="mini4" ellipsisString="3" layoutX="1080.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="3">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="mini5" ellipsisString="4" layoutX="1126.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="4">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="mini6" ellipsisString="&gt;" layoutX="1172.0" layoutY="686.0" mnemonicParsing="false" onAction="#cambio" prefHeight="39.0" prefWidth="36.0" styleClass="boton-mini" text="&gt;">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <TextField fx:id="labelSearch" layoutX="700.0" layoutY="36.0" prefHeight="40.0" prefWidth="433.0" styleClass="search">
-               <padding>
-                  <Insets left="32.0" />
-               </padding>
-            </TextField>
-            <Button layoutX="1224.0" layoutY="34.0" mnemonicParsing="false" onAction="#Abrir" prefHeight="45.0" prefWidth="45.0" styleClass="boton-add" />
-         </children>
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-      </Pane>
+            </HBox>
+         </top>
+         <center>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane fx:id="Pane" hgap="20.0" prefHeight="405.0" prefWidth="817.0" vgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="570.0" prefWidth="570.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="570.0" prefWidth="570.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
    </children>
 </StackPane>

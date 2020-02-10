@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="570.0" styleClass="fondo" stylesheets="@../../css/Proveedores/StyleNewProvee.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Proveedores.NewProvee">
+<Pane fx:id="Container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="570.0" styleClass="fondo" stylesheets="@../../css/Proveedores/StyleNewProvee.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Proveedores.NewProvee">
    <children>
       <Label layoutX="36.0" layoutY="14.0" prefHeight="38.0" prefWidth="232.0" styleClass="title" text="Agregar Proveedor" />
       <Label layoutX="36.0" layoutY="81.0" prefHeight="21.0" prefWidth="75.0" styleClass="labels" text="Nombres" />
@@ -27,11 +27,9 @@
       <TextField fx:id="Cuenta" layoutX="152.0" layoutY="462.0" prefHeight="32.0" prefWidth="350.0" styleClass="text-labels" />
       <Button layoutX="425.0" layoutY="598.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="30.0" prefWidth="30.0" styleClass="add-photo" />
       <ImageView fx:id="Photo" fitHeight="150.0" fitWidth="200.0" layoutX="195.0" layoutY="530.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../../../Pictures/ESCodev1.png" />
-         </image>
       </ImageView>
       <Button layoutX="195.0" layoutY="530.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="150.0" prefWidth="200.0" styleClass="boton-photo" />
       <Button layoutX="193.0" layoutY="707.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="47.0" prefWidth="219.0" styleClass="boton-save" text="Agregar Proveedor" />
+      <Button layoutX="526.0" layoutY="14.0" mnemonicParsing="false" onAction="#Close" prefHeight="30.0" prefWidth="30.0" styleClass="boton-close" />
    </children>
 </Pane>

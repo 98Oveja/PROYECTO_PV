@@ -209,13 +209,13 @@ public class ModalVentaController implements Initializable {
         mostrarFecha();
         cargarClientes();
         cargarProductos();
-        ventas.validarSoloLetras(cliente_text,nit_txt);
-        ventas.validarSoloLetras(direccion_txt,producto_text);
-        ventas.validarSoloLetras(producto_text,cantidad_text);
-        ventas.validarSoloNumeros(nit_txt,telefono_txt);
-        ventas.validarSoloNumeros(telefono_txt,direccion_txt);
-        ventas.validarSoloNumeros(descuento_text,descripcion_text);
-        ventas.validarSoloNumeros(cantidad_text,descuento_text);
+//        ventas.validarSoloLetras(cliente_text,nit_txt);
+//        ventas.validarSoloLetras(direccion_txt,producto_text);
+//        ventas.validarSoloLetras(producto_text,cantidad_text);
+//        ventas.validarSoloNumeros(nit_txt,telefono_txt);
+//        ventas.validarSoloNumeros(telefono_txt,direccion_txt);
+//        ventas.validarSoloNumeros(descuento_text,descripcion_text);
+//        ventas.validarSoloNumeros(cantidad_text,descuento_text);
 //      Seleccion de los datos para el Cliente
         listadoClietes.setOnAction(actionEvent -> { cliente_text.setText(listadoClietes.getValue());
             MensajeAlerta.setVisible(false);
@@ -242,11 +242,11 @@ public class ModalVentaController implements Initializable {
             descripcion_text.setText(contenedorConsultaProducto[3]);
 
             if (cantidad_text.getLength() != 0){
-                subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
-                        Double.parseDouble(cantidad_text.getText()),
-                        Double.parseDouble(contenedorConsultaProducto[1]),
-                        Double.parseDouble(contenedorConsultaProducto[0])
-                );
+//                subtotalCalculado = ventas.calcularSubtotal_andUpdateCantidad(
+//                        Double.parseDouble(cantidad_text.getText()),
+//                        Double.parseDouble(contenedorConsultaProducto[1]),
+//                        Double.parseDouble(contenedorConsultaProducto[0])
+//                );
                 System.out.println("EL subtotal es = "+subtotalCalculado);
 //                total_txt.setText(String.valueOf(subtotalCalculado));
             }
@@ -255,21 +255,21 @@ public class ModalVentaController implements Initializable {
     }
 
     public void btn_ShopingCar(ActionEvent actionEvent) {
-        try {
-        verificarTodoLosInputs();
-        Ventas nuevaVenta = new Ventas();
-        nuevaVenta.setCantidad(Double.parseDouble(cantidad_text.getText()));
-        nuevaVenta.setCodigoProducto(CODIGOPRODUCTO);
-        nuevaVenta.setProducoComprado(producto_text.getText());
-        nuevaVenta.setPrecioUnitario(Double.parseDouble(PRECIOVENTA));
-        nuevaVenta.setDescuento(Double.parseDouble(descuento_text.getText()));
-        nuevaVenta.setButton2(new JFXButton("INFO"));
-        nuevaVenta.setSubtota(subtotalCalculado);
-        this.ModeloTablaVentas.add(nuevaVenta);
-        this.TablaDetalleVenta.setItems(ModeloTablaVentas);
-        }catch (Exception e){
-            System.out.println(e.getCause());
-        }
+//        try {
+//        verificarTodoLosInputs();
+//        Ventas nuevaVenta = new Ventas();
+//        nuevaVenta.setCantidad(Double.parseDouble(cantidad_text.getText()));
+//        nuevaVenta.setCodigoProducto(CODIGOPRODUCTO);
+//        nuevaVenta.setProducoComprado(producto_text.getText());
+//        nuevaVenta.setPrecioUnitario(Double.parseDouble(PRECIOVENTA));
+//        nuevaVenta.setDescuento(Double.parseDouble(descuento_text.getText()));
+//        nuevaVenta.setButton2(new JFXButton("INFO"));
+//        nuevaVenta.setSubtota(subtotalCalculado);
+//        this.ModeloTablaVentas.add(nuevaVenta);
+//        this.TablaDetalleVenta.setItems(ModeloTablaVentas);
+//        }catch (Exception e){
+//            System.out.println(e.getCause());
+//        }
 
 
     }

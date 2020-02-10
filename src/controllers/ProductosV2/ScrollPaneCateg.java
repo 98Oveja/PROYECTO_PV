@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import utils.ConnectionUtil;
+import utils.closeView;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -34,7 +36,7 @@ public class ScrollPaneCateg implements Initializable {
 
     public void datos(){
         Categorias.clear();String dato;
-        String Query="SELECT NOMBRE,DESCRIPCION,IMG_URL FROM CATEGORIAS";
+        String Query="SELECT NOMBRE,DESCRIPCION,IMG_URL FROM categorias";
         try{
             conexion = conn.getConnection();
             Statement instruccion = conexion.createStatement();
@@ -85,7 +87,8 @@ public class ScrollPaneCateg implements Initializable {
     }
 
     public void Close(ActionEvent actionEvent) {
-
+        closeView closeView = new closeView();
+        closeView.Cerrar(ConteinerMain);
     }
 
     public void Nuevo(ActionEvent actionEvent) throws IOException {

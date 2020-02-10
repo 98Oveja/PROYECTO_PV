@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.ProductController">
+<StackPane fx:id="containerProductos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="938.0" styleClass="fondo" stylesheets="@../../css/Proveedores/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosV2.ProductController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -71,7 +78,7 @@
                   <Separator prefWidth="200.0" />
                   <Button mnemonicParsing="false" onAction="#AgregarProdcuto" prefHeight="43.0" prefWidth="232.0" styleClass="boton-add-product" text="Agregar Productos" />
                   <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#AbrirCategoria" prefHeight="43.0" prefWidth="232.0" styleClass="boton-categ" text="Categorias" />
-                  <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-marca" text=" Marcas" />
+                  <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" onAction="#showModalMarK" prefHeight="43.0" prefWidth="232.0" styleClass="boton-marca" text=" Marcas" />
                   <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Activos" />
                   <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="232.0" styleClass="boton-view" text="Mostrar Inactivos" />
                   <TextField styleClass="search">
@@ -79,6 +86,61 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </TextField>
+                  <HBox alignment="BOTTOM_CENTER" onKeyPressed="#keypress" onScroll="#Scroll" prefHeight="83.0" prefWidth="620.0">
+                     <children>
+                        <Button fx:id="mini1" ellipsisString="&lt;" mnemonicParsing="false" onAction="#cambio" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="&lt;">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="mini2" ellipsisString="1" graphicTextGap="1.0" mnemonicParsing="false" onAction="#Numero" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="mini3" ellipsisString="2" mnemonicParsing="false" onAction="#Numero" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="mini4" ellipsisString="3" mnemonicParsing="false" onAction="#Numero" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="mini5" ellipsisString="4" mnemonicParsing="false" onAction="#Numero" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="mini6" ellipsisString="&gt;" mnemonicParsing="false" onAction="#cambio" onKeyPressed="#keypress" prefHeight="39.0" prefWidth="40.0" styleClass="botones-minis" stylesheets="@../../css/menuinicio.css" text="&gt;">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
          </right>

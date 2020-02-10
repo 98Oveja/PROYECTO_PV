@@ -38,7 +38,7 @@ public class NewCategoria implements Initializable {
     public void nombrescategoriasexistentes(){
         NewProduct newProduct = new NewProduct();
         try {
-            ResultSet resultados = newProduct.consultas("SELECT NOMBRE FROM CATEGORIAS;");
+            ResultSet resultados = newProduct.consultas("SELECT NOMBRE FROM categorias;");
             if (resultados != null) {
                 while (resultados.next()) {
                     nombresCategorias.add(resultados.getString("NOMBRE").toUpperCase());
@@ -61,7 +61,7 @@ public class NewCategoria implements Initializable {
                 if(path!=null&&path.contains("\\")){
                     direccion=path.replace("\\","*");
                 }else{direccion=path;}
-                String Query=("INSERT INTO CATEGORIAS(NOMBRE, DESCRIPCION, IMG_URL) " +
+                String Query=("INSERT INTO categorias(NOMBRE, DESCRIPCION, IMG_URL) " +
                         "VALUES ('"+Nombre.getText()+"','"+Descripcion.getText()+"','"+direccion+"');");
                 conexion = conn.getConnection();
                 PreparedStatement preparedStatement = conexion.prepareStatement(Query);
@@ -94,12 +94,12 @@ public class NewCategoria implements Initializable {
     }
 
     public void insertproductosCategorias(){
-        String Query= "INSERT INTO DETALLE_CATEGORIA_PRODUCTOS(ID_PRODUCTO, ID_CATEGORIA) VALUES ";
+        String Query= "INSERT INTO detalle_categorias_productos(ID_PRODUCTO, ID_CATEGORIA) VALUES ";
         int aux=0;
         for (int i = 0; i < arrayListProducto.size(); i++) {
             if (arrayListProducto.get(i).isSelected()){
                 if (aux>0){Query=Query+",";}
-                Query=Query+"((SELECT ID_PRODUCTO FROM PRODUCTOS WHERE NOMBRE ='"+arrayListProducto.get(i).getText()+"'),(SELECT ID_CATEGORIA FROM CATEGORIAS WHERE NOMBRE='"+Nombre.getText()+"'))";
+                Query=Query+"((SELECT ID_PRODUCTO FROM productos WHERE NOMBRE ='"+arrayListProducto.get(i).getText()+"'),(SELECT ID_CATEGORIA FROM categorias WHERE NOMBRE='"+Nombre.getText()+"'))";
                 aux=1;
             }
         }
@@ -123,7 +123,7 @@ public class NewCategoria implements Initializable {
     public void combo(){
         NewProduct newProduct = new NewProduct();
         try {
-            ResultSet resultados = newProduct.consultas("SELECT NOMBRE FROM PRODUCTOS order by NOMBRE asc;");
+            ResultSet resultados = newProduct.consultas("SELECT NOMBRE FROM productos order by NOMBRE asc;");
             if (resultados != null) {
                 while (resultados.next()) {
                     CheckBox checkBox = new CheckBox();

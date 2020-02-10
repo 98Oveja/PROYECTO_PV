@@ -33,7 +33,7 @@ public class EditEmployeesController {
                     Datos.get(i).lastname1 = result.getString("PRIMER_APELLIDO");
                     Datos.get(i).lastname2 = result.getString("SEGUNDO_APELLIDO");
                     Datos.get(i).dir = result.getString("DIRECCION");
-                    Datos.get(i).tel = result.getInt("TELEFONO");
+//                    Datos.get(i).tel = result.getInt("TELEFONO");
                     Datos.get(i).correo = result.getString("CORREO");
                     Datos.get(i).img = result.getString("URL_FOTO");
                     Datos.get(i).estado = result.getBoolean("ESTADO");

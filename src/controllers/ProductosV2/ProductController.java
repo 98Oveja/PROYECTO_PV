@@ -51,8 +51,8 @@ public class ProductController implements Initializable, ControlledScreen {
 
     static String nombre,cantidad,descripcion,precioCompra,precioVenta,photo;
     static int estado,position;static double width;
-    String Query1 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=1;";
-    String Query0 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_COMPRA,PRECIO_VENTA,IMG,DESCRIPCION FROM PRODUCTOS WHERE ESTADO=0;";
+    String Query1 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG,DESCRIPCION FROM productos WHERE ESTADO=1;";
+    String Query0 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG,DESCRIPCION FROM productos WHERE ESTADO=0;";
 
     public void consulta(String Query){
 
@@ -73,9 +73,6 @@ public class ProductController implements Initializable, ControlledScreen {
         }
         cantCard = Productos.size();
     }
-
-
-
     public void rellenar(int posicion){
       posicion-=1;
         cantCard =Productos.size();
@@ -108,7 +105,6 @@ public class ProductController implements Initializable, ControlledScreen {
         mini1.setVisible(false);
         mini2.setStyle("-fx-background-color: #3B86FF");
         Botones.add(mini2);Botones.add(mini3);Botones.add(mini4);Botones.add(mini5);
-
         try {
             Cambiar(1);
             System.out.println("cambio   " + cantCard);

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<StackPane prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Stadistic.StadisticController">
+<StackPane prefHeight="790.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Stadistic.StadisticController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/main.css">
          <children>

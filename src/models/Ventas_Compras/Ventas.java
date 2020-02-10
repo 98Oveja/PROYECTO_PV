@@ -329,5 +329,6 @@ public String almacenarVentasenDB(int idClienteG, int idEmpleadoG, double totalV
 @Override public int hashCode() { return Objects.hash(getCodigoProducto(), getProducto(), getPrecioVenta()); }
 
 
-
+    public void setProducoComprado(String text) {
+    }
 }

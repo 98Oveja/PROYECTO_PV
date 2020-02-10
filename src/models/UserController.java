@@ -22,21 +22,21 @@ public class UserController {
         model.setEmail(email);
     }
 
-    public String getLastname ()
-    {
-        return model.getLastname();
-    }
+//    public String getLastname ()
+//    {
+//        return model.getLastname();
+//    }
 
-    public void setLastname (String lastname) { model.setLastname(lastname); }
+//    public void setLastname (String lastname) { model.setLastname(lastname); }
 
-    public String getFirstname (){ return model.getFirstname(); }
+//    public String getFirstname (){ return model.getFirstname(); }
 
-    public void setFirstname (String firstname)
-    {
-        model.setFirstname(firstname);
-    }
+//    public void setFirstname (String firstname)
+//    {
+//        model.setFirstname(firstname);
+//    }
 
-    public void UpdateView() {
-        view.list(model.getPass(),model.getEmail(), model.getLastname(),model.getFirstname());
-    }
+//    public void UpdateView() {
+//        view.list(model.getPass(),model.getEmail(), model.getLastname(),model.getFirstname());
+//    }
 }
