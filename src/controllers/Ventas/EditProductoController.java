@@ -14,7 +14,6 @@ import utils.ValidacionesGenerales;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class EditProductoController implements Initializable {
-    Ventas ventas = new Ventas();
     public StackPane ContendorEdit;
     public JFXTextField newCantidad;
     public JFXTextField newDescuento;
@@ -26,44 +25,52 @@ public class EditProductoController implements Initializable {
     Object productoSeleccionado;
     public TableView tablaAuxiliarUpdate;
     public ObservableList<Ventas> VentasListaAuxUpdate;
+    Object modalVentas;
+    public void setModalVentas(Object objeto){this.modalVentas = objeto;}
+    public Object getModalVentas(){return this.modalVentas;}
+
     public void setNuevaCantidad(String cantidad){this.newCantidad.setText(cantidad);}
-    public void setNuevoDescuento(String descuento){this.newDescuento.setText(descuento);}
     public void setNombreProducto(String producto){this.productolabel.setText(producto);}
     public void setPRECIOPROD(double precio){this.PRECIOPROD = String.valueOf(precio);}
     public String getPRECIOPROD(){return this.PRECIOPROD;}
     public String getNuevaCantidad(){return this.newCantidad.getText();}
-    public String getNuevoDescuento(){return this.newDescuento.getText();}
     public void setProductoSeleccionado(Object thisProducto){this.productoSeleccionado = thisProducto;}
     public Object getProductoSeleccionado(){return this.productoSeleccionado;}
     public TableView getTablaAuxiliarUpdate() {return tablaAuxiliarUpdate;}
     public void setTablaAuxiliarUpdate(TableView tablaAuxiliarUpdate) {this.tablaAuxiliarUpdate = tablaAuxiliarUpdate; }
     public ObservableList<Ventas> getVentasListaAuxUpdate() {return VentasListaAuxUpdate;}
     public void setVentasListaAuxUpdate(ObservableList<Ventas> ventasListaAuxUpdate){VentasListaAuxUpdate = ventasListaAuxUpdate;}
-
-
-
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.newDescuento.setVisible(false);
         ValidacionesGenerales.validarSoloNumerosJfoenix(newCantidad);
         ValidacionesGenerales.validarSoloNumerosJfoenix(newDescuento);
 //      ACCIONES DE LOS BOTONES DENTRO DEL MODAL
         cancelButton.setOnAction(actionEvent -> {LoadModalesMovibles.CerrarModal(ContendorEdit);});
         btnCerraModal.setOnAction(actionEvent -> {LoadModalesMovibles.CerrarModal(ContendorEdit);});
         saveButton.setOnAction(actionEvent -> {
-//            ConsultasVentasCompras consulta =
-//                    new ConsultasVentasCompras();
-//            for (int i = 0; i <consulta.listaProductos().size();i++) {
-//                System.out.println(consulta.listaProductos().get(i));
-//
-//            }
-            Ventas VentasAux = (Ventas) getProductoSeleccionado();
-//            String subTotalNuevo = ventas.calculoDeDescuentos(getPRECIOPROD(),getNuevaCantidad(),getNuevoDescuento());
-//            VentasAux.setDescuento(Double.parseDouble(getNuevoDescuento()));
-            VentasAux.setCantidad(Integer.parseInt(getNuevaCantidad()));
-            VentasAux.setSubTotal(Double.parseDouble("21"));
-            getVentasListaAuxUpdate().set((VentasAux.getNumero()-1),VentasAux);
-            System.out.println("El tamanio del Array es de "+getVentasListaAuxUpdate().size());
-            getTablaAuxiliarUpdate().refresh();
-        });
+            try{
+                Ventas VentasAux = (Ventas) getProductoSeleccionado();
+                String precio = getPRECIOPROD();
+                String nuevaCantidad = getNuevaCantidad();
+                double nuevosubtotal = Double.parseDouble(precio)* Double.parseDouble(nuevaCantidad);
+                String nuevoTotalstr = String.valueOf(nuevosubtotal);
+                VentasAux.setCantidad(Integer.parseInt(getNuevaCantidad()));
+                VentasAux.setSubTotal(Double.parseDouble(nuevoTotalstr));
+                getVentasListaAuxUpdate().set((VentasAux.getNumero()-1),VentasAux);
+                int nuevoContador = 1;
+                double elNuevoTotal =0;
+                for (Ventas actualizaID: getVentasListaAuxUpdate()) {
+                    actualizaID.setNumero(nuevoContador);
+                    elNuevoTotal += actualizaID.getSubTotal();
+                    getTablaAuxiliarUpdate().refresh();nuevoContador++;
+                }
+                ModalVentas modalVentas = (ModalVentas) getModalVentas();
+                modalVentas.setNuevoTotal(elNuevoTotal);
 
+                LoadModalesMovibles.CerrarModal(ContendorEdit);
+            }catch (Exception e){
+                System.out.println("Actualizacion no se completo "+e.getMessage()+" "+e.getLocalizedMessage());
+            }
+        });
     }
 }

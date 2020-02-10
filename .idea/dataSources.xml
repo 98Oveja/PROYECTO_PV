@@ -8,5 +8,12 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3307/PuntoDeVenta</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="puntodeventagenral@localhost" uuid="f8037487-f8ac-4630-a700-a5b1913906cb">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Punto de Veta Implementacion 1</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3307/puntodeventagenral</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -3624,7 +3624,7 @@
 							},
 							"name": "IMG_URL",
 							"type": "VARCHAR",
-							"length": "150"
+							"length": "260"
 						}
 					]
 				},

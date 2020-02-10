@@ -12,9 +12,8 @@ public class ConsultasVentasCompras {
     public static ArrayList<String> dataContainer = new ArrayList<>();
     public static String resultQuery = "";
 //    GETERS AND SETERS
-    public static String getName_and_lastname(){return name_and_lastname;}
-    public void setName_and_lastname(String name_and_lastname){this.name_and_lastname = name_and_lastname;}
-
+//    public static String getName_and_lastname(){return name_and_lastname;}
+//    public void setName_and_lastname(String name_and_lastname){this.name_and_lastname = name_and_lastname;}
     //  METODOS Y FUNCIONES QUE EJECUTAN LOS SCRIPTS DE LA BASE DE DATOS PARA OBETENER LOS DATOS NECESARIOS
     public static String getIdCostumerInDB(String Nombre, String Apellido) {
         try {

@@ -29,7 +29,6 @@ public class ModalVentas implements Initializable{
     @FXML public JFXButton addNewCustomer;
     @FXML public JFXButton btn_agregarVenta;
     @FXML public JFXButton btn_venderTodo;
-
     @FXML public JFXTextField direccion_text;
     @FXML public JFXTextField telefono_text;
     @FXML public JFXTextField nit_text;
@@ -38,12 +37,10 @@ public class ModalVentas implements Initializable{
     @FXML public JFXTextField cantidad_text;
     @FXML public JFXTextField disponibilidad_text;
     @FXML public JFXTextField ClienteText;
-
     @FXML public JFXDatePicker fecha_text;
     @FXML public BorderPane borderPVentas;
     @FXML public JFXComboBox<String> listadoClientes;
     @FXML public JFXComboBox<String> listadoProductos;
-
     @FXML public TableView<Ventas> tablaDetalle;
     @FXML public TableColumn colNumero;
     @FXML public TableColumn colCantidad;
@@ -55,9 +52,8 @@ public class ModalVentas implements Initializable{
     @FXML public TableColumn colEliminar;
     @FXML public ImageView buscar;
     @FXML public JFXCheckBox autoRellenar;
-
-    Ventas ventas = new Ventas();
-    Ventas ventas1,ventasAuxiliar;
+    @FXML public TextField Total_field;
+    Ventas ventas1,ventasAuxiliar,ventas = new Ventas();
     private ObservableList<Ventas> ventasObservableList;
     public URL urlEditar, urlEliminar;
     public Image imgEditar, imgEliminar;
@@ -146,136 +142,141 @@ public class ModalVentas implements Initializable{
         this.telefono_text.setText("");
         this.nit_text.setText("");
     }
-
+    public double calCulaElTotal(){
+        double total = 0;
+        for (Ventas vtot:ventasObservableList) {
+            total += vtot.getSubTotal();
+        }return total;
+    }
 //    geters and seters
+    public void setNuevoTotal(Double elTotal){this.Total_field.setText(String.valueOf(elTotal));}
     public void setdisponibilidad_text(String diponibilidad){this.disponibilidad_text.setText(diponibilidad);}
     public void setprecio_text(String precio){this.precio_text.setText(precio);}
     public void setCodigoProducto(String codigo){this.CODIGOPRODUCTO = codigo;}
     public void setdescripcion_text(String descipcion){this.descripcion_text.setText(descipcion);}
-//    public String getDisponibilidad(){return this.disponibilidad_text.getText();}
-//    public String getPrecio(){return this.precio_text.getText();}
-//    public String getCodigoProducto(){return CODIGOPRODUCTO;}
     public String getDescripcion(){return descripcion_text.getText();}
     public void setProductoinComboBox(String producto){this.listadoProductos.setValue(producto);}
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
 //      ACCIONES DE LOS BOTONES Y OTROS COMPONENTES DENTRO DEL MODAL
         buscar.setOnMouseClicked(mouseEvent -> {
-            BusquedaProductoControllers busquedas =
-                    (BusquedaProductoControllers) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/BusquedaProductos.fxml"),
-                    null);
-            busquedas.setControllerModalVenta(this);
-        });
-        tablaDetalle.setOnMouseClicked(mouseEvent -> {
-            Ventas vp = tablaDetalle.getSelectionModel().getSelectedItem();
-            if (vp != null){
-                System.out.println("Producto "+vp.getProducto());
-                System.out.println("Precio "+vp.getPrecioVenta());
-                System.out.println("Cantidad "+vp.getCantidad());
-                System.out.println("Codigo "+vp.getCodigoProducto());
-                System.out.println("SubTotal "+vp.getSubTotal());
-            }
+            try{
+                BusquedaProductoControllers busquedas =
+                        (BusquedaProductoControllers) LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Ventas/BusquedaProductos.fxml"),
+                                null);
+                busquedas.setControllerModalVenta(this);
+            }catch (Exception e){ System.out.println("Error al cargar el modal de Busqueda");}
         });
         btnCerrarModal.setOnAction(actionEvent -> {
-            Image imageModal = new Image("/images/info.png");
-
-            LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
-                    "Cerra el Panel",
-                    "¿Estas seguro de cerra el Panel?",
-                    imageModal,
-                    borderPVentas);
+            try {
+                Image imageModal = new Image("/images/info.png");
+                LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
+                        "Cerra el Panel",
+                        "¿Estas seguro de cerra el Panel?",
+                        imageModal,
+                        borderPVentas);
+            }catch (Exception e){System.out.println("Error al querer cerrar el modal");}
         });
         addNewCustomer.setOnAction(actionEvent -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"));
-            Parent root = null;
             try {
-                root = fxmlLoader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.setScene(scene);
-                stage.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
+                LoadModalesMovibles.LoadModalMovible(getClass().getResource("/fxml/Empleados/AddEmployees.fxml"),null);
+            }catch (Exception e){
+                System.out.println("Erro al cargar el modal de Clientes");
             }
         });
         btn_agregarVenta.setOnAction(actionEvent -> {
-            if (todolosCamposVacios()<4){activarNodos();}
-            else {
-                desactivarNodos();
-                urlEditar = getClass().getResource("/images/edit.png");
-                urlEliminar = getClass().getResource("/images/icons8_delete_50px_1.png");
-                imgEditar = new Image(urlEditar.toString(),16,16,false,true);
-                imgEliminar = new Image(urlEliminar.toString(),16,16,false,true);
-                JFXButton editJfxButton = new JFXButton();
-                JFXButton deletJfxButton = new JFXButton();
-                editJfxButton.setGraphic(new ImageView(imgEditar));
-                deletJfxButton.setGraphic(new ImageView(imgEliminar));
-//                double subTotal = Double.parseDouble(ventas.calculoDeDescuentos(precio_text.getText(), cantidad_text.getText(), descuento_text.getText()));
-                ventas1 = new Ventas(
-                        (numeros+1),
-                        Integer.parseInt(cantidad_text.getText()),
-                        CODIGOPRODUCTO,
-                        listadoProductos.getValue()+" "+descripcion_text.getText(),
-                        Double.parseDouble(precio_text.getText()),
-                        (Double.parseDouble(precio_text.getText())*Integer.parseInt(cantidad_text.getText())),
-                        editJfxButton,
-                        deletJfxButton);
+            try {
+                if (todolosCamposVacios()<4){activarNodos();}
+                else {
+                    desactivarNodos();
+                    urlEditar = getClass().getResource("/images/edit.png");
+                    urlEliminar = getClass().getResource("/images/icons8_delete_50px_1.png");
+                    imgEditar = new Image(urlEditar.toString(),16,16,false,true);
+                    imgEliminar = new Image(urlEliminar.toString(),16,16,false,true);
+                    JFXButton editJfxButton = new JFXButton();
+                    JFXButton deletJfxButton = new JFXButton();
+                    editJfxButton.setGraphic(new ImageView(imgEditar));
+                    deletJfxButton.setGraphic(new ImageView(imgEliminar));
+                    numeros = ventasObservableList.size();
+                    ventas1 = new Ventas(
+                            (numeros+1),
+                            Integer.parseInt(cantidad_text.getText()),
+                            CODIGOPRODUCTO,
+                            listadoProductos.getValue()+" "+descripcion_text.getText(),
+                            Double.parseDouble(precio_text.getText()),
+                            (Double.parseDouble(precio_text.getText())*Integer.parseInt(cantidad_text.getText())),
+                            editJfxButton,
+                            deletJfxButton);
                     ventas1.setNOMBREPRODUCTO(listadoProductos.getValue());
-                if(!ventasObservableList.contains(ventas1)){
-                    this.ventasObservableList.add(ventas1);
-                    this.tablaDetalle.setItems(ventasObservableList);
-                    ventas1.setVentasObservableListAux(ventasObservableList);
-                    ventas1.setTableViewAux(this.tablaDetalle);
-                    numeros++;  ventasAuxiliar = ventas1;
-                } else{
-                    Ventas aux2 = ventas1;
-                    System.out.print("CANTIDAD Y DESCUETO DEL PRODUCTO QUE ESTA EN LA TABLA"+
-                            "\nCantidad "+ventasAuxiliar.getCantidad());
-                    tablaDetalle.refresh();
+                    ventas1.setModalVentas(this);
+                    if(!ventasObservableList.contains(ventas1)){
+                        this.ventasObservableList.add(ventas1);
+                        this.tablaDetalle.setItems(ventasObservableList);
+                        ventas1.setVentasObservableListAux(ventasObservableList);
+                        ventas1.setTableViewAux(this.tablaDetalle);
+                        numeros++;
+                        ventasAuxiliar = ventas1;
+                        Total_field.setText(String.valueOf(calCulaElTotal()));
+                    } else{
+                        Image imagemodal = new Image("images/info.png");
+                        LoadModalesMovibles.LoadAlert(getClass().getResource("/fxml/Alertas.fxml"),
+                                "Verifica","El "+"'"+listadoProductos.getValue().toUpperCase()+"'"+"\nYa esta en la tabla",
+                                imagemodal,null);
+                    }
                 }
+            }catch (Exception e){
+                System.out.println("Erro al cargar los datos a la tabla");
             }
-            if(ventasObservableList.size() == 0){
-                System.out.println("Aun no se envia nadad a la tabla y al Modelo");}
-
         });
         listadoClientes.setOnAction(actionEvent -> {
-         String Nombre_Apellido_Cliente = listadoClientes.getValue();
-            String[] SeparadaCadena = Nombre_Apellido_Cliente.split(" ");
-            String nombreCliente = SeparadaCadena[0];
-            String apelliCliente = SeparadaCadena[1];
-            ClienteText.setText(nombreCliente +" "+ apelliCliente);
-            search_id = ConsultasVentasCompras.getIdCostumerInDB(nombreCliente,apelliCliente);
-            result_querys = ConsultasVentasCompras.getCustomerDatabyId(search_id);
-            Datos_de_las_Querys = result_querys.get(0).toString();
-            String[] getAllDataCustomer = Datos_de_las_Querys.split("#");
-            telefono_text.setText(getAllDataCustomer[0]);
-            direccion_text.setText(getAllDataCustomer[1]);
-            nit_text.setText(getAllDataCustomer[2]);
+            try{
+                String Nombre_Apellido_Cliente = listadoClientes.getValue();
+                String[] SeparadaCadena = Nombre_Apellido_Cliente.split(" ");
+                String nombreCliente = SeparadaCadena[0];
+                String apelliCliente = SeparadaCadena[1];
+                ClienteText.setText(nombreCliente +" "+ apelliCliente);
+                search_id = ConsultasVentasCompras.getIdCostumerInDB(nombreCliente,apelliCliente);
+                result_querys = ConsultasVentasCompras.getCustomerDatabyId(search_id);
+                Datos_de_las_Querys = result_querys.get(0).toString();
+                String[] getAllDataCustomer = Datos_de_las_Querys.split("#");
+                telefono_text.setText(getAllDataCustomer[0]);
+                direccion_text.setText(getAllDataCustomer[1]);
+                nit_text.setText(getAllDataCustomer[2]);
+            }catch (Exception e){
+                System.out.println("Erro al cargar los datos del cliente "+ e.getMessage()+" localizacion "+e.getLocalizedMessage());
+            }
         });
         listadoProductos.setOnAction(actionEvent -> {
-            Datos_de_las_Querys = listadoProductos.getValue();
-            result_querys= ConsultasVentasCompras.getProductByName(Datos_de_las_Querys);
-            String consultaCompleta = result_querys.get(0).toString();
-            String[] contenedorConsultaProducto = consultaCompleta.split("#");
-            disponibilidad_text.setText(contenedorConsultaProducto[0]);
-            precio_text.setText(contenedorConsultaProducto[1]);
-            CODIGOPRODUCTO = contenedorConsultaProducto[2];
-            descripcion_text.setText(contenedorConsultaProducto[3]);
-            System.out.println("Marca id "+contenedorConsultaProducto[4]);
-            System.out.println("El nombre de la marca es el: "+ConsultasVentasCompras.getNameMarcabyID(contenedorConsultaProducto[4]));
-            cantidad_text.requestFocus();
+            try {
+                Datos_de_las_Querys = listadoProductos.getValue();
+                result_querys= ConsultasVentasCompras.getProductByName(Datos_de_las_Querys);
+                String consultaCompleta = result_querys.get(0).toString();
+                String[] contenedorConsultaProducto = consultaCompleta.split("#");
+                disponibilidad_text.setText(contenedorConsultaProducto[0]);
+                precio_text.setText(contenedorConsultaProducto[1]);
+                CODIGOPRODUCTO = contenedorConsultaProducto[2];
+                descripcion_text.setText(contenedorConsultaProducto[3]);
+//                System.out.println("Marca id "+contenedorConsultaProducto[4]);
+//                System.out.println("El nombre de la marca es el: "+ConsultasVentasCompras.getNameMarcabyID(contenedorConsultaProducto[4]));
+                cantidad_text.requestFocus();
+            }catch (Exception e){
+                System.out.println("Erro al cargar los datos del producto "+ e.getMessage()+" localizacion "+e.getLocalizedMessage());
+            }
         });
         autoRellenar.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
-            if(autoRellenar.isSelected()){
-                autoRellenarCampos();
-            } else{
-                vaciarautoRellenarCampos();
-            }
+            try {
+                if (autoRellenar.isSelected()) {
+                    autoRellenarCampos();
+                } else {
+                    vaciarautoRellenarCampos();
+                }
+            }catch (Exception e){ System.out.println("Ne es posible Auto rrellenar el campo");}
+
         });
 //      ASIGNACION DE VALORES INICIALES
         descripcion_text.setEditable(false);
-        precio_text.setEditable(false);
+        precio_text.setEditable(true);
+        fecha_text.setDisable(true);
+//        fecha_text.setEditable(false);
         disponibilidad_text.setEditable(false);
 //      VALIDACIONES EXTERNAS
         ValidacionesGenerales.validarNumTelefono(telefono_text,8);

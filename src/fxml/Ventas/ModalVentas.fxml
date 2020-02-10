@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -8,7 +7,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <BorderPane fx:id="borderPVentas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1078.0" styleClass="gridPanelContainder" stylesheets="@../../css/Ventas/Ventas_Compras.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ventas.ModalVentas">
     <top>
         <TextFlow nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1200.0" styleClass="headerGridFerreteria" BorderPane.alignment="CENTER">
@@ -41,8 +39,8 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="297.6666564941406" minHeight="10.0" prefHeight="267.33331298828125" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="540.0" minHeight="10.0" prefHeight="421.66668701171875" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="360.6666564941406" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="540.0" minHeight="10.0" prefHeight="470.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="360.6666564941406" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <VBox prefHeight="267.0" prefWidth="576.0" styleClass="headerGridFerreteria">
@@ -115,7 +113,7 @@
                      </children>
                   </AnchorPane>
                     </children></VBox>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <AnchorPane prefHeight="426.0" prefWidth="1150.0" style="-fx-background-color: #ffffff;" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" top="10.0" />
                </GridPane.margin>
@@ -125,7 +123,7 @@
                         <Label prefHeight="67.0" prefWidth="178.0" styleClass="TituloTablaDetalle" text="Detalle Venta" textFill="#4d4f5c" />
                      </children>
                   </HBox>
-                  <TableView fx:id="tablaDetalle" editable="true" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.0">
+                  <TableView fx:id="tablaDetalle" editable="true" layoutX="14.0" layoutY="67.0" prefHeight="349.0" prefWidth="1140.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.0">
                     <columns>
                       <TableColumn fx:id="colNumero" editable="false" prefWidth="45.0" resizable="false" text="NO" />
                       <TableColumn fx:id="colCantidad" editable="false" prefWidth="82.0" resizable="false" text="CANTIDAD" />
@@ -144,11 +142,20 @@
                         <String fx:value="table-row-cell" />
                      </styleClass>
                   </TableView>
+                   <TextField fx:id="Total_field" editable="false" layoutX="997.0" layoutY="419.0" prefHeight="37.0" prefWidth="148.0" promptText="Total" style="-fx-text-fill: #1a1a1a; -fx-prompt-text-fill: #0023ff;" text="00" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="997.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="419.0">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></TextField>
+                  <Label layoutX="936.0" layoutY="428.0" prefHeight="19.0" prefWidth="60.0" style="-fx-text-fill: #0023ff;" text="TOTAL  Q">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <AnchorPane prefHeight="47.0" prefWidth="1160.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <JFXButton fx:id="btn_venderTodo" layoutX="171.0" layoutY="15.0" prefHeight="71.0" prefWidth="180.0" style="-fx-background-color: #1062E5;" text="Vender" textAlignment="CENTER" textFill="WHITE" translateX="490.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <JFXButton fx:id="btn_venderTodo" layoutY="35.0" prefHeight="71.0" prefWidth="180.0" style="-fx-background-color: #1062E5;" text="Vender" textAlignment="CENTER" textFill="WHITE" translateX="490.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

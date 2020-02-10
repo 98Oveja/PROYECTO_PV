@@ -177,9 +177,14 @@ return;
     }
 
     public void setVista(String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent root = loader.load();
-        pane.getChildren().setAll(root.getChildrenUnmodifiable());
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+            pane.getChildren().setAll(root.getChildrenUnmodifiable());
+        }catch (Exception vista){
+            System.out.println("No se cargo el el Inicio ");
+        }
+
     }
 
     public void addButtons(){

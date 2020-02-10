@@ -6,9 +6,9 @@ create table personas(
 	PRIMER_APELLIDO varchar(12) not null,
 	SEGUNDO_APELLIDO varchar(12) not null,
 	DIRECCION varchar(40) default 'Ciudad' null,
-	TELEFONO varchar(10) default 'No hay Número' null,
-	CORREO varchar(20) default 'No hay Correo' null,
-	IMG_URL varchar(100) default 'No hay Foto' null
+	TELEFONO varchar(10) default 'No Phone' null,
+	CORREO varchar(30) default 'No hay Correo' null,
+	IMG_URL varchar(260) default 'No hay Foto' null
 )charset=utf8mb4;
 create table clientes(
 	ID_CLIENTE int auto_increment primary key,
@@ -81,7 +81,7 @@ create table usuarios(
 	ID_USUARIO int auto_increment primary key,
 	NOMBRES varchar(50) not null,
 	APELLIDOS varchar(50) not null,
-	EMAIL carhcar(30) not null,
+	EMAIL varchar(30) not null,
 	CONTRASENA varchar(15) not null,
 	ESTADO tinyint(1) default 1 null,
 	CARGO varchar(20) not null,
@@ -125,12 +125,6 @@ begin
     select NOMBRE from marcas;
 end;
 
-create procedure getAllProveedores()
-begin
-    select PRIMER_NOMBRE, PRIMER_APELLIDO from personas
-        inner JOIN proveedores p on personas.ID_PERSONA = p.ID_PERSONA;
-end;
-
 create procedure getDataProductoByNameMarca(IN nombreMarca varchar(100))
 BEGIN
     select PRODUCTOS.NOMBRE, PRODUCTOS.DESCRIPCION, PRODUCTOS.DISPONIBILIDAD,
@@ -147,13 +141,6 @@ select productos.DISPONIBILIDAD,
        productos.DESCRIPCION,
        PRODUCTOS.ID_MARCA
        from productos where productos.NOMBRE = thisProduct;
-end;
-
-create procedure getDataProveedorbyNameAndLasname(IN nombrein varchar(30), IN apellidoin varchar(30))
-begin
-select DIRECCION, TELEFONO, NO_CUENTA, ORG
-from personas inner JOIN proveedores p on personas.ID_PERSONA = p.ID_PERSONA where PRIMER_NOMBRE = nombrein
-                                                                               and PRIMER_APELLIDO = apellidoin;
 end;
 
 create function getIdCostumerbyName(costumerName varchar(30), costumerLastname varchar(30)) returns int
@@ -213,23 +200,10 @@ begin
     where  productos.CODIGO_PRODUCTO LIKE @CODIGOSTART or  productos.CODIGO_PRODUCTO like @CODIGOEND;
 end;
 
-create function holaMundo() returns varchar(30)
-BEGIN
-    DECLARE salida VARCHAR(30) DEFAULT 'Hola mundo';
-    SET salida = 'Hola mundo con variables';
-    RETURN salida;
-END;
-
-create procedure insertVentas(IN IDClienteIN int, IN IDEmpleadoIN int, IN totalVendidoIN double)
-begin
-    insert into ventas (id_cliente, id_empleado, total) VALUES (IDClienteIN,IDEmpleadoIN,totalVendidoIN);
-end;
-
 create procedure selectAllCostumers()
 begin
     select personas.PRIMER_NOMBRE, personas.PRIMER_APELLIDO from (personas inner join clientes on personas.ID_PERSONA = clientes.ID_PERSONA);
 end;
-
 create procedure selectAllProducts()
 begin
     SELECT productos.NOMBRE from  productos;

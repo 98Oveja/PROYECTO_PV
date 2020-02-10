@@ -13,7 +13,7 @@ public class ConnectionUtil {
 //    public static String url = "jdbc:mysql://"+host+"/"+dataBase+"?autoReconnect=true&useSSL=false"; //connection ssl false
 
 //    public static String driver = "com.mysql.jdbc.Driver";
-    public static String dataBase = "PuntoDeVenta";
+    public static String dataBase = "puntodeventagenral";//"PuntoDeVenta";
     public static String host = "127.0.0.1:3307";
     public static String user = "Ronaldo";
     public static String password = "Datos18";

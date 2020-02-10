@@ -35,12 +35,12 @@
    }
 
  /*color de una fila cuando en raton se encuentra sobre una fila que esta seleccionada*/
-   .table-view:row-selection .table-row-cell:filled:selected:hover {
-       -fx-background-color: #e59776;
-   }
- /*color de una fila seleccionada por el usuario*/
+ /*  .table-view:row-selection .table-row-cell:filled:selected:hover {*/
+ /*      -fx-background-color: #e59776;*/
+ /*  }*/
+ /*!*color de una fila seleccionada por el usuario*!*/
    .table-view:row-selection .table-row-cell:filled:selected {
-       -fx-background-color: #d75c56;
+       -fx-background-color: #d71631;
    }
 
  /*eliminar border del table que aparece cuando el mismo tiene el foco*/
