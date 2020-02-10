@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -30,7 +31,7 @@ import java.util.ResourceBundle;
 public class ProductController implements Initializable, ControlledScreen {
 
     public StackPane containerProductos;
-    @FXML private VBox Container;
+    @FXML private GridPane Container;
     ScreensController myController;
     ArrayList<String> Productos = new ArrayList<String>();
     ConnectionUtil conn = new ConnectionUtil();
@@ -44,15 +45,17 @@ public class ProductController implements Initializable, ControlledScreen {
     public String getPhoto(){return photo;}
     public int getEstado(){return estado;}
     public double getwidthpane(){return width;}
+    public double getheightpane(){return heigth;}
+
     ArrayList<Button> Botones = new ArrayList<Button>();
     public Button mini1,mini2,mini3,mini4,mini5,mini6;
     double widthMenu = Toolkit.getDefaultToolkit().getScreenSize().width;
     double heightMenu = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     static String nombre,cantidad,descripcion,precioCompra,precioVenta,photo;
-    static int estado,position;static double width;
-    String Query1 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG,DESCRIPCION FROM productos WHERE ESTADO=1;";
-    String Query0 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG,DESCRIPCION FROM productos WHERE ESTADO=0;";
+    static int estado,position;static double width,heigth;
+    String Query1 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG_URL,DESCRIPCION FROM productos WHERE ESTADO=1;";
+    String Query0 = "SELECT NOMBRE,DISPONIBILIDAD,PRECIO_VENTA,IMG_URL,DESCRIPCION FROM productos WHERE ESTADO=0;";
 
     public void consulta(String Query){
 
@@ -64,7 +67,7 @@ public class ProductController implements Initializable, ControlledScreen {
             if (resultado != null) {
                 while (resultado.next()) {
                     dato= resultado.getString("NOMBRE")+"#"+resultado.getString("DISPONIBILIDAD")+"#"+resultado.getString("PRECIO_VENTA")
-                            +"#"+resultado.getString("IMG")+"#"+resultado.getString("PRECIO_COMPRA")+"#"+resultado.getString("DESCRIPCION");
+                            +"#"+resultado.getString("IMG_URL")+"#"+resultado.getString("DESCRIPCION");
                     Productos.add(dato); }
 //            rellenar(position);
             }
@@ -73,26 +76,30 @@ public class ProductController implements Initializable, ControlledScreen {
         }
         cantCard = Productos.size();
     }
+
     public void rellenar(int posicion){
       posicion-=1;
+      int aux=0;
         cantCard =Productos.size();
         int pos=posicion*5;
         for (int i = pos; i < pos+5; i++) {
             if (i < cantCard ){
                 String[] texto=Productos.get(i).split("#");
                 nombre=texto[0];            cantidad=texto[1];
-                precioVenta=texto[2];       photo=texto[3]; width=Container.getPrefWidth();
-                card();
+                precioVenta=texto[2];       photo=texto[3]; width=(Container.getWidth());
+                heigth=(Container.getHeight()/5);
+                card(aux);
+                aux++;
             }
         }
     }
 
-    public void card(){
+    public void card(int i){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ProductosV2/CardProduct.fxml"));
         Parent parent = null;
         try {
             parent = fxmlLoader.load();
-            Container.getChildren().addAll(parent);
+            Container.add(parent,0,i);
         } catch (IOException e) {}
     }
 

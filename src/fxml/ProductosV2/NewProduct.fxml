@@ -18,7 +18,7 @@
       <TextField fx:id="Nombre" layoutX="94.0" layoutY="73.0" prefHeight="38.0" prefWidth="331.0" promptText="Escrba el nombre del producto aqui" styleClass="text-labels" />
       <Label layoutX="27.0" layoutY="141.0" prefHeight="31.0" prefWidth="70.0" styleClass="labels" text="Marca" />
       <ComboBox fx:id="Marca" layoutX="97.0" layoutY="137.0" prefHeight="38.0" prefWidth="331.0" promptText="Seleccione la marca" visibleRowCount="5" />
-      <Label layoutX="449.0" layoutY="124.0" prefHeight="55.0" prefWidth="70.0" styleClass="labels" text="Unidad de medida" wrapText="true" />
+      <Label layoutX="449.0" layoutY="124.0" prefHeight="55.0" prefWidth="70.0" styleClass="labels" text="U/M de compra" wrapText="true" />
       <ComboBox fx:id="UnidadMedida" layoutX="526.0" layoutY="133.0" onAction="#UnidadSeleccionada" prefHeight="38.0" prefWidth="240.0" promptText="Seleccione una unidad" visibleRowCount="5" />
       <Label layoutX="451.0" layoutY="73.0" prefHeight="31.0" prefWidth="70.0" styleClass="labels" text="Categoria" wrapText="true" />
       <ScrollPane hbarPolicy="NEVER" layoutX="528.0" layoutY="61.0" prefHeight="55.0" prefWidth="240.0">
@@ -47,9 +47,9 @@
       </Button>
       <Pane fx:id="ContenedorEquivalencia" layoutX="31.0" layoutY="183.0" prefHeight="61.0" prefWidth="712.0" styleClass="text-labels">
          <children>
-            <Label layoutX="243.0" layoutY="1.0" prefHeight="55.0" prefWidth="80.0" styleClass="labels" text="Unidad de equvalencia" wrapText="true" />
+            <Label layoutX="242.0" layoutY="1.0" prefHeight="55.0" prefWidth="86.0" styleClass="labels" text="Equivalencia" wrapText="true" />
             <ComboBox fx:id="U_M_Equivalencia" layoutX="328.0" layoutY="10.0" prefHeight="38.0" prefWidth="166.0" promptText="Seleccione una unidad" visibleRowCount="5" />
-            <Label layoutX="14.0" layoutY="1.0" prefHeight="55.0" prefWidth="92.0" styleClass="labels" text="Equivalencia" wrapText="true" />
+            <Label layoutX="14.0" layoutY="1.0" prefHeight="55.0" prefWidth="92.0" styleClass="labels" text="U/M de venta" wrapText="true" />
             <TextField fx:id="EquivalenciaUnidad" layoutX="108.0" layoutY="10.0" prefHeight="38.0" prefWidth="124.0" promptText="Unidad por equivalenca" styleClass="text-labels" />
             <Label layoutX="514.0" layoutY="2.0" prefHeight="55.0" prefWidth="92.0" styleClass="labels" text="Medida" wrapText="true" />
             <TextField fx:id="Medida" layoutX="576.0" layoutY="11.0" prefHeight="38.0" prefWidth="124.0" promptText="Medida por equivalencia" styleClass="text-labels" />
